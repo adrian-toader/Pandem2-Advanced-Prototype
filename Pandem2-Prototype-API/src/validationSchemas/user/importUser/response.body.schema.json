@@ -1,0 +1,25 @@
+{
+  "$id": "user.importUser.response.body.schema",
+  "description": "Import user instances response body schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": ["success", "error"]
+      },
+      "data": {
+        "anyOf": [
+          {
+            "$ref": "/user#/definitions/userResourceEntry"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "required": ["status", "data"]
+  }
+}

@@ -1,0 +1,117 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<mat-card>
+  <div class="d-flex align-items-top">
+    <mat-card-title class="flex-grow-1" (mousedown)="$event.stopPropagation()">
+      {{'MODULES.SURVEILLANCE.CONFIRMED_CASES.TITLE' | translate }}
+    </mat-card-title>
+    <mat-icon style="cursor: grab">drag_indicator</mat-icon>
+  </div>
+  <div (mousedown)="$event.stopPropagation()">
+  <mat-card-content>
+    <div [innerHTML]="chartDescription ? chartDescription : 'MODULES.SURVEILLANCE.CONFIRMED_CASES.DESCRIPTION' | translate"></div>
+  </mat-card-content>
+  <mat-card-subtitle>
+    <app-sources
+      [sourceType]="SourceType.GRAPH"
+      [sources]="sources"
+      [lastUpdate]="lastUpdate"></app-sources>
+  </mat-card-subtitle>
+  <mat-card-content *ngIf="!isCollapsed">
+    <div class="form-inline">
+      <div class="form-group mr-4 mb-4">
+        <app-chart-type (chartTypeChanged)="changeChartType($event)"
+                        [selectedChartType]="chartType"></app-chart-type>
+      </div>
+      <div class="form-group mr-4 mb-4">
+        <app-chart-time-interval (intervalChanged)="changeTimeInterval($event)"
+                              [intervalOptions]="chartsIntervalOptions" [selectedIntervalOption]="selectedIntervalOption"></app-chart-time-interval>
+      </div>
+      <div class="form-group mr-4 mb-4">
+        <mat-button-toggle-group [value]="LinearLog" aria-label="Type" class="type-container" name="fontStyle">
+          <mat-button-toggle (change)="changeConfirmedCasesPlotType($event)" value="linear">{{graphFilterButtons.LINEAR | translate}}</mat-button-toggle>
+          <mat-button-toggle (change)="changeConfirmedCasesPlotType($event)" value="logarithmic">{{graphFilterButtons.LOGARITHMIC | translate}}</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+      <div class="form-group mr-4 mb-4">
+        <mat-button-toggle-group (change)="changeTotalType($event)"
+                                 aria-label="Type" class="type-container" name="fontStyle" value={{totalType}}>
+          <mat-button-toggle value="Absolute">{{graphFilterButtons.ABSOLUTE | translate}}</mat-button-toggle>
+          <mat-button-toggle value="100K">{{graphFilterButtons.PER100K | translate}}</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </div>
+    <div *ngIf="isLoading()"
+         class="mat-spinner-container loading-chart-placeholder">
+      <mat-spinner></mat-spinner>
+    </div>
+    <mat-tab-group [selectedIndex]="currentTabIndex" (selectedIndexChange)="updateTabIndex($event)" *ngIf="isLoaded()"
+                   class="charts-container">
+      <mat-tab *ngIf="dailySeries" label=" {{'MODULES.SURVEILLANCE.CONFIRMED_CASES.DAILY_CASES' | translate }}">
+        <ng-template matTabContent>
+          <app-highcharts
+            [chartType]="chartType"
+            [hideLegend]="true"
+            [series]="dailySeries"
+            [showExportMenu]="true"
+            [xAxisData]="dailyChart.total.xAxis"
+            [yAxisName]="'MODULES.SURVEILLANCE.CONFIRMED_CASES.CASES' | translate"
+            [yAxisType]="LinearLog"
+            [yAxisTitle]="'MODULES.SURVEILLANCE.CONFIRMED_CASES.NUMBER_OF_CASES' | translate"
+          ></app-highcharts>
+        </ng-template>
+      </mat-tab>
+      <mat-tab *ngIf="weeklyChart" label=" {{'MODULES.SURVEILLANCE.CONFIRMED_CASES.WEEKLY_CASES' | translate }}">
+        <ng-template matTabContent>
+          <app-highcharts
+            [chartType]="chartType"
+            [hideLegend]="true"
+            [series]="weeklySeries"
+            [showExportMenu]="true"
+            [xAxisData]="weeklyChart.total.xAxis"
+            [yAxisName]="'MODULES.SURVEILLANCE.CONFIRMED_CASES.CASES' | translate"
+            [yAxisType]="LinearLog"
+            [yAxisTitle]="'MODULES.SURVEILLANCE.CONFIRMED_CASES.NUMBER_OF_CASES' | translate"
+          ></app-highcharts>
+        </ng-template>
+      </mat-tab>
+      <mat-tab *ngIf="cumulativeChart" label=" {{'MODULES.SURVEILLANCE.CONFIRMED_CASES.CUMULATIVE_CASES' | translate }}">
+        <ng-template matTabContent>
+          <app-highcharts
+            [chartType]="chartType"
+            [hideLegend]="true"
+            [series]="cumultativeSeries"
+            [showExportMenu]="true"
+            [xAxisData]="cumulativeChart.total.xAxis"
+            [yAxisName]="'MODULES.SURVEILLANCE.CONFIRMED_CASES.CASES' | translate"
+            [yAxisType]="LinearLog"
+            [yAxisTitle]="'MODULES.SURVEILLANCE.CONFIRMED_CASES.NUMBER_OF_CASES' | translate"
+          ></app-highcharts>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+  </div>
+</mat-card>

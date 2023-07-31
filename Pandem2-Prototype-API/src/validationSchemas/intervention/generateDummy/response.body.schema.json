@@ -1,0 +1,22 @@
+{
+  "$id": "intervention.generateDummy.response.body.schema",
+  "description": "Generate dummy data for Intervention - response body schema",
+  "type": "object",
+  "patternProperties": {
+    ".+": {
+      "description": "Date entry for created resources numbers per date",
+      "type": "object",
+      "properties": {
+        "start_date": {
+          "type": "string"
+        },
+        "end_date": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-12">
+      <mat-card class="header-card">
+        <mat-card-title class="text-center text-sm-left page-header"><h2 class="page-header">{{'MODULES.DASHBOARD.LANDING.TITLE' | translate }}</h2>
+        </mat-card-title>
+        <mat-card-content class="text-center text-sm-left">
+          <p>{{'MODULES.DASHBOARD.LANDING.DESCR_1' | translate }}</p>
+          <p>{{'MODULES.DASHBOARD.LANDING.DESCR_2' | translate }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <app-date-picker [isFromLanding]="true"></app-date-picker>
+  <div *ngIf="(currentUserCards | cardFilter: true).length" class="text-center text-md-right">
+    <div>
+      <button [matMenuTriggerFor]="menu" mat-button>{{'MODULES.DASHBOARD.LANDING.HIDDEN_CARDS' | translate }}</button>
+      <mat-menu #menu="matMenu" class="hidden-cards-menu">
+        <button (click)="showCard(card.code)" *ngFor="let card of currentUserCards | cardFilter: true" mat-menu-item>
+          <mat-icon>visibility</mat-icon>
+          {{card.code}}
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+  <div
+    class="row summary-container summary-sections-container"
+    cdkDropListGroup
+    [ngStyle]="{ '--box-width': boxWidth, '--box-height': boxHeight }"
+  >
+    <div
+      cdkDropList
+      (cdkDropListEntered)="onDropListEntered($event)"
+      (cdkDropListDropped)="onDropListDropped()"
+    ></div>
+    <div
+      cdkDropList
+      (cdkDropListEntered)="onDropListEntered($event)"
+      (cdkDropListDropped)="onDropListDropped()"
+      *ngFor="let card of currentUserCards | cardFilter:false"
+      class="col-lg-6 col-xl-4"
+    >
+      <div #myCard [ngSwitch]="card.code" cdkDrag class="card-box">
+                <app-landing-cases (hideCard)="hideCard($event)" *ngSwitchCase="'cases'"></app-landing-cases>
+                <app-landing-deaths (hideCard)="hideCard($event)" *ngSwitchCase="'deaths'"></app-landing-deaths>
+                <app-landing-hospitalisations (hideCard)="hideCard($event)"
+                                              *ngSwitchCase="'hospitalisations'"></app-landing-hospitalisations>
+                <app-landing-vaccinations (hideCard)="hideCard($event)"
+                                          *ngSwitchCase="'vaccinations'"></app-landing-vaccinations>
+                <app-landing-testing (hideCard)="hideCard($event)" *ngSwitchCase="'testing'"></app-landing-testing>
+                <app-landing-genetic-variation (hideCard)="hideCard($event)"
+                                               *ngSwitchCase="'genetic-variation'"></app-landing-genetic-variation>
+                <app-landing-contact-tracing (hideCard)="hideCard($event)"
+                                             *ngSwitchCase="'contact-tracing'"></app-landing-contact-tracing>
+                <app-landing-human-resources (hideCard)="hideCard($event)"
+                                             *ngSwitchCase="'human-resources'"></app-landing-human-resources>
+                <app-landing-bed-occupancy (hideCard)="hideCard($event)"
+                                           *ngSwitchCase="'bed-occupancy'"></app-landing-bed-occupancy>
+                <app-landing-social-media-analysis (hideCard)="hideCard($event)"
+                                                   *ngSwitchCase="'social-media-analysis'"></app-landing-social-media-analysis>
+                <app-participatory-surveillance (hideCard)="hideCard($event)"
+                                                *ngSwitchCase="'participatory-surveillance'"></app-participatory-surveillance>
+      </div>
+    </div>
+  </div>
+
+</div>

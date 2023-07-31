@@ -1,0 +1,32 @@
+{
+  "$id": "socialMediaAnalysisData.getLanguages.request.query.schema",
+  "description": "Get social media analysis languages request params schema",
+  "type": "object",
+  "properties": {
+    "subcategory": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/socialMediaAnalysisData#/definitions/subcategory"
+          }
+        },
+        {
+          "$ref": "/socialMediaAnalysisData#/definitions/subcategory"
+        }
+      ]
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "subcategory",
+    "location"
+  ]
+}

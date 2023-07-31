@@ -1,0 +1,49 @@
+{
+  "$id": "patient.getDaily.request.query.schema",
+  "description": "Get patients count group by day - request query schema definition",
+  "type": "object",
+  "properties": {
+    "total_type": {
+      "$ref": "/patient#/definitions/total_type"
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "admission_type": {
+      "anyOf": [
+        {
+          "$ref": "/patient#/definitions/admission_type"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/patient#/definitions/admission_type"
+          }
+        }
+      ]
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "admission_type",
+        "has_comorbidities",
+        "age_group",
+        "variantId"
+      ]
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "total_type",
+    "location",
+    "admission_type"
+  ]
+}

@@ -1,0 +1,241 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<mat-card>
+  <div class="d-flex align-items-top">
+    <mat-card-title class="flex-grow-1" (mousedown)="$event.stopPropagation()">
+      <div class="row">
+        <div class="col-md-6 text-center text-sm-left">
+          {{'MODULES.HEALTHCARE_CAPACITY.ADMISSIONS_AND_BED_OCCUPANCY.TITLE' | translate}}
+        </div>
+        <div class="col-md-6 text-center text-sm-left text-md-right" *ngIf="!isCollapsed">
+          <mat-slide-toggle
+            (change)="setBedOccupationType($event)"
+            [checked]="isAdmissionsChecked"
+            [labelPosition]="'before'"
+            class="mr-5"
+            id="admissions"
+          >{{'MODULES.HEALTHCARE_CAPACITY.ADMISSIONS_AND_BED_OCCUPANCY.ADMISSIONS' | translate}}
+          </mat-slide-toggle>
+          <mat-slide-toggle
+            (change)="setBedOccupationType($event)"
+            [checked]="isICUChecked"
+            [labelPosition]="'before'"
+            class="icu_container"
+            id="icu"
+          >{{'MODULES.HEALTHCARE_CAPACITY.ADMISSIONS_AND_BED_OCCUPANCY.ICU' | translate}}
+          </mat-slide-toggle>
+        </div>
+      </div>
+    </mat-card-title>
+    <mat-icon style="cursor: grab">drag_indicator</mat-icon>
+  </div>
+  <div (mousedown)="$event.stopPropagation()">
+    <br/>
+    <mat-card-subtitle>
+      <div class="row">
+        <ng-container *ngIf="chartDescription">
+          <div class="col-md-6 mb-4 text-center text-sm-left" [innerHTML]="chartDescription"></div>
+        </ng-container>
+        <ng-container *ngIf="!chartDescription">
+          <div class="col-md-6 mb-4 text-center text-sm-left">
+            {{'MODULES.HEALTHCARE_CAPACITY.ADMISSIONS_AND_BED_OCCUPANCY.DESCRIPTION' | translate}}
+          </div>
+        </ng-container>
+        <div class="col-md-6 mb-4 text-center text-sm-left text-md-right">
+          <app-sources
+            [sourceType]="SourceType.GRAPH"
+            [sources]="sources"
+            [lastUpdate]="lastUpdate"></app-sources>
+        </div>
+      </div>
+    </mat-card-subtitle>
+    <mat-card-content *ngIf="!isCollapsed">
+      <div class="form-inline">
+        <div class="form-group mr-4 mb-4">
+          <app-chart-time-interval (intervalChanged)="changeTimeInterval($event)"
+                                   [intervalOptions]="chartsIntervalOptions"
+                                   [selectedIntervalOption]="selectedIntervalOption"></app-chart-time-interval>
+        </div>
+        <div class="form-group mr-4 mb-4">
+          <mat-button-toggle-group [value]="LinearLog" aria-label="Type" class="type-container" name="fontStyle">
+            <mat-button-toggle (change)="changePatientAdmissionPlotType($event)" value="linear">{{graphFilterButtons.LINEAR | translate}}</mat-button-toggle>
+            <mat-button-toggle (change)="changePatientAdmissionPlotType($event)" value="logarithmic">{{graphFilterButtons.LOGARITHMIC | translate}}</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <div class="form-group mr-4 mb-4">
+          <ng-container *ngIf="bedStackingType === 'percent'">
+            <mat-button-toggle-group (change)="changeBedTotalType($event)"
+                                     value="Proportion" aria-label="Type"
+                                     class="d-none d-md-inline-flex type-container" name="fontStyle">
+              <mat-button-toggle value="Absolute">{{graphFilterButtons.ABSOLUTE | translate}}</mat-button-toggle>
+              <mat-button-toggle value="100K">{{graphFilterButtons.PER100K | translate}}</mat-button-toggle>
+              <mat-button-toggle value="Proportion">{{graphFilterButtons.PROPORTION | translate}}</mat-button-toggle>
+            </mat-button-toggle-group>
+          </ng-container>
+
+          <ng-container *ngIf="bedStackingType !== 'percent'">
+            <mat-button-toggle-group (change)="changeBedTotalType($event)"
+                                     [value]="bedTotalType" aria-label="Type"
+                                     class="d-none d-md-inline-flex type-container" name="fontStyle">
+              <mat-button-toggle value="Absolute">{{graphFilterButtons.ABSOLUTE | translate}}</mat-button-toggle>
+              <mat-button-toggle value="100K">{{graphFilterButtons.PER100K | translate}}</mat-button-toggle>
+              <mat-button-toggle value="Proportion">{{graphFilterButtons.PROPORTION | translate}}</mat-button-toggle>
+            </mat-button-toggle-group>
+          </ng-container>
+        </div>
+      </div>
+      <div *ngIf="isLoading()" class="mat-spinner-container loading-chart-placeholder">
+        <mat-spinner></mat-spinner>
+      </div>
+      <mat-tab-group class="charts-container" *ngIf="isLoaded()"
+                     [selectedIndex]="currentTabIndex" (selectedIndexChange)="updateTabIndex($event)">
+        <mat-tab label="{{'MODULES.HEALTHCARE_CAPACITY.ADMISSIONS_AND_BED_OCCUPANCY.DAILY' | translate}}" *ngIf="dailySeriesAdmissions">
+          <ng-template matTabContent>
+            <mat-card>
+              <mat-card-title>{{'MODULES.HEALTHCARE_CAPACITY.ADMISSIONS_AND_BED_OCCUPANCY.Admissions' | translate}}</mat-card-title>
+              <app-highcharts
+                #dual
+                #firstChart
+                (mouseenter)="tooltipSynchronisationService.setSyncRules(firstChartView, secondChartView)"
+                (mousemove)="tooltipSynchronisationService.syncPointers(syncCharts.FirstChart, firstChartView, secondChartView)"
+                (mouseleave)="tooltipSynchronisationService.hideSyncedPointers(firstChartView, secondChartView)"
+                [chartType]="'column'"
+                [series]="dailySeriesAdmissions"
+                [showExportMenu]="true"
+                [xAxisData]="dailyData[0].total.xAxis"
+                [yAxisName]="'MODULES.HEALTHCARE_CAPACITY.ADMISSIONS_AND_BED_OCCUPANCY.Admissions' | translate"
+                [yAxisType]="LinearLog"
+                [yAxisTitle]="''"
+                [stacking]="true"
+                [proportionChart]="bedStackingType === 'percent'"
+              ></app-highcharts>
+            </mat-card>
+            <mat-card>
+              <mat-card-title>Bed Occupancy</mat-card-title>
+              <app-highcharts
+                #dual
+                #secondChart
+                (mouseenter)="tooltipSynchronisationService.setSyncRules(firstChartView, secondChartView)"
+                (mousemove)="tooltipSynchronisationService.syncPointers(syncCharts.SecondChart, firstChartView, secondChartView)"
+                (mouseleave)="tooltipSynchronisationService.hideSyncedPointers(firstChartView, secondChartView)"
+                [chartType]="'column'"
+                [series]="dailySeriesBeds"
+                [showExportMenu]="true"
+                [xAxisData]="dailyData[1].total.xAxis"
+                [yAxisName]="'MODULES.HEALTHCARE_CAPACITY.ADMISSIONS_AND_BED_OCCUPANCY.Admissions' | translate"
+                [yAxisTitle]="''"
+                [yAxisType]="LinearLog"
+                [stacking]="true"
+                [proportionChart]="bedStackingType === 'percent'"
+              ></app-highcharts>
+            </mat-card>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="{{'MODULES.HEALTHCARE_CAPACITY.ADMISSIONS_AND_BED_OCCUPANCY.WEEKLY' | translate}}" *ngIf="weeklySeriesAdmissions">
+          <ng-template matTabContent>
+            <mat-card>
+              <mat-card-title>{{'MODULES.HEALTHCARE_CAPACITY.ADMISSIONS_AND_BED_OCCUPANCY.Admissions' | translate}}</mat-card-title>
+              <app-highcharts
+                #dual
+                #firstChart
+                (mouseenter)="tooltipSynchronisationService.setSyncRules(firstChartView, secondChartView)"
+                (mousemove)="tooltipSynchronisationService.syncPointers(syncCharts.FirstChart, firstChartView, secondChartView)"
+                (mouseleave)="tooltipSynchronisationService.hideSyncedPointers(firstChartView, secondChartView)"
+                [chartType]="'column'"
+                [series]="weeklySeriesAdmissions"
+                [showExportMenu]="true"
+                [xAxisData]="weeklyData[0].total.xAxis"
+                [yAxisName]="'Admissions'"
+                [yAxisTitle]="''"
+                [yAxisType]="LinearLog"
+                [stacking]="true"
+                [proportionChart]="bedStackingType === 'percent'"
+              ></app-highcharts>
+            </mat-card>
+            <mat-card>
+              <mat-card-title>{{'MODULES.HEALTHCARE_CAPACITY.ADMISSIONS_AND_BED_OCCUPANCY.BED_OCCUPANCY' | translate}}</mat-card-title>
+              <app-highcharts
+                #dual
+                #secondChart
+                (mouseenter)="tooltipSynchronisationService.setSyncRules(firstChartView, secondChartView)"
+                (mousemove)="tooltipSynchronisationService.syncPointers(syncCharts.SecondChart, firstChartView, secondChartView)"
+                (mouseleave)="tooltipSynchronisationService.hideSyncedPointers(firstChartView, secondChartView)"
+                [chartType]="'column'"
+                [series]="weeklySeriesBeds"
+                [showExportMenu]="true"
+                [xAxisData]="weeklyData[0].total.xAxis"
+                [yAxisName]="'MODULES.HEALTHCARE_CAPACITY.ADMISSIONS_AND_BED_OCCUPANCY.BED_OCCUPANCY' | translate"
+                [yAxisTitle]="''"
+                [yAxisType]="LinearLog"
+                [stacking]="true"
+                [proportionChart]="bedStackingType === 'percent'"
+              ></app-highcharts>
+            </mat-card>
+          </ng-template>
+        </mat-tab>
+        <mat-tab *ngIf="cumulativeSeriesAdmissions" label="{{'MODULES.HEALTHCARE_CAPACITY.ADMISSIONS_AND_BED_OCCUPANCY.CUMULATIVE' | translate}}">
+          <ng-template matTabContent>
+            <mat-card>
+              <mat-card-title>{{'MODULES.HEALTHCARE_CAPACITY.ADMISSIONS_AND_BED_OCCUPANCY.Admissions' | translate}}</mat-card-title>
+              <app-highcharts
+                #dual
+                #firstChart
+                (mouseenter)="tooltipSynchronisationService.setSyncRules(firstChartView, secondChartView)"
+                (mousemove)="tooltipSynchronisationService.syncPointers(syncCharts.FirstChart, firstChartView, secondChartView)"
+                (mouseleave)="tooltipSynchronisationService.hideSyncedPointers(firstChartView, secondChartView)"
+                [chartType]="'column'"
+                [series]="cumulativeSeriesAdmissions"
+                [showExportMenu]="true"
+                [xAxisData]="cumulativeData[0].total.xAxis"
+                [yAxisName]="'MODULES.HEALTHCARE_CAPACITY.ADMISSIONS_AND_BED_OCCUPANCY.Admissions' | translate"
+                [yAxisTitle]="''"
+                [yAxisType]="LinearLog"
+                [stacking]="true"
+                [proportionChart]="bedStackingType === 'percent'"
+              ></app-highcharts>
+            </mat-card>
+            <mat-card>
+              <mat-card-title>{{'MODULES.HEALTHCARE_CAPACITY.ADMISSIONS_AND_BED_OCCUPANCY.BED_OCCUPANCY' | translate}}</mat-card-title>
+              <app-highcharts
+                #dual
+                #secondChart
+                (mouseenter)="tooltipSynchronisationService.setSyncRules(firstChartView, secondChartView)"
+                (mousemove)="tooltipSynchronisationService.syncPointers(syncCharts.SecondChart, firstChartView, secondChartView)"
+                (mouseleave)="tooltipSynchronisationService.hideSyncedPointers(firstChartView, secondChartView)"
+                [chartType]="'column'"
+                [series]="cumulativeSeriesBeds"
+                [showExportMenu]="true"
+                [xAxisData]="cumulativeData[0].total.xAxis"
+                [yAxisName]="'MODULES.HEALTHCARE_CAPACITY.ADMISSIONS_AND_BED_OCCUPANCY.Admissions' | translate"
+                [yAxisTitle]="''"
+                [yAxisType]="LinearLog"
+                [stacking]="true"
+                [proportionChart]="bedStackingType === 'percent'"
+              ></app-highcharts>
+            </mat-card>
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </div>
+</mat-card>

@@ -1,0 +1,22 @@
+{
+  "$id": "translation.createLanguage.request.body.schema",
+  "description": "Create a new language in database.",
+  "type": "object",
+  "properties": {
+      "display_name":  {
+          "type": "string",
+          "minLength": 1
+      },
+      "country_code": {
+          "$ref": "/translation#/definitions/country_code"
+      },
+      "enabled": {
+          "type": "boolean"
+      }
+  },
+  "required": [
+      "display_name",
+      "country_code",
+      "enabled"
+  ]
+}

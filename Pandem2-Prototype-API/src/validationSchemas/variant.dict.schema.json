@@ -1,0 +1,155 @@
+{
+  "$id": "/variant#",
+  "definitions": {
+    "pathogenId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "code": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "minLength": 1
+    },
+    "type": {
+      "enum": [
+        "concern",
+        "interest"
+      ]
+    },
+    "color": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "minLength": 1
+    },
+    "lineage": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "minLength": 1
+    },
+    "country_first_detected": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "minLength": 1
+    },
+    "spike_mutations": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "minLength": 1
+    },
+    "date_first_detection": {
+      "type": "string",
+      "format": "date"
+    },
+    "impact_transmissibility": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "minLength": 1
+    },
+    "impact_immunity": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "minLength": 1
+    },
+    "impact_severity": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "minLength": 1
+    },
+    "transmission_eu_eea": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "minLength": 1
+    },
+    "import_metadata": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "minLength": 1
+        },
+        "file": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "variantResourceEntry": {
+      "type": "object",
+      "properties": {
+        "pathogenId": {
+          "$ref": "/variant#/definitions/pathogenId"
+        },
+        "code": {
+          "$ref": "/variant#/definitions/code"
+        },
+        "name": {
+          "$ref": "/variant#/definitions/name"
+        },
+        "type": {
+          "$ref": "/variant#/definitions/type"
+        },
+        "color": {
+          "$ref": "/variant#/definitions/color"
+        },
+        "lineage": {
+          "$ref": "/variant#/definitions/lineage"
+        },
+        "country_first_detected": {
+          "$ref": "/variant#/definitions/country_first_detected"
+        },
+        "spike_mutations": {
+          "$ref": "/variant#/definitions/spike_mutations"
+        },
+        "date_first_detection": {
+          "$ref": "/variant#/definitions/date_first_detection"
+        },
+        "impact_transmissibility": {
+          "$ref": "/variant#/definitions/impact_transmissibility"
+        },
+        "impact_immunity": {
+          "$ref": "/variant#/definitions/impact_immunity"
+        },
+        "impact_severity": {
+          "$ref": "/variant#/definitions/impact_severity"
+        },
+        "transmission_eu_eea": {
+          "$ref": "/variant#/definitions/transmission_eu_eea"
+        },
+        "import_metadata": {
+          "$ref": "/variant#/definitions/import_metadata"
+        },
+        "_id": {
+          "$ref": "/base#/definitions/mongoID"
+        }
+      }
+    }
+  }
+}

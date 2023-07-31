@@ -1,0 +1,107 @@
+/*
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+*/
+.hidden-cards-menu {
+  background: #ffffff !important;
+}
+
+@media (min-width: 1200px) {
+  .summary-sections-container {
+    row-gap: 1.5rem;
+  }
+}
+
+::ng-deep .landing-card {
+  .image-container,
+  .big-container {
+    height: auto !important;
+  }
+
+  .info-text {
+    font-size: 14px;
+  }
+
+  .more-link {
+    text-align: right;
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+  }
+
+  .card-actions mat-icon {
+    transform: scale(0.9);
+    margin: 0 2px;
+    vertical-align: middle;
+  }
+
+  .mat-card-content {
+    padding-bottom: 24px;
+    margin-bottom: 0;
+  }
+}
+
+.card-box {
+  width: var(--box-width);
+  height: var(--box-height);
+  border: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 4px;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.card-box:active {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  opacity: 0.6;
+}
+
+.cdk-drop-list,
+.cdk-drag {
+  height: 100%;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.3;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drop-list-dragging {
+  cursor: grabbing !important;
+}

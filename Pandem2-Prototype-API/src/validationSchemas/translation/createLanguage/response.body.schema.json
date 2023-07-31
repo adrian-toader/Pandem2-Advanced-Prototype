@@ -1,0 +1,35 @@
+{
+  "$id": "translation.createLanguage.response.body.schema",
+  "description": "Create a new language in database.",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "display_name":  {
+        "type": "string",
+        "minLength": 1
+    },
+    "country_code": {
+        "$ref": "/translation#/definitions/country_code"
+    },
+    "enabled": {
+        "type": "boolean"
+    }, 
+    "default_language": {
+        "type": "boolean"
+    },
+    "translations": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "_id",
+    "display_name",
+    "country_code",
+    "enabled",
+    "default_language",
+    "translations"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$id": "intervention.updateIntervention.request.uri.template.schema",
+  "description": "Modify intervention instance URI template schema",
+  "type": "object",
+  "properties": {
+    "interventionId": {
+      "$ref": "/base#/definitions/mongoID"
+    }
+  },
+  "required": [
+    "interventionId"
+  ]
+}

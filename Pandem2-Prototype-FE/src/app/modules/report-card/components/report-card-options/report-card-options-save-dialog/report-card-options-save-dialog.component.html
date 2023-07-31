@@ -1,0 +1,80 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<button mat-icon-button class="dialog-close-button" [mat-dialog-close]="true">
+  <mat-icon aria-hidden="false" aria-label="close button">close</mat-icon>
+</button>
+<mat-dialog-content class="main-card-manager-dialog">
+  <div class="row">
+    <div class="col-12">
+      <div *ngIf="!uploadReady" class="mat-spinner-container">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div *ngIf="uploadReady">
+        <mat-card-title>
+          {{'MODULES.REPORT_CARD.REPORT_CARD_OPTIONS_SAVE_DIALOG.TITLE' | translate }}
+        </mat-card-title>
+
+        <form [formGroup]="saveForm" (ngSubmit)="onFormSubmit()" class="pt-4">
+          <div *ngIf="showReportNameField" class="form-group save-dialog-form-group">
+            <label for="reportName"> {{'MODULES.REPORT_CARD.REPORT_CARD_OPTIONS_SAVE_DIALOG.REPORT_NAME' | translate }}</label>
+            <input formControlName="reportName" name="reportName" class="form-control">
+          </div>
+          <div *ngIf="showReportNameField && saveForm.get('reportName').hasError('required')" class="mt-0">
+            <span style="color: red">{{'MODULES.REPORT_CARD.REPORT_CARD_OPTIONS_SAVE_DIALOG.REPORT_IS_REQUIRED' | translate }}</span>
+          </div>
+          <div *ngIf="loadedReportId" class="mt-4">
+            <mat-slide-toggle 
+              formControlName="saveAsNew" 
+              name="saveAsNew"
+              (change)="onSaveAsNewToggle($event?.checked || false)"
+              color="primary-color">
+              {{'MODULES.REPORT_CARD.REPORT_CARD_OPTIONS_SAVE_DIALOG.SAVE_AS_NEW_REPORT' | translate }}
+            </mat-slide-toggle>
+          </div>  
+          <div [ngClass]="{'mt-3': loadedReportId, 'mt-4': !loadedReportId}">
+            <mat-slide-toggle 
+              formControlName="saveLocation" 
+              name="saveLocation"
+              color="primary-color">
+              {{'MODULES.REPORT_CARD.REPORT_CARD_OPTIONS_SAVE_DIALOG.SAVE_LOCATION' | translate }}
+            </mat-slide-toggle>
+          </div>  
+          <div class="my-3">
+            <mat-slide-toggle 
+              formControlName="saveCustomDate" 
+              name="saveCustomDate" 
+              color="primary-color">
+              {{'MODULES.REPORT_CARD.REPORT_CARD_OPTIONS_SAVE_DIALOG.SAVE_CUSTOM_DATE' | translate }}
+            </mat-slide-toggle>
+          </div>
+          <button mat-raised-button class="my-2 col-3 px-5 report-save-button" color="primary-button" type="submit">
+            <div class="row justify-content-between align-items-center">
+              <div>{{'MODULES.REPORT_CARD.REPORT_CARD_OPTIONS_SAVE_DIALOG.SAVE' | translate }}</div>
+              <mat-icon>save_alt</mat-icon>
+            </div>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>

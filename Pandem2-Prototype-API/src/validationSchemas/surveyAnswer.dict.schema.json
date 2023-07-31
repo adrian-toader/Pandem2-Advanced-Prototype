@@ -1,0 +1,61 @@
+{
+  "$id": "/surveyAnswer#",
+  "definitions": {
+    "surveyId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "reference",
+        "value"
+      ]
+    },
+    "perGenderAndAge": {
+      "type": "object"
+    },
+    "numberOfAnswers": {
+      "type": "number"
+    },
+    "questionsAnswers": {
+      "type": "object"
+    },
+    "surveyAnswerResourceEntry": {
+      "type": "object",
+      "properties": {
+        "surveyId": {
+          "$ref": "/surveyAnswer#/definitions/surveyAnswerId"
+        },
+        "date": {
+          "$ref": "/surveyAnswer#/definitions/date"
+        },
+        "location": {
+          "$ref": "/surveyAnswer#/definitions/location"
+        },
+        "perGenderAndAge": {
+          "$ref": "/surveyAnswer#/definitions/perGenderAndAge"
+        },
+        "numberOfAnswers": {
+          "$ref": "/surveyAnswer#/definitions/numberOfAnswers"
+        },
+        "questionsAnswers": {
+          "$ref": "/surveyAnswer#/definitions/questionsAnswers"
+        }
+      }
+    }
+  }
+}

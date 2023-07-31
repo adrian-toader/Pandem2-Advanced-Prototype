@@ -1,0 +1,52 @@
+{
+  "$id": "socialMediaAnalysisData.generateDummy.response.body.schema",
+  "description": "Generate dummy data for Social Media AnalysisData - response body schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "topic": {
+        "type": "string"
+      },
+      "language": {
+        "type": "string"
+      },
+      "subcategory": {
+        "$ref": "/socialMediaAnalysisData#/definitions/subcategory"
+      },
+      "data": {
+        "type": "object",
+        "patternProperties": {
+          ".+": {
+            "description": "Date entry for created resources numbers per date",
+            "type": "object",
+            "properties": {
+              "sentiments": {
+                "type": "object",
+                "patternProperties": {
+                  ".+": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "emotions": {
+                "type": "object",
+                "patternProperties": {
+                  ".+": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "total": {
+                "type": "number",
+                "minimum": 0
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

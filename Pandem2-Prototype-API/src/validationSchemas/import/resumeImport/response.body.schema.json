@@ -1,0 +1,21 @@
+{
+  "$id": "import.resumeImport.response.body.schema",
+  "description": "Resume import - response body schema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "/importResult#/definitions/importResultResourceEntry"
+    },
+    {
+      "required": [
+        "_id",
+        "data_type",
+        "path",
+        "no_files",
+        "no_files_parsed",
+        "start_date",
+        "status"
+      ]
+    }
+  ]
+}

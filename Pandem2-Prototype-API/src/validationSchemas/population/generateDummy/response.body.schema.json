@@ -1,0 +1,26 @@
+{
+  "$id": "population.generateDummy.response.body.schema",
+  "description": "Generate dummy data for populations - response body schema",
+  "type": "object",
+  "patternProperties": {
+    ".+": {
+      "description": "Date entry for created resources numbers per date",
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "number",
+          "minimum": 0
+        },
+        "ageGroups": {
+          "type": "object",
+          "patternProperties": {
+            ".+": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    }
+  }
+}

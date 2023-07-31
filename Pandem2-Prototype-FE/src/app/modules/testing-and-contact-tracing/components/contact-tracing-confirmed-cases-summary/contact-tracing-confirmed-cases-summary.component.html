@@ -1,0 +1,124 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<mat-card class="summary-section">
+  <div *ngIf="isLoading()" class="mat-spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="isLoaded()">
+    <div class="summary-section__name-icon-container">
+      <div>
+        {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONFIRMED_CASES_SUMMARY.TITLE' | translate }}
+      </div>
+      <div>
+        <mat-icon (click)="showInfo = !showInfo">info</mat-icon>
+      </div>
+    </div>
+    <mat-card-title class="text-center text-sm-left ">
+      {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONFIRMED_CASES_SUMMARY.CONTACTS_FOR_CT' | translate }}
+    </mat-card-title>
+    <mat-card-subtitle class="text-center text-sm-left ">
+      <app-sources
+        [sourceType]="SourceType.SUMMARY"
+        [sources]="sources"></app-sources>
+    </mat-card-subtitle>
+    <mat-card-content>
+      <p *ngIf="showInfo" class="text-center text-sm-left info-text">
+        {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONFIRMED_CASES_SUMMARY.WIP' | translate }}
+      </p>
+      <mat-list>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONFIRMED_CASES_SUMMARY.CONTACTS_CURRENT_WEEK' | translate }}
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{ numberOfCasesIdentifiedCurrentWeek}}
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            <br/>
+            {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONFIRMED_CASES_SUMMARY.CONTACTS_LAST_WEEK' | translate }}
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{ numberOfCasesIdentifiedLastWeek}}
+            <br/>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="col-xl-6 label">
+            <p class="comparedTo">  {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONFIRMED_CASES_SUMMARY.COMPARED_TO_PREVIOUS' | translate }} </p>
+          </div>
+          <div *ngIf="percentageIsFinite(numberOfCasesIdentifiedLastWeekPercentage)" class="col-xl-6 value text-right">
+            <div *ngIf="positiveEvolution" class="evolution-container alert alert-danger">
+              <mat-icon class="evolution-container__icon">keyboard_arrow_up</mat-icon>
+              {{numberOfCasesIdentifiedLastWeekEvolution}} <span>({{numberOfCasesIdentifiedLastWeekPercentage | number : defaultNumberFormat}}%)</span>
+            </div>
+            <div *ngIf="!positiveEvolution" class="evolution-container alert alert-success">
+              <mat-icon class="evolution-container__icon">keyboard_arrow_down</mat-icon>
+              {{Math.abs(numberOfCasesIdentifiedLastWeekEvolution)}} <span>({{numberOfCasesIdentifiedLastWeekPercentage | number : defaultNumberFormat}}
+              %)</span>
+            </div>
+          </div>
+          <div *ngIf="!percentageIsFinite(numberOfCasesIdentifiedLastWeekPercentage)" class="col-xl-6 value text-right">
+            {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONFIRMED_CASES_SUMMARY.NO_COMPARABLE_DATA' | translate }}
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            <br/>
+            {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONFIRMED_CASES_SUMMARY.CASES_IDENTIFIED_AND_REACHED_IN' | translate }}
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{ numberOfCasesIdentifiedAndReached}} ({{numberOfCasesIdentifiedAndReachedPercentage | number : defaultNumberFormat}} %)
+            <br/>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            <br/>
+            {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONFIRMED_CASES_SUMMARY.CASES_INDENTIFIED_AND_REACHED_IN_A_DAY' | translate }}
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{ numberOfCasesIdentifiedAndReachedWithinADay}} ({{numberOfCasesIdentifiedAndReachedWithinADayPercentage | number : defaultNumberFormat}} %)
+            <br/>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            <br/>
+            {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONFIRMED_CASES_SUMMARY.NUMBER_OF_CASES_IDENTIFIED_AS_CONTACT' | translate }}
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{ numberOfCasesThatPreviouslyHadBeenIdentifiedAsContact}} ({{numberOfCasesThatPreviouslyHadBeenIdentifiedAsContactPercentage | number : defaultNumberFormat}} %)
+            <br/>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </div>
+</mat-card>

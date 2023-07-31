@@ -1,0 +1,13 @@
+{
+  "$id": "modelling.getScenarioDetails.request.uri.template.schema",
+  "description": "Get scenario details by id URI template schema",
+  "type": "object",
+  "properties": {
+    "scenarioId": {
+      "$ref": "/base#/definitions/mongoID"
+    }
+  },
+  "required": [
+    "scenarioId"
+  ]
+}

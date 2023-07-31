@@ -1,0 +1,82 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<button mat-icon-button class="dialog-close-button" [mat-dialog-close]="true">
+  <mat-icon aria-hidden="false" aria-label="close button">close</mat-icon>
+</button>
+<mat-dialog-content class="main-card-manager-dialog">
+  <div class="row">
+    <div class="col-12">
+      <form class="card-manager-dialog-form">
+        <input 
+          type="text" 
+          class="card-autocomplete-input"
+          [placeholder]="type === graphTypes.Graph ? 'Search Graph' : 'Search Map'"  
+          [formControl]="myControl" 
+          [matAutocomplete]="graphsListAuto"
+          #cardManagerAutocompleteInput 
+          [matMenuTriggerFor]="graphsMenuTrigger"
+          (click)="onClickInput()"
+        />
+        <mat-autocomplete #graphsListAuto="matAutocomplete" (optionSelected)="selectOption($event)">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name">
+            {{option.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </form>
+      <mat-menu #graphsMenuTrigger="matMenu" class="menu-card-manager-dialog">
+        <ng-container *ngFor="let menu of searchList">
+          <button mat-menu-item [matMenuTriggerFor]="innerMenu">
+            {{menu.name}}
+          </button>
+
+          <mat-menu #innerMenu ="matMenu" class="menu-card-manager-dialog">
+            <ng-container *ngIf="type === graphTypes.Graph">
+              <ng-container *ngFor="let sub of menu.subcategories">
+                <button mat-menu-item [matMenuTriggerFor]="lastRow">
+                  {{sub.name}}
+                </button>
+                <mat-menu #lastRow = "matMenu" class="menu-card-manager-dialog">
+                  <ng-container *ngFor="let item of sub.graphs">
+                    <button mat-menu-item (click)="click(item.id)">
+                      {{item.name}}
+                    </button>
+                  </ng-container>
+                </mat-menu>
+              </ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="type === graphTypes.Map">
+              <ng-container *ngFor="let item of menu.maps">
+                <button mat-menu-item (click)="click(item.id)">
+                  {{item.name}}
+                </button>
+              </ng-container>
+            </ng-container>
+          </mat-menu>
+
+        </ng-container>
+      </mat-menu>
+    </div>
+  </div>
+</mat-dialog-content>

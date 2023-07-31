@@ -1,0 +1,21 @@
+{
+  "$id": "import.retrieveImportResult.response.body.schema",
+  "description": "Retrieve import result - response body schema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "/importResult#/definitions/importResultResourceEntry"
+    },
+    {
+      "required": [
+        "_id",
+        "data_type",
+        "path",
+        "no_files",
+        "no_files_parsed",
+        "start_date",
+        "status"
+      ]
+    }
+  ]
+}

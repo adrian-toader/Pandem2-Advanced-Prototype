@@ -1,0 +1,44 @@
+{
+  "$id": "import.data.request.body.schema",
+  "description": "Import pandem-source data schema",
+  "type": "object",
+  "properties": {
+    "dataType": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "case",
+          "death",
+          "participatorySurveillance",
+          "patient",
+          "bed",
+          "vaccine",
+          "test",
+          "socialMediaAnalysisData",
+          "population",
+          "intervention",
+          "contact",
+          "humanResource",
+          "all"
+        ]
+      }
+    },
+    "indicators": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "workersNo": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "importSMASuggestions": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "dataType"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$id": "contact.getDaily.request.query.schema",
+  "description": "Get daily contacts request params schema",
+  "type": "object",
+  "properties": {
+    "total_type": {
+      "$ref": "/contact#/definitions/total_type"
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "location",
+    "total_type"
+  ]
+}

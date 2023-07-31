@@ -1,0 +1,37 @@
+{
+  "$id": "test.getDaily.request.query.schema",
+  "description": "Get daily tests request params schema",
+  "type": "object",
+  "properties": {
+    "subcategory": {
+      "$ref": "/test#/definitions/subcategory"
+    },
+    "total_type": {
+      "$ref": "/test#/definitions/total_type"
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "test_type",
+        "test_result"
+      ]
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "subcategory",
+    "location",
+    "total_type"
+  ]
+}

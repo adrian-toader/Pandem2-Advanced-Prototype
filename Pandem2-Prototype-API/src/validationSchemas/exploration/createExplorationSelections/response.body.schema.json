@@ -1,0 +1,13 @@
+{
+  "$id": "exploration.createExplorationSelections.response.body.schema",
+  "description": "Create a new exploration selections in database.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "/base#/definitions/mongoID"
+    }
+  },
+  "required": [
+    "id"
+  ]
+}

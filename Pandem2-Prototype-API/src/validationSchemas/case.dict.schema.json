@@ -1,0 +1,104 @@
+{
+  "$id": "/case#",
+  "definitions": {
+    "pathogenId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "variantId": {
+      "type": "string"
+    },
+    "total_type": {
+      "type": "string",
+      "enum": [
+        "Absolute",
+        "100K"
+      ]
+    },
+    "total": {
+      "type": "number",
+      "minimum": 0
+    },
+    "subcategory": {
+      "enum": [
+        "Confirmed",
+        "Active",
+        "Recovered",
+        "Reproduction Number",
+        "Notification"
+      ]
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "reference",
+        "value"
+      ]
+    },
+    "gender": {
+      "type": "string",
+      "enum": [
+        "F",
+        "M"
+      ]
+    },
+    "age_group": {
+      "type": "string"
+    },
+    "population": {
+      "type": "string"
+    },
+    "caseId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "caseResourceEntry": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "/case#/definitions/caseId"
+        },
+        "pathogenId": {
+          "$ref": "/case#/definitions/pathogenId"
+        },
+        "variantId": {
+          "$ref": "/case#/definitions/variantId"
+        },
+        "total": {
+          "$ref": "/case#/definitions/total"
+        },
+        "subcategory": {
+          "$ref": "/case#/definitions/subcategory"
+        },
+        "date": {
+          "$ref": "/case#/definitions/date"
+        },
+        "location": {
+          "$ref": "/case#/definitions/location"
+        },
+        "gender": {
+          "$ref": "/case#/definitions/gender"
+        },
+        "age_group": {
+          "$ref": "/case#/definitions/age_group"
+        },
+        "population": {
+          "$ref": "/case#/definitions/population"
+        }
+      }
+    }
+  }
+}

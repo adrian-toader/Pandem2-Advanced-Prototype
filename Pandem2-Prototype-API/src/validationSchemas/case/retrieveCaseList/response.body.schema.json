@@ -1,0 +1,22 @@
+{
+  "$id": "case.retrieveCaseList.response.body.schema",
+  "description": "Retrieve case list response body schema",
+  "type": "array",
+  "items": {
+    "allOf": [
+      {
+        "$ref": "/case#/definitions/caseResourceEntry"
+      },
+      {
+        "required": [
+          "_id",
+          "pathogen",
+          "total",
+          "subcategory",
+          "date",
+          "location"
+        ]
+      }
+    ]
+  }
+}

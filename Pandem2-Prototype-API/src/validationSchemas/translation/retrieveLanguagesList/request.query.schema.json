@@ -1,0 +1,6 @@
+{
+  "$id": "translation.retrieveLanguagesList.request.query.schema",
+  "description": "Retrieve the list of languages from the database. If a filter is provided, only return the specified language.",
+  "$ref": "/query#/definitions/getListQuery"
+}
+  

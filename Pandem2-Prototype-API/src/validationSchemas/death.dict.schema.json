@@ -1,0 +1,88 @@
+{
+  "$id": "/death#",
+  "definitions": {
+    "total": {
+      "type": "number",
+      "minimum": 0
+    },
+    "subcategory": {
+      "enum": [
+        "Death",
+        "Mortality Rate",
+        "Excess Mortality"
+      ]
+    },
+    "admission_type": {
+      "type": "string",
+      "enum": [
+        "Hospital",
+        "ICU",
+        "LTCF"
+      ]
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "location": {
+      "description": "Deaths location",
+      "type": "object",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "reference",
+        "value"
+      ]
+    },
+    "gender": {
+      "type": "string",
+      "enum": [
+        "F",
+        "M"
+      ]
+    },
+    "age_group": {
+      "type": "string"
+    },
+    "deathId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "deathResourceEntry": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "/death#/definitions/deathId"
+        },
+        "total": {
+          "$ref": "/death#/definitions/total"
+        },
+        "subcategory": {
+          "$ref": "/death#/definitions/subcategory"
+        },
+        "admission_type": {
+          "$ref": "/death#/definitions/admission_type"
+        },
+        "date": {
+          "$ref": "/death#/definitions/date"
+        },
+        "location": {
+          "$ref": "/death#/definitions/location"
+        },
+        "gender": {
+          "$ref": "/death#/definitions/gender"
+        },
+        "age_group": {
+          "$ref": "/death#/definitions/age_group"
+        }
+      }
+    }
+  }
+}

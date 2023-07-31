@@ -1,0 +1,15 @@
+{
+  "$id": "role.updateRole.response.body.schema",
+  "description": "Modify role instance response body schema",
+  "allOf": [
+    {
+      "$ref": "/role#/definitions/roleResourceEntry"
+    },
+    {
+      "required": [
+        "name",
+        "permissions"
+      ]
+    }
+  ]
+}

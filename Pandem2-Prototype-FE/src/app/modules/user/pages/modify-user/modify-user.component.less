@@ -1,0 +1,121 @@
+/*
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+*/
+
+/* Add a custom class to the table header (thead) element in the datepicker */
+.mat-calendar-table thead{
+  height: auto;
+  background: white;
+}
+
+.mat-calendar-table-header tr:nth-child(2) {
+  display: none;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-datepicker-toggle {
+  font-size: 40px;
+  margin-left: -15px;
+
+  button {
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
+
+.profile-picture {
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+}
+
+.profile-picture .editable {
+  cursor: pointer;
+}
+
+.profile-picture span {
+  user-select: none;
+  font-size: 150px;
+  position: absolute;
+  color: #9ac8EBFF;
+  top: 0;
+  left: 0;
+  text-align: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.profile-picture img {
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.profile-picture label {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #676767;
+}
+
+#uploader-input {
+  display: none;
+}
+
+.profile-picture input:focus{
+  outline: none;
+  border: 1px solid #64d488;
+}
+.profile-picture input::placeholder{
+  color: #bebebe;
+}
+.profile-picture-text {
+  user-select: none;
+  padding: 12px
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.follow-current-date-checkbox {
+  display: block;
+  margin-top: 30px;
+}
+.language__selector{
+  width: 25%;
+}
+
+.ngx-ic-source-image {
+  cursor: pointer;
+}

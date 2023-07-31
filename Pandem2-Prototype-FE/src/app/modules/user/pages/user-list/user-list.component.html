@@ -1,0 +1,207 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<div class="container-fluid">
+    <!-- Side columns -->
+    <app-side-columns
+            [hidden]="true"
+            [tableColumns]="tableColumns"
+            (visibleColumnsChanged)="applySideColumnsChanged($event)">
+    </app-side-columns>
+    <div class="row">
+        <div class="col-xl-12">
+            <app-topnav>
+                <ng-container dynamic-section>
+                    <div fxLayout="row" fxFlex fxLayoutAlign="space-between center">
+                        <app-breadcrumbs [items]="breadcrumbs"></app-breadcrumbs>
+
+                        <div class="topnav-actions" *ngIf="authUser.permissionIdsMapped.user_all">
+                          <button mat-raised-button color="accent" (click)="fileInput.click()">
+                            {{"IMPORT_EXPORT.IMPORT" | translate}}
+                            <span class="xt-icon">fileCopy</span>
+                          </button>
+                          <input #fileInput type="file" (change)="handleFileInput($event.target.files)" accept=".xlsx" style="display: none"/>
+
+                          <button mat-raised-button color="accent" (click)="handleExport()">
+                            {{"IMPORT_EXPORT.EXPORT" | translate}}
+                            <span class="xt-icon">fileCopy</span>
+                          </button>
+                          <button mat-raised-button color="accent" (click)="handleTemplate()">
+                            {{"IMPORT_EXPORT.TEMPLATE" | translate}}
+                            <span class="xt-icon">fileCopy</span>
+                          </button>
+                          <button mat-raised-button color="accent" [routerLink]="'./create'">
+                            {{"IMPORT_EXPORT.ADD" | translate}} <span class="xt-icon">addCircle</span>
+                          </button>
+
+                        </div>
+                    </div>
+                </ng-container>
+            </app-topnav>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-12">
+        <mat-card class="page-section page-content">
+          <mat-card-content *ngIf="authUser.hasPermissions(PERMISSION.USER_ALL)">
+            <mat-form-field style="width: 20%; float:left">
+              <mat-label>{{ 'USER_PAGINATOR.INPUT' | translate }}</mat-label>
+              <input matInput [formControl]="searchControl" type="text"
+                     [matAutocomplete]="auto" placeholder="{{'USER_PAGINATOR.PLACEHOLDER' | translate}}">
+              <mat-autocomplete #auto="matAutocomplete"
+                                (optionSelected)="optionSelected($event.option.value)">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option.email">
+                  {{ option.email }}
+                </mat-option>
+              </mat-autocomplete>
+              <button matSuffix mat-icon-button aria-label="Clear" (click)="resetFilter()">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          </mat-card-content>
+
+                <!-- Hover question effects / actions -->
+                <app-hover-row-actions
+                    #hoverRow
+                    [active]="!refreshingList"
+                    [isCompactTable]="isCompactTable"
+                ></app-hover-row-actions>
+                <div class="table-responsive">
+                    <table mat-table #table [dataSource]="dataSource" matSort (matSortChange)="sortBy($event)" class="rows cells">
+                      <caption>{{'USER_PAGINATOR.DESCRIPTION' | translate}}</caption>
+
+                        <!-- Last Name -->
+                        <ng-container matColumnDef="lastName">
+                            <th *matHeaderCellDef>
+                                <div class="table-header-cell" fxLayout="column">
+                                    <div mat-sort-header class="column-header"> {{'MODULES.USER.USER_LIST.LAST_NAME' | translate}}</div>
+                                </div>
+                            </th>
+
+                            <mat-cell *matCellDef="let item">
+                                {{ item.lastName ? item.lastName : '-' }}
+                            </mat-cell>
+                        </ng-container>
+
+                        <!-- First Name -->
+                        <ng-container matColumnDef="firstName">
+                            <th *matHeaderCellDef>
+                                <div class="table-header-cell">
+                                    <div mat-sort-header class="column-header">{{'MODULES.USER.USER_LIST.FIRST_NAME' | translate}}</div>
+                                </div>
+                            </th>
+                            <mat-cell *matCellDef="let item">
+                                {{ item.firstName ? item.firstName : '-' }}
+                            </mat-cell>
+                        </ng-container>
+
+                        <!-- Email -->
+                        <ng-container matColumnDef="email">
+                            <th *matHeaderCellDef>
+                                <div class="table-header-cell">
+                                    <div mat-sort-header class="column-header">Email</div>
+                                </div>
+                            </th>
+                            <mat-cell *matCellDef="let item">
+                                {{ item.email ? item.email : '-' }}
+                            </mat-cell>
+                        </ng-container>
+
+                        <!-- Location -->
+                        <ng-container matColumnDef="location">
+                            <th *matHeaderCellDef>
+                                <div class="table-header-cell">
+                                    <div mat-sort-header class="column-header">{{'MODULES.USER.USER_LIST.LOCATION' | translate}}</div>
+                                </div>
+                            </th>
+                            <mat-cell *matCellDef="let item">
+                                {{ item.location && countriesList ? getCountryName(item.location) : '-' }}
+                            </mat-cell>
+                        </ng-container>
+
+                        <!-- Role -->
+                        <ng-container matColumnDef="role">
+                            <th *matHeaderCellDef>
+                                <div class="table-header-cell">
+                                    <div class="column-header" fxLayout="row">
+                                        <span>{{'MODULES.USER.USER_LIST.ROLE' | translate}}</span>
+
+
+                                    </div>
+                                </div>
+                            </th>
+                            <mat-cell *matCellDef="let item">
+                                {{item.role.name | titlecase}}
+                            </mat-cell>
+                        </ng-container>
+
+                        <!-- Account Status -->
+                        <ng-container matColumnDef="status">
+                            <th *matHeaderCellDef>
+                                <div class="table-header-cell">
+                                    <div class="column-header" fxLayout="row">
+                                        <span>{{'MODULES.USER.USER_LIST.ACCOUNT_STATUS' | translate}}</span>
+                                    </div>
+                                </div>
+                            </th>
+                            <mat-cell *matCellDef="let item">
+                                {{item.deactivated ? 'Deactivated' : 'Active'}}
+                            </mat-cell>
+                        </ng-container>
+
+                        <mat-header-row *matHeaderRowDef="visibleTableColumns"></mat-header-row>
+                        <mat-row
+                                *matRowDef="let item; columns: visibleTableColumns"
+                                app-hover-row-actions
+                                [hoverRowActionsComponent]="hoverRow"
+                                [hoverRowActions]="recordActions"
+                                [hoverRowActionData]="item"
+                        ></mat-row>
+                    </table>
+
+                  <mat-paginator *ngIf="authUser.hasPermissions(PERMISSION.USER_ALL)"
+                    [length]="totalItems"
+                    [pageIndex]="pageNumber"
+                    [pageSize]="pageSize"
+                    [pageSizeOptions]="itemsPerPage"
+                    (page)="handlePageChange($event)"
+                  ></mat-paginator>
+                </div>
+
+                <div
+                        *ngIf="refreshingList"
+                        class="mat-table-loading-data">
+                    <mat-spinner></mat-spinner>
+                </div>
+
+                <!-- No data -->
+                <div
+                        *ngIf="!refreshingList && isEmptyList"
+                        class="empty-table-text">
+                    {{'MODULES.USER.USER_LIST.NO_DATA' | translate}}
+                </div>
+
+            </mat-card>
+        </div>
+    </div>
+</div>

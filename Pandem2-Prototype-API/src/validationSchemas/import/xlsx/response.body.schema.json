@@ -1,0 +1,28 @@
+{
+  "$id": "import.xlsx.response.body.schema",
+  "description": "Import data from a xlsx file",
+  "type": "object",
+  "properties": {
+    "path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "pathogen": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "_id": {
+      "type": "string"
+    }
+  }
+}

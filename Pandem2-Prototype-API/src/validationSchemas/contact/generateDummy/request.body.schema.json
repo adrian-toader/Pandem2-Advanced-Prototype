@@ -1,0 +1,30 @@
+{
+  "$id": "contact.generateDummy.request.body.schema",
+  "description": "Generate dummy data for contacts",
+  "type": "object",
+  "properties": {
+    "pathogen": {
+      "$ref": "/contact#/definitions/pathogen"
+    },
+    "location": {
+      "$ref": "/contact#/definitions/location"
+    },
+    "generate_for_sublocations": {
+      "type": "boolean"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "pathogen",
+    "location",
+    "start_date",
+    "end_date"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$id": "humanResource.generateDummy.response.body.schema",
+  "description": "Generate dummy data for human resources - response body schema",
+  "type": "object",
+  "patternProperties": {
+    ".+": {
+      "description": "Date entry for created resources numbers per date",
+      "type": "object",
+      "patternProperties": {
+        ".+": {
+          "description": "Staff type entry for created resources for current date",
+          "type": "object",
+          "patternProperties": {
+            ".+": {
+              "description": "Total type entry for created resources for current staff type and date",
+              "type": "number"
+            }
+          }
+        }
+      }
+    }
+  }
+}

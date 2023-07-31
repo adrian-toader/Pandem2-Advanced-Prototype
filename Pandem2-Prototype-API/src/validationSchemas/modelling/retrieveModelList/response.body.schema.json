@@ -1,0 +1,21 @@
+{
+  "$id": "modelling.retrieveModelList.response.body.schema",
+  "description": "Retrieve model list response body schema",
+  "type": "array",
+  "items": {
+    "allOf": [
+      {
+        "$ref": "/modellingModel#/definitions/modellingModelResourceEntry"
+      },
+      {
+        "required": [
+          "_id",
+          "name",
+          "key",
+          "pathogen",
+          "parameters"
+        ]
+      }
+    ]
+  }
+}

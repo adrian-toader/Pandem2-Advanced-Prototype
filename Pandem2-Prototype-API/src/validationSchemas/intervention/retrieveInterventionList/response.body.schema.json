@@ -1,0 +1,28 @@
+{
+  "$id": "intervention.retrieveInterventionList.response.body.schema",
+  "description": "Retrieve intervention list response schema",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "/intervention#/definitions/interventionResourceEntry"
+          },
+          {
+            "type": "object",
+            "required": [
+              "location",
+              "name",
+              "is_custom"
+            ]
+          }
+        ]
+      }
+    },
+    "metadata": {
+      "$ref": "/base#/definitions/importMetadata"
+    }
+  }
+}

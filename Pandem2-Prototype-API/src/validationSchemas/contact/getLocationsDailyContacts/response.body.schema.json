@@ -1,0 +1,55 @@
+{
+  "$id": "contact.getLocationsDailyContacts.response.body.schema",
+  "description": "Get total number of contacts for a time interval for requested locations response body schema",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "total": {
+                  "type": "number"
+                },
+                "reached": {
+                  "type": "number"
+                },
+                "reached_within_a_day": {
+                  "type": "number"
+                },
+                "contact_tracing_policy": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "total",
+                "reached",
+                "reached_within_a_day"
+              ]
+            }
+          }
+        },
+        "required": [
+          "date",
+          "locations"
+        ]
+      }
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
+}

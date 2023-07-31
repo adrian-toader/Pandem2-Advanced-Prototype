@@ -1,0 +1,134 @@
+{
+  "$id": "/base#",
+  "definitions": {
+    "mongoID": {
+      "description": "MongoDB Object Id",
+      "type": "string",
+      "minLength": 24,
+      "maxLength": 24
+    },
+    "period_type": {
+      "type": "string",
+      "enum": [
+        "Daily",
+        "Weekly"
+      ]
+    },
+    "goDataCredentials": {
+      "description": "Credentials for GoData",
+      "type": "object",
+      "properties": {
+        "clientId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "clientSecret": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "clientId",
+        "clientSecret"
+      ]
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^(https?|wss?|ftp)://"
+    },
+    "userPageState": {
+      "type": "string",
+      "enum": [
+        "exploration",
+        "admissions-and-bed-occupancy",
+        "admissions-w-comorbidities",
+        "distribution-by-age",
+        "human-resources-hospital-staff",
+        "human-resources-public-health-staff",
+        "active-and-recovered-cases",
+        "confirmed-cases",
+        "confirmed-cases-by",
+        "excess-mortality",
+        "excess-mortality-distribution-by-age",
+        "excess-mortality-in-long-term-care-facilities",
+        "mortality-rate-by-hospital-admissions",
+        "mortality-rate-distribution-by-age-or-sex",
+        "notifications",
+        "participatory-active-weekly-users",
+        "participatory-covid-incidence",
+        "participatory-visits-cumulative",
+        "primary-care-chart",
+        "reported-deaths-and-mortality-rate",
+        "reproduction-number",
+        "vaccination-coverage",
+        "vaccination-distribution-by-gender",
+        "vaccinations-by-report-date",
+        "cases",
+        "variants",
+        "hospitalisations",
+        "human-resources",
+        "population-surveys",
+        "deaths",
+        "participatory-surveillance",
+        "primary-care",
+        "contact-tracing",
+        "testing",
+        "vaccinations",
+        "vaccination-progress-by-cohorts",
+        "testing-tests-performed",
+        "contact-tracing-total-cases-identified-as-contact",
+        "contact-tracing-total-of-diagnosed-cases",
+        "contact-tracing-total-of-contact-identified",
+        "non-genomic-sequencing",
+        "non-genomic-hospitalised",
+        "non-genomic-age-cohorts"
+      ]
+    },
+    "importMetadata": {
+      "type": "object",
+      "properties": {
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "/dataSource#/definitions/dataSourceMetadataEntry"
+          }
+        },
+        "indicators": {
+          "type": "array",
+          "items": {
+            "$ref": "/indicator#/definitions/indicatorMetadataEntry"
+          }
+        }
+      }
+    },
+    "commonMetadata": {
+      "allOf": [{
+        "type": "object",
+        "properties": {
+          "period_type": {
+            "$ref": "/base#/definitions/period_type"
+          }
+        }
+      }, {
+        "$ref": "/base#/definitions/importMetadata"
+      }]
+    },
+    "stringOrStringArray": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        }
+      ]
+    }
+  }
+}

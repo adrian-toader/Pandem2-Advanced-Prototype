@@ -1,0 +1,87 @@
+{
+  "serviceName": "Pandem2",
+  "serviceUniqueIdentifier": "MyLocalInstance",
+  "server": {
+    "hostname": "::",
+    "port": 8001,
+    "protocol": "http",
+    "apiRoot": "/api",
+    "cors": {
+      "enabled": false
+    }
+  },
+  "logging": {
+    "level": "info",
+    "maxSize": 10000000,
+    "maxFiles": 10,
+    "requestResponse": {
+      "trim": true,
+      "maxLength": 1000
+    },
+    "fileTransport": {
+      "enabled": true,
+      "maxSize": 10000000,
+      "maxFiles": 10
+    }
+  },
+  "serviceGateway": {
+    "url": "https://pandem2.clarisoft.com",
+    "timeout": 10000
+  },
+  "mongodb": {
+    "uri": "mongodb://localhost",
+    "dbName": "pandem2"
+  },
+  "bcrypt": {
+    "saltRounds": 10
+  },
+  "jwt": {
+    "secret": "s3cr3t",
+    "expirationTime": 86400
+  },
+  "pandemSource": {
+    "url": "http://pandem-source.example",
+    "requestTimeout": 60000
+  },
+  "modelling": {
+    "url": "http://modelling-url"
+  },
+  "goData": {
+    "importEnabled": false,
+    "url": "http://go-data.com",
+    "credentials": {
+      "clientId": "cli3ntId",
+      "clientSecret": "cli3ntSecret"
+    }
+  },
+  "swagger": {
+    "routePrefix": "/api/api-documentation",
+    "info": {
+      "title": "Pandem2 API Documentation",
+      "description": "API Documentation",
+      "version": "1.0.0"
+    }
+  },
+  "import": {
+    "workersNo": 10,
+    "deleteLimit": 5
+  },
+  "email": {
+    "client_host": "https://your-domain.example",
+    "subject": "your_email_subject",
+    "service": "your_email_service_provider",
+    "host": "hostname_of_SMTP_server",
+    "port": 587,
+    "secure": true,
+    "auth": {
+      "user": "email_account_username",
+      "pass": "email_account_password"
+    }
+  },
+  "recaptcha": {
+    "secret_key": "your_secret_key"
+  },
+  "automaticTestDataGeneration": {
+    "enabled": false
+  }
+}

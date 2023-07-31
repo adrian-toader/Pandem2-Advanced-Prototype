@@ -1,0 +1,61 @@
+{
+  "$id": "socialMediaAnalysisData.getDaily.request.query.schema",
+  "description": "Get daily social media analysis data request params schema",
+  "type": "object",
+  "properties": {
+    "subcategory": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/socialMediaAnalysisData#/definitions/subcategory"
+          }
+        },
+        {
+          "$ref": "/socialMediaAnalysisData#/definitions/subcategory"
+        }
+      ]
+    },
+    "language": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "emotion": {
+      "$ref": "/socialMediaAnalysisData#/definitions/emotion"
+    },
+    "sentiment": {
+      "$ref": "/socialMediaAnalysisData#/definitions/sentiment"
+    },
+    "topicId": {
+      "$ref": "/socialMediaAnalysisData#/definitions/topicId"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "emotion",
+        "sentiment",
+        "topic",
+        "topicId",
+        "suggestion"
+      ]
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "subcategory",
+    "location"
+  ]
+}

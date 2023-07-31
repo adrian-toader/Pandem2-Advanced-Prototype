@@ -1,0 +1,58 @@
+{
+  "$id": "socialMediaAnalysisData.getDaily.response.body.schema",
+  "description": "Get daily social media analysis data response body schema",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "total": {
+            "type": "number"
+          },
+          "split": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "number"
+                },
+                "split_value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "total"
+              ]
+            }
+          }
+        },
+        "required": [
+          "date",
+          "total"
+        ]
+      }
+    },
+    "metadata": {
+      "allOf": [{
+        "type": "object",
+        "properties": {
+          "topics": {
+            "type": "array",
+            "items": {
+              "$ref": "/socialMediaAnalysisTopic#/definitions/socialMediaAnalysisTopicResourceEntry"
+            }
+          }
+        }
+      }, {
+        "$ref": "/base#/definitions/importMetadata"
+      }]
+    }
+  }
+}

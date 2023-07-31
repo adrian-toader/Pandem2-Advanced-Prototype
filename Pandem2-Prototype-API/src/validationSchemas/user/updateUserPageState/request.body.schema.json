@@ -1,0 +1,13 @@
+{
+  "$id": "user.updateUserPageState.request.body.schema",
+  "description": "Update the userState object in the database",
+  "type": "object",
+  "properties": {
+      "state": {
+         "type": "object"
+      }
+  },
+  "required": [
+      "state"
+  ]
+}

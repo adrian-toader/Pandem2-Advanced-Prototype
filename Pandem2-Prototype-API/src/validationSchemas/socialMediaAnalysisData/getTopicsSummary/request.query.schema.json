@@ -1,0 +1,40 @@
+{
+  "$id": "socialMediaAnalysisData.getTopicsSummary.request.query.schema",
+  "description": "Get social media analysis data summary request params schema",
+  "type": "object",
+  "properties": {
+    "language": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "topicId": {
+      "anyOf": [
+        {
+          "$ref": "/socialMediaAnalysisData#/definitions/topicId"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/socialMediaAnalysisData#/definitions/topicId"
+          }
+        }
+      ]
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "location",
+    "startDate",
+    "endDate"
+  ]
+}

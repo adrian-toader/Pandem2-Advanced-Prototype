@@ -1,0 +1,13 @@
+{
+  "$id": "user.uploadProfilePicture.request.uri.template.schema",
+  "description": "Upload profile picture URI template schema",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "$ref": "/user#/definitions/userId"
+    }
+  },
+  "required": [
+    "userId"
+  ]
+}

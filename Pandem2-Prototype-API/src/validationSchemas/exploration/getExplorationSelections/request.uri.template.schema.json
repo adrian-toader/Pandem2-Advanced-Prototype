@@ -1,0 +1,13 @@
+{
+  "$id": "exploration.getExplorationSelections.request.uri.template.schema",
+  "description": "Retrieve the exploration selections from database.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "/base#/definitions/mongoID"
+    }
+  },
+  "required": [
+    "id"
+  ]
+}

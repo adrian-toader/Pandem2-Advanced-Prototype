@@ -1,0 +1,13 @@
+{
+  "$id": "user.retrieveUser.request.uri.template.schema",
+  "description": "Retrieve user instance URI template schema",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "$ref": "/user#/definitions/userId"
+    }
+  },
+  "required": [
+    "userId"
+  ]
+}

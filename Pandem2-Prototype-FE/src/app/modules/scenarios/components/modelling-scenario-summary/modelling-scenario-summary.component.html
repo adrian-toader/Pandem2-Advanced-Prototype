@@ -1,0 +1,196 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<div *ngIf="!scenario || scenario && !scenario.name" style="height:100%;">
+  <mat-card style="height:100%;">
+    <mat-card-title>{{ 'MODULES.MODELLING.SCENARIO_SUMMARY.NO_PREVIOUS_SCENARIOS' | translate }}</mat-card-title>
+  </mat-card>
+</div>
+<div *ngIf="scenario && scenario.name" style="height: 100%;">
+  <mat-card class="modelling-scenario-summary-card">
+    <div class="row">
+      <div class="modelling-title-text">
+        <p class="modelling-title-weight">{{ 'MODULES.MODELLING.SCENARIO_SUMMARY.CARD_TITLE' | translate }}</p>
+      </div>
+      <div class="modelling-title-icons text-right">
+        <mat-icon
+          class="modelling-title-icon"
+          matTooltip="{{ 'MODULES.MODELLING.TOOLTIPS.SCENARIO_INFORMATION' | translate}}"
+          (click)="onInfoClick()">
+          info_outline
+        </mat-icon>
+        <mat-icon
+          class="modelling-title-icon"
+          [class.modelling-title-icon-disabled]="isOnResultsPage && !isScenarioSaved && currentUser.id === scenario.userId"
+          matTooltip="{{ 'MODULES.MODELLING.TOOLTIPS.SHARE_SCENARIO' | translate}}"
+          (click)="onShareClick()">
+          share
+        </mat-icon>
+        <mat-icon
+          class="modelling-title-icon"
+          [class.modelling-title-icon-disabled]="isOnResultsPage && !isScenarioSaved"
+          matTooltip="{{ 'MODULES.MODELLING.TOOLTIPS.DELETE_SCENARIO' | translate}}"
+          (click)="onDeleteClick()">
+          delete
+        </mat-icon>
+      </div>
+    </div>
+
+    <mat-card-title class="text-center text-sm-left mt-1" [ngClass]="!isLatest && 'mb-4'">
+      <span *ngIf="scenario.alternatives && scenario.alternatives.length">
+        {{ 'MODULES.MODELLING.COMMON.BASELINE' | translate }}:
+      </span>
+      {{scenario.name}}
+      <ng-container *ngIf="scenario.alternatives && scenario.alternatives.length">
+        <span *ngFor="let alternative of scenario.alternatives" class="modelling-alternative-name mr-2">
+          <div style="display: inline-block">
+            | {{ 'MODULES.MODELLING.COMMON.ALTERNATIVE' | translate }}: {{alternative.name}}
+            <div
+              *ngIf="isOnResultsPage && currentUser.id === scenario.userId && !alternative.isModified"
+              class="modelling-alternative-actions">
+              <span
+                class="modelling-alternative-edit"
+                [matTooltip]="'MODULES.MODELLING.TOOLTIPS.EDIT_SCENARIO' | translate"
+                (click)="editAlternative(alternative.id)">
+                <mat-icon>edit</mat-icon>
+              </span>
+              <span
+                class="modelling-alternative-remove"
+                [matTooltip]="'MODULES.MODELLING.TOOLTIPS.DELETE_ALTERNATIVE' | translate"
+                (click)="removeAlternative(alternative.name, alternative.id)">
+                <mat-icon>delete</mat-icon>
+              </span>
+            </div>
+            <div
+              *ngIf="isOnResultsPage && currentUser.id === scenario.userId && alternative.isModified"
+              class="modelling-alternative-actions modelling-alternative-modified">
+              <span [matTooltip]="'MODULES.MODELLING.TOOLTIPS.MODIFIED_SCENARIO' | translate">
+                {{ 'MODULES.MODELLING.SCENARIO_SUMMARY.MODIFIED' | translate }}
+              </span>
+            </div>
+          </div>
+        </span>
+      </ng-container>
+    </mat-card-title>
+    <mat-card-subtitle class="text-center text-sm-left" *ngIf="isLatest">
+      {{ 'MODULES.MODELLING.SCENARIO_SUMMARY.LAST_RUN_SCENARIO' | translate }}
+    </mat-card-subtitle>
+    <mat-card-content class="modelling-scenario-summary-card-content">
+      <div class="row">
+        <div class="col-lg-12">
+          <mat-chip-list>
+            <mat-chip class="scenario-chip" [disabled]="true" *ngFor="let tag of scenario.tags">
+              <mat-icon class="mr-2" *ngIf="tag === scenario.location">location_on</mat-icon>
+              <mat-icon class="mr-2" *ngIf="tag.toLowerCase() === 'important'">error_outline</mat-icon>
+              <mat-icon class="mr-2" *ngIf="tag.toLowerCase() === 'data inputs'">playlist_add_check</mat-icon>
+              <mat-icon class="mr-2" *ngIf="tag.toLowerCase() === 'comparison'">compare</mat-icon>
+              {{tag}}
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <p *ngIf="!isOnResultsPage"
+            class="scenario-description p-0">
+            {{scenario.description}}
+          </p>
+          <form *ngIf="isOnResultsPage" [formGroup]="descriptionForm">
+            <mat-form-field appearance="standard" class="scenario-description-textarea col-12 p-0 pb-3">
+              <mat-label>{{ 'MODULES.MODELLING.SCENARIO_SUMMARY.DESCRIPTION_TITLE' | translate }}</mat-label>
+              <textarea
+                matInput
+                formControlName="description"
+                maxlength="2000"
+                cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="3">
+              </textarea>
+              <mat-hint>{{ 'MODULES.MODELLING.SCENARIO_SUMMARY.DESCRIPTION_HINT' | translate }}</mat-hint>
+            </mat-form-field>
+          </form>
+        </div>
+      </div>
+
+      <div class="row mt-0 align-self-end">
+        <div class="col-lg-12 d-flex justify-content-between modelling-actions-full-row">
+          <div class="align-self-end modelling-scenario-date">
+            {{moment(scenario.date).format(Constants.DEFAULT_MODELLING_DATE_DISPLAY_FORMAT)}}
+          </div>
+          <div class="modelling-actions-buttons-row">
+            <button
+              mat-raised-button
+              (click)="onLoadClick()"
+              class="modelling-actions-accent mx-2 px-5"
+              *ngIf="!isOnResultsPage">
+              <div class="row justify-content-between align-items-center">
+                <mat-icon>file_upload</mat-icon>
+                <div>{{ 'MODULES.MODELLING.COMMON.LOAD' | translate }}</div>
+              </div>
+            </button>
+
+            <button
+              mat-raised-button
+              (click)="openConfigurationWithComparison()"
+              class="modelling-actions-accent mx-2 px-5"
+              *ngIf="isOnResultsPage && scenarios"
+              [disabled]="scenarios.length >= Constants.MODELLING_MAX_SCENARIOS || currentUser.id !== scenario.userId">
+              <div class="row justify-content-between align-items-center">
+                <mat-icon>add</mat-icon>
+                <div>{{ 'MODULES.MODELLING.SCENARIO_SUMMARY.ADD_SCENARIO_FOR_COMPARISON' | translate }}</div>
+              </div>
+            </button>
+
+            <button
+              mat-raised-button
+              (click)="onSaveClick()"
+              class="modelling-actions-accent mx-2 px-5"
+              *ngIf="isOnResultsPage"
+              [disabled]="!updateEnabled && isScenarioSaved || saveClicked">
+              <div class="row justify-content-between align-items-center">
+                <ng-container *ngIf="(!isScenarioSaved) && !saveClicked">
+                  <mat-icon>save</mat-icon>
+                  <div>{{ 'MODULES.MODELLING.COMMON.SAVE' | translate }}</div>
+                </ng-container>
+                <ng-container *ngIf="(updateEnabled && isScenarioSaved) && !saveClicked">
+                  <mat-icon>save</mat-icon>
+                  <div>{{ 'MODULES.MODELLING.COMMON.UPDATE' | translate }}</div>
+                </ng-container>
+                <ng-container *ngIf="(updateEnabled || !isScenarioSaved) && saveClicked">
+                  <mat-icon>save</mat-icon>
+                  <div>{{ 'MODULES.MODELLING.COMMON.SAVING' | translate }}</div>
+                </ng-container>
+                <ng-container *ngIf="!updateEnabled && isScenarioSaved">
+                  <mat-icon>checkmark</mat-icon>
+                  <div>{{ 'MODULES.MODELLING.COMMON.SAVED' | translate }}</div>
+                </ng-container>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

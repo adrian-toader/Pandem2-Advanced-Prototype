@@ -1,0 +1,63 @@
+{
+  "$id": "import.retrieveDataSourceTagsList.response.body.schema",
+  "description": "Retrieve list of Data Sources grouped by Tags response body schema",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "tag": {
+            "type": "string"
+          },
+          "sourceIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "source",
+              "name",
+              "active"
+            ],
+            "properties": {
+              "source": {
+                "type": "string",
+                "minLength": 1
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source_description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "active": {
+                "type": "boolean"
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

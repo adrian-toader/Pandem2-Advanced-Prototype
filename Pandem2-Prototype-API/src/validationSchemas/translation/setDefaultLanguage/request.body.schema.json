@@ -1,0 +1,13 @@
+{
+  "$id": "translation.setDefaultLanguage.request.body.schema",
+  "description": "Set a language default",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "/base#/definitions/mongoID"
+    }
+  },
+  "required": [
+      "id"
+  ]
+}

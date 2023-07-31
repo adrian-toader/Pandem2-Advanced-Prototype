@@ -1,0 +1,2260 @@
+{
+  "name": "Model 01",
+  "key": "model_05",
+  "pathogen": "Avian Influenza",
+  "description": [
+    {
+      "tab_title": "TAB_OVERVIEW",
+      "items": [
+        {
+          "type": "title",
+          "text_key": "OVERVIEW_TITLE"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "OVERVIEW_PARAGRAPH_1"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "OVERVIEW_PARAGRAPH_2"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "OVERVIEW_PARAGRAPH_3"
+        },
+        {
+          "type": "image",
+          "image_src": "/modelling/model01_model_structure.png"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "OVERVIEW_PARAGRAPH_4"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "OVERVIEW_PARAGRAPH_5"
+        }
+      ]
+    },
+    {
+      "tab_title": "TAB_HOSPITAL_RESOURCES",
+      "items": [
+        {
+          "type": "title",
+          "text_key": "HOSPITAL_RESOURCES_TITLE_1"
+        },
+        {
+          "type": "subtitle",
+          "text_key": "HOSPITAL_RESOURCES_SUBTITLE_1"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "HOSPITAL_RESOURCES_PARAGRAPH_1"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "HOSPITAL_RESOURCES_PARAGRAPH_2"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "HOSPITAL_RESOURCES_PARAGRAPH_3"
+        },
+        {
+          "type": "image",
+          "image_src": "/modelling/model01_patient_pathways.png"
+        },
+        {
+          "type": "subtitle",
+          "text_key": "HOSPITAL_RESOURCES_SUBTITLE_2"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "HOSPITAL_RESOURCES_PARAGRAPH_4"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "HOSPITAL_RESOURCES_PARAGRAPH_5"
+        },
+        {
+          "type": "image",
+          "image_src": "/modelling/model01_resource_dependencies.png"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "HOSPITAL_RESOURCES_PARAGRAPH_6"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "HOSPITAL_RESOURCES_PARAGRAPH_7"
+        },
+        {
+          "type": "image",
+          "image_src": "/modelling/model01_staffed_ward_beds_available.png"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "HOSPITAL_RESOURCES_PARAGRAPH_8"
+        },
+        {
+          "type": "image",
+          "image_src": "/modelling/model01_resource_availability.png"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "HOSPITAL_RESOURCES_PARAGRAPH_9"
+        },
+        {
+          "type": "title",
+          "text_key": "HOSPITAL_RESOURCES_TITLE_2"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "HOSPITAL_RESOURCES_PARAGRAPH_10"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "HOSPITAL_RESOURCES_PARAGRAPH_11"
+        },
+        {
+          "type": "image",
+          "image_src": "/modelling/model01_resource_usage_rates.png"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "HOSPITAL_RESOURCES_PARAGRAPH_12"
+        },
+        {
+          "type": "image",
+          "image_src": "/modelling/model01_disease_severity.png"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "HOSPITAL_RESOURCES_PARAGRAPH_13"
+        },
+        {
+          "type": "title",
+          "text_key": "HOSPITAL_RESOURCES_TITLE_3"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "HOSPITAL_RESOURCES_PARAGRAPH_14"
+        },
+        {
+          "type": "table",
+          "table_content": [
+            {
+              "position": 1,
+              "text_key": "HOSPITAL_RESOURCES_TABLE_CONTENT_1"
+            },
+            {
+              "position": 2,
+              "text_key": "HOSPITAL_RESOURCES_TABLE_CONTENT_2"
+            },
+            {
+              "position": 3,
+              "text_key": "HOSPITAL_RESOURCES_TABLE_CONTENT_3"
+            },
+            {
+              "position": 4,
+              "text_key": "HOSPITAL_RESOURCES_TABLE_CONTENT_4"
+            },
+            {
+              "position": 5,
+              "text_key": "HOSPITAL_RESOURCES_TABLE_CONTENT_5"
+            },
+            {
+              "position": 6,
+              "text_key": "HOSPITAL_RESOURCES_TABLE_CONTENT_6"
+            },
+            {
+              "position": 7,
+              "text_key": "HOSPITAL_RESOURCES_TABLE_CONTENT_7"
+            },
+            {
+              "position": 8,
+              "text_key": "HOSPITAL_RESOURCES_TABLE_CONTENT_8"
+            },
+            {
+              "position": 9,
+              "text_key": "HOSPITAL_RESOURCES_TABLE_CONTENT_9"
+            },
+            {
+              "position": 10,
+              "text_key": "HOSPITAL_RESOURCES_TABLE_CONTENT_10"
+            },
+            {
+              "position": 11,
+              "text_key": "HOSPITAL_RESOURCES_TABLE_CONTENT_11"
+            },
+            {
+              "position": 12,
+              "text_key": "HOSPITAL_RESOURCES_TABLE_CONTENT_12"
+            },
+            {
+              "position": 13,
+              "text_key": "HOSPITAL_RESOURCES_TABLE_CONTENT_13"
+            }
+          ]
+        },
+        {
+          "type": "title",
+          "text_key": "HOSPITAL_RESOURCES_TITLE_4"
+        },
+        {
+          "type": "paragraph",
+          "text_key": "HOSPITAL_RESOURCES_PARAGRAPH_15"
+        },
+        {
+          "type": "textarray",
+          "text_array": [
+            {
+              "text_key": "HOSPITAL_RESOURCES_TEXTARRAY_1",
+              "property": "italic"
+            },
+            {
+              "text_key": "HOSPITAL_RESOURCES_TEXTARRAY_2"
+            }
+          ]
+        },
+        {
+          "type": "textarray",
+          "text_array": [
+            {
+              "text_key": "HOSPITAL_RESOURCES_TEXTARRAY_3",
+              "property": "italic"
+            },
+            {
+              "text_key": "HOSPITAL_RESOURCES_TEXTARRAY_4"
+            },
+            {
+              "text_key": "HOSPITAL_RESOURCES_TEXTARRAY_5",
+              "href": "https://pandem-2.eu/pandem-2-deliverables/"
+            },
+            {
+              "text_key": "HOSPITAL_RESOURCES_TEXTARRAY_6"
+            },
+            {
+              "text_key": "HOSPITAL_RESOURCES_TEXTARRAY_7",
+              "href": "https://cordis.europa.eu/"
+            },
+            {
+              "text_key": "HOSPITAL_RESOURCES_TEXTARRAY_8"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "regional_resources": [
+    {
+      "key": "Inputs_Data.ward_beds_per_1K",
+      "location": "DE",
+      "value": 6
+    },
+    {
+      "key": "Inputs_Data.ICU_beds_per_100K",
+      "location": "DE",
+      "value": 33.2
+    },
+    {
+      "key": "Inputs_Data.ward_nurses_per_1K",
+      "location": "DE",
+      "value": 5
+    },
+    {
+      "key": "Inputs_Data.ICU_nurses_per_100K",
+      "location": "DE",
+      "value": 41.4
+    },
+    {
+      "key": "Inputs_Data.ventilators_per_100K",
+      "location": "DE",
+      "value": 30
+    },
+    {
+      "key": "Inputs_Data.physicians_per_100K",
+      "location": "DE",
+      "value": 234
+    },
+    {
+      "key": "Inputs_Data.ward_beds_per_1K",
+      "location": "NL",
+      "value": 2
+    },
+    {
+      "key": "Inputs_Data.ICU_beds_per_100K",
+      "location": "NL",
+      "value": 5.2
+    },
+    {
+      "key": "Inputs_Data.ward_nurses_per_1K",
+      "location": "NL",
+      "value": 5
+    },
+    {
+      "key": "Inputs_Data.ICU_nurses_per_100K",
+      "location": "NL",
+      "value": 23.4
+    },
+    {
+      "key": "Inputs_Data.ventilators_per_100K",
+      "location": "NL",
+      "value": 6
+    },
+    {
+      "key": "Inputs_Data.physicians_per_100K",
+      "location": "NL",
+      "value": 313.6
+    }
+  ],
+  "parameters": [
+    {
+      "name": "Population Size",
+      "key": "Inputs_Data.Population_size",
+      "category": "DATA",
+      "description": "Population size",
+      "type": "Number",
+      "readonly": true,
+      "values": [
+        {
+          "value": 11477800,
+          "age": "a"
+        },
+        {
+          "value": 8427265,
+          "age": "b"
+        },
+        {
+          "value": 44978330,
+          "age": "c"
+        },
+        {
+          "value": 18271636,
+          "age": "d"
+        }
+      ]
+    },
+    {
+      "name": "Ward Beds per 1K",
+      "key": "Inputs_Data.ward_beds_per_1K",
+      "category": "DATA",
+      "description": "Hospital ward beds per 1000 population, for all purposes.",
+      "type": "Number",
+      "readonly": true,
+      "values": [
+        {
+          "value": 6
+        }
+      ]
+    },
+    {
+      "name": "ICU Beds per 100K",
+      "key": "Inputs_Data.ICU_beds_per_100K",
+      "category": "DATA",
+      "description": "ICU beds per 100 thousand population, for all purposes.",
+      "type": "Number",
+      "readonly": true,
+      "values": [
+        {
+          "value": 33.2
+        }
+      ]
+    },
+    {
+      "name": "Ward Nurses per 1K",
+      "key": "Inputs_Data.ward_nurses_per_1K",
+      "category": "DATA",
+      "description": "General ward nurses per 1000 population.",
+      "type": "Number",
+      "readonly": true,
+      "values": [
+        {
+          "value": 5
+        }
+      ]
+    },
+    {
+      "name": "ICU Nurses per 100K",
+      "key": "Inputs_Data.ICU_nurses_per_100K",
+      "category": "DATA",
+      "description": "ICU nurses per 1000 population.",
+      "type": "Number",
+      "readonly": true,
+      "values": [
+        {
+          "value": 41.4
+        }
+      ]
+    },
+    {
+      "name": "Ventilators per 100K",
+      "key": "Inputs_Data.ventilators_per_100K",
+      "category": "DATA",
+      "description": "Mechanical ventilators per 100 thousand population",
+      "type": "Number",
+      "readonly": true,
+      "values": [
+        {
+          "value": 30
+        }
+      ]
+    },
+    {
+      "name": "Age Specific Contact Rates",
+      "key": "Inputs_Data.Age_specific_contact_rates",
+      "category": "DATA",
+      "description": "Average number of daily contacts per person in peace time",
+      "type": "Number",
+      "readonly": true,
+      "values": [
+        {
+          "value": 3.4561,
+          "ageContact": "aa"
+        },
+        {
+          "value": 0.9509,
+          "ageContact": "ab"
+        },
+        {
+          "value": 0.8247,
+          "ageContact": "ac"
+        },
+        {
+          "value": 0.2955,
+          "ageContact": "ad"
+        },
+        {
+          "value": 0.6982,
+          "ageContact": "ba"
+        },
+        {
+          "value": 4.519,
+          "ageContact": "bb"
+        },
+        {
+          "value": 0.8612,
+          "ageContact": "bc"
+        },
+        {
+          "value": 0.194,
+          "ageContact": "bd"
+        },
+        {
+          "value": 3.2318,
+          "ageContact": "ca"
+        },
+        {
+          "value": 4.5964,
+          "ageContact": "cb"
+        },
+        {
+          "value": 5.4896,
+          "ageContact": "cc"
+        },
+        {
+          "value": 2.2064,
+          "ageContact": "cd"
+        },
+        {
+          "value": 0.4703,
+          "ageContact": "da"
+        },
+        {
+          "value": 0.4207,
+          "ageContact": "db"
+        },
+        {
+          "value": 0.8963,
+          "ageContact": "dc"
+        },
+        {
+          "value": 1.6846,
+          "ageContact": "dd"
+        }
+      ]
+    },
+    {
+      "name": "Physicians per 100K",
+      "key": "Inputs_Data.physicians_per_100K",
+      "category": "DATA",
+      "description": "Hospital physicians per 100,000 population",
+      "type": "Number",
+      "readonly": true,
+      "values": [
+        {
+          "value": 234
+        }
+      ]
+    },
+    {
+      "name": "Normal morgue capacity per 100K",
+      "key": "Inputs_Data.morgue_capacity_per_100K",
+      "category": "DATA",
+      "description": "Total number of hospital mortuary spaces per 100,000 population in normal (peace-time) conditions",
+      "type": "Number",
+      "readonly": true,
+      "values": [
+        {
+          "value": 7.2
+        }
+      ]
+    },
+    {
+      "name": "Normal target PPE stock level per 1K",
+      "key": "Inputs_Data.target_PPE_stock_level_per_1K",
+      "category": "DATA",
+      "description": "Target PPE stock level per 1K population for all purposes. Hospitals will aim to keep stocks at this target level, ordering more when usage rates are higher.",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 96
+        }
+      ]
+    },
+    {
+      "name": "Vaccines",
+      "key": "Inputs_Epi.switch_vaccines",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "VACCINATION",
+      "description": "Vaccine switch.",
+      "type": "Boolean",
+      "readonly": false,
+      "values": [
+        {
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "Vaccine efficacy",
+      "key": "Inputs_Epi.vaccine_efficacy",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "VACCINATION",
+      "description": "Vaccine efficacy against transmission. This parameter denotes the probability that a person becomes immune to the disease after receiving the vaccine.",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.75,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Vaccine available from (day)",
+      "key": "Inputs_Epi.vaccine_availability",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "VACCINATION",
+      "description": "Day at which vaccines become available for starting the vaccination campaign.",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 60
+        }
+      ]
+    },
+    {
+      "name": "Initial vaccination capacity",
+      "key": "Inputs_Epi.initial_vaccination_capacity",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "VACCINATION",
+      "description": "Vaccination capacity is modelled as a stock that grows over time. The values of this stock represent the rate at which the public health system can vaccinate people in a day. This parameter corresponds this stock's initial value. Furthermore, these rates are expressed per 1000 population.",
+      "type": "Number",
+      "step": 0.1,
+      "readonly": false,
+      "values": [
+        {
+          "value": 3.3,
+          "limits": {
+            "min": 0,
+            "max": 200
+          }
+        }
+      ]
+    },
+    {
+      "name": "Vaccination capacity growth rate",
+      "key": "Inputs_Epi.vaccination_capacity_growth_rate",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "VACCINATION",
+      "description": "Vaccination capacity is modelled as a stock whose change over time is defined by the logistic growth structure. This structure produces S-shaped behaviour over time. Specifically, this parameter represents the rate at which the stock grows should there were no constraints. In the context of this model, this parameter can be viewed as the velocity at which the public health system scales up vaccination capacity. This parameter is expressed as a percentage.",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.2057,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Long-term vaccination capacity",
+      "key": "Inputs_Epi.vaccination_long-term_capacity",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "VACCINATION",
+      "description": "Vaccination capacity is modelled as a stock that grows over time. The values of this stock represent the rate at which the public health system can vaccinate people in a day. This parameter denotes the maximum rate that the public health system can achieve. This value is expressed per 1000 population.",
+      "type": "Number",
+      "step": 0.1,
+      "readonly": false,
+      "values": [
+        {
+          "value": 84.7,
+          "limits": {
+            "min": 0,
+            "max": 200
+          }
+        }
+      ]
+    },
+    {
+      "name": "Mobility restriction severity",
+      "key": "Inputs_Epi.mobility_restriction_severity",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "MOBILITY",
+      "description": "This parameter represents the stringency of social distancing measures. In the model, this parameter has an inversely proportional effect on the average number of contacts that people have per day. The higher the severity, the lower the number of contacts.",
+      "type": "Number",
+      "step": 0.01,
+      "readonly": false,
+      "values": [
+        {
+          "value": 0,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Mobility restriction start day",
+      "key": "Inputs_Epi.mobility_restriction_start_time",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "MOBILITY",
+      "description": "Time at which mobility restrictions start.",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "Maximum duration (days)",
+      "key": "Inputs_Epi.mobility_budget",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "MOBILITY",
+      "description": "Maximum number of days that public funds can support the social distance measures at maximum severity (full lockdown).",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 120
+        }
+      ]
+    },
+    {
+      "name": "School closures",
+      "key": "Inputs_Epi.switch_school_closures",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "MOBILITY",
+      "description": "School closures switch.",
+      "type": "Boolean",
+      "readonly": false,
+      "values": [
+        {
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "Start school closures (day)",
+      "key": "Inputs_Epi.start_school_closures",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "MOBILITY",
+      "description": "Day at which school & educational settings are closed.",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 10
+        }
+      ]
+    },
+    {
+      "name": "Duration school closures (days)",
+      "key": "Inputs_Epi.duration_school_closures",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "MOBILITY",
+      "description": "This parameter indicates for how many days schools & education settings will be closed.",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 30
+        }
+      ]
+    },
+    {
+      "name": "Testing",
+      "key": "Inputs_Epi.switch_testing",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "TESTING_ISOLATION",
+      "description": "Testing switch.",
+      "type": "Boolean",
+      "readonly": false,
+      "values": [
+        {
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "Testing available from (day)",
+      "key": "Inputs_Epi.testing_availability",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "TESTING_ISOLATION",
+      "description": "Day at which testing starts.",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "Initial testing capacity",
+      "key": "Inputs_Epi.initial_testing_capacity",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "TESTING_ISOLATION",
+      "description": "Testing capacity is modelled as a stock that grows over time. The values of this stock represent the rate at which the public health system can confirm a test result in a day. This parameter corresponds to this stock's initial value. Furthermore, these rates are expressed per 10000 population.",
+      "type": "Number",
+      "step": 0.1,
+      "readonly": false,
+      "values": [
+        {
+          "value": 4,
+          "limits": {
+            "min": 0,
+            "max": 100
+          }
+        }
+      ]
+    },
+    {
+      "name": "Testing capacity growth rate",
+      "key": "Inputs_Epi.testing_capacity_growth_rate",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "TESTING_ISOLATION",
+      "description": "Testing capacity is modelled as a stock whose change over time is defined by the logistic growth structure. This structure produces S-shaped behaviour over time. Specifically, this parameter represents the rate at which the stock grows should there were no constraints. In the context of this model, this parameter can be viewed as the velocity at which the public health system scales up testing capacity. This parameter is expressed as a percentage.",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.025,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Long-term testing capacity",
+      "key": "Inputs_Epi.testing_long-term_capacity",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "TESTING_ISOLATION",
+      "description": "Testing capacity is modelled as a stock that grows over time. The values of this stock represent the rate at which the public health system confirm test results in a day. This parameter denotes the maximum rate that the public health system can achieve. This value is expressed per 10000 population.",
+      "type": "Number",
+      "step": 0.1,
+      "readonly": false,
+      "values": [
+        {
+          "value": 83,
+          "limits": {
+            "min": 0,
+            "max": 100
+          }
+        }
+      ]
+    },
+    {
+      "name": "Isolation",
+      "key": "Inputs_Epi.switch_isolation",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "TESTING_ISOLATION",
+      "description": "Isolation switch.",
+      "type": "Boolean",
+      "readonly": false,
+      "values": [
+        {
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "Isolation policy from (day)",
+      "key": "Inputs_Epi.isolation_start",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "TESTING_ISOLATION",
+      "description": "Date at which infected individuals with a confirmed test abide policy recommendation of self-isolation.",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "Isolation compliance",
+      "key": "Inputs_Epi.isolate_compliance",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "TESTING_ISOLATION",
+      "description": "Isolation compliance.",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.5,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Contact tracing",
+      "key": "Inputs_Epi.switch_contact_tracing",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "CONTACT_TRACING",
+      "description": "Contact tracing switch",
+      "type": "Boolean",
+      "readonly": false,
+      "values": [
+        {
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "Contact tracing available from (day)",
+      "key": "Inputs_Epi.contact_tracing_availability",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "CONTACT_TRACING",
+      "description": "Day at which contact tracing starts.",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "Quarantine compliance",
+      "key": "Inputs_Epi.quarantine_compliance",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "CONTACT_TRACING",
+      "description": "This parameter indicates the probability that individual will abide public heath recommendations to quarantine after being identified as a close contact. In the model, this parameter has an inversely proportional effect on the effective contact rate of quarantined individuals. The higher the compliance, the lower the contact rate.",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.5,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Initial contact tracing capacity",
+      "key": "Inputs_Epi.initial_contact_tracing_capacity",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "CONTACT_TRACING",
+      "description": "Contact tracing capacity is modelled as a stock that grows over time. The values of this stock represent the rate at which the public health system can trace people in a day. This parameter corresponds to this stock's initial value. Furthermore, these rates are expressed per 100000 population.",
+      "type": "Number",
+      "step": 0.1,
+      "readonly": false,
+      "values": [
+        {
+          "value": 4.8,
+          "limits": {
+            "min": 0,
+            "max": 100
+          }
+        }
+      ]
+    },
+    {
+      "name": "Contact tracing capacity growth rate",
+      "key": "Inputs_Epi.contact_tracing_capacity_growth_rate",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "CONTACT_TRACING",
+      "description": "Contact tracing capacity is modelled as a stock whose change over time is defined by the logistic growth structure. This structure produces S-shaped behaviour over time. Specifically, this parameter represents the rate at which the stock grows should there were no constraints. In the context of this model, this parameter can be viewed as the velocity at which the public health system scales up contact tracing capacity. This parameter is expressed as a percentage.",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.025,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Long-term contact tracing capacity",
+      "key": "Inputs_Epi.contact_tracing_long-term_capacity",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "CONTACT_TRACING",
+      "description": "Contact tracing capacity is modelled as a stock that grows over time. The values of this stock represent the rate at which the public health system can contact trace people in a day. This parameter denotes the maximum rate that the public health system can achieve. This value is expressed per 100000 population.",
+      "type": "Number",
+      "step": 0.1,
+      "readonly": false,
+      "values": [
+        {
+          "value": 19.2,
+          "limits": {
+            "min": 0,
+            "max": 100
+          }
+        }
+      ]
+    },
+    {
+      "name": "Mask wearing",
+      "key": "Inputs_Epi.switch_mask_wearing",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "MASK_WEARING",
+      "description": "Mask-wearing switch.",
+      "type": "Boolean",
+      "readonly": false,
+      "values": [
+        {
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "Mask wearing from (day)",
+      "key": "Inputs_Epi.mask_wearing_start",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "MASK_WEARING",
+      "description": "Day at which individuals start wearing masks.",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "Mask wearing effect",
+      "key": "Inputs_Epi.mask_wearing_effect",
+      "category": "PUBLIC_HEALTH_POLICIES",
+      "subcategory": "MASK_WEARING",
+      "description": "This policy parameter represents the efficacy of introducing a mask-wearing policy in the population. In this context, efficacy refers to the reduction in the probability of infection after contact between two individuals. This parameter takes values between 0 and 1 (or 0% and 100%).",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.1,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Probability of infection",
+      "key": "Inputs_Epi.Probability_of_infection",
+      "category": "DATA",
+      "description": "This parameter represents the probability of infection after a contact between a susceptible and clinical infectious individuals. This parameter can take values between 0 and 1 inclusive, and also corresponds to the prob_inf parameter of the R0 API.",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.1121,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Hospitalisation fraction",
+      "key": "Inputs_Hospital_patient_params.hospitalisation_fraction",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "HOSPITALISATION_PARAMETERS",
+      "description": "Proportion of infected people, whether detected or undetected, who are hospitalised",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.026,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "a"
+        },
+        {
+          "value": 0.04,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "b"
+        },
+        {
+          "value": 0.06,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "c"
+        },
+        {
+          "value": 0.017,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "d"
+        }
+      ]
+    },
+    {
+      "name": "Fraction ICU",
+      "key": "Inputs_Hospital_patient_params.fraction_ICU",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "HOSPITALISATION_PARAMETERS",
+      "description": "Fraction of patients admitted to hospital who require ICU on admission",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.1,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "a"
+        },
+        {
+          "value": 0.2,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "b"
+        },
+        {
+          "value": 0.04,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "c"
+        },
+        {
+          "value": 0.02,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "d"
+        }
+      ]
+    },
+    {
+      "name": "Fraction ward To ICU",
+      "key": "Inputs_Hospital_patient_params.fraction_ward_to_ICU",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "HOSPITALISATION_PARAMETERS",
+      "description": "Fraction of patients in wards who later require ICU",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "a"
+        },
+        {
+          "value": 0.1,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "b"
+        },
+        {
+          "value": 0.13,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "c"
+        },
+        {
+          "value": 0.03,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "d"
+        }
+      ]
+    },
+    {
+      "name": "Delay before hospitalisation (days)",
+      "key": "Inputs_Hospital_patient_params.delay_before_hospitalisation",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "HOSPITALISATION_PARAMETERS",
+      "description": "The average delay between developing symptoms and hospitalisation",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 4
+        }
+      ]
+    },
+    {
+      "name": "Admission delay",
+      "key": "Inputs_Hospital_patient_params.admission_delay",
+      "category": "DATA",
+      "description": "Wait time for patients admitted to hospital to obtain a ward bed",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "ICU admission delay",
+      "key": "Inputs_Hospital_patient_params.ICU_admission_delay",
+      "category": "DATA",
+      "description": "Average patient wait time for ICU bed",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "LOS ward",
+      "key": "Inputs_Hospital_patient_params.LOS_ward",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "LOS_IN_DAYS",
+      "description": "Average length of stay in ward bed",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 5.5,
+          "age": "a"
+        },
+        {
+          "value": 6.5,
+          "age": "b"
+        },
+        {
+          "value": 7.6,
+          "age": "c"
+        },
+        {
+          "value": 13.2,
+          "age": "d"
+        }
+      ]
+    },
+    {
+      "name": "LOS ICU",
+      "key": "Inputs_Hospital_patient_params.LOS_ICU",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "LOS_IN_DAYS",
+      "description": "Average length of stay in ICU bed",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 5,
+          "age": "a"
+        },
+        {
+          "value": 8,
+          "age": "b"
+        },
+        {
+          "value": 12,
+          "age": "c"
+        },
+        {
+          "value": 10,
+          "age": "d"
+        }
+      ]
+    },
+    {
+      "name": "LOS ward before ICU",
+      "key": "Inputs_Hospital_patient_params.LOS_ward_before_ICU",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "LOS_IN_DAYS",
+      "description": "Average length of stay of patients in ward who go on to require transfer to ICU",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 6,
+          "age": "a"
+        },
+        {
+          "value": 5,
+          "age": "b"
+        },
+        {
+          "value": 4,
+          "age": "c"
+        },
+        {
+          "value": 7,
+          "age": "d"
+        }
+      ]
+    },
+    {
+      "name": "LOS denied ICU",
+      "key": "Inputs_Hospital_patient_params.LOS_Denied_ICU",
+      "category": "DATA",
+      "description": "Average length of stay of patients in ICU Overflow (time to die or survive) (model assumption)",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "LOS ward deaths",
+      "key": "Inputs_Hospital_patient_params.LOS_ward_deaths",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "LOS_IN_DAYS",
+      "description": "Average length of stay of patients who die in ward beds",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 19,
+          "age": "a"
+        },
+        {
+          "value": 15,
+          "age": "b"
+        },
+        {
+          "value": 12,
+          "age": "c"
+        },
+        {
+          "value": 14.5,
+          "age": "d"
+        }
+      ]
+    },
+    {
+      "name": "LOS ICU deaths",
+      "key": "Inputs_Hospital_patient_params.LOS_ICU_deaths",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "LOS_IN_DAYS",
+      "description": "Average length of stay in ICU of patients who die",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 14,
+          "age": "a"
+        },
+        {
+          "value": 7,
+          "age": "b"
+        },
+        {
+          "value": 8,
+          "age": "c"
+        },
+        {
+          "value": 12,
+          "age": "d"
+        }
+      ]
+    },
+    {
+      "name": "LOS morgue",
+      "key": "Inputs_Hospital_patient_params.LOS_morgue",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "LOS_IN_DAYS",
+      "description": "Average length of stay of a body in hospital morgue",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 3
+        }
+      ]
+    },
+    {
+      "name": "LOS temporary morgue",
+      "key": "Inputs_Hospital_patient_params.LOS_temporary_morgue",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "LOS_IN_DAYS",
+      "description": "Average length of stay of a body in a temporary morgue",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 5
+        }
+      ]
+    },
+    {
+      "name": "Ward fatality rate",
+      "key": "Inputs_Hospital_patient_params.ward_fatality_rate",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "FATALITY_RATES",
+      "description": "Proportion of ward patients who die",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.001,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "a"
+        },
+        {
+          "value": 0.03,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "b"
+        },
+        {
+          "value": 0.05,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "c"
+        },
+        {
+          "value": 0.01,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "d"
+        }
+      ]
+    },
+    {
+      "name": "ICU fatality rate",
+      "key": "Inputs_Hospital_patient_params.ICU_fatality_rate",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "FATALITY_RATES",
+      "description": "Proportion of ICU patients who die",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.1,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "a"
+        },
+        {
+          "value": 0.3,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "b"
+        },
+        {
+          "value": 0.55,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "c"
+        },
+        {
+          "value": 0.45,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "d"
+        }
+      ]
+    },
+    {
+      "name": "Denied ICU fatality rate",
+      "key": "Inputs_Hospital_patient_params.denied_ICU_fatality_rate",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "FATALITY_RATES",
+      "description": "Proportion of patients unable to access ICU who die",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.8,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "a"
+        },
+        {
+          "value": 0.9,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "b"
+        },
+        {
+          "value": 0.95,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "c"
+        },
+        {
+          "value": 0.86,
+          "limits": {
+            "min": 0,
+            "max": 1
+          },
+          "age": "d"
+        }
+      ]
+    },
+    {
+      "name": "Fraction ward to ICU antivirals",
+      "key": "Inputs_Hospital_patient_params.fraction_ward_to_ICU_antivirals",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "EFFECT_OF_THERAPEUTIC_INTERVENTIONS",
+      "description": "The expected reduction in the fraction of patients in wards who later require ICU, if they were treated with antivirals (-0.2 means 20% reduction)",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": -0.1,
+          "limits": {
+            "min": -1
+          },
+          "age": "a"
+        },
+        {
+          "value": -0.2,
+          "limits": {
+            "min": -1
+          },
+          "age": "b"
+        },
+        {
+          "value": -0.3,
+          "limits": {
+            "min": -1
+          },
+          "age": "c"
+        },
+        {
+          "value": -0.2,
+          "limits": {
+            "min": -1
+          },
+          "age": "d"
+        }
+      ]
+    },
+    {
+      "name": "LOS ward antivirals",
+      "key": "Inputs_Hospital_patient_params.LOS_ward_antivirals",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "EFFECT_OF_THERAPEUTIC_INTERVENTIONS",
+      "description": "The expected reduction in average length of stay in ward bed for ward patients given timely antiviral treatment (-0.2 means 20% reduction)",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": -0.05,
+          "limits": {
+            "min": -1
+          },
+          "age": "a"
+        },
+        {
+          "value": -0.1,
+          "limits": {
+            "min": -1
+          },
+          "age": "b"
+        },
+        {
+          "value": -0.3,
+          "limits": {
+            "min": -1
+          },
+          "age": "c"
+        },
+        {
+          "value": -0.2,
+          "limits": {
+            "min": -1
+          },
+          "age": "d"
+        }
+      ]
+    },
+    {
+      "name": "Ward fatality rate antivirals",
+      "key": "Inputs_Hospital_patient_params.ward_fatality_rate_antivirals",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "EFFECT_OF_THERAPEUTIC_INTERVENTIONS",
+      "description": "The expected reduction in the proportion of ward patients who die, if they are given timely antiviral treatment (-0.2 means 20% reduction)",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": -0.05,
+          "limits": {
+            "min": -1
+          },
+          "age": "a"
+        },
+        {
+          "value": -0.2,
+          "limits": {
+            "min": -1
+          },
+          "age": "b"
+        },
+        {
+          "value": -0.3,
+          "limits": {
+            "min": -1
+          },
+          "age": "c"
+        },
+        {
+          "value": -0.2,
+          "limits": {
+            "min": -1
+          },
+          "age": "d"
+        }
+      ]
+    },
+    {
+      "name": "LOS ICU vaccines",
+      "key": "Inputs_Hospital_patient_params.LOS_ICU_vaccines",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "EFFECT_OF_THERAPEUTIC_INTERVENTIONS",
+      "description": "The expected reduction in average length of stay in ICU bed for ICU patients given vaccine for earlier strains (-0.2 means 20% reduction)",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": -0.3,
+          "limits": {
+            "min": -1
+          },
+          "age": "a"
+        },
+        {
+          "value": -0.24,
+          "limits": {
+            "min": -1
+          },
+          "age": "b"
+        },
+        {
+          "value": -0.2,
+          "limits": {
+            "min": -1
+          },
+          "age": "c"
+        },
+        {
+          "value": -0.1,
+          "limits": {
+            "min": -1
+          },
+          "age": "d"
+        }
+      ]
+    },
+    {
+      "name": "ICU fatality rate vaccines",
+      "key": "Inputs_Hospital_patient_params.ICU_fatality_rate_vaccines",
+      "category": "DISEASE_SEVERITY",
+      "subcategory": "EFFECT_OF_THERAPEUTIC_INTERVENTIONS",
+      "description": "The expected reduction in the proportion of ICU patients who die, if they are given existing vaccines for earlier strains (-0.2 means 20% reduction)",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": -0.3,
+          "limits": {
+            "min": -1
+          },
+          "age": "a"
+        },
+        {
+          "value": -0.24,
+          "limits": {
+            "min": -1
+          },
+          "age": "b"
+        },
+        {
+          "value": -0.2,
+          "limits": {
+            "min": -1
+          },
+          "age": "c"
+        },
+        {
+          "value": -0.1,
+          "limits": {
+            "min": -1
+          },
+          "age": "d"
+        }
+      ]
+    },
+    {
+      "name": "Proportion of beds available for pandemic",
+      "key": "Inputs_Hospital_resource_params.proportion_of_beds_available_for_pandemic",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "PANDEMIC_RESOURCE_ALLOCATION",
+      "description": "Proportion of hospital beds made available for care of pandemic patients",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.5,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Proportion of ICU beds available for pandemic",
+      "key": "Inputs_Hospital_resource_params.proportion_of_ICU_beds_available_for_pandemic",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "PANDEMIC_RESOURCE_ALLOCATION",
+      "description": "Proportion of ICU beds made available for care of pandemic patients",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.5,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Proportion of nurses available for pandemic",
+      "key": "Inputs_Hospital_resource_params.proportion_of_nurses_available_for_pandemic",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "PANDEMIC_RESOURCE_ALLOCATION",
+      "description": "Proportion of nurses available for care of pandemic patients",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.5,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Proportion of ICU nurses available for pandemic",
+      "key": "Inputs_Hospital_resource_params.proportion_of_ICU_nurses_available_for_pandemic",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "PANDEMIC_RESOURCE_ALLOCATION",
+      "description": "Proportion of ICU nurses available for care of pandemic patients",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.5,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Proportion of physicians available for pandemic",
+      "key": "Inputs_Hospital_resource_params.proportion_of_physicians_available_for_pandemic",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "PANDEMIC_RESOURCE_ALLOCATION",
+      "description": "Proportion of physicians available for care of pandemic patients",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.5,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Proportion of ventilators available for pandemic",
+      "key": "Inputs_Hospital_resource_params.proportion_of_ventilators_available_for_pandemic",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "PANDEMIC_RESOURCE_ALLOCATION",
+      "description": "Proportion of ventilators made available for care of pandemic patients",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.5,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Proportion of PPE available for pandemic",
+      "key": "Inputs_Hospital_resource_params.proportion_of_PPE_available_for_pandemic",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "PANDEMIC_RESOURCE_ALLOCATION",
+      "description": "Proportion of PPE made available for care of pandemic patients",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.5,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Proportion of morgue capacity available for pandemic",
+      "key": "Inputs_Hospital_resource_params.proportion_of_morgue_capacity_available_for_pandemic",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "PANDEMIC_RESOURCE_ALLOCATION",
+      "description": "Proportion of morgue spaces made available for deceased pandemic patients",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.5,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Nurses per bed",
+      "key": "Inputs_Hospital_resource_params.nurses_per_bed",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "RESOURCE_USAGE_RATES",
+      "description": "Normal number of nurses required per patient in a ward bed",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.2
+        }
+      ]
+    },
+    {
+      "name": "ICU nurses per bed",
+      "key": "Inputs_Hospital_resource_params.ICU_nurses_per_bed",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "RESOURCE_USAGE_RATES",
+      "description": "Normal number of ICU nurses per patient in an ICU bed",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.5
+        }
+      ]
+    },
+    {
+      "name": "Fraction ICU patients requiring ventilator",
+      "key": "Inputs_Hospital_resource_params.fraction_ICU_patients_requiring_ventilator",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "RESOURCE_USAGE_RATES",
+      "description": "The fraction of ICU patients that require a ventilator",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.56,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Fraction ward patients requiring high flow nasal oxygen",
+      "key": "Inputs_Hospital_patient_params.fraction_ward_HFNO",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "RESOURCE_USAGE_RATES",
+      "description": "Proportion of ward patients needing high flow nasal oxygen",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.2,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Fraction ward patients requiring low flow nasal oxygen",
+      "key": "Inputs_Hospital_patient_params.fraction_ward_LFNO",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "RESOURCE_USAGE_RATES",
+      "description": "Proportion of ward patients needing low flow nasal oxygen",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.6,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "PPE per staff per day (PPE sets)",
+      "key": "Inputs_Hospital_resource_params.PPE_per_staff_per_day",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "RESOURCE_USAGE_RATES",
+      "description": "PPE sets used per staff member per day (or shift)",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 5
+        }
+      ]
+    },
+    {
+      "name": "Average low flow oxygen rate (litres/min)",
+      "key": "Inputs_Hospital_resource_params.low_flow_oxygen_rate",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "OXYGEN",
+      "description": "Average low flow oxygen rate (litres/min)",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 5
+        }
+      ]
+    },
+    {
+      "name": "Average high flow oxygen rate (litres/min)",
+      "key": "Inputs_Hospital_resource_params.high_flow_oxygen_rate",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "OXYGEN",
+      "description": "Average high flow oxygen rate (litres/min)",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 60
+        }
+      ]
+    },
+    {
+      "name": "Average oxygen rate from ventilator (litres/min)",
+      "key": "Inputs_Hospital_resource_params.ventilator_oxygen_rate",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "OXYGEN",
+      "description": "Average oxygen rate from ventilator (litres/min)",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 45
+        }
+      ]
+    },
+    {
+      "name": "PPE days supply in target stock",
+      "key": "Inputs_Hospital_resource_params.PPE_days_supply_in_target_stock",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "PPE",
+      "description": "The desired number of days of supply of PPE to keep in stock",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 14
+        }
+      ]
+    },
+    {
+      "name": "PPE acquisition lag (days)",
+      "key": "Inputs_Hospital_resource_params.PPE_acquisition_lag",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "PPE",
+      "description": "Average delay between ordering PPE and PPE delivery",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 3
+        }
+      ]
+    },
+    {
+      "name": "Antiviral capacity",
+      "key": "Inputs_Hospital_resource_params.antiviral_capacity",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "THERAPEUTIC_CAPACITY",
+      "description": "Capacity of therapeutic antiviral treatment, between zero and 1. Zero means none available, 1 means available to all ward patients (and assumes given to all)",
+      "type": "Number",
+      "step": 0.01,
+      "readonly": false,
+      "values": [
+        {
+          "value": 0,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Previous strain vaccine capacity",
+      "key": "Inputs_Hospital_resource_params.previous_strain_vaccine_capacity",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "THERAPEUTIC_CAPACITY",
+      "description": "Capacity of vaccines for previous strains that can help current patients, between zero and 1. Zero means none available, 1 means available to all ICU patients (and assumes given to all)",
+      "type": "Number",
+      "step": 0.01,
+      "readonly": false,
+      "values": [
+        {
+          "value": 0,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Threshold number of beds blocked by deceased (persons)",
+      "key": "Inputs_Hospital_resource_params.threshold_number_of_beds_blocked_by_deceased",
+      "category": "HOSPITAL_RESOURCES",
+      "subcategory": "MORGUE",
+      "description": "The number of hospital beds blocked by deceased patients that triggers emergency procedures such as army personnel moving bodies to temporary morgues",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 50
+        }
+      ]
+    },
+    {
+      "name": "Reduce ICU nurse to patient ratio",
+      "key": "Inputs_Hospital_surge_strategies.strategy_1_reduce_ICU-nurse-to-patient_ratio",
+      "category": "HOSPITAL_SURGE_STRATEGIES",
+      "subcategory": "STRATEGY_1",
+      "description": "Whether to reduce the ICU nurse-to-patient ratio (for all patients) when ICU nurses are lacking",
+      "type": "Boolean",
+      "readonly": false,
+      "values": [
+        {
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "Reduced ICU nurses per bed",
+      "key": "Inputs_Hospital_resource_params.reduced_ICU_nurses_per_bed_ratio",
+      "category": "HOSPITAL_SURGE_STRATEGIES",
+      "subcategory": "STRATEGY_1",
+      "description": "Number of ICU nurses required per patient/bed when availability of ICU nurses is low, if surge strategy enabled",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.25
+        }
+      ]
+    },
+    {
+      "name": "Nurse burnout rate",
+      "key": "Inputs_Hospital_resource_params.nurse_burnout_rate",
+      "category": "HOSPITAL_SURGE_STRATEGIES",
+      "subcategory": "STRATEGY_1",
+      "description": "Proportion of all nurses who become absent due to stress when workload is increased to meet higher demand",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.05,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reduce nurse to patient ratio",
+      "key": "Inputs_Hospital_surge_strategies.strategy_2_reduce_nurse-to-patient_ratio",
+      "category": "HOSPITAL_SURGE_STRATEGIES",
+      "subcategory": "STRATEGY_2",
+      "description": "Whether to enable surge strategy of reducing the ward nurse-to-patient ratio (for all patients) when ward nurses are lacking",
+      "type": "Boolean",
+      "readonly": false,
+      "values": [
+        {
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "Reduced nurses per bed",
+      "key": "Inputs_Hospital_resource_params.reduced_nurses_per_bed_ratio",
+      "category": "HOSPITAL_SURGE_STRATEGIES",
+      "subcategory": "STRATEGY_2",
+      "description": "Number of nurses required per patient/bed when availability of nurses is low, if surge strategy enabled",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.1
+        }
+      ]
+    },
+    {
+      "name": "Nurse burnout rate",
+      "key": "Inputs_Hospital_resource_params.nurse_burnout_rate",
+      "category": "HOSPITAL_SURGE_STRATEGIES",
+      "subcategory": "STRATEGY_2",
+      "description": "Proportion of all nurses who become absent due to stress when workload is increased to meet staff shortages",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.05,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reduce PPE per shift",
+      "key": "Inputs_Hospital_surge_strategies.strategy_3_reduce_PPE_per_shift",
+      "category": "HOSPITAL_SURGE_STRATEGIES",
+      "subcategory": "STRATEGY_3",
+      "description": "Whether to reduce number of PPE sets used per shift when PPE is in short supply",
+      "type": "Boolean",
+      "readonly": false,
+      "values": [
+        {
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "Reduced PPE per staff per day",
+      "key": "Inputs_Hospital_resource_params.reduced_PPE_per_staff_per_day",
+      "category": "HOSPITAL_SURGE_STRATEGIES",
+      "subcategory": "STRATEGY_3",
+      "description": "PPE sets used per staff member per day (or shift) in times of low availability of PPE, if surge strategy is enabled",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 2
+        }
+      ]
+    },
+    {
+      "name": "Increased risk to staff if PPE use reduced",
+      "key": "Inputs_Hospital_resource_params.increased_risk_to_staff_if_PPE_use_reduced",
+      "category": "HOSPITAL_SURGE_STRATEGIES",
+      "subcategory": "STRATEGY_3",
+      "description": "Increased risk to staff if surge strategy to reduce PPE usage rates is enabled",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.25,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Simulate interruption in PPE supply",
+      "key": "Inputs_Modelling_options.simulate_interruption_in_PPE_supply",
+      "category": "HOSPITAL_SURGE_STRATEGIES",
+      "subcategory": "STRATEGY_3",
+      "description": "Whether to model an interruption in the supply of PPE during the peak of the pandemic",
+      "type": "Boolean",
+      "readonly": false,
+      "values": [
+        {
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "Increase bed capacity",
+      "key": "Inputs_Hospital_surge_strategies.strategy_4_increase_bed_capacity",
+      "category": "HOSPITAL_SURGE_STRATEGIES",
+      "subcategory": "STRATEGY_4",
+      "description": "Whether to increase bed capacity when no beds are available, by diverting from non-pandemic use",
+      "type": "Boolean",
+      "readonly": false,
+      "values": [
+        {
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "Surge capacity bed increase",
+      "key": "Inputs_Hospital_resource_params.surge_capacity_bed_increase",
+      "category": "HOSPITAL_SURGE_STRATEGIES",
+      "subcategory": "STRATEGY_4",
+      "description": "Proportion of all beds to make available when surge capacity is enabled and beds are all occupied",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 0.12,
+          "limits": {
+            "min": 0,
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "Simulate staff absenteeism",
+      "key": "Inputs_Modelling_options.simulate_staff_absenteeism",
+      "category": "MODELLING_OPTIONS",
+      "description": "Whether to include staff absenteeism in the model (i.e. factor in pandemic infections and burnout in staff leading to absence)",
+      "type": "Boolean",
+      "readonly": false,
+      "values": [
+        {
+          "value": true
+        }
+      ]
+    },
+    {
+      "name": "Simulate interruption in PPE supply",
+      "key": "Inputs_Modelling_options.simulate_interruption_in_PPE_supply",
+      "category": "MODELLING_OPTIONS",
+      "description": "Whether to model an interruption in the supply of PPE during the peak of the pandemic",
+      "type": "Boolean",
+      "readonly": false,
+      "values": [
+        {
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "Initial number of infected people",
+      "key": "Inputs_Epi.initial_infected",
+      "category": "MODELLING_OPTIONS",
+      "description": "Number of infected people at the start of the pandemic.",
+      "type": "Number",
+      "readonly": false,
+      "values": [
+        {
+          "value": 1,
+          "limits": {
+            "min": 0,
+            "max": 100
+          }
+        }
+      ]
+    }
+  ]
+}

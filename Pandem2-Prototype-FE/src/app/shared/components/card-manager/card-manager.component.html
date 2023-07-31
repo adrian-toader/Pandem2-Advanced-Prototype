@@ -1,0 +1,104 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<mat-card>
+  <mat-card-title>
+    <div class="options-block">
+      <p class="options-title"> <strong>{{'SHARED.CARD_MANAGER.TITLE' | translate }}</strong></p>
+    </div>
+  </mat-card-title>
+  <mat-card-content>
+    <div *ngIf="!isCollapsed">
+      <div class="options-section">
+        <mat-list>
+          <mat-list-item *ngIf="graph && !isOnInterventionPage">
+          <button mat-raised-button color="primary-button" (click)="collapseCard()">
+            <div class="card-manager-button-content">
+              <span>{{'SHARED.CARD_MANAGER.COLLAPSE' | translate }}</span>
+              <mat-icon class="icon-style">arrow_drop_down</mat-icon>
+            </div>
+          </button>
+          </mat-list-item>
+          <mat-list-item *ngIf="!isOnInterventionPage">
+            <button mat-raised-button color="primary-button" [disabled]="isFirst" (click)="moveUp()">
+              <div class="card-manager-button-content">
+                <span>{{'SHARED.CARD_MANAGER.MOVE_UP' | translate }}</span>
+                <mat-icon class="icon-style">arrow_upward</mat-icon>
+              </div>
+            </button>
+          </mat-list-item>
+          <mat-list-item *ngIf="!isOnInterventionPage">
+            <button mat-raised-button color="primary-button" [disabled]="isLast" (click)="moveDown()">
+              <div class="card-manager-button-content">
+                <span>{{'SHARED.CARD_MANAGER.MOVE_DOWN' | translate }}</span>
+                <mat-icon class="icon-style">arrow_downward</mat-icon>
+              </div>
+            </button>
+          </mat-list-item>
+          <mat-list-item *ngIf="!isOnReportPage && hasAccessToReports">
+            <button mat-raised-button color="primary-button" [disabled]="isAdded"  (click)="addToReportCard()">
+              <div class="card-manager-button-content">
+                <span>{{'SHARED.CARD_MANAGER.COPY_TO_REPORT' | translate }}</span>
+                <mat-icon class="icon-style">send</mat-icon>
+              </div>
+            </button>
+          </mat-list-item>
+          <mat-list-item *ngIf="isOnReportPage && !isOnInterventionPage">
+            <button mat-raised-button color="primary-button" (click)="remove()">
+              <div class="card-manager-button-content">
+                <span>{{'SHARED.CARD_MANAGER.REMOVE' | translate }}</span>
+                <mat-icon class="icon-style">close</mat-icon>
+              </div>
+            </button>
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <div class="options-section " *ngIf="!isOnInterventionPage">
+          <p class="section-title"> {{'SHARED.CARD_MANAGER.ADD_OTHER_GRAPH' | translate }}</p>
+          <mat-list>
+            <mat-list-item>
+               <button class="search-box" mat-raised-button color="search-button" (click)="openDialog()">
+                {{'SHARED.CARD_MANAGER.SEARCH' | translate }}
+              </button>
+            </mat-list-item>
+          </mat-list>
+
+      </div>
+    </div>
+    <div *ngIf="isCollapsed">
+      <div class="options-section-collapsed">
+        <mat-list>
+          <mat-list-item>
+          <button mat-raised-button color="primary-button" (click)="collapseCard()">
+            <div class="card-manager-button-content">
+              <span> {{'SHARED.CARD_MANAGER.EXPAND' | translate }}</span>
+              <mat-icon class="icon-style">arrow_drop_up</mat-icon>
+            </div>
+          </button>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+  <br>
+  </mat-card-content>
+</mat-card>

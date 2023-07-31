@@ -1,0 +1,33 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<mat-button-toggle-group name="interval" aria-label="Type" [(ngModel)]="optionSelected" class="d-none d-md-inline-flex interval-container" (change)="changeTimeInterval($event)">
+  <mat-button-toggle *ngFor="let option of intervalOptions" [value]="option">{{option.name}}</mat-button-toggle>
+</mat-button-toggle-group>
+<mat-form-field appearance="fill" class="d-block d-md-none">
+  <mat-label>Time Period</mat-label>
+  <mat-select [value]="'all'"
+              (selectionChange)="changeTimeInterval($event)">
+    <mat-option *ngFor="let option of intervalOptions" [value]="option.value">{{option.name}}</mat-option>
+  </mat-select>
+</mat-form-field>

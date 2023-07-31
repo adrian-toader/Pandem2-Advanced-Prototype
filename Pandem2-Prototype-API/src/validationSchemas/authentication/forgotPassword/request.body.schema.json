@@ -1,0 +1,14 @@
+{
+  "$id": "authentication.forgotPassword.request.body.schema",
+  "description": "Send a reset password link to user's email",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "email"
+  ]
+}
+  

@@ -1,0 +1,30 @@
+{
+  "$id": "vaccine.generateDummy.request.body.schema",
+  "description": "Generate Vaccine dummy data request body schema",
+  "type": "object",
+  "properties": {
+    "pathogenId": {
+      "$ref": "/vaccine#/definitions/pathogen"
+    },
+    "location": {
+      "$ref": "/vaccine#/definitions/location"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "generate_for_sublocations": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "pathogenId",
+    "location",
+    "start_date",
+    "end_date"
+  ]
+}

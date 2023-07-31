@@ -1,0 +1,20 @@
+{
+  "$id": "strain.generateDummy.response.body.schema",
+  "description": "Generate dummy data for strains - response body schema",
+  "type": "array",
+  "items": {
+    "allOf": [
+      {
+        "$ref": "/strain#/definitions/strainResourceEntry"
+      },
+      {
+        "required": [
+          "_id",
+          "pathogen",
+          "name",
+          "color"
+        ]
+      }
+    ]
+  }
+}

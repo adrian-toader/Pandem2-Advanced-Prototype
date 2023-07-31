@@ -1,0 +1,34 @@
+{
+  "$id": "participatorySurveillance.generateDummy.request.body.schema",
+  "description": "Generate dummy data for Participatory Surveillance",
+  "type": "object",
+  "properties": {
+    "pathogen": {
+      "$ref": "/participatorySurveillance#/definitions/pathogen"
+    },
+    "location": {
+      "$ref": "/participatorySurveillance#/definitions/location"
+    },
+    "subcategory": {
+      "$ref": "/participatorySurveillance#/definitions/subcategory"
+    },
+    "generate_for_sublocations": {
+      "type": "boolean"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "pathogen",
+    "generate_for_sublocations",
+    "location",
+    "start_date",
+    "end_date"
+  ]
+}

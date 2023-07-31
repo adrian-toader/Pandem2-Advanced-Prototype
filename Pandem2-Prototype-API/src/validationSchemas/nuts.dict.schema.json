@@ -1,0 +1,64 @@
+{
+  "$id": "/nuts#",
+  "definitions": {
+    "code": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "level": {
+      "type": "number"
+    },
+    "parent_code": {
+      "type": "string"
+    },
+    "ancestors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_file": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object"
+    },
+    "english_name": {
+      "type": "string"
+    },
+    "nutsResourceEntry": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "/base#/definitions/mongoID"
+        },
+        "code": {
+          "$ref": "/nuts#/definitions/code"
+        },
+        "name": {
+          "$ref": "/nuts#/definitions/name"
+        },
+        "level": {
+          "$ref": "/nuts#/definitions/level"
+        },
+        "parent_code": {
+          "$ref": "/nuts#/definitions/parent_code"
+        },
+        "ancestors": {
+          "$ref": "/nuts#/definitions/ancestors"
+        },
+        "source_file": {
+          "$ref": "/nuts#/definitions/source_file"
+        },
+        "data": {
+          "$ref": "/nuts#/definitions/source_file"
+        },
+        "english_name": {
+          "$ref": "/nuts#/definitions/english_name"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "$id": "modelling.simulateModel.request.body.schema",
+  "description": "Simulate model request body schema",
+  "type": "object",
+  "patternProperties": {
+    ".+": {
+      "type": "number"
+    }
+  }
+}

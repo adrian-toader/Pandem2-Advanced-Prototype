@@ -1,0 +1,15 @@
+{
+  "$id": "report.createReport.response.body.schema",
+  "description": "Create report response body schema",
+  "allOf": [
+    {
+      "$ref": "/report#/definitions/reportResourceEntry"
+    },
+    {
+      "required": [
+        "userId",
+        "name"
+      ]
+    }
+  ]
+}

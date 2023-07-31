@@ -1,0 +1,37 @@
+{
+  "$id": "bed.getLocationsDateInterval.request.query.schema",
+  "description": "Get time interval in which beds occupancy occured for requested locations - request query schema",
+  "type": "object",
+  "properties": {
+    "total_type": {
+      "$ref": "/bed#/definitions/total_type"
+    },
+    "bed_type": {
+      "anyOf": [
+        {
+          "$ref": "/bed#/definitions/bed_type"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/bed#/definitions/bed_type"
+          }
+        }
+      ]
+    },
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "occupation_type",
+        "bed_type"
+      ]
+    }
+  },
+  "required": [
+    "total_type",
+    "location"
+  ]
+}

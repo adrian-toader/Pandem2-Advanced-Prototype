@@ -1,0 +1,44 @@
+{
+  "$id": "participatorySurveillance.getLocationsDaily.request.query.schema",
+  "description": "Get total number of participatory surveillance for a time interval, grouped by locations - request query schema",
+  "type": "object",
+  "properties": {
+    "subcategory": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/participatorySurveillance#/definitions/subcategory"
+          }
+        },
+        {
+          "$ref": "/participatorySurveillance#/definitions/subcategory"
+        }
+      ]
+    },
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "visit_type": {
+      "$ref": "/participatorySurveillance#/definitions/visit_type"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "visit_type"
+      ]
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "subcategory",
+    "location"
+  ]
+}

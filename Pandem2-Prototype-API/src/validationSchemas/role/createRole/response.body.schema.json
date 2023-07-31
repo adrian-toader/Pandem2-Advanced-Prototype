@@ -1,0 +1,15 @@
+{
+  "$id": "role.createRole.response.body.schema",
+  "description": "Create role instance response body schema",
+  "allOf": [
+    {
+      "$ref": "/role#/definitions/roleResourceEntry"
+    },
+    {
+      "required": [
+        "name",
+        "permissions"
+      ]
+    }
+  ]
+}

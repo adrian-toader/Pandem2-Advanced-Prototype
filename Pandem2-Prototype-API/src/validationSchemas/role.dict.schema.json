@@ -1,0 +1,34 @@
+{
+  "$id": "/role#",
+  "definitions": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "roleId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "roleResourceEntry": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "/role#/definitions/name"
+        },
+        "permissions": {
+          "$ref": "/role#/definitions/permissions"
+        },
+        "_id": {
+          "$ref": "/role#/definitions/roleId"
+        }
+      }
+    }
+  }
+}

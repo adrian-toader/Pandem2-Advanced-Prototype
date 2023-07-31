@@ -1,0 +1,13 @@
+{
+  "$id": "administration.updateModellingConfig.request.body.schema",
+  "description": "Update the modelling object in database",
+  "type": "object",
+  "properties": {
+    "url": {
+      "$ref": "/base#/definitions/url"
+    }
+  },
+  "required": [
+    "url"
+  ]
+}

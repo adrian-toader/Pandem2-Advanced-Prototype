@@ -1,0 +1,36 @@
+{
+  "$id": "test.getLocationsDailyTests.request.query.schema",
+  "description": "Get total number of tests for a time interval for requested locations request params schema",
+  "type": "object",
+  "properties": {
+    "subcategory": {
+      "$ref": "/test#/definitions/subcategory"
+    },
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "test_type",
+        "test_result"
+      ]
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "total_type": {
+      "$ref": "/test#/definitions/total_type"
+    }
+  },
+  "required": [
+    "subcategory",
+    "location",
+    "total_type"
+  ]
+}

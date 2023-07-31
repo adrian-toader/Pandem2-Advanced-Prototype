@@ -1,0 +1,17 @@
+{
+  "$id": "authentication.verifyResetPasswordToken.request.body.schema",
+  "description": "Verify the user's reset password token",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "token": {
+        "type": "string"
+    }
+  },
+  "required": [
+    "userId",
+    "token"
+  ]
+}

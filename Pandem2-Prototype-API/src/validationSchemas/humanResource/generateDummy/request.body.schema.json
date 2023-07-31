@@ -1,0 +1,26 @@
+{
+  "$id": "humanResource.generateDummy.request.body.schema",
+  "description": "Generate dummy data for human resources - request body schema",
+  "type": "object",
+  "properties": {
+    "location": {
+      "$ref": "/humanResource#/definitions/location"
+    },
+    "generate_for_sublocations": {
+      "type": "boolean"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "location",
+    "start_date",
+    "end_date"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "$id": "vaccine.generateDummy.response.body.schema",
+  "description": "Generate dummy data for vaccines - response body schema",
+  "type": "object",
+  "patternProperties": {
+    ".+": {
+      "description": "Total type entry for created resources",
+      "type": "object",
+      "patternProperties": {
+        ".+": {
+          "description": "Date entry for created resources numbers per date",
+          "type": "object",
+          "patternProperties": {
+            ".+": {
+              "description": "Date entry for created resources numbers per dose type",
+              "type": "object",
+              "properties": {
+                "ageGroups": {
+                  "type": "object",
+                  "patternProperties": {
+                    ".+": {
+                      "type": "number",
+                      "minimum": 0
+                    }
+                  }
+                },
+                "genders": {
+                  "type": "object",
+                  "patternProperties": {
+                    ".+": {
+                      "type": "number",
+                      "minimum": 0
+                    }
+                  }
+                },
+                "healthcareWorkers": {
+                  "type": "object",
+                  "patternProperties": {
+                    ".+": {
+                      "type": "number",
+                      "minimum": 0
+                    }
+                  }
+                },
+                "population_type": {
+                  "type": "object",
+                  "patternProperties": {
+                    ".+": {
+                      "type": "number",
+                      "minimum": 0
+                    }
+                  }
+                },
+                "total": {
+                  "type": "number",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

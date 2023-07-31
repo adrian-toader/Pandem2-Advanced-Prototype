@@ -1,0 +1,105 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<div *ngIf="isLoading()"
+    class="mat-spinner-container">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="isLoaded()">
+  <div *ngIf="topics.length === 0">
+    No data to display
+  </div>
+  <div *ngIf="topics.length > 0">
+    <table mat-table [dataSource]="dataSourceTopics" class="mat-elevation-z0" aria-label="Table of topics">
+
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element" [class.p-0]="noPadding"> {{element.id}} </td>
+      </ng-container>
+
+      <!-- Topic Column -->
+      <ng-container matColumnDef="topic">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="header-topic">
+            <span class="header-topic-name">Topic</span>
+            <span class="header-volume-text">Volume</span>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element" [class.p-0]="noPadding">
+          <div class="progress">
+            <div class="progress-bar"
+              role="progressbar"
+              [attr.aria-valuenow]="element.volume"
+              [ngStyle]="{'width.%': element.volume / maxVolumePercentage * 100}">
+              <span class="topic-name">{{element.name}}</span>
+              <span class="volume-text">{{element.volume + '%'}}</span>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Trend Column -->
+      <ng-container matColumnDef="trend">
+        <th mat-header-cell *matHeaderCellDef class="p-0"> Trend </th>
+        <td mat-cell *matCellDef="let element" class="px-3">
+          <mat-icon *ngIf="!element.upwardsTrend">trending_down</mat-icon>
+            <mat-icon *ngIf="element.upwardsTrend">trending_up</mat-icon>
+        </td>
+      </ng-container>
+
+      <!-- Emotion Column -->
+      <ng-container matColumnDef="emotion">
+        <th mat-header-cell *matHeaderCellDef> Emotion </th>
+        <td mat-cell *matCellDef="let element" [class.p-0]="noPadding">
+          <app-donut-progress-chart
+            [chartTitle]="element.emotionChartTitle"
+            [chartProgressValue]="element.emotionValue"
+            [chartColor]="element.emotionChartColor"
+            [chartHeight]="chartHeight">
+          </app-donut-progress-chart>
+        </td>
+      </ng-container>
+
+      <!-- Sentiment Column -->
+      <ng-container matColumnDef="sentiment">
+        <th mat-header-cell *matHeaderCellDef> Sentiment </th>
+        <td mat-cell *matCellDef="let element" [class.p-0]="noPadding">
+          <app-donut-progress-chart
+            [chartTitle]="element.sentimentChartTitle"
+            [chartProgressValue]="element.sentimentValue"
+            [chartColor]="element.sentimentChartColor"
+            [chartHeight]="chartHeight">
+          </app-donut-progress-chart>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+          (click)="selectableRows && selectRow(row)"
+          [ngClass]="selectableRows && {hovered: row.hovered, selected: selection.isSelected(row)}"
+          (mouseover)="mouseover(row)" (mouseout)="mouseout(row)">
+      </tr>
+    </table>
+  </div>
+</div>

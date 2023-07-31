@@ -1,0 +1,2864 @@
+{
+  "AUTH": {
+    "LOGIN": "Logged in successfully.",
+    "LOGOUT": "User signed out.",
+    "ACCESS_DENIED": "User does not have the required permissions to access this page.",
+    "SESSION_EXPIRED": "Session expired. Please login.",
+    "INVALID_CREDENTIALS": "Invalid username or password. Please try again.",
+    "PERMISSIONS_MODIFIED": "User permissions modified. Please log in again.",
+    "RESET_SUCCESS": "Password was successfully changed!",
+    "RESET_ERROR": "Error while reseting password!",
+    "INVALID_TOKEN": "Invalid token!"
+  },
+  "GENERAL": {
+    "ERRORS": {
+      "APPLICATION_ERROR": "Application error. Please reload or try again later."
+    }
+  },
+  "USERS": {
+    "ACCESS_DENIED": "You do not have the necessary permission to access the list of users.",
+    "CREATED": "User created successfully.",
+    "MODIFIED": "User updated successfully.",
+    "DELETED": "User {{user}} deleted successfully.",
+    "PASSWORD_SUCCESS": "Password changed successfully!",
+    "PASSWORD_ERROR": "Password Change Error: Incorrect Current Password"
+  },
+  "ROLES": {
+    "ACCESS_DENIED": "You do not have the necessary permission to access the list of user roles.",
+    "CREATED": "Role created successfully.",
+    "MODIFIED": "Role updated successfully.",
+    "DELETED": "Role {{role}} deleted successfully."
+  },
+  "REPORTS": {
+    "SAVED": "Report saved successfully.",
+    "LOADED": "{{report}} opened successfully.",
+    "LOAD_FAILED": "{{report}} failed to load.",
+    "DELETED": "{{report}} deleted successfully."
+  },
+  "INTERVENTIONS": {
+    "CREATED": "Intervention created successfully.",
+    "MODIFIED": "Intervention modified successfully.",
+    "INVALID_DATE_INTERVAL": "Date intervals must not overlap!"
+  },
+  "CARD_MANAGER": {
+    "CHART": "Chart",
+    "CARD_ADDED_TO_REPORT": "{{chart}} added to report.",
+    "COLLAPSED": "{{chart}} collapsed.",
+    "EXPANDED": "{{chart}} expanded.",
+    "CHART_ADDED": "{{chart}} added to view.",
+    "MOVED_DOWN": "{{chart}} moved down one position.",
+    "MOVED_UP": "{{chart}} moved up one position.",
+    "REMOVED": "{{chart}} removed from report."
+  },
+  "MAP": {
+    "REGION_CHANGED": "Region changed to {{region}}."
+  },
+  "MODULES": {
+    "SURVEILLANCE": {
+      "CONFIRMED_CASES": {
+        "CONFIRMED": "Confirmed cases",
+        "AVERAGE": "7 day rolling average",
+        "TITLE": "Confirmed Cases",
+        "DESCRIPTION": "Number of Confirmed Cases",
+        "DAILY_CASES": "DAILY CASES",
+        "WEEKLY_CASES": "WEEKLY CASES",
+        "CUMULATIVE_CASES": "CUMULATIVE CASES",
+        "NUMBER_OF_CASES": "Number of Cases",
+        "CASES": "Cases"
+      },
+      "ACTIVE_AND_RECOVERED_CASES": {
+        "RECOVERED": "7 day rolling average Recovered",
+        "ACTIVE": "7 day rolling average Active",
+        "TITLE": "Active and Recovered Cases",
+        "DESCRIPTION": "Active is the number of confirmed cases minus the deaths and the estimated number of recovered cases",
+        "DAILY_CASES": "DAILY CASES",
+        "WEEKLY_CASES": "WEEKLY CASES",
+        "CUMULATIVE_CASES": "CUMULATIVE CASES",
+        "ACTIVE_AND_RECOVERED_CASES": "Active and recovered cases",
+        "CASES": "CASES"
+      },
+      "NOTIFICATIONS": {
+        "NOTIFICATION": "Notifications",
+        "AVERAGE": "7 day rolling average",
+        "CHART_DESCRIPTION": "Number of notifications include suspected-probable (compatible symptoms), possible (with EPI link) and confirmed (lab test cases)",
+        "DAILY_CASES": "DAILY CASES",
+        "WEEKLY_CASES": "WEEKLY CASES",
+        "CUMULATIVE_CASES": "CUMULATIVE CASES"
+      },
+      "REPRODUCTION_NUMBER": {
+        "REPRODUCTION_NUMBER": "Reproduction number",
+        "CHART_DESCRIPTION": "The number shows how many people are infected on average by someone who is infected"
+      },
+      "REPORTED_DEATHS_AND_MORTALITY_RATE": {
+        "DEATHS": "Deaths",
+        "AVERAGE": "Deaths (7-day average)",
+        "TITLE": "Reported deaths and mortality rate",
+        "CHART_DESCRIPTION": "This figure shows how many COVID-19 patients have been reported to have died. This gives us an idea of the impact of the virus.",
+        "MORTALITY_RATE": "MORTALITY RATE",
+        "MORTALITY_RATE_LOWERCASE": "Mortality Rate",
+        "TOTAL_TYPE": "Total Type",
+        "WEEKLY": "WEEKLY",
+        "CUMULATIVE": "CUMULATIVE",
+        "DAILY": "DAILY"
+      },
+      "MORTALITY_RATE_DISTRIBUTION": {
+        "GENERAL": "General mortality rate",
+        "AVERAGE": "7 day rolling average",
+        "TITLE": "Mortality rate: Distribution by age or sex",
+        "AGE": "AGE",
+        "SEX": "SEX",
+        "DESCRIPTION": " A rise in the number of patients with COVID-19 could overburden hospitals. This number is also a valid indicator for epidemic growth. This section of the dashboard shows the number of patients with COVID-19 admitted to hospital and the number of regular hospital beds occupied by patients with COVID-19.",
+        "WEEKLY": "WEEKLY",
+        "MORTALITY_RATE_BY_AGE_OR_SEX": "Mortality rate by age or sex",
+        "CUMULATIVE": "CUMULATIVE"
+      },
+      "MORTALITY_RATE_BY_HOSPITAL_ADMISSIONS": {
+        "HOSPITAL": "Mortality rate by Hospital admission",
+        "ICU": "Mortality rate by ICU admission",
+        "ADMISSIONS": "ADMISSIONS",
+        "ICU_NAME": "ICU",
+        "DESCRIPTION": " A rise in the number of patients with COVID-19 could overburden hospitals.Number of deaths attributed to COVID-19 among hospitalised cases during a specific period",
+        "WEEKLY": "WEEKLY",
+        "CUMULATIVE": "CUMULATIVE"
+      },
+      "EXCESS_MORTALITY": {
+        "EXCESS": "Excess deaths",
+        "EXCESS_MORTALITY": "Excess mortality",
+        "DESCRIPTION": " The total number of deaths compared to the predicted number of deaths.If more deaths occur than predicted, these are considered excess deaths.This graph may show a more complete picture of COVID-19 related deaths",
+        "WEEKLY": "WEEKLY",
+        "CUMULATIVE": "CUMULATIVE"
+      },
+      "EXCESS_MORTALITY_DISTRIBUTION_BY_AGE": {
+        "AVERAGE": "7 day rolling average - {{age}}",
+        "TITLE": "Excess mortality: Distribution by age",
+        "DESCRIPTION": "The total number of deaths compared to the predicted number of deaths.If more deaths occur than predicted, these are considered excess deaths.This graph may show a more complete picture of COVID-19 related deaths",
+        "WEEKLY": "WEEKLY",
+        "CUMULATIVE": "CUMULATIVE"
+      },
+      "EXCESS_MORTALITY_IN_LONG_TERM": {
+        "EXCESS": "Excess deaths",
+        "TITLE": "Excess mortality in long term care facilities",
+        "DESCRIPTION": "The total number of deaths compared to the predicted number of deaths.If more deaths occur than predicted, these are considered excess deaths.This graph may show a more complete picture of COVID-19 related deaths",
+        "WEEKLY": "WEEKLY",
+        "CUMULATIVE": "CUMULATIVE"
+      },
+      "PARTICIPATORY_ACTIVE_WEEKLY_USERS": {
+        "WEEKLY_ACTIVE": "Weekly active users",
+        "TITLE": "Active Weekly Users",
+        "CHART_DESCRIPTION": "The weekly number of users participating in the influenzanet project",
+        "ACTIVE_USERS_WEEKLY": "Active Users (weekly)"
+      },
+      "PARTICIPATORY_COVID_INCIDENCE": {
+        "INCIDENCE_1000": "Incidence (COVID-19/per 1000)",
+        "INCIDENCE_CONFIDENCE": "Incidence Confidence",
+        "COVID_1000": "Covid (Covid-19/per 1000)",
+        "COVID_CONFIDENCE": "Covid Confidence",
+        "TITLE": "Incidence & Covid incidence",
+        "DESCRIPTION": "A rise in the number of patients with COVID-19 could overburden hospitals. This number is also a valid indicator for epidemic growth. This section of the dashboard shows the number of patients with COVID-19 admitted to hospital and the number of regular hospital beds occupied by patients with COVID-19.",
+        "INCIDENCE_COVID": "Incidence & Covid (COVID-19 / per 1000)"
+      },
+      "PARTICIPATORY_VISITS_CUMULATIVE": {
+        "VISITS_1000": "Visits Cumulative (COVID-19/per 1000)",
+        "VISITS_CONFIDENCE": "Visits Cumulative Confidence",
+        "TITLE": "Visits Cumulative",
+        "A_RISE": "A rise in the number of patients with COVID-19 could overburden hospitals. This number is also a valid indicator for epidemic growth. This section of the dashboard shows the number of patients with COVID-19 admitted to hospital and the number of regular hospital beds occupied by patients with COVID-19."
+      },
+      "PRIMARY_CARE": {
+        "TITLE": "PRIMARY CARE/GP SENTINEL SURVEILLANCE",
+        "DESCR_1": "Sentinel surveillance",
+        "DESCR_2": "A sentinel surveillance system is formed by one or more designated health care facilities or providers that routinely and consistently collect epidemiological information and laboratory specimens from patients presenting with an illness consistent with a specified case definition. Each sentinel site should include facilities that together represent the population under surveillance.",
+        "DESCR_3": "Last values obtained on {{currentDate}}. Is updated on a weekly basis.",
+        "DESCR_4": "Source: ECDC and WHO"
+      },
+      "PARTICIPATORY_SURVEILLANCE": {
+        "TITLE": "PARTICIPATORY SURVEILLANCE",
+        "DESCRIPTION": " Influenzanet is a Europe-wide network used to monitor the activity of influenza-like-illness (ILI) with the aid of volunteers via the internet. It is operational in nine countries. In contrast with the traditional system of sentinel networks of mainly primary care physicians, Influenzanet obtains its data directly from the population. This creates a fast and flexible monitoring system whose uniformity allows for direct comparison of ILI rates between countries."
+      },
+      "FLIGHTS": {
+        "TITLE": "FLIGHTS",
+        "DESCR_1": "Flightradar24 is a global flight tracking service that provides you with real-time information about thousands of aircraft around the world.",
+        "DESCR_2": "Flightradar24 is a flight tracker that shows live air traffic from around the world. Flightradar24 combines data from several data sources including ADS-B, MLAT and radar data. The ADS-B, MLAT and radar data is aggregated together with schedule and flight status data from airlines and airports to create a unique flight tracking experience",
+        "DESCR_3": "In areas where Flightradar24 normally has coverage, all major airports are marked with blue airport markers.",
+        "DESCR_4": "Please note that coverage and aircraft visibility is dependent on many parameters including aircraft type, aircraft transponder type, aircraft altitude and terrain, so coverage can be different for different aircraft, even at the same location. If an aircraft you are looking for is not visible on Flightradar24, it either does not have a compatible transponder or it's out of Flightradar24 coverage."
+      },
+      "DEATHS": {
+        "TITLE": "DEATHS IN",
+        "DESCR_1": "Daily information about the situation in your country.",
+        "DESCR_2": "Information is presented with indicator cards."
+      },
+      "CASES": {
+        "TITLE": "CASES IN",
+        "DESCR_1": " This View contains information about the Cases indicator in the Region of {{selectedRegionName}}. The Indicator card and Map show high level data regarding the Cases Indicator. The graphs in this view show confirmed cases, confirmed cases filterable by specific cohorts, active and recovered cases, notifications, and the reproduction number.",
+        "DESCR_2": "The definitions for each variable are available in the graph header."
+      },
+      "PRIMARY_CARE_ILI_SUMMARY_CARD": {
+        "TITLE": "GP/Sentinel Surveillance",
+        "INFLUENZA": "Influenza Like Illness (ILI)",
+        "WIP": " W.I.P",
+        "THIS_WEEK": "This week",
+        "NUMBER_OF_PEOPLE_TESTED": "Number of people tested for influenza",
+        "PERCENTAGE_OF_TESTED": "Percentage of tested with positive result (Positivity)",
+        "NO_COMPARABLE_DATA": "no comparable data",
+        "POSITIVITY_CHANGE": "Positivity change to previous week",
+        "LAST_WEEK": "Last week"
+      },
+      "PRIMARY_CARE_ILI_ARI_SUMMARY_CARD": {
+        "TITLE": "GP/Sentinel Surveillance",
+        "INFLUENZA_LIKE_ILLNESS": "Influenza Like Illness (ILI) + Acute respiratory infection (ARI)",
+        "WIP": " W.I.P",
+        "THIS_WEEK": "This week",
+        "NUMBER_OF_PEOPLE_TESTED": "Number of people tested for influenza",
+        "PERCENTAGE_OF_TESTED": "Percentage of tested with positive result (Positivity)",
+        "NO_COMPARABLE_DATA": "no comparable data",
+        "LAST_WEEK": "Last week",
+        "POSITIVITY_CHANGE": "Positivity change to previous week"
+      },
+      "PRIMARY_CARE_CHART": {
+        "ILI": "Influenza Like Illness (ILI)",
+        "ARI": "Acute respiratory infection (ARI)",
+        "ILI_ARI": "Influenza Like Illness (ILI) + Acute respiratory infection (ARI)",
+        "ILI_NAME": "ILI",
+        "ARI_NAME": "ARI",
+        "ILI_ARI_NAME": "ILI+ARI",
+        "TESTED": "tested",
+        "CONFIRMED_POSITIVITY": "confirmed (% positivity among all tested)",
+        "NUMBER_OF_CASES": "Number of new cases of"
+      },
+      "PARTICIPATORY_SUMMARY_CARD": {
+        "TITLE": "Participatory Surveillance",
+        "WIP": " W.I.P",
+        "WEEKLY_USERS": " Weekly Users",
+        "PREVIOUS_WEEK": "Previous Week",
+        "COMPARED_TO_PREVIOUS": "compared to previous 7 days",
+        "NO_COMPARABLE_DATA": "no comparable data",
+        "VISITS_1000": "Visits: (Covid-19 / per 1000)",
+        "EMERGENCY": "Emergency",
+        "GP": "GP",
+        "PLAN": "Plan",
+        "HOSPITAL": "Hospital",
+        "OTHER": "Other"
+      },
+      "DEATH_SUMMARY": {
+        "TITLE": "Deaths",
+        "DESCRIPTION": "This is the cumulative number of COVID-19 patients whose deaths have been reported to the relevant organisation in the past 24 hours. The date shown is the date on which the organisation was notified by the relevant health authority. This may not be the same as the date on which deaths occurred. The actual number of deceased COVID-19 patients might be higher than the number of deaths reported because there is no requirement to report COVID-19-related deaths.",
+        "DAILY_DEATHS": "Daily deaths",
+        "LAST_SEVEN_DAYS": "Last 7 days",
+        "COMPARED_TO_PREVIOUS": "compared to previous 7 days",
+        "NO_COMPARABLE_DATA": "no comparable data",
+        "TOTAL_DEATHS": "Total Deaths",
+        "MORTALITY_RATE": "Mortality rate",
+        "NUMBER_OF_DEATHS": "Number of deaths due to the disease per 100,000 inhabitants in a certain period of time",
+        "MORTALITY_RATE_BY_HOSPITAL_ADMISSIONS": "Mortality rate hospital admissions",
+        "EXCESS_MORTALITY": "Excess mortality",
+        "CUMULATIVE_NUMBER_OF_DEATHS": "  Cumulative number of deaths from all causes compared to projection based on previous years. The cumulative difference between the reported number of deaths since 1 January 2020 and the projected number of deaths for the same period based on previous years. The reported number might not count all deaths that occurred due to incomplete coverage and delays in reporting."
+      },
+      "CONFIRMED_CASES_BY": {
+        "TITLE": "Confirmed Cases by",
+        "FILTER_BY": "Filter By",
+        "NUMBER_OF_CONFIRMED_CASES": "Number of Confirmed Cases",
+        "DAILY_CASES": "DAILY CASES",
+        "NUMBER_OF_CASES": "Number of Cases",
+        "WEEKLY_CASES": "WEEKLY CASES",
+        "CUMULATIVE_CASES": "CUMULATIVE CASES"
+      },
+      "CASES_SUMMARY": {
+        "CASES": "Cases",
+        "CONFIRMED_POSITIVE_CASES": "Confirmed Positive Cases",
+        "DESCRIPTION": " The figure shows the cumulative number of confirmed cases reported in the preceding 24 hours. The date attributed to positive tests is the date on which the relevant organisation was notified by the relevant health authority.This is not the same as the date on which people are tested. Part of the notification process is done manually.Sometimes the health authority will not have reported all newly confirmed cases at the moment that the figures are compiled for the preceding 24 hours. Missing notifications are passed on at a later time. Missing or delayed notifications can skew the daily figures. The rolling average filters out this type of fluctuation, and therefore often give a better picture of the number of infections.",
+        "DAILY": "Daily",
+        "DESCR_2": "To present the current epidemiological situation as accurately as possible, late notifications and corrections to false and double notifications going back more than 28 days are not included.On the other hand, the total for the selected period includes all laboratory confirmed cases, including late notifications and corrections.",
+        "LAST_SEVEN_DAYS": "Last 7 days",
+        "DETAILS_SEVEN_DAYS": "Details on the last seven days Information about the trend to the right etc.",
+        "COMPARED_TO_PREVIOUS": "compared to previous 7 days",
+        "NO_COMPARABLE_DATA": "no comparable data",
+        "INHABITANS": "Per 100,000 inhabitants",
+        "NEW_CASES_INHABITANTS": "Per 100,000 inhabitants",
+        "NUMBER_NOTIFICATIONS": "Number of Notifications",
+        "NUMBER_OF_REPORTED": "Number of reported cases independently of the case category may have (e.g., no case, suspected, probable, or confirmed). If the information about case category is available, it excludes reported cases that has been classified as non cases.",
+        "CUMULATIVE_CASES": "Cumulative Confirmed Cases",
+        "REPORTED_CASES": "Reported cases per 100,000 inhabitants in a certain period of time",
+        "CONFIRMED_ACTIVE": "Confirmed Cases - Active",
+        "ACTIVE_CASES_CALCULATED": " Active cases are calculated as: total confirmed cases excluding persons recovered and lives lost due to COVID-19.",
+        "CONFIRMED_RECOVERED": "Confirmed Cases - Recovered",
+        "A_PERSON": " A person with probable/confirmed COVID-19 is known to be alive and 14 days have elapsed since diagnosis (for asymptomatic), onset of symptoms (for mild cases) or clinical stability/ supplementary oxygen stopped (for moderate-severe cases in hospital)",
+        "EFFECTIVE_REPRODUCTION": "Rt: Effective Reproduction Number",
+        "THE_PRODUCT": "he product of the basic reproductive number (It is the average number of secondary infections produced by a typical case of an infection in a population where everyone is susceptible) and the fraction of the host population that is susceptibleunder the control measures in place"
+      }
+    },
+    "HEALTHCARE_CAPACITY": {
+      "ADMISSIONS_AND_BED_OCCUPANCY": {
+        "ROLLING_AVERAGE": "7 day rolling average - {{place}}",
+        "AVERAGE": "{{place}} 7-day average",
+        "PATIENTS_ADMITTED": "Patients admitted to {{place}} (7-day average)",
+        "PATIENTS_ADMITED_TO": "Patients admitted to {{place}}",
+        "TITLE": "Hospitalisations: Admissions & Bed Occupancy",
+        "ADMISSIONS": "ADMISSIONS",
+        "ICU": "ICU",
+        "DESCRIPTION": "A rise in the number of patients with COVID-19 could overburden hospitals.This number is also a valid indicator for epidemic growth. This section of the dashboard shows the number of patients with COVID-19 admitted to hospital and the number of regular hospital beds occupied by patients with COVID-19.",
+        "Admissions": "Admissions",
+        "BED_OCCUPANCY": "Bed Occupancy",
+        "DAILY": "DAILY",
+        "WEEKLY": "WEEKLY",
+        "CUMULATIVE": "CUMULATIVE"
+      },
+      "ADMISSIONS_W_COMORBIDITIES": {
+        "AVERAGE": "7 day rolling average",
+        "WITH_COMORBIDITIES": "With Comorbidities",
+        "TITLE": "Hospitalisations: Proportion of Admissions with Comorbidities",
+        "ADMISSIONS": "Admissions",
+        "ICU": "ICU",
+        "DESCRIPTION": "  A rise in the number of patients with COVID-19 could overburden hospitals.This number is also a valid indicator for epidemic growth. This section of the dashboard shows the number of patients with COVID-19 admitted to hospital and the number of regular hospital beds occupied by patients with COVID-19.",
+        "DAILY": "DAILY",
+        "WEEKLY": "WEEKLY",
+        "CUMULATIVE": "CUMULATIVE"
+      },
+      "HUMAN_RESOURCES_HOSPITAL_STAFF": {
+        "OVER_INCREASE": "Over 100% increase",
+        "INCREASE": "% Increase",
+        "DECREASE": "% Decrease",
+        "ROLLING_AVERAGE": "7 day rolling average - {{name}}",
+        "TITLE": "Human Resources: Hospital Staff",
+        "WARD": "WARD",
+        "ICU": "ICU",
+        "DESCRIPTION": "Hospital staff represents professional medical personnel who provide care to patients in an organized facility, institution or agency.",
+        "HOSPITAL_STAFF": "Hospital Staff",
+        "ADMISSIONS": "Admissions",
+        "ADMISSIONS_UPP": "ADMISSIONS"
+      },
+      "HUMAN_RESOURCES_PUBLIC_HEALTH_STAFF": {
+        "CASES": "Cases",
+        "AVERAGE": "7 day rolling average",
+        "OVER": "Over 100% increase",
+        "INCREASE": "% Increase",
+        "DECREASE": "% Decrease",
+        "PUBLIC": "Public Health Staff",
+        "ROLLING_AVERAGE": "7 day rolling average",
+        "HUMAN_RESOURCES": "Human Resources",
+        "PUBLIC_HEALTH_STAFF": "Public Health Staff",
+        "WIP": "W.I.P",
+        "NUMBER_OF_PUBLIC_HEALTH": "Number of Public Health Staff",
+        "INHABITANS": "Per 100,000 inhabitants",
+        "WORKING_IN": "Working in surveillance and response including contact tracing."
+      },
+      "HUMAN_RESOURCES": {
+        "TITLE": "HUMAN RESOURCES",
+        "DESCR_1": "Daily information about the situation in your country. Information is presented with indicator cases",
+        "DESCR_2": "Last values obtained on {{currentDate}}. Is updated on a daily basis."
+      },
+      "HOSPITALIZATION": {
+        "TITLE": "Hospitalisations",
+        "DESCRIPTION": "A rise in the number of patients with COVID-19 could overburden hospitals. This number is also a valid indicator for epidemic growth. This section of the dashboard shows the number of patients with COVID-19 admitted to hospital and the number of regular hospital beds occupied by patients with COVID-19."
+      },
+      "STAFF_SUMMARY_EVOLUTION": {
+        "INCREASE_DURING_PATHOGEN": "% increase during pathogen-x",
+        "NO_COMPARABLE_DATA": "no comparable data"
+      },
+      "HUMAN_RESOURCES_PUBLIC_HEALTH_STAFF_SUMM": {
+        "TITLE": "Human Resources: Public Health Staff",
+        "DESCRIPTION": "A rise in the number of patients with COVID-19 could overburden hospitals. This number is also a valid indicator for epidemic growth. This section of the dashboard shows the number of patients with COVID-19 admitted to hospital and the number of regular hospital beds occupied by patients with COVID-19.",
+        "PUBLIC_HEALTH_STAFF": "Public Health Staff",
+        "CASES": "Cases"
+      },
+      "HUMAN_RESOURCES_HOSPITAL_STAFF_SUMMARY": {
+        "HUMAN_RESOURCES": "Human Resources",
+        "HOSPITAL_STAFF": "Hospital Staff",
+        "WIP": "W.I.P",
+        "NUMBER_OF_HOSPITAL_STAFF": "Number of Hospital Staff",
+        "INHABITANS": "Per 100,000 inhabitants",
+        "ICU_STAFF": "ICU Staff",
+        "WARD_STAFF": "Ward Staff"
+      },
+      "DISTRIBUTION_BY_AGE": {
+        "TITLE": "Hospitalisations: Distribution by age",
+        "ADMISSIONS": "Admissions",
+        "ICU": "ICU",
+        "DESCRIPTION": "A rise in the number of patients with COVID-19 could overburden hospitals.This number is also a valid indicator for epidemic growth. This section of the dashboard shows the number of patients with COVID-19 admitted to hospital and the number of regular hospital beds occupied by patients with COVID-19.",
+        "DAILY": "DAILY",
+        "WEEKLY": "WEEKLY",
+        "CUMULATIVE": "CUMULATIVE"
+      },
+      "BED_OCCUPANCY_SUMMARY": {
+        "TITLE": "Hospitalisations",
+        "CARD_TITLE": "Bed Occupancy",
+        "DESCRIPTION": "Hospital capacity has had to be organised in new ways as a result of the pandemic to treat Covid and non-Covid patients separately and safely in meeting the enhanced Infection Prevention Control measures.This results in beds and staff being deployed differently from previous years in both emergency and elective settings within the hospital. As a result caution should be exercised in comparing overall occupancy rates between this year and previous years. In general hospitals will experience capacity pressures at lower overall occupancy rates than would previously have been the case.",
+        "DESCR_2": "The published data is based on reports that were sent to the PANDEM-2 application by relevant information providers with intensive care units via the PANDEM-2 application. Due to the different reporting times and procedures, the figures shown here may differ from those published by other institutions. Due to mathematical rounding, the sum of the percentages may not be exactly 100%.",
+        "NUMBER_OF_OPERABLE_BEDS": "Number of Operable Beds",
+        "Ward": "Ward",
+        "ICU": "ICU",
+        "WARD_OCCUPANCY": "Ward Occupancy",
+        "WARD_OCCUPANCY_COVID": "Ward Occupancy with COVID",
+        "WARD_OCCUPANCY_RATE": "Ward Occupancy Rate",
+        "ICU_OCCUPANCY": "ICU Occupancy",
+        "ICU_OCCUPANCY_COVID": "ICU Occupancy with Covid",
+        "ICU_OCCUPANCY_RATE": "ICU Occupancy Rate",
+        "MEDIAN_LENGTH": "Median Length of Stay",
+        "PROPORTION_COMORBIDITIES": "proportion with Comorbidlties"
+      },
+      "ADMISSIONS_SUMMARY": {
+        "TITLE": "Hospitalisations",
+        "ADMISSION": "Admission",
+        "DESCRIPTION": " The figures on number of hospital admissions are supplied by the relevant organisation. This data may be collated by a different organisation. This data is available in the form of an open data file. The number of hospital admissions refers to patients admitted to regular wards as well as those admitted directly to the ICU.",
+        "DAILY": "Daily",
+        "LAST_SEVEN_DAYS": "Last 7 days",
+        "NO_COMPARABLE": "no comparable data",
+        "LAST_SEVEN_DAYS_INHABITANTS": "Last 7 days per 100,000 inhabitants",
+        "ICU_DAILY": "ICU Daily",
+        "ICU_LAST_7_DAYS": "ICU Last 7 Days",
+        "LAST_SEVEN_DAYS_ICU": "Last 7 days ICU Per 100,000 Inhabitants",
+        "COMPARED_TO_PREVIOUS": "compared to previous 7 days"
+      }
+    },
+    "TESTING_CONTACT_TRACING": {
+      "TESTING_TESTS_PERFORMED": {
+        "NAATS": "NAATs",
+        "ANTIGEN": "Antigen",
+        "UNKNOWN": "Unknown",
+        "AVERAGE": "Tests (7-day average)",
+        "TITLE": "Testing: Tests Performed",
+        "CHART_DAILY_TESTS": "This chart shows the number of daily tests per type. Because the number of tests is often volatile from day to day, we show the figures as seven-day rolling average.",
+        "TESTING_POLICY": "TESTING POLICY: OxCGRT",
+        "DAILY": "DAILY",
+        "WEEKLY": "WEEKLY",
+        "CUMULATIVE": "CUMULATIVE"
+      },
+      "TESTING_POSITIVITY_RATE": {
+        "TOTAL_TESTS": "Total Tests",
+        "POSITIVE_TESTS": "Positive Tests",
+        "PERCENTAGE": "Percentage of positive tests (7-day mean)",
+        "THRESHOLD": "Threshold set by WHO",
+        "TITLE": "Testing: Positivity Rate",
+        "PERCENT_OF_NEW_TESTS": "Percent of new tests that are positive. These charts lay out the key metrics for understanding the reach and severity of COVID-19 in a given area: number of new daily cases, tests per 100,000 people (testing rate), and percentage of tests that are positive (positivity rate).",
+        "SEVEN_DAY_MEAN": "7 DAY MEAN",
+        "POSITIVE_TESTS_NO": "POSITIVE TESTS NO.",
+        "DAILY": "DAILY",
+        "WEEKLY": "WEEKLY"
+      },
+      "CONTACT_TRACING_TOTAL_CASES": {
+        "CASES": "Cases identified as contact"
+      },
+      "CONTACT_TRACING_TOTAL_OF_CONTACT": {
+        "IDENTIFIED": "Identified Contacts",
+        "REACHED": "Reached Contacts",
+        "REACHED_WITHIN_DAY": "Reached within day Contacts"
+      },
+      "TESTING": {
+        "TESTING_IN": "Testing in {{selectedRegionName}}.",
+        "DAILY_INFORMATION": "Daily information about the situation in your country",
+        "INFORMATION_INDICATOR": "Information is presented with indicator cards"
+      },
+      "CONTACT_TRACING": {
+        "TITLE": "CONTACT TRACING",
+        "PARA": "Data from contact tracing investigations for COVID-19 should be systematically collated and analysed at european level to assess the extent of contact tracing measures used, and to help understand their impact and guide the response."
+      },
+      "TESTING_CURRENT_TESTING_POLICY_SUMMARY": {
+        "TESTING": "Testing",
+        "CURRENT_TESTING": "Current Testing Policy",
+        "PARA": "The figure shows the number of positive tests reported in the preceding 24 hours. The date attributed to positive tests is the date on which the relevant organisation was notified by the relevant health authority. This is not the same as the date on which people are tested. Part of the notification process is done manually. Sometimes the health authority will not have reported all newly confirmed cases at the moment that the figures are compiled for the preceding 24 hours. Missing notifications are passed on at a later time. Missing or delayed notifications can skew the daily figures. The rolling average filters out this type of fluctuation, and therefore often gives a better picture of the number of infections.",
+        "COLLECTS_PUBLICLY": "OxCGRT collects publicly available information on indicators of government response. These indicators take policies such as school closures, travel bans, etc. and record them on an ordinal scale. The remainder is financial indicators, such as fiscal or monetary measures.",
+        "NO_TESTING": "0 - No testing policy",
+        "ONE": "1 - Only those who both (a) have symptoms AND (b) meet specific criteria(e.g.: key workers, admitted to hospital, came into contact with a known case, returned from overseas)",
+        "TWO": "2 - Testing of anyone showing COVID-19 symptoms",
+        "THREE": "3 - Open public testing (e.g.: drive through testing available to asymptomatic people)",
+        "NO_DATA": "No Data"
+      },
+      "TESTING_CONFIRMED_POSITIVE_CASES": {
+        "TESTING": "Testing",
+        "CONFIRMED_POSITIVE_CASES": "Confirmed Positive Cases",
+        "PARA": "The figure shows the number of positive tests reported in the preceding 24 hours. The date attributed to positive tests is the date on which the relevant organisation was notified by the relevant health authority. This is not the same as the date on which people are tested. Part of the notification process is done manually. Sometimes the health authority will not have reported all newly confirmed cases at the moment that the figures are compiled for the preceding 24 hours. Missing notifications are passed on at a later time. Missing or delayed notifications can skew the daily figures. The rolling average filters out this type of fluctuation, and therefore often gives a better picture of the number of infections.",
+        "LAST_SEVEN_DAYS": "Number of tests performed - last 7 day",
+        "FOURTEEN_DAYS": "Number of tests performed - 7-14 days ago",
+        "LAST_SEVEN_DAYS_AVERAGE": "Last 7 days average",
+        "COMPARED_TO_PREVIOUS": "compared to previous 7 days",
+        "NO_COMPARABLE_DATA": "no comparable data",
+        "TOTAL_POSITIVE": "Total number of positive tests - last 7 day",
+        "TOTAL_100K": "Total number of positive tests per 100.000 - last 7 day",
+        "POSITIVITY_LAST_SEVEN_DAYS": "Positivity rate - last 7 day"
+      },
+      "CONTACT_TRACING_TOTAL_DIAGNOSED": {
+        "TITLE": "Total diagnosed cases identified and reached for contact tracing (weekly)",
+        "IDENTIFIED": "IDENTIFIED",
+        "CASES": "CASES",
+        "REACHED": "REACHED",
+        "DAY": "IN A DAY",
+        "DESCRIPTION_1": "Contact tracing identifies people who have been in close contact with another person who has an\n",
+        "DESCRIPTION_2": "        infection. This is done to gather close contacts who may be at risk of catching and spreading the virus. The\n",
+        "DESCRIPTION_3": "        latest available data should be reported once a week"
+      },
+      "CONTACT_TRACING_TOTAL_IDENTIFIED": {
+        "TITLE": "Total of contacts identified and reached for contact tracing (weekly)",
+        "IDENTIFIED": "IDENTIFIED",
+        "CONTACTS": "CONTACTS",
+        "REACHED": "REACHED",
+        "DAY": "IN A DAY",
+        "DESCRIPTION": "The purpose of identifying and managing the contacts of a case is to support early diagnosis and to interrupt onward transmission through the rapid identification and management of secondary cases (contacts) that may arise after transmission from the primary case.",
+        "IS_UPDATED": "Is updated on a daily basis.",
+        "SYNTHESIZED_DATA": "Synthesized Data",
+        "SOURCE": "Source",
+        "LAST_VALUES": "Last values obtained on"
+      },
+      "CONTACT_TRACING_TOTAL_CASES_CONTACT": {
+        "TITLE": "Total cases that previously had been identified as contact (weekly)",
+        "NUMBER_OF_CASES": "Number of cases diagnosed that were at the time of diagnosis already identified as a contact (in the 21 days prior to diagnosis)"
+      },
+      "CONTACT_TRACING_CONTACT_SUMMARY": {
+        "TITLE": "Contact tracing",
+        "CONTACTS_FOR_CT": "Contacts for CT",
+        "WIP": "W.I.P",
+        "CONTACTS_LAST_SEVEN_DAYS": "Number of contacts identified - last 7 days",
+        "CONTACTS_BETWEEN_SEVEN": "Number of contacts identified - 7-14 days ago",
+        "CONTACTS_IDENTIFIED_AND_REACHED": "Number of contacts identified and reached",
+        "CONTACTS_IDENTIFIED_AND_REACHED_IN_A_DAY": "Number of contacts identified and reached within a day",
+        "CURRENT_CONTACT_POLICY": "CURRENT CONTACT TRACING POLICY",
+        "CURRENT_POLICY": " Current Policy",
+        "GOVERNMENT_RESPONSE": "OxCGRT collects publicly available information on indicators of government response.",
+        "POLICIES": "Policies",
+        "ZERO": "0 - No contact tracing",
+        "ONE": "1 - Limited contact tracing - not done for all cases",
+        "TWO": "2 - Comprehensive contact tracing - done for all cases",
+        "NO_DATA": "No Data"
+      },
+      "CONTACT_TRACING_CONFIRMED_CASES_SUMMARY": {
+        "TITLE": "Contact tracing",
+        "CONTACTS_FOR_CT": "Confirmed cases for CT",
+        "WIP": "W.I.P",
+        "CONTACTS_CURRENT_WEEK": "Number of cases identified - current week",
+        "CONTACTS_LAST_WEEK": "Number of cases identified - Last week",
+        "COMPARED_TO_PREVIOUS": "compared to previous 7 days",
+        "NO_COMPARABLE_DATA": "no comparable data",
+        "CASES_IDENTIFIED_AND_REACHED_IN": "Number of cases identified and reached",
+        "CASES_INDENTIFIED_AND_REACHED_IN_A_DAY": "Number of cases identified and reached within a day",
+        "NUMBER_OF_CASES_IDENTIFIED_AS_CONTACT": "Number of cases that previously had been identified as contact"
+      }
+    },
+    "SMA": {
+      "SOCIAL_MEDIA_ANALYSIS": "Social Media Analysis",
+      "EMOTION_AND_SENTIMENT_ANALYSIS": "Emotion and Sentiment Analysis",
+      "TOP_FIVE_TOPICS": "Top Five Topics",
+      "REGION": "Region",
+      "POSTS_ANALYSED_BETWEEN": "posts analysed between",
+      "AND": "and",
+      "BETWEEN": "between",
+      "ALL_DATA": "All data",
+      "TOPIC": "Topic",
+      "SINGLE_REGION": "Single Region",
+      "COMPARE_REGIONS": "Compare regions",
+      "TOPIC_UPPERCASE": "TOPIC",
+      "DATA_FROM": "Data from",
+      "TOP_TEN_TOPICS_FOR_SUGGESTION_BETWEEN": "Top ten topics for suggestions between",
+      "TOP_TEN_TOPICS_BETWEEN": "Top ten topics between",
+      "SMA_ANALYSIS": "SMA analysis",
+      "TOP_5_TOPICS_BY_VOLUME_OF_TWEETS_ANALYSED_FOR": "Top 5 Topics by Volume of Tweets analysed for",
+      "WIP": "W.I.P"
+    },
+    "GENETIC_VARIATION": {
+      "NON_GENOMIC_SEQUENCING": {
+        "AVERAGE": "7 day rolling average - {{name}}",
+        "UNSEQUENCED": "Unsequenced",
+        "AVERAGE_UNSEQUENCED": "7 day rolling average - Unsequenced",
+        "SAMPLED": "Sampled",
+        "TITLE": "Non Genomic Sequencing and of sequences sampled",
+        "INCLUDE_SAMPLES": " INCLUDE NON-SEQUENCED SAMPLES",
+        "DESCRIPTION": " For these variants, clear evidence is available indicating a significant impact on transmissibility, severity and/or immunity that is likely to have an impact on the epidemiological situation in the EU/EEA.The combined genomic, epidemiological, and in vitro evidence for these properties invokes at least moderate confidence.",
+        "LAST_VALUE_OBTAINED": "Last values obtained on {{currentDate}}. Is updated on a daily basis.",
+        "SOURCE": "Source: Simulated Data as described above",
+        "DAILY": "DAILY",
+        "WEEKLY": "WEEKLY",
+        "CUMULATIVE": "CUMULATIVE",
+        "PROPORTION_SAMPLED": "Proportion of sequences sampled"
+      },
+      "VARIANTS_OF_INTEREST_SUMMARY": {
+        "GENETIC_VARIATION": "Genetic variation",
+        "OPTIONS": "(mutation, strain, variant, cluster)",
+        "VARIANTS_OF_INTEREST": "Variants of Interest",
+        "DESCRIPTION": "For these variants, evidence is available on genomic properties, epidemiological evidence or in vitro evidence that could imply a significant impact on transmissibility, severity and/ or immunity, realistically having an impact on the epidemiological situation in the EU/EEA. However, the evidence is still preliminary or is associated with major uncertainty. In addition, all the criteria for variants under monitoring outlined below apply.",
+        "LINEAGE": "Lineage + Additional Mutations",
+        "COUNTRY_FIRST_DETECTED": "Country First Detected",
+        "SPIKE_MUTATION": "Spike Mutation of Interest",
+        "DATE_OF_DETECTION": "Date of Detection"
+      },
+      "VARIANTS_OF_CONCERN_TREE": {
+        "TITLE": "Variants of Concern",
+        "RELATIONSHIP": "Phylogenetic relationships of Nextstrain SARS-CoV-2 clades."
+      },
+      "VARIANTS_OF_CONCERN_SUMMARY": {
+        "GENETIC_VARIATION": "Genetic variation",
+        "OPTIONS": "(mutation, strain, variant, cluster)",
+        "VARIANTS_OF_CONCERN": "Variants of Concern",
+        "DESCRIPTION": "For these variants, clear evidence is available indicating a significant impact on transmissibility,severity and/ or immunity that is likely to have an impact on the epidemiological situation in the EU/ EEA. The combined genomic, epidemiological, and in vitro evidence for these properties invokes at least moderate confidence. In addition, all the criteria for variants of interest and under monitoring outlined below apply.",
+        "SEQUENCING": "Sequencing",
+        "POSSIBLE_EXPLANATION": "Possible explanation of why tests are sequencing or the criteria for sequencing tests.",
+        "CRITERIA_1": "criteria 1",
+        "CRITERIA_2": "criteria 2",
+        "PROPORTION_OF_TESTS": "Proportion of tests sequenced",
+        "PROPORTION_OF_SEQUENCES": "Proportion of Sequences",
+        "DATE_OF_DETECTION": "Date of detection",
+        "NO_RECORDS_FOUND": "No records found"
+      },
+      "VARIANTS_OF_CONCERN": {
+        "TITLE": "Variants of Concern",
+        "DESCRIPTION": "For these variants, clear evidence is available indicating a significant impact on transmissibility, severity and/ or immunity that is likely to have an impact on the epidemiological situation in the EU/ EEA. The combined genomic, epidemiological, and in vitro evidence for these properties invokes at least moderate confidence. In addition, all the criteria for variants of interest and under monitoring outlined below apply.",
+        "VARIANTS_INFO": "Variants of Concern table info",
+        "TH_1": "Lineage + additional mutations",
+        "TH_2": "Country first detected (community)",
+        "TH_3": "Spike mutations of interest",
+        "TH_4": "Year and month of first detection",
+        "TH_5": "Impact on transmissibility",
+        "TH_6": "Impact on immunity",
+        "TH_7": "Impact on severity",
+        "TH_8": "Transmission in EU/EEA",
+        "TD_1": " The variant designation specified by one or more Pango lineages and any additional characteristic spike protein changes. An alternative description may be used if the variant is not easy to describe using this nomenclature. Each lineage in the table is linked to the respective lineage page of the Pango lineages website.",
+        "TD_2": " Only present if there is moderate confidence in the evidence relating to the first country of detection.",
+        "TD_3": " Not all spike protein amino acid changes are included - this is not a full reference of assignment of the variants. It includes changes to spike protein residues 319-541 (receptor binding domain) and 613-705 (the S1 part of the S1/ S2 junction and a small stretch on the S2 side), and any additional unusual changes specific to the variant",
+        "TD_4": " As reported in the GISAID EpiCoV database. This can be adjusted backwards in time if new retrospective detections are made.",
+        "EACH": "Each category is annotated as",
+        "INCREASED": "increased",
+        "REDUCED": "reduced",
+        "SIMILAR": "similar",
+        "UNCLEAR": "unclear",
+        "OR": "or",
+        "NO_EVIDENCE": "no evidence depending on the currently available evidence.",
+        "INCREASED_UPP": "Increased",
+        "MEANS": "means that there is evidence demonstrating that the property of the variant compared to the previously circulating variants is different enough that it is likely to have an impact on the epidemiological situation in the EU/EEA.",
+        "SIMILAR_UPP": "Similar",
+        "MEANS_THAT": "means that there is evidence that demonstrates that the property of this variant compared to previously circulating variants is similar enough that it is unlikely to have an impact on the epidemiological situation in the EU/EEA.",
+        "UNCLEAR_UPP": "Unclear",
+        "MEANS_UNCLEAR": "means that the current evidence is preliminary or contradictory enough to make the assessment uncertain.",
+        "NO_EVIDENCE_UPP": "No evicence",
+        "MEANS_EVIDENCE": "means that no evidence has yet been evaluated for this category.",
+        "THE_EVIDENCE": "The evidence is further annotated with",
+        "TO_INDICATE": "to indicate whether the evidence is available for the variant itself",
+        "OR_FOR": "or for mutations associated with the variant",
+        "CATEGORISED": "Categorised as",
+        "DOMINANT": "dominant",
+        "COMMUNITY": "community",
+        "OUTBREAK": "outbreak(s)",
+        "AND": "and",
+        "SPORADIC": "sporadic/travel",
+        "THE_CATEGORIES_ARE": "The categories are qualitative, and the assessment is based on surveillance data collected in TESSy, GISAID EpiCoV data, epidemic intelligence data, and direct communications with the affected countries."
+      },
+      "NON_GENOMIC_HOSPITALIZED": {
+        "TITLE": "Non Genomic Sequencing: Hospitalised",
+        "INCLUDE": "INCLUDE NON-SEQUENCED SAMPLES",
+        "DESCRIPTION": "For these variants, clear evidence is available indicating a significant impact on transmissibility, severity and/or immunity that is likely to have an impact on the epidemiological situation in the EU/EEA.The combined genomic, epidemiological, and in vitro evidence for these properties invokes at least moderate confidence.",
+        "LAST_VALUES": "Last values obtained on {{currentDate}}. Is updated on a daily basis.",
+        "SOURCE": "Source: Simulated Data as described above",
+        "DAILY": "DAILY",
+        "WEEKLY": "WEEKLY",
+        "CUMULATIVE": "CUMULATIVE"
+      },
+      "NON_GENOMIC_AGE_COHORTS": {
+        "TITLE": "Non Genomic Sequencing age cohorts",
+        "INCLUDE": "INCLUDE NON-SEQUENCED SAMPLES",
+        "DESCRIPTION": "For these variants, clear evidence is available indicating a significant impact on transmissibility,severity and/or immunity that is likely to have an impact on the epidemiological situation in the EU/EEA.The combined genomic, epidemiological, and in vitro evidence for these properties invokes at least moderate confidence.",
+        "LAST_VALUES_OBTAIN": "Last values obtained on {{currentDate}}. Is updated on a daily basis.",
+        "SOURCE": "Source: Simulated Data as described above",
+        "DAILY": "DAILY",
+        "WEEKLY": "WEEKLY",
+        "CUMULATIVE": "CUMULATIVE",
+        "NO_DATA": "No data to display"
+      },
+      "TITLE": "High Throughput Sequencing,",
+      "DESCR_1": "Variants of Interest and Variants of concern are based on ECDC data",
+      "DESCR_2": "Variants of Concern (VOC)",
+      "DESCR_3": "For these variants, clear evidence is available indicating a significant impact on transmissibility,severity and/or immunity that is likely to have an impact on the epidemiological situation in the EU/EEA.The combined genomic, epidemiological, and in vitro evidence for these properties invokes at least moderate confidence.In addition, all the criteria for variants of interest and under monitoring outlined below apply.",
+      "DESCR_4": "Variants of Interest (VOI)",
+      "DESCR_5": " For these variants, evidence is available on genomic properties, epidemiological evidence or in vitro evidence that could imply a significant impact on transmissibility, severity and/or immunity, realistically having an impact on the epidemiological situation in the EU/EEA. However, the evidence is still preliminary or is associated with major uncertainty. In addition, all the criteria for variants under monitoring outlined below apply."
+    },
+    "VACCINES": {
+      "VACCINATION_COVERAGE": {
+        "AVERAGE": "14 day rolling average",
+        "TITLE": "Vaccination Uptake: Vaccination Coverage",
+        "VACCINATION_STEP": "Vaccination is the most important step towards getting life back to normal. The figures on this page show the progress of vaccinations",
+        "VACCINATION_EUROPEAN": "European Medicines Agency (EMA) Recommended priority groups include people aged 60 years and above, pregnant or immunocompromised people, residents and staff of long-term care homes and healthcare workers.",
+        "ALL_POPULATION": "ALL POPULATION",
+        "EMA_PRIORITY": "EMA PRIORITY GROUPS",
+        "SECOND_TITLE": "Vaccination uptake",
+        "PROPORTIONAL": "Proportional",
+        "GROUPED": "Grouped",
+        "THIRD_TITLE": "Vaccination uptake:Over time"
+      },
+      "VACCINATION_DISTRIBUTION_BY_GENDER": {
+        "MALE": "Male",
+        "FEMALE": "Female",
+        "TITLE": "Vaccination Uptake: Distribution by gender",
+        "DESCRIPTION": "A rise in the number of patients could overburden hospitals. This number is also a valid indicator for epidemic growth.This section of the dashboard shows the number of patients admitted to hospital and the number of the regular hospital beds occupied by patients",
+        "ONE_DOSE": "1 Dose",
+        "TWO_DOSES": "2 Doses",
+        "THREE_DOSES": "3+ Doses"
+      },
+      "VACCINATIONS_BY_REPORT_DATE": {
+        "VACCINATIONS": "Vaccinations",
+        "AVERAGE": "Vaccinations (7-day average)",
+        "TITLE": "Vaccinations: Vaccinations by report date",
+        "DESCRIPTION": "A rise in the number of patients could overburden hospitals. This number is also a valid indicator for epidemic growth. This section of the dashboard shows the number of patients admitted to hospital and the number of regular beds occupied by patients",
+        "ONE_DOSE": "1 Dose",
+        "TWO_DOSES": "2 Doses",
+        "THREE_DOSES": "3+ Doses"
+      },
+      "VACCINATION_UPTAKE": {
+        "TITLE": "Daily information about the situation in your country.",
+        "SUBTITLE": "Information is presented with indicator cards."
+      },
+      "VACCINATIONS_SUMMARY": {
+        "TITLE": "Vaccination Uptake",
+        "WIP": " W.I.P",
+        "ALL_POPULATION": "All population",
+        "ONE_DOSE": "1 Dose",
+        "TWO_DOSES": "2 Doses",
+        "THREE_DOSES": "3+ Doses",
+        "EMA_RECOMMENDED": "EMA Recommended Population"
+      },
+      "VACCINATION_PROGRESS_BY_COHORTS": {
+        "TITLE": "Vaccination Uptake: Progress by cohorts",
+        "PROPORTIONAL": "Proportional",
+        "GROUPED": "Grouped",
+        "DESCRIPTION": "A rise in the number of patients could overburden hospitals. This number is also a valid indicator for epidemic growth.This section of the dashboard shows the number of patients admitted to hospital and the number of the regular hospital beds occupied by patients",
+        "AGE_GROUP": "AGE GROUP",
+        "RISK_GROUP": "RISK GROUP",
+        "HEALTHCARE_WORKERS": "HEALTHCARE WORKERS"
+      }
+    },
+    "ADMINISTRATION": {
+      "SERVICE_AVAILABILITY": "Service availability",
+      "API_AVAILABILITY": "API availability",
+      "DATABASE": "Database",
+      "PANDEM_SOURCE": "PandemSource",
+      "GO_DATA": "GoData",
+      "MODELLING": "Modelling",
+      "SERVICE_GATEWAY": "ServiceGateway",
+      "CONFIG_URL": "CONFIG URL",
+      "CHANGE_SOURCE_URL": "Change {{name}} URL",
+      "URL": "{{name}} URL",
+      "REQUEST_TIMEOUT": "RequestTimeout",
+      "SAVE": "Save",
+      "CLIENT_ID": "clientId",
+      "CLIENT_SECRET": "clientSecret",
+      "IMPORT_ENABLED": "Import Enabled",
+      "TIMEOUT": "Timeout",
+      "URL_MSG": "{{source}} URL has been successfully changed.",
+      "ACCESS_DENIED": "You do not have the necessary permission to access and modify the CONFIG URL!",
+      "SELECT_IMPORT_DATA_TYPE": "Select import data type",
+      "IMPORT_SMA_SUGGESTIONS": "Import SMA suggestions",
+      "NEW_IMPORT": "New import",
+      "START_IMPORT": "Start import",
+      "IMPORT_STARTED": "Import for {{selectedImports}} started",
+      "IMPORT_DETAILS": "Import Details",
+      "IMPORT_STATUS": "Import status",
+      "START_DATE": "Start date",
+      "END_DATE": "End date",
+      "END_DATE_HINT": "*all statistics refer to this selected interval, and more specifically, the end date.",
+      "STATUS": "Status",
+      "DATA_TYPE": "Data type",
+      "INFO": "Info",
+      "SOURCE_INFO": "Source info",
+      "SOURCE": "Source",
+      "NAME": "Name",
+      "DESCRIPTION": "Description",
+      "ACTIVE": "Active",
+      "LAST_IMPORT_DATE": "Last Import Date"
+    },
+    "EXPLORATION": {
+      "SAVE_SELECTIONS": "Save Selections",
+      "UPDATE_SELECTIONS": "Update Selections",
+      "SELECTIONS_DESCRIPTION": "Selections Description",
+      "SELECTIONS_NAME": "Selections Name",
+      "IS_PRIVATE": "Make this selections private",
+      "SAVE_MSG": "Selections has been successfully saved",
+      "LOAD_SELECTIONS": "Load Selections",
+      "SEARCH_SELECTION": "Search Selections",
+      "SELECTION_NAME": "Selections Name",
+      "NO_SELECTION_SAVED": "No selections saved!",
+      "NO_SELECTION_FOUND": "No selections found!",
+      "LOADED": "{{selection}} opened successfully.",
+      "DELETED": "{{selection}} deleted successfully.",
+      "SAVE": "Save",
+      "RENAME": "Rename",
+      "UPDATE": "Update",
+      "NEW": "New",
+      "LOAD": "Load",
+      "CLONE": "Clone",
+      "UPDATE_MSG": "Selections has been successfully updated",
+      "DELETE": "Delete",
+      "DELETE_TITLE": "Delete selections",
+      "DELETE_CONFIRM": "Are you sure you want to delete this selections?",
+      "DELETE_ERROR": "Deletion of this selections is restricted to the owner.",
+      "UPDATE_ERROR": "Updating this selections is limited to its owner.",
+      "TITLE": "EXPLORATION",
+      "CARD_CONTENT": "This page allows the user to explore the data in terms of regions and indicators",
+      "SEARCH": "Search",
+      "PLACEHOLDER": "Region",
+      "COUNTRY": "Country",
+      "COUNTY": "County",
+      "SELECTED_REGION": "Selected Regions",
+      "SELECTED_INDICATORS": "Selected Indicators",
+      "TIME_INTERVAL": "Time Interval",
+      "EXPLORATION_SELECTIONS": "Exploration Selections",
+      "TESTING_POLICY": "TESTING POLICY: OxCGRT"
+    },
+    "MODELLING": {
+      "COMMON": {
+        "CANCEL": "CANCEL",
+        "SAVE": "SAVE",
+        "SAVING": "SAVING",
+        "SAVED": "SAVED",
+        "UPDATE": "UPDATE",
+        "CREATE_NEW": "CREATE NEW",
+        "BACK": "BACK",
+        "CONTINUE": "CONTINUE",
+        "EDIT": "EDIT",
+        "MODIFY": "MODIFY",
+        "RUN": "RUN",
+        "LOAD": "LOAD",
+        "VIEW": "VIEW",
+        "CLICK": "Click",
+        "HIDE": "Hide",
+        "SHOW": "Show",
+        "BASELINE": "Baseline",
+        "ALTERNATIVE": "Alternative",
+        "SCENARIO": "scenario"
+      },
+      "STATUS": {
+        "SAVED": "Scenario saved successfully.",
+        "SAVING": "Please wait until the scenario is saved.",
+        "SAVE_FAILED": "Scenario failed to save.",
+        "UPDATED": "Scenario updated successfully.",
+        "UPDATE_FAILED": "Scenario failed to update.",
+        "LOADED": "Scenario loaded successfully",
+        "LOAD_FAILED": "Scenario failed to load",
+        "DELETED": "{{scenario}} deleted successfully.",
+        "DELETE_FAILED": "{{scenario}} couldn't be deleted.",
+        "CALCULATING_PROBABILITY_OF_INFECTION": "Calculating the probability of infection...",
+        "ERROR_CALCULATING_PROBABILITY_OF_INFECTION": "Error calculating the probability of infection. Using default value.",
+        "RUNNING_SIMULATION": "Running simulation...",
+        "ERROR_RUNNING_SIMULATION": "There was an error running this simulation",
+        "SIMULATION_SERVER_UNAVAILABLE": "Simulation server is not available"
+      },
+      "TOOLTIPS": {
+        "EDIT_SCENARIO": "Edit scenario",
+        "DELETE_SCENARIO": "Delete scenario",
+        "DELETE_ALTERNATIVE": "Delete scenario",
+        "MODIFIED_SCENARIO": "Scenario modified, save your changes",
+        "SCENARIO_INFORMATION": "Scenario information",
+        "SHARE_SCENARIO": "Share scenario",
+        "LIST_VIEW": "List view",
+        "GRID_VIEW": "Grid view"
+      },
+      "BREADCRUMBS": {
+        "MODELLING_HOME": "Modelling Home",
+        "PREVIOUS_SCENARIOS": "Previous Scenarios",
+        "SCENARIO_RESULTS": "Scenario Results"
+      },
+      "HEADER": {
+        "HEADER_TITLE": "Modelling",
+        "HEADER_DESCRIPTION": "To run a simulation, begin by setting a baseline scenario. Under Actions, choose Configure and run a new scenario. Choose model parameters, add a name and a description, run the scenario and view the results. Results include both epidemiological indicators such as cases and deaths, and estimated demand on hospital resources. If you would like to experiment with different policies, create an alternative scenario, change some of the model settings, and run again to compare results. Create your own visualisations using the Exploration section at the bottom of the page."
+      },
+      "ACTIONS": {
+        "ACTIONS_TITLE": "Actions",
+        "CARD_TITLE": "SCENARIO",
+        "CONFIGURE_NEW": "Configure and run new scenario",
+        "CONFIGURE_NEW_DESCRIPTION": "Run a new scenario and view the results",
+        "CREATE_NEW": "Create new scenario",
+        "CREATE_NEW_DESCRIPTION": "Remove the current baseline scenario and create a new one"
+      },
+      "HOME": {
+        "PREVIOUS_SCENARIOS": "Previous Scenarios",
+        "MODEL_INFORMATION": "Model Information"
+      },
+      "SCENARIO_SUMMARY": {
+        "CARD_TITLE": "SCENARIOS",
+        "LAST_RUN_SCENARIO": "LAST RUN SCENARIO",
+        "MODIFIED": "MODIFIED",
+        "ADD_SCENARIO_FOR_COMPARISON": "ADD SCENARIO FOR COMPARISON",
+        "NO_PREVIOUS_SCENARIOS": "No previous scenarios found",
+        "DESCRIPTION_TITLE": "Description",
+        "DESCRIPTION_HINT": "Click on the description field to edit...",
+        "CONFIRM_DELETE_SCENARIO": "Are you sure you want to delete this scenario",
+        "CONFIRM_DELETE_ALTERNATIVE": "Are you sure you want to delete this alternative scenario"
+      },
+      "SCENARIO_SHARE": {
+        "SHARE_SCENARIO": "Share scenario",
+        "SHARE_LINK": "Share link",
+        "COPY_LINK": "COPY LINK",
+        "COPY_SUCCESS": "You've successfully copied to clipboard."
+      },
+      "PREVIOUS_SCENARIOS": {
+        "CARD_TITLE": "SCENARIO",
+        "PREVIOUS_SCENARIOS": "Previous Scenarios",
+        "PREVIOUS_SCENARIOS_DESCRIPTION": "A list of the user's previously run scenarios.",
+        "NO_PREVIOUS_SCENARIOS": "No previous scenarios found",
+        "FILTER_TITLE": "Filter by tags",
+        "SEARCH_TITLE": "Search by name",
+        "SEARCH_PLACEHOLDER": "Search",
+        "SORT_TITLE": "Sort",
+        "SORT_NAME_ASCENDING": "Name ascending",
+        "SORT_NAME_DESCENDING": "Name descending",
+        "SORT_DATE_ASCENDING": "Date ascending",
+        "SORT_DATE_DESCENDING": "Date descending"
+      },
+      "RESULTS": {
+        "TAB_EPI_TITLE": "Epidemiological indicators and exploration",
+        "TAB_EPI_DESCRIPTION": "Cases, attack rate, admissions and deaths",
+        "TAB_HOSPITAL_TITLE": "Hospital occupancy and stress indicators",
+        "TAB_HOSPITAL_DESCRIPTION": "Pandemic ward and ICU occupancy, increase in demand and potential deaths",
+        "TAB_RESOURCES_TITLE": "Peak demand, resources & resource gaps",
+        "TAB_RESOURCES_DESCRIPTION": "Highest estimated need vs availability, expected resource gaps",
+        "TAB_ANALYSIS_TITLE": "Analysis",
+        "TAB_ANALYSIS_DESCRIPTION": "Resources, patient pathways, and ICU exploration"
+      },
+      "OPTIONS": {
+        "GRAPH_OPTIONS": "GRAPH OPTIONS",
+        "OPTIONS": "OPTIONS",
+        "COLLAPSE": "Collapse",
+        "EXPAND": "Expand",
+        "MOVE_UP": "Move up",
+        "MOVE_DOWN": "Move down",
+        "COPY_TO_REPORT": "Copy to report",
+        "REMOVE": "Remove",
+        "ADD_GRAPH": "Add graph",
+        "SAVE_WARNING": "Save the scenario to enable copy to report"
+      },
+      "SCENARIO_CONFIGURATION": {
+        "MODEL_CONFIGURATION": "Model Configuration",
+        "MODEL_DATA": "Model Data",
+        "EDIT_PARAMETERS": "Edit Parameters",
+        "PATHOGEN_TITLE": "Which Pathogen would you like to run the Scenario for?",
+        "ERROR_NO_MODELS_AVAILABLE": "No models available. Please contact an administrator!",
+        "ERROR_NO_MODEL_SELECTED": "Please select a model!",
+        "PREVIOUS_CONFIGURATION_TITLE": "Would you like to load parameter values from a previous Scenario?",
+        "PREVIOUS_CONFIGURATION_INPUT": "Previous Configuration",
+        "PREVIOUS_CONFIGURATION_HINT": "Choose the default configuration set up...",
+        "R0_TITLE": "Basic reproduction number - R\u2080",
+        "R0_RANGE": "Range 2.0 to 4.0",
+        "REGION_TITLE": "Which region would you like to run the Scenario for?",
+        "REGION_INPUT": "Region",
+        "REGION_HINT": "Choose the region from the drop down menu...",
+        "ENTER_SCENARIO_INFORMATION": "ENTER SCENARIO INFORMATION",
+        "SCENARIO_NAME_TITLE": "Name your scenario",
+        "SCENARIO_NAME_INPUT": "Scenario Name",
+        "SCENARIO_NAME_HINT": "Choose a name for the scenario...",
+        "DESCRIPTION_TITLE": "Add any other information regarding the scenario",
+        "DESCRIPTION_INPUT": "Description",
+        "DESCRIPTION_HINT": "Enter a description or similar information about the model run...",
+        "TAGS_TITLE": "Add tags to the scenario",
+        "TAGS_INPUT": "Choose Model Tags",
+        "TAGS_HINT": "Add tags to the model run...",
+        "EDIT_PARAMETERS_TITLE": "Would you like to view or edit any of the model parameters?",
+        "MODEL_PARAMETERS": "All Model Parameters",
+        "MODEL_PARAMETERS_DESCRIPTION": "View and edit all model parameters at the same time.",
+        "PARAMETERS_UPDATED": "Some parameters have recently changed.",
+        "UPDATED_AT": "Updated at {{date}}."
+      },
+      "PARAMETER_CONFIGURATION": {
+        "CHOOSE_PARAMETERS_TITLE": "Choose which parameters you would like to view or change...",
+        "CHOOSE_PARAMETERS_INFO": "for parameter definitions",
+        "PARAMETER_DEFINITIONS": "parameter definitions",
+        "RESET_PARAMETERS_TITLE": "Reset all parameters back to initial baseline values",
+        "RESET_BUTTON": "RESTORE",
+        "ALTERNATIVE_SCENARIO_NAME_TITLE": "Name the alternative scenario",
+        "ALTERNATIVE_SCENARIO_NAME_INPUT": "Alternative Scenario Name",
+        "REGION_TITLE": "Which region would you like to run the Scenario for?",
+        "REGION_INPUT": "Region",
+        "REGION_INPUT_HINT": "Choose the region from the drop down menu...",
+        "NAME_ERROR": "Please use a different name!",
+        "PARAMETER_ERROR": "{{param}} is not valid!",
+        "GENERIC_PARAMETER": "A parameter"
+      },
+      "MODEL_DESCRIPTION": {
+        "TAB_OVERVIEW": "Overview",
+        "TAB_HOSPITAL_RESOURCES": "Hospital Resources Model",
+        "OVERVIEW_TITLE": "COMBINED EPI + RESOURCES MODEL STRUCTURE",
+        "OVERVIEW_PARAGRAPH_1": "1. The Epidemiological component (epi) models the transmission dynamics of an acute infectious disease such as avian influenza by categorising individuals according to their infectious status (Susceptible-Exposed- Infectious-Recovered). This structure allows users to estimate the proportion of people infected and, more importantly, test the likely effect of public policies aimed at controlling the spread of the disease. This component also provides the signal for the Hospital module, driving the demand for hospital resources.",
+        "OVERVIEW_PARAGRAPH_2": "2. The Hospital module models the movement of patients through the hospital system and focuses on ward beds and ICU beds. Patient pathways - from waiting for a ward or ICU bed, to admission to a ward or ICU (or to overflows), to occupying a ward or ICU bed, to patient discharges or deaths - are all governed over time by adjustable model parameters, e.g. hospitalisation rate, mortality rate and average length of stay in ICU. The number of patients in the various stages of this simulated process (e.g. waiting for a bed or in a ward bed) each provide a signal for the Hospital resources module, where associated resource needs and current usage will be calculated.",
+        "OVERVIEW_PARAGRAPH_3": "3. The Hospital Resources module calculates the need for resources for patients who need or who occupy a ward bed or an ICU bed. Ward patients each need not only a physical bed but a share of a nurse's time. ICU patients need a physical ICU bed, a share of an ICU nurse's time, and many will also require a ventilator. All nurses require PPE in order to work safely with patients. All these resources are limited, and availability and gaps are calculated. This module also calculates the number of staffed ward beds and staffed, equipped ICU beds available, and these provide signals back to the Hospital module, where they are used to limit admission flows into ward beds and ICU beds.",
+        "OVERVIEW_PARAGRAPH_4": "The three modules, represented in the above diagram, are all contained within one Stella Architect model (.stmx) file. It is a system dynamics (compartmental) model.",
+        "OVERVIEW_PARAGRAPH_5": "The Epidemiological component (1) is described in more detail under the 'Epi Model' section. The Hospital and Hospital Resources components (2 and 3) are described under the 'Hospital Resources Model' section.",
+        "HOSPITAL_RESOURCES_TITLE_1": "Model Structure",
+        "HOSPITAL_RESOURCES_SUBTITLE_1": "Hospital Module (Patient Pathways)",
+        "HOSPITAL_RESOURCES_PARAGRAPH_1": "The model includes two types of patient beds: ward and ICU.",
+        "HOSPITAL_RESOURCES_PARAGRAPH_2": "The flow of hospitalised patients is driven by the Epi model – they are a proportion (determined by the hospitalisation fraction) of infectious individuals, detected or undetected, within each age cohort, who have developed symptoms. These patients are admitted either to ward or directly to ICU (depending on the parameter fraction ICU). Ward patients stay in the ward for the average length of stay, before being discharged, being admitted to ICU, or dying (according to parameters LOS ward, fraction ward to ICU and ward fatality rate). ICU patients stay in ICU for the average length of stay, before being discharged to a ward or dying (according to parameters LOS ICU and ICU fatality rate).",
+        "HOSPITAL_RESOURCES_PARAGRAPH_3": "If wards are full, patients flow to Ward Overflow. If ICU units are full, patients flow to ICU Overflow.",
+        "HOSPITAL_RESOURCES_SUBTITLE_2": "Hospital Resources module",
+        "HOSPITAL_RESOURCES_PARAGRAPH_4": "The hospital resources included in the model are: physical ward beds and ICU beds, ward nurses and ICU nurses, physicians, ventilators, morgue places, PPE, oxygen, therapeutic antivirals and previous strain vaccines.",
+        "HOSPITAL_RESOURCES_PARAGRAPH_5": "The key resources of interest are operable ward beds and ICU beds. These consist of several of the above resources in particular combinations and proportions. An operable, or staffed, ward bed requires one physical bed and a share of a nurse's time. An operable, or staffed and equipped ICU bed, is similar, but will usually also require a ventilator. All staff require PPE. These resources dependencies can be represented as shown below:",
+        "HOSPITAL_RESOURCES_PARAGRAPH_6": "The proportions shown in the above figure are governed by adjustable model parameters (default values shown).",
+        "HOSPITAL_RESOURCES_PARAGRAPH_7": "The Hospital Resources module calculates the capacity of staffed ward beds and staffed, equipped ICU beds available over time. These calculations take into account current bed occupancy and resource dependencies such as beds, nurses and PPE, as represented in the model snippet below for ward beds.",
+        "HOSPITAL_RESOURCES_PARAGRAPH_8": "The model variable staffed ward beds available (circled, above) provides a signal back to the Hospital module (below), where it limits the flow of admissions into ward beds over time. Patients are sent to ward overflow if there is no available capacity.",
+        "HOSPITAL_RESOURCES_PARAGRAPH_9": "In a similar way, current ICU capacity calculations limit admissions into ICU, sending patients to ICU overflow if there is no available capacity.",
+        "HOSPITAL_RESOURCES_TITLE_2": "Model Parameters",
+        "HOSPITAL_RESOURCES_PARAGRAPH_10": "Some model parameters such as population and national resource figures are collated and entered into the system centrally, not by the user. They can be inspected under 'Scenario information > Regional data' when viewing scenario results.",
+        "HOSPITAL_RESOURCES_PARAGRAPH_11": "There are many user-adjustable model parameters, conveniently grouped by category. Users are presented with default values which can be changed. One category is Hospital resources, which include resource usage rates, shown here with default values:",
+        "HOSPITAL_RESOURCES_PARAGRAPH_12": "Another important category is Disease severity, which includes parameters such as hospitalisation rates, length of stay and fatality rates by age cohort. These parameters govern the movement of patients through the system and their need for and consumption of resources. They were estimated by our public health partners for a fictional novel avian flu pandemic to be used for the Pandem-2 Functional Exercise.",
+        "HOSPITAL_RESOURCES_PARAGRAPH_13": "Parameters can be adjusted when scenarios are created, and current parameter settings can be seen under 'Scenario information' after running the scenario (click 'i' at any time). Users can create alternative scenarios with different values for the same parameter and compare the results on key indicators.",
+        "HOSPITAL_RESOURCES_TITLE_3": "Model Assumptions",
+        "HOSPITAL_RESOURCES_PARAGRAPH_14": "Any model is necessarily a simplification of complex reality but can nevertheless be useful. Modelling is done for a specific purpose, not to represent reality in every detail. Simplicity of structure has the advantage of making the model more understandable and can often capture the most important behaviour of interest. It is important to state model assumptions for transparency. The model assumptions listed below are some of the key assumptions (not exhaustive) made in consultation with project partners when building this resources model. They can be reviewed and refined in further iterations of model development as required, and where data exists or can be estimated for the necessary parameter values.",
+        "HOSPITAL_RESOURCES_TABLE_CONTENT_1": "Ward overflow patients have the same outcomes as ward patients (LOS, deaths and discharges). This is because sicker patients will be prioritised and will not go to overflow.",
+        "HOSPITAL_RESOURCES_TABLE_CONTENT_2": "ICU overflow patients are at risk of dying from a lack of access to ICU (according to parameter denied ICU fatality rate).",
+        "HOSPITAL_RESOURCES_TABLE_CONTENT_3": "Patients in overflows are included in counts of bed gaps.",
+        "HOSPITAL_RESOURCES_TABLE_CONTENT_4": "The hospitalisation fraction and other disease severity parameters are not affected by vaccination.",
+        "HOSPITAL_RESOURCES_TABLE_CONTENT_5": "Therapeutic antivirals are administered to ward patients only and reduce ward fatality rate, average LOS in ward, and ward to ICU fraction.",
+        "HOSPITAL_RESOURCES_TABLE_CONTENT_6": "Vaccines for previous strains that are effective in reducing serious illness are administered to ICU patients only and reduce ICU ward fatality rate and average LOS in ICU.",
+        "HOSPITAL_RESOURCES_TABLE_CONTENT_7": "Bodies are usually taken from hospital beds and held in hospital morgues until funeral homes arrange to collect them. If morgues are swamped, bodies cannot be taken from the beds, and this can be a 'bed blocker'. If there are more beds blocked than the threshold number, emergency measures are taken (e.g. calling in the army) to remove bodies to temporary morgues.",
+        "HOSPITAL_RESOURCES_TABLE_CONTENT_8": "Peak demand for resources is calculated using a 'no limits' scenario, in which all patients presenting in hospital will have their care needs met. Otherwise, peak demand for some resources can be underestimated (for example only ventilators needed for patients in ICU would be counted, not taking into account ICU overflow patients).",
+        "HOSPITAL_RESOURCES_TABLE_CONTENT_9": "Physicians are not modelled as a constraining resource, as nurses are. In practice, nurses tend to be the principal limiting resource.",
+        "HOSPITAL_RESOURCES_TABLE_CONTENT_10": "Oxygen is consumed at the same rate for all age cohorts (no age related data). Ward patients have HFNO or LFNO (high flow or low flow nasal oxygen) for one day less than LOS. ICU patients use ventilators for all their time in ICU. Ventilators are only used in ICU.",
+        "HOSPITAL_RESOURCES_TABLE_CONTENT_11": "PPE supplies are unconstrained (can be reordered as necessary), unless the modelling option 'interruption in PPE supply' is switched on.",
+        "HOSPITAL_RESOURCES_TABLE_CONTENT_12": "When workload is increased to meet demand, ward and ICU nurses 'burn out' at the same rate (default 5%). This effect is invoked when the nurse to patient ratio is reduced, meaning that nurses have to work harder to see more patients.",
+        "HOSPITAL_RESOURCES_TABLE_CONTENT_13": "At the beginning of the scenario run, by default 50% of hospital resources are pre-allocated for pandemic use. The remaining 50% are available for routine care. Surge capacity increases the proportion set aside for pandemic use, decreasing the proportion for routine care still further.",
+        "HOSPITAL_RESOURCES_TITLE_4": "Further information",
+        "HOSPITAL_RESOURCES_PARAGRAPH_15": "Links to further information about the resource model will be added here when available.",
+        "HOSPITAL_RESOURCES_TEXTARRAY_1": "Challenges and lessons learned from developing a hospital resources model to support pandemic preparedness and response,",
+        "HOSPITAL_RESOURCES_TEXTARRAY_2": " Green, C et al., forthcoming.",
+        "HOSPITAL_RESOURCES_TEXTARRAY_3": "Pandem-2 Deliverable 4.5, Resource Planning System (software and documentation)",
+        "HOSPITAL_RESOURCES_TEXTARRAY_4": "will be made available in future here: ",
+        "HOSPITAL_RESOURCES_TEXTARRAY_5": "https://pandem-2.eu/pandem-2-deliverables/",
+        "HOSPITAL_RESOURCES_TEXTARRAY_6": ", and via the EU CORDIS website, ",
+        "HOSPITAL_RESOURCES_TEXTARRAY_7": "https://cordis.europa.eu/",
+        "HOSPITAL_RESOURCES_TEXTARRAY_8": "."
+      },
+      "EPIDEMIOLOGICAL_INDICATORS": {
+        "TITLE": "Epidemiological Indicators",
+        "CASES_CHART_TITLE": "Cases",
+        "ATTACK_RATE_CHART_TITLE": "Attack rate",
+        "ADMISSIONS_CHART_TITLE": "Admissions",
+        "DEATHS_CHART_TITLE": "Deaths"
+      },
+      "HOSPITAL_OCCUPANCY": {
+        "TITLE": "Hospital Occupancy",
+        "DESCRIPTION": "Expected ward and ICU occupancy by pandemic patients. Occupancy levels are limited by available capacity, which can be 'stretched' by surge strategies. Total in hospital includes people in beds, overflows and waiting for a bed.",
+        "WARD_OCCUPANCY_CHART_TITLE": "Ward occupancy",
+        "ICU_OCCUPANCY_CHART_TITLE": "ICU occupancy",
+        "ICU_ADMISSIONS_CHART_TITLE": "ICU admissions",
+        "TOTAL_IN_HOSPITAL_CHART_TITLE": "Total in hospital"
+      },
+      "HOSPITAL_STRESS_INDICATORS": {
+        "TITLE": "Hospital Stress Indicators",
+        "DESCRIPTION": "Expected demand for ward beds and ICU beds arising from the pandemic compared to normal capacity in hospitals expressed as a multiple. E.g. If pandemic demand for ICU peaks at 2, this means the pandemic demand is expected to peak at twice the normal ICU capacity.",
+        "DESCRIPTION_NOTE": "Note: This pandemic demand is in addition to routine demands. Pandemic patients are additional patients and will tend to displace routine patients and procedures.",
+        "DEMAND_INCREASE": "Estimated increase in demand on resources and overall stress code",
+        "POTENTIAL_DEATHS": "Potential additional deaths",
+        "WARD_DEMAND_CHART_TITLE": "Ward Demand",
+        "ICU_DEMAND_CHART_TITLE": "ICU Demand",
+        "STRESS_CODE_CHART_TITLE": "Stress Code",
+        "TIMES_NORMAL_WARD_CAPACITY": "times normal ward capacity",
+        "TIMES_NORMAL_ICU_CAPACITY": "times normal ICU capacity",
+        "STRESS_CODE_1": "Some routine services postponed",
+        "STRESS_CODE_2": "Only most critical services available, with reduced quality of care",
+        "STRESS_CODE_3": "No more planned work can be delayed. Life or death protocols invoked for critical patients",
+        "TOTAL_EXPECTED_DEATHS": "Total Expected Deaths",
+        "TOTAL_EXPECTED_DEATHS_DESCRIPTION": "Deaths expected given the accepted ward and ICU fatality rates",
+        "TOTAL_EXPECTED_DEATHS_NOTE": "i.e. not including potential deaths caused by lack of ICU capacity",
+        "TOTAL_POTENTIAL_DEATHS": "Total potential deaths from lack of ICU",
+        "TOTAL_DEATHS_REPORTED": "Total Deaths Reported"
+      },
+      "ESTIMATED_RESOURCE_GAPS": {
+        "TITLE": "Estimated Resource Gaps",
+        "DESCRIPTION": "Estimate and analyse the gaps affecting admissions to ward and ICU. See what component resources cause the gaps. Component resources can be viewed by expanding the notification cards.",
+        "STAFFED_WARD_BEDS_AVAILABLE": "Staffed Ward Beds Available",
+        "STAFFED_ICU_BEDS_AVAILABLE": "Staffed Equipped ICU Beds Available",
+        "STAFFED_WARD_BEDS_AVAILABLE_CHART_TITLE": "Staffed Ward Beds Available",
+        "STAFFED_ICU_BEDS_AVAILABLE_CHART_TITLE": "Staffed Equipped Beds",
+        "PHYSICAL_WARD_BEDS_CHART_TITLE": "Physical Ward Beds",
+        "WARD_NURSES_CHART_TITLE": "Ward Nurses",
+        "PHYSICAL_ICU_BEDS_CHART_TITLE": "Physical ICU Beds",
+        "ICU_NURSES_CHART_TITLE": "ICU Nurses",
+        "VENTILATORS_CHART_TITLE": "Ventilators",
+        "WARD_BEDS_GAP": "A gap in staffed ward beds appears on",
+        "ICU_BEDS_GAP": "A gap in staffed ICU beds appears on",
+        "GENERAL_GAP": "A gap appears on",
+        "DAY": "Day"
+      },
+      "PEAK_DEMAND": {
+        "TITLE": "Estimated Peak Demand vs Resources Available",
+        "DESCRIPTION": "The peak demand for each resource is the highest estimated need in a single day. Figures are based on bed occupancy, taking into account average length of stay of patients. Ideally, capacity would meet this peak need. The graph contrasts the estimated peak demand with the total capacity available in the region, and the proportion of capacity pre-allocated for the pandemic.",
+        "CHART_TITLE": "Peak Demand vs Resources Available",
+        "CHART_SUBTITLE": "Comparing total resources available, resources made available for the pandemic, and peak scenario values",
+        "TOTAL_AVAILABLE": "Total Available Resources",
+        "PROPORTION_AVAILABLE": "Proportion made available for Pandemic",
+        "PEAK_NEEDS": "Peak needs during scenario",
+        "ICU_BEDS": "ICU Beds",
+        "ICU_NURSES": "ICU Nurses",
+        "WARD_BEDS": "Ward Beds",
+        "NURSES": "Nurses",
+        "VENTILATORS": "Ventilators"
+      },
+      "ANALYSIS": {
+        "TITLE": "Analysis",
+        "RESOURCE_HEATMAP": "Resource Heatmap",
+        "PATIENT_SANKEY": "Patient Sankey",
+        "ICU_LINE_CHART": "ICU Line Chart",
+        "ICU_NURSES_BAR_CHART": "ICU Nurses Bar Chart",
+        "PEAK_VS_AVAILABLE_RESOURCES": "Peak vs Available Resources",
+        "HOSPITAL_RESOURCES": "Hospital Resources",
+        "HOSPITAL_RESOURCES_DESCRIPTION": "Heatmap showing hospital resource data. The data in this graph has been normalised into percentages to account for divergent numbers and allow presentation in the graph below",
+        "PATIENT_PATHWAYS": "Patient Pathways",
+        "PATIENT_PATHWAYS_DESCRIPTION": "Sankey diagram showing patient pathways in hospital on day",
+        "ICU_RESOURCES": "ICU Resources",
+        "ICU_RESOURCES_DESCRIPTION": "Line Graph showing ICU resources throughout the scenario. Hover over legend variable to highlight it in the graph. Click on the legend to add or remove a line from the chart.",
+        "ICU_NURSES": "ICU Nurses",
+        "ICU_NURSES_DESCRIPTION": "Bar Graph showing ICU nurse resources",
+        "PEAK_VS_AVAILABLE": "Peak Demand vs Resources available percentages on a given day",
+        "PEAK_VS_AVAILABLE_DESCRIPTION": "Radar Chart displaying available vs peak resources on day",
+        "PEAK_VS_AVAILABLE_NOTE": "Data has been normalised to percentages to allow display",
+        "HOSPITAL_ADMISSIONS": "Hospital Admissions",
+        "HOSPITAL_OCCUPANCY": "Hospital Occupancy",
+        "WARD_ADMISSIONS": "Ward Admissions",
+        "WARD": "Ward",
+        "WARD_DISCHARGES": "Ward Discharges",
+        "DISCHARGES": "Discharges",
+        "ICU_ADMISSIONS": "ICU Admissions",
+        "ICU": "ICU",
+        "ICU_DISCHARGES": "ICU Discharges",
+        "WARD_OVERFLOW": "Ward Overflow",
+        "OVERFLOW": "Overflow",
+        "ICU_OVERFLOW": "ICU Overflow",
+        "PATIENTS_WAITING_FOR_WARD_BED": "Patients Waiting for Ward Bed",
+        "PATIENTS_WAITING_FOR_BEDS": "Patients Waiting for Beds",
+        "PATIENTS_WAITING_FOR_ICU_BED": "Patients Waiting for ICU Bed",
+        "DEATHS_IN_HOSPITAL": "Deaths in Hospital",
+        "TOTAL_ICU_NURSES": "Total ICU nurses available for pandemic",
+        "PEAK_ICU_BEDS": "Peak demand ICU beds vs physical ICU beds available",
+        "PEAK_ICU_NURSES": "Peak demand ICU nurses vs max available ICU nurses",
+        "PEAK_VENTILATORS": "Peak demand ventilators vs ventilators available",
+        "PEAK_WARD_BEDS": "Peak demand ward beds vs physical ward beds available",
+        "PEAK_NURSES": "Peak demand nurses vs max available nurses",
+        "PEAK_PPE": "Peak demand PPE vs PPE available",
+        "RESOURCES_AVAILABLE": "Resources Available",
+        "PEAK_DEMAND": "Peak Demand"
+      },
+      "EXPLORATION": {
+        "SECTION": {
+          "TITLE": "Exploration",
+          "DESCRIPTION": "Explore all the outputs of the scenario. In the Values box below select all the values you would like to see in the graph. If you wish to add a plot line select the value in the plot line selection box. Choose how to view the graph with the graph options buttons.",
+          "ADD_GRAPH": "ADD GRAPH"
+        },
+        "CHART": {
+          "TITLE": "Modelling Exploration",
+          "PLOTLINES": "Plotlines",
+          "VALUES": "Values",
+          "LINE_CHART": "Line Chart",
+          "BAR_CHART": "Bar Chart",
+          "AREA_CHART": "Area Chart",
+          "LINEAR": "LINEAR",
+          "LOG": "LOG",
+          "VIEW_BY_SCENARIO": "View by scenario",
+          "VIEW_BY_INDICATOR": "View by indicator"
+        },
+        "ADD_GRAPH": {
+          "OUTPUTS_TITLE": "Select the outputs you would like to visualise...",
+          "OUTPUTS_INFO": "for output definitions",
+          "OUTPUT_DEFINITIONS": "output definitions",
+          "PLOTLINES_TITLE": "Which outputs should be plot lines?",
+          "PLOTLINES_DESCRIPTION": "Plot lines are a list of lines stretching across the plot area, marking a specific value on one of the axes",
+          "NO_OUTPUT_ERROR": "You must select at least 1 output",
+          "CATEGORIES": {
+            "GENERAL_INDICATORS": "General indicators",
+            "WARD": "Ward",
+            "WARD_NURSES": "Ward nurses",
+            "PHYSICAL_WARD_BEDS": "Physical ward beds",
+            "STAFFED_WARD_BEDS": "Staffed ward beds",
+            "WARD_PATIENTS": "Ward patients",
+            "ICU": "ICU",
+            "ICU_NURSES": "ICU nurses",
+            "PHYSICAL_ICU_BEDS": "Physical ICU beds",
+            "STAFFED_EQUIPPED_ICU_BEDS": "Staffed equipped ICU beds",
+            "ICU_PATIENTS": "ICU patients",
+            "ICU_DEATHS": "ICU deaths",
+            "HOSPITAL_INDICATORS": "Hospital indicators",
+            "HOSPITAL_PEAKS": "Hospital peaks",
+            "HOSPITAL_TOTALS": "Hospital totals",
+            "VACCINATIONS": "Vaccinations",
+            "THERAPEUTICS": "Therapeutics",
+            "PPE": "PPE",
+            "VENTILATORS": "Ventilators",
+            "OXYGEN": "Oxygen",
+            "STRESS_INDICATORS": "Stress indicators",
+            "MORGUE": "Morgue",
+            "PHYSICIANS": "Physicians",
+            "SURGE_STRATEGIES_ACTIVATED": "Surge strategies activated"
+          }
+        }
+      },
+      "INFO": {
+        "PARAMETER_VALUES": "Parameter values for",
+        "PARAMETER_INFO": "for parameter definitions",
+        "PARAMETER_DEFINITIONS": "parameter definitions"
+      },
+      "AGES": {
+        "A": "< 15",
+        "B": "15-24",
+        "C": "25-64",
+        "D": "65+",
+        "E": "Total",
+        "TOTAL": "Total"
+      },
+      "INPUTS": {
+        "PROPERTIES": {
+          "LIMITS": "Limits",
+          "MIN": "Min",
+          "MAX": "Max"
+        },
+        "CATEGORIES": {
+          "PUBLIC_HEALTH_POLICIES": {
+            "NAME": "Public health policies",
+            "SHORT_DESCRIPTION": "Vaccination, lockdown, mask wearing, testing",
+            "LONG_DESCRIPTION": "Vaccination, lockdown, mask wearing, testing, etc."
+          },
+          "DISEASE_SEVERITY": {
+            "NAME": "Disease severity",
+            "SHORT_DESCRIPTION": "Hospitalisation rates, length of stay, fatality rates",
+            "LONG_DESCRIPTION": "Hospitalisation rates, length of stay in hospital, fatality rates, etc."
+          },
+          "HOSPITAL_RESOURCES": {
+            "NAME": "Hospital resources",
+            "SHORT_DESCRIPTION": "Pandemic resource allocation, resource usage rates, PPE",
+            "LONG_DESCRIPTION": "Pandemic resource allocation, resource usage rates, PPE, etc."
+          },
+          "HOSPITAL_SURGE_STRATEGIES": {
+            "NAME": "Hospital surge strategies",
+            "SHORT_DESCRIPTION": "Reducing resource consumption & Increasing capacity",
+            "LONG_DESCRIPTION": "Reducing resource consumption & increasing capacity in a surge"
+          },
+          "MODELLING_OPTIONS": {
+            "NAME": "Modelling options",
+            "SHORT_DESCRIPTION": "Optional model behaviour and settings",
+            "LONG_DESCRIPTION": "Optional model behaviour and settings"
+          },
+          "REGIONAL_DATA": {
+            "NAME": "Regional data",
+            "SHORT_DESCRIPTION": "Population, contact rates & resource data",
+            "LONG_DESCRIPTION": "Population, contact rates, resource data, etc"
+          }
+        },
+        "SUBCATEGORIES": {
+          "VACCINATION": "Vaccination",
+          "MOBILITY": "Mobility",
+          "TESTING_ISOLATION": "Testing & isolation",
+          "CONTACT_TRACING": "Contact tracing",
+          "MASK_WEARING": "Mask wearing",
+          "HOSPITALISATION_PARAMETERS": "Hospitalisation parameters",
+          "LOS_IN_DAYS": "Length of stay (LOS) in days",
+          "FATALITY_RATES": "Fatality rates",
+          "EFFECT_OF_THERAPEUTIC_INTERVENTIONS": "Effect of therapeutic interventions (fraction reductions)",
+          "PANDEMIC_RESOURCE_ALLOCATION": "Pandemic resource allocation",
+          "RESOURCE_USAGE_RATES": "Resource usage rates",
+          "OXYGEN": "Oxygen",
+          "PPE": "PPE",
+          "THERAPEUTIC_CAPACITY": "Therapeutic capacity (proportion of patients that can be treated, 0 to 1)",
+          "MORGUE": "Morgue",
+          "STRATEGY_1": "Strategy 1: activate when ICU nurse capacity is low",
+          "STRATEGY_2": "Strategy 2: activate when ward nurse capacity is low",
+          "STRATEGY_3": "Strategy 3: activate when PPE supplies run low",
+          "STRATEGY_4": "Strategy 4: activate when physical ward bed capacity is low",
+          "POPULATION": "Population",
+          "CONTACT_RATES": "Contact rates (where a = age < 15, b = age 15 - 24, b = age 25 - 64, d = age 65+)",
+          "PROBABILITY_OF_INFECTION": "Probability of infection",
+          "RESOURCE_PARAMETERS": "Resource parameters",
+          "RESOURCES_CALCULATED_FOR_THE_POPULATION": "Resources calculated for the population",
+          "TOTAL_BED_CAPACITY": "Total bed capacity",
+          "PANDEMIC_BED_CAPACITY": "Pandemic bed capacity",
+          "PANDEMIC_PPE_CAPACITY": "Pandemic PPE capacity",
+          "PANDEMIC_MORGUE_CAPACITY": "Pandemic morgue capacity"
+        },
+        "REGIONAL_PARAMETERS": {
+          "POPULATION": {
+            "NAME": "Population"
+          },
+          "POPULATION_TOTAL": {
+            "NAME": "Population total"
+          },
+          "R0": {
+            "NAME": "Basic reproduction number - R\u2080"
+          },
+          "PHYSICAL_WARD_BEDS": {
+            "NAME": "Physical ward beds"
+          },
+          "WARD_NURSES": {
+            "NAME": "Ward nurses"
+          },
+          "PHYSICAL_ICU_BEDS": {
+            "NAME": "Physical ICU beds"
+          },
+          "ICU_NURSES": {
+            "NAME": "ICU nurses"
+          },
+          "VENTILATORS": {
+            "NAME": "Ventilators"
+          },
+          "TARGET_PPE_STOCK_LEVEL": {
+            "NAME": "Target PPE stock level"
+          },
+          "MORGUE_CAPACITY": {
+            "NAME": "Morgue capacity"
+          },
+          "PHYSICIANS": {
+            "NAME": "Physicians",
+            "INFO": "Note that physicians are not modelled as a limiting resource."
+          },
+          "TOTAL_STAFFED_WARD_BEDS": {
+            "NAME": "Staffed ward beds"
+          },
+          "TOTAL_STAFFED_ICU_BEDS": {
+            "NAME": "Staffed ICU beds",
+            "INFO": "Calculations find the operable capacity, limited either by the number of physical beds or the nurse per bed ratios, and for ICU, also by the fraction of patients normally requiring a ventilator, as given below."
+          },
+          "PANDEMIC_STAFFED_WARD_BEDS": {
+            "NAME": "Staffed ward beds"
+          },
+          "PANDEMIC_STAFFED_ICU_BEDS": {
+            "NAME": "Staffed ICU beds",
+            "INFO": "Calculations take into account the proportion of resources pre-allocated for pandemic use, as given below."
+          },
+          "PANDEMIC_TARGET_PPE_STOCK_LEVEL": {
+            "NAME": "Target pandemic PPE stock level",
+            "INFO": "Calculation based on the proportion of resources pre-allocated for pandemic use:"
+          },
+          "PANDEMIC_MORGUE_CAPACITY": {
+            "NAME": "Available morgue spaces",
+            "INFO": "Calculation based on the proportion of resources pre-allocated for pandemic use:"
+          }
+        },
+        "PARAMETERS": {
+          "POPULATION_SIZE": {
+            "NAME": "Population Size",
+            "DESCRIPTION": "Population size"
+          },
+          "WARD_BEDS_PER_1K": {
+            "NAME": "Physical ward beds per 1K",
+            "DESCRIPTION": "Hospital ward beds per 1000 population, for all purposes."
+          },
+          "ICU_BEDS_PER_100K": {
+            "NAME": "Physical ICU beds per 100K",
+            "DESCRIPTION": "ICU beds per 100 thousand population, for all purposes."
+          },
+          "WARD_NURSES_PER_1K": {
+            "NAME": "Ward nurses per 1K",
+            "DESCRIPTION": "General ward nurses per 1000 population."
+          },
+          "ICU_NURSES_PER_100K": {
+            "NAME": "ICU nurses per 100K",
+            "DESCRIPTION": "ICU nurses per 1000 population."
+          },
+          "VENTILATORS_PER_100K": {
+            "NAME": "Ventilators per 100K",
+            "DESCRIPTION": "Mechanical ventilators per 100 thousand population"
+          },
+          "AGE_SPECIFIC_CONTACT_RATES": {
+            "NAME": "Age Specific Contact Rates",
+            "DESCRIPTION": "Average number of daily contacts per person in peace time"
+          },
+          "PHYSICIANS_PER_100K": {
+            "NAME": "Physicians per 100K",
+            "DESCRIPTION": "Hospital physicians per 100,000 population"
+          },
+          "MORGUE_CAPACITY_PER_100K": {
+            "NAME": "Normal morgue capacity per 100K",
+            "DESCRIPTION": "Total number of hospital mortuary spaces per 100,000 population in normal (peace-time) conditions"
+          },
+          "TARGET_PPE_STOCK_LEVEL_PER_1K": {
+            "NAME": "Normal target PPE stock level per 1K",
+            "DESCRIPTION": "Target PPE stock level per 1K population for all purposes. Hospitals will aim to keep stocks at this target level, ordering more when usage rates are higher."
+          },
+          "SWITCH_VACCINES": {
+            "NAME": "Vaccines",
+            "DESCRIPTION": "Vaccine switch."
+          },
+          "VACCINE_EFFICACY": {
+            "NAME": "Vaccine efficacy",
+            "DESCRIPTION": "Vaccine efficacy against transmission. This parameter denotes the probability that a person becomes immune to the disease after receiving the vaccine."
+          },
+          "VACCINE_AVAILABILITY": {
+            "NAME": "Vaccine available from (day)",
+            "DESCRIPTION": "Day at which vaccines become available for starting the vaccination campaign."
+          },
+          "INITIAL_VACCINATION_CAPACITY": {
+            "NAME": "Initial vaccination capacity",
+            "DESCRIPTION": "Vaccination capacity is modelled as a stock that grows over time. The values of this stock represent the rate at which the public health system can vaccinate people in a day. This parameter corresponds this stock's initial value. Furthermore, these rates are expressed per 1000 population."
+          },
+          "VACCINATION_CAPACITY_GROWTH_RATE": {
+            "NAME": "Vaccination capacity growth rate",
+            "DESCRIPTION": "Vaccination capacity is modelled as a stock whose change over time is defined by the logistic growth structure. This structure produces S-shaped behaviour over time. Specifically, this parameter represents the rate at which the stock grows should there were no constraints. In the context of this model, this parameter can be viewed as the velocity at which the public health system scales up vaccination capacity. This parameter is expressed as a percentage."
+          },
+          "VACCINATION_LONG-TERM_CAPACITY": {
+            "NAME": "Long-term vaccination capacity",
+            "DESCRIPTION": "Vaccination capacity is modelled as a stock that grows over time. The values of this stock represent the rate at which the public health system can vaccinate people in a day. This parameter denotes the maximum rate that the public health system can achieve. This value is expressed per 1000 population."
+          },
+          "MOBILITY_RESTRICTION_SEVERITY": {
+            "NAME": "Mobility restriction severity",
+            "DESCRIPTION": "This parameter represents the stringency of social distancing measures. In the model, this parameter has an inversely proportional effect on the average number of contacts that people have per day. The higher the severity, the lower the number of contacts."
+          },
+          "MOBILITY_RESTRICTION_START_TIME": {
+            "NAME": "Mobility restriction start day",
+            "DESCRIPTION": "Time at which mobility restrictions start."
+          },
+          "MOBILITY_BUDGET": {
+            "NAME": "Maximum duration (days)",
+            "DESCRIPTION": "Maximum number of days that public funds can support the social distance measures at maximum severity (full lockdown)."
+          },
+          "SWITCH_SCHOOL_CLOSURES": {
+            "NAME": "School closures",
+            "DESCRIPTION": "School closures switch."
+          },
+          "START_SCHOOL_CLOSURES": {
+            "NAME": "Start school closures (day)",
+            "DESCRIPTION": "Day at which school & educational settings are closed."
+          },
+          "DURATION_SCHOOL_CLOSURES": {
+            "NAME": "Duration school closures (days)",
+            "DESCRIPTION": "This parameter indicates for how many days schools & education settings will be closed."
+          },
+          "SWITCH_TESTING": {
+            "NAME": "Testing",
+            "DESCRIPTION": "Testing switch."
+          },
+          "TESTING_AVAILABILITY": {
+            "NAME": "Testing available from (day)",
+            "DESCRIPTION": "Day at which testing starts."
+          },
+          "INITIAL_TESTING_CAPACITY": {
+            "NAME": "Initial testing capacity",
+            "DESCRIPTION": "Testing capacity is modelled as a stock that grows over time. The values of this stock represent the rate at which the public health system can confirm a test result in a day. This parameter corresponds to this stock's initial value. Furthermore, these rates are expressed per 10000 population."
+          },
+          "TESTING_CAPACITY_GROWTH_RATE": {
+            "NAME": "Testing capacity growth rate",
+            "DESCRIPTION": "Testing capacity is modelled as a stock whose change over time is defined by the logistic growth structure. This structure produces S-shaped behaviour over time. Specifically, this parameter represents the rate at which the stock grows should there were no constraints. In the context of this model, this parameter can be viewed as the velocity at which the public health system scales up testing capacity. This parameter is expressed as a percentage."
+          },
+          "TESTING_LONG-TERM_CAPACITY": {
+            "NAME": "Long-term testing capacity",
+            "DESCRIPTION": "Testing capacity is modelled as a stock that grows over time. The values of this stock represent the rate at which the public health system confirm test results in a day. This parameter denotes the maximum rate that the public health system can achieve. This value is expressed per 10000 population."
+          },
+          "SWITCH_ISOLATION": {
+            "NAME": "Isolation",
+            "DESCRIPTION": "Isolation switch."
+          },
+          "ISOLATION_START": {
+            "NAME": "Isolation policy from (day)",
+            "DESCRIPTION": "Date at which infected individuals with a confirmed test abide policy recommendation of self-isolation."
+          },
+          "ISOLATE_COMPLIANCE": {
+            "NAME": "Isolation compliance",
+            "DESCRIPTION": "Isolation compliance."
+          },
+          "SWITCH_CONTACT_TRACING": {
+            "NAME": "Contact tracing",
+            "DESCRIPTION": "Contact tracing switch"
+          },
+          "CONTACT_TRACING_AVAILABILITY": {
+            "NAME": "Contact tracing available from (day)",
+            "DESCRIPTION": "Day at which contact tracing starts."
+          },
+          "QUARANTINE_COMPLIANCE": {
+            "NAME": "Quarantine compliance",
+            "DESCRIPTION": "This parameter indicates the probability that individual will abide public heath recommendations to quarantine after being identified as a close contact. In the model, this parameter has an inversely proportional effect on the effective contact rate of quarantined individuals. The higher the compliance, the lower the contact rate."
+          },
+          "INITIAL_CONTACT_TRACING_CAPACITY": {
+            "NAME": "Initial contact tracing capacity",
+            "DESCRIPTION": "Contact tracing capacity is modelled as a stock that grows over time. The values of this stock represent the rate at which the public health system can trace people in a day. This parameter corresponds to this stock's initial value. Furthermore, these rates are expressed per 100000 population."
+          },
+          "CONTACT_TRACING_CAPACITY_GROWTH_RATE": {
+            "NAME": "Contact tracing capacity growth rate",
+            "DESCRIPTION": "Contact tracing capacity is modelled as a stock whose change over time is defined by the logistic growth structure. This structure produces S-shaped behaviour over time. Specifically, this parameter represents the rate at which the stock grows should there were no constraints. In the context of this model, this parameter can be viewed as the velocity at which the public health system scales up contact tracing capacity. This parameter is expressed as a percentage."
+          },
+          "CONTACT_TRACING_LONG-TERM_CAPACITY": {
+            "NAME": "Long-term contact tracing capacity",
+            "DESCRIPTION": "Contact tracing capacity is modelled as a stock that grows over time. The values of this stock represent the rate at which the public health system can contact trace people in a day. This parameter denotes the maximum rate that the public health system can achieve. This value is expressed per 100000 population."
+          },
+          "SWITCH_MASK_WEARING": {
+            "NAME": "Mask wearing",
+            "DESCRIPTION": "Mask-wearing switch."
+          },
+          "MASK_WEARING_START": {
+            "NAME": "Mask wearing from (day)",
+            "DESCRIPTION": "Day at which individuals start wearing masks."
+          },
+          "MASK_WEARING_EFFECT": {
+            "NAME": "Mask wearing effect",
+            "DESCRIPTION": "This policy parameter represents the efficacy of introducing a mask-wearing policy in the population. In this context, efficacy refers to the reduction in the probability of infection after contact between two individuals. This parameter takes values between 0 and 1 (or 0% and 100%)."
+          },
+          "PROBABILITY_OF_INFECTION": {
+            "NAME": "Probability of infection",
+            "DESCRIPTION": "This parameter represents the probability of infection after a contact between a susceptible and clinical infectious individuals. This parameter can take values between 0 and 1 inclusive, and also corresponds to the prob_inf parameter of the R0 API."
+          },
+          "HOSPITALISATION_FRACTION": {
+            "NAME": "Hospitalisation fraction",
+            "DESCRIPTION": "Proportion of infected people, whether detected or undetected, who are hospitalised"
+          },
+          "FRACTION_ICU": {
+            "NAME": "Fraction ICU",
+            "DESCRIPTION": "Fraction of patients admitted to hospital who require ICU on admission"
+          },
+          "FRACTION_WARD_TO_ICU": {
+            "NAME": "Fraction ward To ICU",
+            "DESCRIPTION": "Fraction of patients in wards who later require ICU"
+          },
+          "DELAY_BEFORE_HOSPITALISATION": {
+            "NAME": "Delay before hospitalisation (days)",
+            "DESCRIPTION": "The average delay between developing symptoms and hospitalisation"
+          },
+          "ADMISSION_DELAY": {
+            "NAME": "Admission delay",
+            "DESCRIPTION": "Wait time for patients admitted to hospital to obtain a ward bed"
+          },
+          "ICU_ADMISSION_DELAY": {
+            "NAME": "ICU admission delay",
+            "DESCRIPTION": "Average patient wait time for ICU bed"
+          },
+          "LOS_WARD": {
+            "NAME": "LOS ward",
+            "DESCRIPTION": "Average length of stay in ward bed"
+          },
+          "LOS_ICU": {
+            "NAME": "LOS ICU",
+            "DESCRIPTION": "Average length of stay in ICU bed"
+          },
+          "LOS_WARD_BEFORE_ICU": {
+            "NAME": "LOS ward before ICU",
+            "DESCRIPTION": "Average length of stay of patients in ward who go on to require transfer to ICU"
+          },
+          "LOS_DENIED_ICU": {
+            "NAME": "LOS denied ICU",
+            "DESCRIPTION": "Average length of stay of patients in ICU Overflow (time to die or survive) (model assumption)"
+          },
+          "LOS_WARD_DEATHS": {
+            "NAME": "LOS ward deaths",
+            "DESCRIPTION": "Average length of stay of patients who die in ward beds"
+          },
+          "LOS_ICU_DEATHS": {
+            "NAME": "LOS ICU deaths",
+            "DESCRIPTION": "Average length of stay in ICU of patients who die"
+          },
+          "LOS_MORGUE": {
+            "NAME": "LOS morgue",
+            "DESCRIPTION": "Average length of stay of a body in hospital morgue"
+          },
+          "LOS_TEMPORARY_MORGUE": {
+            "NAME": "LOS temporary morgue",
+            "DESCRIPTION": "Average length of stay of a body in a temporary morgue"
+          },
+          "WARD_FATALITY_RATE": {
+            "NAME": "Ward fatality rate",
+            "DESCRIPTION": "Proportion of ward patients who die"
+          },
+          "ICU_FATALITY_RATE": {
+            "NAME": "ICU fatality rate",
+            "DESCRIPTION": "Proportion of ICU patients who die"
+          },
+          "DENIED_ICU_FATALITY_RATE": {
+            "NAME": "Denied ICU fatality rate",
+            "DESCRIPTION": "Proportion of patients unable to access ICU who die"
+          },
+          "FRACTION_WARD_TO_ICU_ANTIVIRALS": {
+            "NAME": "Fraction ward to ICU antivirals",
+            "DESCRIPTION": "The expected reduction in the fraction of patients in wards who later require ICU, if they were treated with antivirals (-0.2 means 20% reduction)"
+          },
+          "LOS_WARD_ANTIVIRALS": {
+            "NAME": "LOS ward antivirals",
+            "DESCRIPTION": "The expected reduction in average length of stay in ward bed for ward patients given timely antiviral treatment (-0.2 means 20% reduction)"
+          },
+          "WARD_FATALITY_RATE_ANTIVIRALS": {
+            "NAME": "Ward fatality rate antivirals",
+            "DESCRIPTION": "The expected reduction in the proportion of ward patients who die, if they are given timely antiviral treatment (-0.2 means 20% reduction)"
+          },
+          "LOS_ICU_VACCINES": {
+            "NAME": "LOS ICU vaccines",
+            "DESCRIPTION": "The expected reduction in average length of stay in ICU bed for ICU patients given vaccine for earlier strains (-0.2 means 20% reduction)"
+          },
+          "ICU_FATALITY_RATE_VACCINES": {
+            "NAME": "ICU fatality rate vaccines",
+            "DESCRIPTION": "The expected reduction in the proportion of ICU patients who die, if they are given existing vaccines for earlier strains (-0.2 means 20% reduction)"
+          },
+          "PROPORTION_OF_BEDS_AVAILABLE_FOR_PANDEMIC": {
+            "NAME": "Proportion of beds available for pandemic",
+            "DESCRIPTION": "Proportion of hospital beds made available for care of pandemic patients"
+          },
+          "PROPORTION_OF_ICU_BEDS_AVAILABLE_FOR_PANDEMIC": {
+            "NAME": "Proportion of ICU beds available for pandemic",
+            "DESCRIPTION": "Proportion of ICU beds made available for care of pandemic patients"
+          },
+          "PROPORTION_OF_NURSES_AVAILABLE_FOR_PANDEMIC": {
+            "NAME": "Proportion of nurses available for pandemic",
+            "DESCRIPTION": "Proportion of nurses available for care of pandemic patients"
+          },
+          "PROPORTION_OF_ICU_NURSES_AVAILABLE_FOR_PANDEMIC": {
+            "NAME": "Proportion of ICU nurses available for pandemic",
+            "DESCRIPTION": "Proportion of ICU nurses available for care of pandemic patients"
+          },
+          "PROPORTION_OF_PHYSICIANS_AVAILABLE_FOR_PANDEMIC": {
+            "NAME": "Proportion of physicians available for pandemic",
+            "DESCRIPTION": "Proportion of physicians available for care of pandemic patients"
+          },
+          "PROPORTION_OF_VENTILATORS_AVAILABLE_FOR_PANDEMIC": {
+            "NAME": "Proportion of ventilators available for pandemic",
+            "DESCRIPTION": "Proportion of ventilators made available for care of pandemic patients"
+          },
+          "PROPORTION_OF_PPE_AVAILABLE_FOR_PANDEMIC": {
+            "NAME": "Proportion of PPE available for pandemic",
+            "DESCRIPTION": "Proportion of PPE made available for care of pandemic patients"
+          },
+          "PROPORTION_OF_MORGUE_CAPACITY_AVAILABLE_FOR_PANDEMIC": {
+            "NAME": "Proportion of morgue capacity available for pandemic",
+            "DESCRIPTION": "Proportion of morgue spaces made available for deceased pandemic patients"
+          },
+          "NURSES_PER_BED": {
+            "NAME": "Nurses per bed",
+            "DESCRIPTION": "Normal number of nurses required per patient in a ward bed"
+          },
+          "ICU_NURSES_PER_BED": {
+            "NAME": "ICU nurses per bed",
+            "DESCRIPTION": "Normal number of ICU nurses per patient in an ICU bed"
+          },
+          "FRACTION_ICU_PATIENTS_REQUIRING_VENTILATOR": {
+            "NAME": "Fraction ICU patients requiring ventilator",
+            "DESCRIPTION": "The fraction of ICU patients that require a ventilator"
+          },
+          "FRACTION_WARD_HFNO": {
+            "NAME": "Fraction ward patients requiring high flow nasal oxygen",
+            "DESCRIPTION": "Proportion of ward patients needing high flow nasal oxygen"
+          },
+          "FRACTION_WARD_LFNO": {
+            "NAME": "Fraction ward patients requiring low flow nasal oxygen",
+            "DESCRIPTION": "Proportion of ward patients needing low flow nasal oxygen"
+          },
+          "PPE_PER_STAFF_PER_DAY": {
+            "NAME": "PPE per staff per day (PPE sets)",
+            "DESCRIPTION": "PPE sets used per staff member per day (or shift)"
+          },
+          "LOW_FLOW_OXYGEN_RATE": {
+            "NAME": "Average low flow oxygen rate (litres/min)",
+            "DESCRIPTION": "Average low flow oxygen rate (litres/min)"
+          },
+          "HIGH_FLOW_OXYGEN_RATE": {
+            "NAME": "Average high flow oxygen rate (litres/min)",
+            "DESCRIPTION": "Average high flow oxygen rate (litres/min)"
+          },
+          "VENTILATOR_OXYGEN_RATE": {
+            "NAME": "Average oxygen rate from ventilator (litres/min)",
+            "DESCRIPTION": "Average oxygen rate from ventilator (litres/min)"
+          },
+          "PPE_DAYS_SUPPLY_IN_TARGET_STOCK": {
+            "NAME": "PPE days supply in target stock",
+            "DESCRIPTION": "The desired number of days of supply of PPE to keep in stock"
+          },
+          "PPE_ACQUISITION_LAG": {
+            "NAME": "PPE acquisition lag (days)",
+            "DESCRIPTION": "Average delay between ordering PPE and PPE delivery"
+          },
+          "ANTIVIRAL_CAPACITY": {
+            "NAME": "Antiviral capacity",
+            "DESCRIPTION": "Capacity of therapeutic antiviral treatment, between zero and 1. Zero means none available, 1 means available to all ward patients (and assumes given to all)"
+          },
+          "PREVIOUS_STRAIN_VACCINE_CAPACITY": {
+            "NAME": "Previous strain vaccine capacity",
+            "DESCRIPTION": "Capacity of vaccines for previous strains that can help current patients, between zero and 1. Zero means none available, 1 means available to all ICU patients (and assumes given to all)"
+          },
+          "THRESHOLD_NUMBER_OF_BEDS_BLOCKED_BY_DECEASED": {
+            "NAME": "Threshold number of beds blocked by deceased (persons)",
+            "DESCRIPTION": "The number of hospital beds blocked by deceased patients that triggers emergency procedures such as army personnel moving bodies to temporary morgues"
+          },
+          "STRATEGY_1_REDUCE_ICU-NURSE-TO-PATIENT_RATIO": {
+            "NAME": "Reduce ICU nurse to patient ratio",
+            "DESCRIPTION": "Whether to reduce the ICU nurse-to-patient ratio (for all patients) when ICU nurses are lacking"
+          },
+          "REDUCED_ICU_NURSES_PER_BED_RATIO": {
+            "NAME": "Reduced ICU nurses per bed",
+            "DESCRIPTION": "Number of ICU nurses required per patient/bed when availability of ICU nurses is low, if surge strategy enabled"
+          },
+          "NURSE_BURNOUT_RATE": {
+            "NAME": "Nurse burnout rate",
+            "DESCRIPTION": "Proportion of all nurses who become absent due to stress when workload is increased to meet staff shortages"
+          },
+          "STRATEGY_2_REDUCE_NURSE-TO-PATIENT_RATIO": {
+            "NAME": "Reduce nurse to patient ratio",
+            "DESCRIPTION": "Whether to enable surge strategy of reducing the ward nurse-to-patient ratio (for all patients) when ward nurses are lacking"
+          },
+          "REDUCED_NURSES_PER_BED_RATIO": {
+            "NAME": "Reduced nurses per bed",
+            "DESCRIPTION": "Number of nurses required per patient/bed when availability of nurses is low, if surge strategy enabled"
+          },
+          "STRATEGY_3_REDUCE_PPE_PER_SHIFT": {
+            "NAME": "Reduce PPE per shift",
+            "DESCRIPTION": "Whether to reduce number of PPE sets used per shift when PPE is in short supply"
+          },
+          "REDUCED_PPE_PER_STAFF_PER_DAY": {
+            "NAME": "Reduced PPE per staff per day",
+            "DESCRIPTION": "PPE sets used per staff member per day (or shift) in times of low availability of PPE, if surge strategy is enabled"
+          },
+          "INCREASED_RISK_TO_STAFF_IF_PPE_USE_REDUCED": {
+            "NAME": "Increased risk to staff if PPE use reduced",
+            "DESCRIPTION": "Increased risk to staff if surge strategy to reduce PPE usage rates is enabled"
+          },
+          "SIMULATE_INTERRUPTION_IN_PPE_SUPPLY": {
+            "NAME": "Simulate interruption in PPE supply",
+            "DESCRIPTION": "Whether to model an interruption in the supply of PPE during the peak of the pandemic"
+          },
+          "STRATEGY_4_INCREASE_BED_CAPACITY": {
+            "NAME": "Increase bed capacity",
+            "DESCRIPTION": "Whether to increase bed capacity when no beds are available, by diverting from non-pandemic use"
+          },
+          "SURGE_CAPACITY_BED_INCREASE": {
+            "NAME": "Surge capacity bed increase",
+            "DESCRIPTION": "Proportion of all beds to make available when surge capacity is enabled and beds are all occupied"
+          },
+          "SIMULATE_STAFF_ABSENTEEISM": {
+            "NAME": "Simulate staff absenteeism",
+            "DESCRIPTION": "Whether to include staff absenteeism in the model (i.e. factor in pandemic infections and burnout in staff leading to absence)"
+          },
+          "INITIAL_INFECTED": {
+            "NAME": "Initial number of infected people",
+            "DESCRIPTION": "Number of infected people at the start of the pandemic."
+          }
+        }
+      },
+      "OUTPUTS": {
+        "HOSPITAL_DISCHARGES": {
+          "NAME": "Hospital discharges",
+          "DESCRIPTION": "Patients discharged from hospital, from wards and ward overflows. (Note that patients discharged from ICU will go to wards and later will be discharged from there)"
+        },
+        "TOTAL_IN_HOSPITAL": {
+          "NAME": "Total in hospital",
+          "DESCRIPTION": "Total number of patients in hospital in all wards, waiting for wards, and in overflows"
+        },
+        "DEATHS_IN_HOSPITAL": {
+          "NAME": "Deaths in hospital",
+          "DESCRIPTION": "Patient deaths in wards, ICU or overflows (includes potential deaths from lack of ICU)"
+        },
+        "EXPECTED_BEDS_FREED": {
+          "NAME": "Expected beds freed",
+          "DESCRIPTION": "Average expected staffed beds freed by ward discharges, deaths and transfers to ICU. Needed to fix the steady state error, where substantially less than the full capacity of available staffed beds would be used."
+        },
+        "PHYSICAL_WARD_BEDS_NEEDED": {
+          "NAME": "Physical ward beds needed",
+          "DESCRIPTION": "Number of physical ward beds needed to meet demand at this time - takes into account patients waiting for a bed and in overflow"
+        },
+        "PHYSICAL_ICU_BEDS_NEEDED": {
+          "NAME": "Physical ICU beds needed",
+          "DESCRIPTION": "Number of physical ICU beds needed to meet demand at this time - takes into account patients waiting for an ICU bed and patients in ICU overflow"
+        },
+        "PHYSICAL_WARD_BEDS_AVAILABLE": {
+          "NAME": "Physical ward beds available",
+          "DESCRIPTION": "Physical ward beds currently unoccupied"
+        },
+        "PHYSICAL_WARD_BEDS_GAP": {
+          "NAME": "Physical ward beds gap",
+          "DESCRIPTION": "Gap in physical hospital beds, comparing beds available plus expected beds freed with beds needed (value greater than zero only when demand exceeds supply)"
+        },
+        "PHYSICAL_ICU_BEDS_AVAILABLE": {
+          "NAME": "Physical ICU beds available",
+          "DESCRIPTION": "Physical ICU beds currently unoccupied"
+        },
+        "EXPECTED_ICU_BEDS_FREED": {
+          "NAME": "Expected ICU beds freed",
+          "DESCRIPTION": "Average expected staffed ICU beds freed by transfers to wards and  deaths in ICU. Needed to fix the steady state error, where substantially less than the full capacity of available staffed ICU beds would be used"
+        },
+        "PHYSICAL_ICU_BEDS_GAP": {
+          "NAME": "Physical ICU beds gap",
+          "DESCRIPTION": "Gap in physical ICU beds, comparing ICU beds available plus expected ICU beds freed with ICU beds needed (value greater than zero only when demand exceeds supply)"
+        },
+        "TOTAL_DEATHS": {
+          "NAME": "Total deaths",
+          "DESCRIPTION": "Total deaths in hospital; includes potential deaths due to lack of ICU"
+        },
+        "PEAK_ICU_DEMAND": {
+          "NAME": "Peak ICU demand",
+          "DESCRIPTION": "Highest estimated ICU demand in a single day"
+        },
+        "PEAK_DEMAND_ICU_BEDS": {
+          "NAME": "Peak demand ICU beds",
+          "DESCRIPTION": "Highest estimated number of physical ICU beds required a single day"
+        },
+        "PEAK_DEMAND_ICU_NURSES": {
+          "NAME": "Peak demand ICU nurses",
+          "DESCRIPTION": "Highest estimated number of ICU nurses required in a single day"
+        },
+        "PEAK_DEMAND_VENTILATORS": {
+          "NAME": "Peak demand ventilators",
+          "DESCRIPTION": "Highest estimated number of ventilators required for ICU patients in a single day"
+        },
+        "PEAK_WARD_DEMAND": {
+          "NAME": "Peak ward demand",
+          "DESCRIPTION": "Highest estimated demand for ward beds in a single day"
+        },
+        "PEAK_DEMAND_WARD_BEDS": {
+          "NAME": "Peak demand ward beds",
+          "DESCRIPTION": "Highest estimated number of physical ward beds required a single day"
+        },
+        "PEAK_DEMAND_NURSES": {
+          "NAME": "Peak demand nurses",
+          "DESCRIPTION": "Highest estimated number of ward nurses required a single day"
+        },
+        "PEAK_DEMAND_PPE": {
+          "NAME": "Peak demand PPE",
+          "DESCRIPTION": "Highest estimated number of PPE sets required in a single day by nursing staff (both ward and ICU nurses)"
+        },
+        "OCCUPIED_WARD_BEDS": {
+          "NAME": "Occupied ward beds",
+          "DESCRIPTION": "Total ward beds occupied by patients"
+        },
+        "OCCUPIED_ICU_BEDS": {
+          "NAME": "Occupied ICU beds",
+          "DESCRIPTION": "Total ICU beds occupied by patients"
+        },
+        "MAX_AVAILABLE_NURSES": {
+          "NAME": "Max available nurses",
+          "DESCRIPTION": "Total general ward nurses employed and available for care of pandemic patients, assuming none are absent"
+        },
+        "NURSES_AT_WORK": {
+          "NAME": "Nurses at work",
+          "DESCRIPTION": "Nurses at work and available for the pandemic (not absent because of infection, if staff absenteeism is modelled, or burnout)"
+        },
+        "OCCUPIED_NURSES": {
+          "NAME": "Occupied nurses",
+          "DESCRIPTION": "Total general nurses occupied with caring for patients in wards, calculated on the basis of number of occupied beds and nurse-to-patient ratio"
+        },
+        "AVAILABLE_NURSES": {
+          "NAME": "Available nurses",
+          "DESCRIPTION": "Nurses not occupied with patients nor absent"
+        },
+        "TOTAL_NURSES_NEEDED_FOR_INCOMING_PATIENTS": {
+          "NAME": "Total nurses needed for incoming patients",
+          "DESCRIPTION": "Number of ward nurses needed to meet demand (for patients waiting for ward and in ward overflow) at the normal nurse-to-patient ratio"
+        },
+        "EXTRA_STAFF_NEEDED_FOR_OVERFLOW_PATIENTS": {
+          "NAME": "Extra staff needed for overflow patients",
+          "DESCRIPTION": "Overflow patients have separate unspecified staff (simplifying assumption)"
+        },
+        "MAX_AVAILABLE_ICU_NURSES": {
+          "NAME": "Max available ICU nurses",
+          "DESCRIPTION": "Total ICU nurses employed and available for care of pandemic patients, assuming none are absent"
+        },
+        "ICU_NURSES_AT_WORK": {
+          "NAME": "ICU nurses at work",
+          "DESCRIPTION": "ICU nurses at work and available for the pandemic (not absent because of infection, if staff absenteeism is modelled, or burnout)"
+        },
+        "OCCUPIED_ICU_NURSES": {
+          "NAME": "Occupied ICU nurses",
+          "DESCRIPTION": "Total ICU nurses occupied with caring for patients in ICU wards, calculated on the basis of number of occupied ICU beds and ICU nurse-to-patient ratio"
+        },
+        "AVAILABLE_ICU_NURSES": {
+          "NAME": "Available ICU nurses",
+          "DESCRIPTION": "ICU nurses not occupied with patients nor absent"
+        },
+        "TOTAL_ICU_NURSES_NEEDED_FOR_INCOMING_PATIENTS": {
+          "NAME": "Total ICU nurses needed for incoming patients",
+          "DESCRIPTION": "Number of ICU nurses needed to meet demand (for patients waiting for ICU and in ICU overflow) at the normal ICU nurse-to-patient ratio"
+        },
+        "VENTILATORS_IN_STOCK": {
+          "NAME": "Ventilators in stock",
+          "DESCRIPTION": "Mechanical ventilators in stock and available for pandemic use"
+        },
+        "VENTILATORS_IN_USE": {
+          "NAME": "Ventilators in use",
+          "DESCRIPTION": "Mechanical ventilators currently in use"
+        },
+        "VENTILATORS_AVAILABLE": {
+          "NAME": "Ventilators available",
+          "DESCRIPTION": "Ventilators not currently in use"
+        },
+        "EXPECTED_VENTILATORS_FREED": {
+          "NAME": "Expected ventilators freed",
+          "DESCRIPTION": "Ventilators freed as expected ICU beds are freed by transfers to wards and deaths in ICU"
+        },
+        "VENTILATORS_NEEDED_FOR_INCOMING_ICU_PATIENTS": {
+          "NAME": "Ventilators needed for incoming ICU patients",
+          "DESCRIPTION": "Mechanical ventilators needed, according to current demand for ICU (patients requiring ICU and in overflow, not those currently in ICU)"
+        },
+        "GAP_IN_VENTILATORS": {
+          "NAME": "Gap in ventilators",
+          "DESCRIPTION": "Gap in ventilators, comparing ventilators available plus expected ventilators freed with ventilators needed (value greater than zero only when demand exceeds supply)"
+        },
+        "PPE_NEEDED": {
+          "NAME": "PPE needed",
+          "DESCRIPTION": "PPE sets needed by staff caring for all patients currently in hospital (at normal, non-surge usage rate). Includes patients in wards, waiting for wards and in overflows"
+        },
+        "PPE_GAP": {
+          "NAME": "PPE gap",
+          "DESCRIPTION": "Gap in PPE (value greater than zero only when demand exceeds supply)"
+        },
+        "INTERRUPTED_PPE_SUPPLY": {
+          "NAME": "Interrupted PPE supply",
+          "DESCRIPTION": "Whether PPE supply is interrupted (1 for yes, 0 for no). Occurs between a preset start and end time when option to simulate interrupted supply is set."
+        },
+        "EXPECTED_NURSES_FREED": {
+          "NAME": "Expected nurses freed",
+          "DESCRIPTION": "Nurses freed as expected staffed beds are freed by ward discharges, deaths and transfers to ICU"
+        },
+        "NURSES_GAP": {
+          "NAME": "Nurses gap",
+          "DESCRIPTION": "Gap in nurses, comparing nurses available plus expected nurses freed with nurses needed (value greater than zero only when demand exceeds supply)"
+        },
+        "EXPECTED_ICU_NURSES_FREED": {
+          "NAME": "Expected ICU nurses freed",
+          "DESCRIPTION": "ICU nurses freed as expected ICU beds are freed by transfers to wards and deaths in ICU"
+        },
+        "ICU_NURSES_GAP": {
+          "NAME": "ICU nurses gap",
+          "DESCRIPTION": "Gap in ICU nurses, comparing ICU nurses available plus expected ICU nurses freed with ICU nurses needed (value greater than zero only when demand exceeds supply)"
+        },
+        "STAFFED_EQUIPPED_ICU_BEDS_AVAILABLE": {
+          "NAME": "Staffed equipped ICU beds available",
+          "DESCRIPTION": "The number of ICU ward beds supported by available ICU nurses and ventilators"
+        },
+        "STAFFED_EQUIPPED_ICU_BEDS_NEEDED": {
+          "NAME": "Staffed equipped ICU beds needed",
+          "DESCRIPTION": "The number of staffed ICU beds needed to meet current demand (includes patients waiting for ICU and in ICU overflow)"
+        },
+        "STAFFED_EQUIPPED_ICU_BEDS_GAP": {
+          "NAME": "Staffed equipped ICU beds gap",
+          "DESCRIPTION": "The gap in staffed ICU beds, comparing available staffed ICU beds plus expected ICU beds freed with patients waiting for ICU plus patients in ICU overflow"
+        },
+        "ACTIVATE_SURGE_STRATEGY_1": {
+          "NAME": "Activate surge strategy 1",
+          "DESCRIPTION": "Surge strategy 1 is to reduce the ICU nurse-to-patient ratio (for all patients). It will be activated when only a small proportion of ICU nurses are available, and if the strategy is enabled."
+        },
+        "ACTIVATE_SURGE_STRATEGY_2": {
+          "NAME": "Activate surge strategy 2",
+          "DESCRIPTION": "Surge strategy 2 is to reduce the nurse-to-patient ratio (for all patients). It will be activated when only a small proportion of nurses are available, and if the strategy is enabled."
+        },
+        "ACTIVATE_SURGE_STRATEGY_3": {
+          "NAME": "Activate surge strategy 3",
+          "DESCRIPTION": "Surge strategy 3 is to reduce the PPE sets used per staff per shift and will be activated when PPE stock is running low, and if the strategy is enabled."
+        },
+        "ACTIVATE_SURGE_STRATEGY_4": {
+          "NAME": "Activate surge strategy 4",
+          "DESCRIPTION": "Surge strategy 4 is to increase bed capacity. It will be activated when only a small proportion of beds are available, and if the strategy is enabled."
+        },
+        "STAFFED_WARD_BEDS_AVAILABLE": {
+          "NAME": "Staffed ward beds available",
+          "DESCRIPTION": "The number of physical ward beds supported by available nurses"
+        },
+        "STAFFED_WARD_BEDS_NEEDED": {
+          "NAME": "Staffed ward beds needed",
+          "DESCRIPTION": "The number of staffed ward beds needed to meet current demand (includes patients waiting for ward and in ward overflow)"
+        },
+        "STAFFED_WARD_BEDS_GAP": {
+          "NAME": "Staffed ward beds gap",
+          "DESCRIPTION": "The gap in staffed ward beds, comparing available staffed beds plus expected beds freed with patients waiting for a bed plus patients in ward overflow"
+        },
+        "ACTUAL_CASES": {
+          "NAME": "Actual cases",
+          "DESCRIPTION": "New infections per day by age group. This indicator is the number of new cases that actually occur in the population & differs from confirmed cases."
+        },
+        "VACCINATION_CAPACITY": {
+          "NAME": "Vaccination capacity",
+          "DESCRIPTION": "The maximum number of vaccines that the public health system can administer in a day."
+        },
+        "CONTACT_TRACING_CAPACITY": {
+          "NAME": "Contact tracing capacity",
+          "DESCRIPTION": "The maximum number of people that can be traced in a day by the public health system."
+        },
+        "TESTING_CAPACITY": {
+          "NAME": "Testing capacity",
+          "DESCRIPTION": "The maximum number of tests that can be run in a day by the public health system."
+        },
+        "MOBILITY_INDEX": {
+          "NAME": "Mobility index",
+          "DESCRIPTION": "A relative measure of mobility with respect to the mobility level in peace time. In the absence of interventions, this index is equal to one. In the presence of mobility interventions (lockdown, social distancing) this index is less than one."
+        },
+        "CONFIRMED_CASES": {
+          "NAME": "Confirmed cases",
+          "DESCRIPTION": "Cases detected by the surveillance system via testing."
+        },
+        "STRESS_CODE": {
+          "NAME": "Stress code",
+          "DESCRIPTION": "Overall indicator of stress on hospital care, taking into account additional demand for ward and ICU beds"
+        },
+        "TOTAL_INITIAL_WARD_BED_CAPACITY": {
+          "NAME": "Total initial ward bed capacity",
+          "DESCRIPTION": "The total number of staffed ward beds initially available in hospital for all patients (assuming no staff absent and sufficient PPE)"
+        },
+        "INITIAL_PANDEMIC_WARD_BED_CAPACITY": {
+          "NAME": "Initial pandemic ward bed capacity",
+          "DESCRIPTION": "The total number of staffed ward beds initially allocated for pandemic patients (assuming no staff absent and sufficient PPE)"
+        },
+        "TOTAL_INITIAL_ICU_BED_CAPACITY": {
+          "NAME": "Total initial ICU bed capacity",
+          "DESCRIPTION": "The total number of staffed, equipped ICU beds initially available in hospital for all patients (assuming no staff absent and sufficient PPE)"
+        },
+        "INITIAL_PANDEMIC_ICU_BED_CAPACITY": {
+          "NAME": "Initial pandemic ICU bed capacity",
+          "DESCRIPTION": "The total number of staffed, equipped ICU beds initially allocated for pandemic patients (assuming no staff absent and sufficient PPE)"
+        },
+        "MAX_AVAILABLE_PHYSICIANS": {
+          "NAME": "Max available physicians",
+          "DESCRIPTION": "Total hospital physicians employed and available for care of pandemic patients, assuming none are absent"
+        },
+        "PHYSICIANS_AT_WORK": {
+          "NAME": "Physicians at work",
+          "DESCRIPTION": "Hospital physicians at work and available for the pandemic (not absent because of infection, if staff absenteeism is modelled, or burnout)"
+        },
+        "CUMULATIVE_CASES": {
+          "NAME": "Cumulative cases",
+          "DESCRIPTION": "Cumulative number of infected individuals (actual cases)"
+        },
+        "TOTAL_ADMISSIONS": {
+          "NAME": "Total admissions",
+          "DESCRIPTION": "Cumulative total of all patients admitted to hospital"
+        },
+        "ABSENT_NURSES": {
+          "NAME": "Absent nurses",
+          "DESCRIPTION": "Ward nurses absent because of infection or burnout (if staff absenteeism option is set)"
+        },
+        "ABSENT_ICU_NURSES": {
+          "NAME": "Absent ICU nurses",
+          "DESCRIPTION": "ICU nurses absent because of infection or burnout (if staff absenteeism option is set)"
+        },
+        "ICU_ADMISSIONS": {
+          "NAME": "ICU admissions",
+          "DESCRIPTION": "Patients being admitted to ICU"
+        },
+        "ICU_DISCHARGES": {
+          "NAME": "ICU discharges",
+          "DESCRIPTION": "Patients being transferred from ICU to ward"
+        },
+        "WARD_ADMISSIONS": {
+          "NAME": "Ward admissions",
+          "DESCRIPTION": "Patients being admitted to ward beds (maximum is staffed wards available plus expected beds freed)"
+        },
+        "MOVING_TO_WARD_OVERFLOW": {
+          "NAME": "Moving to ward overflow",
+          "DESCRIPTION": "Patients requiring a ward bed who cannot get access to one (does not include patients currently in overflow)"
+        },
+        "MOVING_TO_ICU_OVERFLOW": {
+          "NAME": "Moving to ICU overflow",
+          "DESCRIPTION": "Patients waiting for an ICU bed who cannot get access to one (does not include patients currently in ICU overflow)"
+        },
+        "AT_RISK_OF_DYING_FROM_LACK_OF_ICU": {
+          "NAME": "At risk of dying from lack of ICU",
+          "DESCRIPTION": "Patients at risk of dying because they cannot access an ICU bed in this time period"
+        },
+        "DEATHS_IN_ICU": {
+          "NAME": "Deaths in ICU",
+          "DESCRIPTION": "Patients dying in ICU per time period"
+        },
+        "DECEASED_MOVED_TO_MORGUE": {
+          "NAME": "Deceased moved to morgue",
+          "DESCRIPTION": "Deceased patients being moved to morgue"
+        },
+        "DECEASED_MOVED_TO_TEMPORARY_MORGUES": {
+          "NAME": "Deceased moved to temporary morgue",
+          "DESCRIPTION": "Where unusually high mortality rates overwhelm regular mortuary services, surplus bodies may be moved to temporary morgues such as refrigerated trucks to prevent bed blocking in hospitals"
+        },
+        "PANDEMIC_WARD_DEMAND_FACTOR": {
+          "NAME": "Pandemic ward demand factor",
+          "DESCRIPTION": "The pandemic demand for ward beds compared to the normal total capacity in the hospital, expressed as a multiplier. E.g. a value of 2 means the pandemic demand is twice the normal ward capacity"
+        },
+        "PANDEMIC_ICU_DEMAND_FACTOR": {
+          "NAME": "Pandemic ICU demand factor",
+          "DESCRIPTION": "The pandemic demand for ICU  beds compared to the normal total capacity in the hospital, expressed as a multiplier. E.g. a value of 2 means the pandemic demand is twice the normal ICU capacity"
+        },
+        "PEAK_WARD_DEMAND_FACTOR": {
+          "NAME": "Peak ward demand factor",
+          "DESCRIPTION": "The peak value of the pandemic demand for ward beds, expressed as a multiple of total normal ward capacity."
+        },
+        "PEAK_ICU_DEMAND_FACTOR": {
+          "NAME": "Peak ICU demand factor",
+          "DESCRIPTION": "The peak value of the pandemic demand for ICU beds, expressed as a multiple of total normal ICU capacity."
+        },
+        "NEED_ICU": {
+          "NAME": "Need ICU",
+          "DESCRIPTION": "All patients who require an ICU bed - on admission and for ward and overflow transfers"
+        },
+        "TOTAL_EXPECTED_DEATHS": {
+          "NAME": "Total expected deaths",
+          "DESCRIPTION": "Total deaths expected according to normal fatality rates, not including additional potential deaths from lack of ICU capacity"
+        },
+        "WARD_NURSE_ABSENTEEISM_RATE": {
+          "NAME": "Ward nurse absenteeism rate",
+          "DESCRIPTION": "Percentage of ward nurses who are absent through either infection or burnout"
+        },
+        "ICU_NURSE_ABSENTEEISM_RATE": {
+          "NAME": "ICU nurse absenteeism rate",
+          "DESCRIPTION": "Percentage of ICU nurses who are absent through either infection or burnout"
+        },
+        "ALL_NURSES_ABSENTEEISM_RATE": {
+          "NAME": "All nurses absenteeism rate",
+          "DESCRIPTION": "Percentage of all nurses who are absent through either infection or burnout"
+        },
+        "TOTAL_UNABLE_TO_ACCESS_WARD_BED": {
+          "NAME": "Total unable to access ward bed",
+          "DESCRIPTION": "Total denied a ward bed in all age groups"
+        },
+        "TOTAL_UNABLE_TO_ACCESS_ICU": {
+          "NAME": "Total unable to access ICU",
+          "DESCRIPTION": "Total denied ICU in all age groups"
+        },
+        "ABSENT_PHYSICIANS": {
+          "NAME": "Absent physicians",
+          "DESCRIPTION": "Hospital physicians absent due to infection (if staff absenteeism option is set)"
+        },
+        "NEED_WARD_BED": {
+          "NAME": "Need ward bed",
+          "DESCRIPTION": "Patients who need a ward bed (on admission or after a stay in ICU)"
+        },
+        "HOSPITAL_ADMISSIONS": {
+          "NAME": "Hospital admissions",
+          "DESCRIPTION": "Symptomatic people who have developed serious symptoms and are being admitted to hospital"
+        },
+        "VACCINATION": {
+          "NAME": "Vaccination rate",
+          "DESCRIPTION": "Vaccination rate"
+        },
+        "ATTACK_RATE": {
+          "NAME": "Attack rate",
+          "DESCRIPTION": "Attack rate by age group"
+        },
+        "CUMULATIVE_VACCINATION": {
+          "NAME": "Cumulative vaccinations",
+          "DESCRIPTION": "Cumulative vaccination"
+        },
+        "CUMULATIVE_CONFIRMED_CASES": {
+          "NAME": "Cumulative confirmed cases",
+          "DESCRIPTION": "Cumulative total of infections confirmed by testing"
+        },
+        "OXYGEN_CONSUMPTION_PER_DAY_IN_ICU": {
+          "NAME": "Oxygen consumption per day in ICU",
+          "DESCRIPTION": "Oxygen consumption per day in ICU, in litres"
+        },
+        "OXYGEN_CONSUMPTION_PER_DAY_IN_WARDS": {
+          "NAME": "Oxygen consumption per day in wards",
+          "DESCRIPTION": "Oxygen consumption per day in wards, in litres"
+        },
+        "TOTAL_DAILY_OXYGEN_CONSUMPTION": {
+          "NAME": "Total daily oxygen consumption",
+          "DESCRIPTION": "Total daily oxygen consumption in wards and ICU, in litres"
+        },
+        "PATIENTS_WAITING_FOR_WARD_BED": {
+          "NAME": "Patient waiting for ward bed",
+          "DESCRIPTION": "Patients waiting for a ward bed"
+        },
+        "IN_WARD_OVERFLOW": {
+          "NAME": "In ward overflow",
+          "DESCRIPTION": "Patients who could not get a ward bed and are being cared for outside wards, e.g. in emergency department or on trolleys"
+        },
+        "BEDS": {
+          "NAME": "Beds",
+          "DESCRIPTION": "Physical ward beds in stock and available for pandemic use"
+        },
+        "PATIENTS_WAITING_FOR_ICU": {
+          "NAME": "Patients waiting for ICU",
+          "DESCRIPTION": "Patients waiting for an ICU bed"
+        },
+        "IN_ICU_OVERFLOW": {
+          "NAME": "In ICU overflow",
+          "DESCRIPTION": "Patients who could not get an ICU bed and are being cared for outside ICU, ideally in an enhanced ward bed with extra equipment or staffing, but may not be possible"
+        },
+        "TOTAL_NEEDED_ICU": {
+          "NAME": "Total needed ICU",
+          "DESCRIPTION": "Total of all patients who needed ICU during current run (from admissions and transfers from ward and overflow)"
+        },
+        "TOTAL_ICU_ADMISSIONS": {
+          "NAME": "Total ICU admissions",
+          "DESCRIPTION": "Total number of patients who were admitted to ICU"
+        },
+        "TOTAL_NEEDED_WARD_BED": {
+          "NAME": "Total needed ward bed",
+          "DESCRIPTION": "Total of all patients who needed a ward bed during current run (from admissions and transfers from ICU)"
+        },
+        "TOTAL_WARD_ADMISSIONS": {
+          "NAME": "Total ward admissions",
+          "DESCRIPTION": "Total number of patients who were admitted to wards (from admissions and transfers from ICU)"
+        },
+        "POTENTIAL_DEATHS_DUE_TO_LACK_OF_ICU": {
+          "NAME": "Potential deaths due to lack of ICU",
+          "DESCRIPTION": "Patients at risk of dying from requiring ICU when no ICU bed was available to them"
+        },
+        "ICU_BEDS": {
+          "NAME": "ICU beds",
+          "DESCRIPTION": "Physical ICU beds in stock and available for pandemic use"
+        },
+        "PANDEMIC_PPE_STOCK": {
+          "NAME": "Pandemic PPE Stock",
+          "DESCRIPTION": "Personal protective equipment in stock (masks, gloves, aprons etc) and pre-allocated for pandemic use. Units are PPE sets."
+        },
+        "TOTAL_PPE_USED": {
+          "NAME": "Total PPE used",
+          "DESCRIPTION": "Cumulative total of PPE sets used over the simulated time period up to this point in time"
+        },
+        "IN_MORGUES": {
+          "NAME": "In morgues",
+          "DESCRIPTION": "Normal hospital morgue spaces occupied by deceased patients"
+        },
+        "IN_TEMPORARY_MORGUES": {
+          "NAME": "In temporary morgues",
+          "DESCRIPTION": "Deceased patients in temporary morgues, e.g. mobile refrigerated trailer units"
+        },
+        "ANTIVIRALS_ADMINISTERED": {
+          "NAME": "Antivirals administered",
+          "DESCRIPTION": "Antiviral treatments administered to patients in wards and ward overflows (whole treatments, whether one or more doses)"
+        },
+        "PREVIOUS_VACCINES_ADMINISTERED": {
+          "NAME": "Previous vaccines administered",
+          "DESCRIPTION": "Previous strain vaccines administered to patients in ICU (whole treatments, whether one or more doses)"
+        },
+        "PATIENTS_IN_ICU_BED": {
+          "NAME": "Patients in ICU bed",
+          "DESCRIPTION": "Patients occupying an ICU bed"
+        },
+        "TOTAL_OXYGEN_USED": {
+          "NAME": "Total oxygen used",
+          "DESCRIPTION": "Total estimated oxygen needed for both ward and ICU patients during the entire run, in litres"
+        },
+        "PANDEMIC_MORGUE_CAPACITY": {
+          "NAME": "Pandemic Morgue Capacity",
+          "DESCRIPTION": "Number of morgue spaces made available for deceased pandemic patients, based on pre-allocated proportion of normal (peacetime) morgue capacity"
+        }
+      }
+    },
+    "TRANSLATION": {
+      "LANGUAGES": "Languages",
+      "LANGUAGE_TEXTS": "Language Texts",
+      "CREATE_ERROR": "An error occurred or the country code already exists.",
+      "DELETE_TITLE": "Delete language",
+      "DELETE_CONFIRM": "Are you sure you want to delete this language?",
+      "DELETED": "Language deleted successfully.",
+      "DEFAULT_CONFIRM": "Are you sure you want to set the langauge default?",
+      "DEFAULT_TITLE": "Set language default.",
+      "DEFAULT_TRUE": "Language set default successfully.",
+      "UPLOAD": "Language uploaded successfully",
+      "CHANGED": "Language was changed successfully",
+      "ACTION_BUTTONS": {
+        "TITLE": "Actions",
+        "DELETE": "Delete",
+        "EDIT": "Edit",
+        "SET_DEFAULT": "Set as default language"
+      },
+      "MAT_DIALOG": {
+        "KEY": "Key",
+        "BASE_VALUE": "Base Value",
+        "TARGET_VALUE": "Target Value",
+        "SAVE_BTN": "Save",
+        "SAVE_AND_NEXT": "Save And Next"
+      },
+      "MAT_DIALOG_CREATE_LANGUAGE": {
+        "DISPLAY_NAME": "Display Name",
+        "SELECT_COUNTRY": "Please select a country",
+        "ENABLED": "Enabled",
+        "CANCEL": "Cancel",
+        "SAVE": "Save"
+      },
+      "MAT_TABLE_LANGUAGES": {
+        "LANGUAGES": "Languages",
+        "CREATE_LANGUAGE": "Create new language",
+        "SEARCH": "Search",
+        "DISPLAY_NAME": "DISPLAY NAME",
+        "COUNTRY_CODE": "COUNTRY CODE",
+        "ENABLED": "ENABLED",
+        "DEFAULT_LANGUAGE": "DEFAULT LANGUAGE"
+      },
+      "MAT_TABLE_LANGUAGES_TEXTS": {
+        "LANGUAGE_TEXTS": "Language Texts",
+        "BASE_LANGUAGE_NAME": "Base Language Name",
+        "SELECT_VALUE": "Select a value",
+        "TARGET_LANGUAGE_NAME": "Target Language Name",
+        "SEARCH": "Search",
+        "KEY": "KEY",
+        "BASE_VALUE": "BASE VALUE",
+        "VALUE": "VALUE"
+      }
+    },
+    "USER_ROLE": {
+      "ROLES_LIST": {
+        "ADD": "Add",
+        "NAME": "Name",
+        "PERMISSIONS": "Permissions",
+        "EXPAND": "Expand",
+        "COLLAPSE": "Collapse",
+        "NO_RECORDS": "No records found"
+      },
+      "MODIFY_ROLE": {
+        "DETAILS": "Details",
+        "DONE": "Done",
+        "ARE_YOU_SURE": "Are you sure you want to modify this role?",
+        "ARE_YOU_SURE_CREATE": "Are you sure you want to create this role?",
+        "MODIFY_ROLE": "Modify Role",
+        "BACK": "Back"
+      }
+    },
+    "USER": {
+      "USER_LIST": {
+        "NO_DATA": "No Data",
+        "LAST_NAME": "Last Name",
+        "FIRST_NAME": "First Name",
+        "LOCATION": "Location",
+        "ROLE": "ROLE",
+        "ACCOUNT_STATUS": "Account Status"
+      },
+      "MODIFY_USER": {
+        "CROP_IMAGE": "Crop Image",
+        "DETAILS": "Details",
+        "FIRST_NAME": "First Name",
+        "LAST_NAME": "Last Name",
+        "EMAIL": "Email",
+        "LOCATION": "Location",
+        "USER_ROLE": "User Role",
+        "DATA_START_DATE": "Data Start Date",
+        "DATA_END_DATE": "Data End Date",
+        "FIRST_COLOR_PALETTE": "Color Palette 1",
+        "SECOND_COLOR_PALETTE": "Color Palette 2",
+        "UPLOAD_CLICK": "Click to upload photo",
+        "CANCEL": "CANCEL",
+        "SAVE": "SAVE",
+        "NEW_PASSWORD": "New Password",
+        "CONFIRM_NEW_PASSWORD": "Confirm new password",
+        "DONE": "Done",
+        "CREATE_USER": "Are you sure you want to create this user?",
+        "BACK": "Back",
+        "CREATE": "Create User",
+        "NEXT": "Next",
+        "RESET": "RESET",
+        "CONFIRM": "CONFIRM",
+        "EDIT": "Edit"
+      }
+    },
+    "REPORT_CARD": {
+      "PREPARED_FOR": "Prepared for",
+      "PREPARED_FOR_THIS_ACC": "Prepared for this account",
+      "EPI": "EPI WEEK",
+      "REPORT_HAS_ALEARDY_A_TITLE": "This report card already has a title",
+      "ADD_TITLE": "Add Title",
+      "THIS_REPORT_CARD_HAS_A_FOOTER": "This report card already has a footer",
+      "ADD_FOOTER": "Add Footer",
+      "REPORT_FOR": "Report for {{pathogen}} in {{selectedRegionName}}",
+      "SUMMARY": "Summary",
+      "ADD_GRAPH": "Add Graph",
+      "ADD_TEXT": "Add Text",
+      "ADD_MAP": "Add Map",
+      "REPORT_SUMMARY_VACCINATION": {
+        "VACCINATION": "VACCINATION",
+        "FIRST_DOSES": "1ST Doses",
+        "SECOND_DOSES": "2nd Doses",
+        "THIRD_DOSES": "3rd Doses"
+      },
+      "REPORT_SUMMARY_TESTING": {
+        "TESTING": "TESTING",
+        "TOTAL_PCR": "Total PCR",
+        "NEW_PCR": "New PCR",
+        "WEEK_POSITIVITY": "Week Positivity",
+        "NO_COMPARABLE_DATA": "no comparable data"
+      },
+      "REPORT_SUMMARY_HOSPITALIZATION": {
+        "HOSPITALIZATION": "HOSPITALIZATION",
+        "BED_OCCUPANCY": "(BED OCCUPANCY - NON COVID)",
+        "WARD_BED": "Ward Bed",
+        "ICU_BED": "ICU Bed",
+        "CHANGE_IN_ICU": "Change in ICU compared to previous week",
+        "NO_COMPARABLE_DATA": "no comparable data"
+      },
+      "REPORT_SUMMARY_HOSPITALIZATION_COVID": {
+        "HOSPITALIZATION": "HOSPITALIZATION",
+        "BED_OCCUPANCY": "(BED OCCUPANCY - COVID)",
+        "WARD_BED": "Ward Bed",
+        "ICU_BED": "ICU Bed",
+        "CHANGE_IN_ICU": "Change in ICU compared to previous week",
+        "NO_COMPARABLE_DATA": "no comparable data"
+      },
+      "REPORT_SUMMARY_DEATHS": {
+        "DEATHS": "DEATHS",
+        "NEW": "New",
+        "NEW_LAST_WEEK": "New - Last Week",
+        "CUMULATIVE": "CUMULATIVE"
+      },
+      "REPORT_SUMMARY_CASES": {
+        "CONFIRMED_CASES": "CONFIRMED CASES",
+        "CUMULATIVE": "CUMULATIVE",
+        "NEW": "New",
+        "NEW_LAST_WEEK": "New - Last Week",
+        "NO_COMPARABLE_DATA": "no comparable data"
+      },
+      "REPORT_GRAPH_TITLE": {
+        "NEW_TITLE": "New title"
+      },
+      "REPORT_GRAPH_FOOTER": {
+        "NEW_FOOTER": "New footer",
+        "DESCRIPTION": "Description"
+      },
+      "REPORT_CARD_OPTIONS": {
+        "TITLE": "SELECT LOCATION",
+        "CHOOSE_DATE": " CHOOSE A DATE",
+        "PRINT": "Print",
+        "SAVE": "Save",
+        "OPEN": "Open"
+      },
+      "REPORT_CARD_OPTIONS_SAVE_DIALOG": {
+        "TITLE": "Save report",
+        "REPORT_NAME": "Report Name",
+        "REPORT_IS_REQUIRED": "Report name is required",
+        "SAVE_AS_NEW_REPORT": "Save as new report",
+        "SAVE_LOCATION": "Save location",
+        "SAVE_CUSTOM_DATE": "Save custom date",
+        "SAVE": "Save"
+      },
+      "REPORT_CARD_OPTONS_LOAD_DIALOG": {
+        "TITLE": "Load Reports",
+        "SEARCH": "Search report",
+        "NO_REPORTS_SAVED": "You don't have any reports saved!",
+        "NO_REPORT_FOUND": "No report found!"
+      }
+    },
+    "INTERVENTIONS": {
+      "SURVEY": {
+        "TITLE": "POPULATION SURVEYS,",
+        "DESCR_1": "The population surveys view aims to support partners engaged in policy, practise and research so they can access key social and behavioural data which will inform their COVID-19 response.",
+        "DESCR_2": "This view aims to track how information, knowledge, perception, and practices are changing in the context of COVID-19. Exploring social and behavioural trends across dimensions and indicators. Tracking socio-behavioural changes over time and by country.",
+        "DESCR_3": " Displaying indicators disaggregated for example by gender, age and specific population groups, if data is available."
+      },
+      "INTERVENTIONS": {
+        "TITLE": "INTERVENTIONS/MEASURES/POLICIES",
+        "DESCR_1": "Daily information about the situation in your country.",
+        "DESCR_2": "Information is presented with indicator cards.",
+        "DESCR_3": "Last values obtained on {{endDate}}. Is updated on a daily basis."
+      },
+      "SMA": {
+        "TITLE": "SOCIAL MEDIA ANALYSIS FOR ",
+        "DESCRIPTION": "This page focuses on social media analysis (SMA) to support pandemic surveillance and communication. The main goal of this task is to analyse public communication and reactions to government measures around a specific pathogen. The analysis shown on this page focuses on suggestion mining, sentiment analysis and emotion analysis in addition to aspect-based (topic-based) social media analysis.",
+        "VIEW": "VIEW",
+        "LANGUAGES": "LANGUAGES",
+        "SOURCE": "SOURCE",
+        "INTERVENTION": "INTERVENTION",
+        "DATA_START_DATE": "Data Start Date",
+        "DATA_END_DATE": "Data End Date",
+        "DESCRIPTION_2": "This section shows the results of analysing social media posts for sentiments and emotions. The analysis of the tone of language circulating on social media towards specific topics can be beneficial for certain end-users such as health and government authorities. Sentiment analysis is concerned with identifying whether a social media post holds positive, negative, or neutral sentiment. Emotion analysis further identifies emotions conveyed in the text using the eight basic categories of emotions by Plutchik (e.g. sad, anger, happy, joy, etc). Furthermore, this task extends the traditional analysis of opinionated text by linking the identified sentiment, and emotions to certain aspects (topics).",
+        "SUGGESTION_MINING": "SUGGESTION MINING",
+        "DESCRIPTION_3": "Suggestion mining can be a very powerful tool for government officials and public health agencies to understand the public reaction and opinion around certain topics. This can help in the decision-making process and more importantly, anticipate (and ideally attune and contain) people’s future reactions towards certain measures and situations. This page shows the results of analysing social media posts to identify and extract suggestions from the incoming text and then linking them to certain aspects (topics)."
+      },
+      "VOLUME_OVERTIME": {
+        "VOLUME_OVERTIME": "Volume overtime",
+        "NO_DATA_TO_DISPLAY": "No data to display",
+        "TOPIC": "topic"
+      },
+      "TOP_TOPICS_BY_VOLUME": {
+        "FILTER_BY": "Filter By",
+        "Topic": "Topic"
+      },
+      "SURVEY_CONDUCTED": {
+        "TITLE": "Population Surveys",
+        "CARD_TITLE": "Surveys Conducted",
+        "DESCRIPTION": " Population surveys conducted at various stages over a given time frame. Each survey is dated, can be accessed to view its responses, and alongside the survey are the number of respondents the survey had.",
+        "RESPONSES": "responses"
+      },
+      "SURVEY_QUESTIONS": {
+        "ALL_QUESTIONS": "All Questions",
+        "LATEST_RESULT": "Latest result",
+        "CHANGE_COMPARED": "Change compared to last result",
+        "QUESTION_ASKED": "QUESTIONS ASKED",
+        "MEDIAN_RESPONSE": "MEDIAN RESPONSE",
+        "WITH_VARIANCE": "WITH VARIANCE",
+        "HEATMAP": "Heatmap",
+        "BAR_CHART": "Bar chart",
+        "TREND_OVER_SURVEYS": "TREND OVER SURVEYS",
+        "POPULATION_SURVEY": "Population Survey"
+      },
+      "SURVEY_DEMOGRAPHIC_SUMMARY": {
+        "POPULATION_SURVEYS": "Population Surveys",
+        "DEMOGRAPHICS": "Demographics",
+        "DESCRIPTION": "A breakdown of the demographics of the respondents of the surveys. Respondents are broken into both gender and age categories.",
+        "Gender": "Gender",
+        "AGE_RANGE": "Age range"
+      },
+      "SOCIAL_MEDIA_ANALYSIS_SUGGESTION": {
+        "TITLE": "Suggestion Analysis",
+        "CARD_TITLE": "Select a topic to see more information in the right panel",
+        "NO_DATA": "No data to display",
+        "Topic": "Topic",
+        "VOLUME": "Volume",
+        "TREND": "Trend",
+        "SUGGESTION_ANALYSIS": "Suggestion Analysis",
+        "SUBTOPICS": "Subtopics",
+        "SELECT_A_TOPIC": "Select a topic to see more information",
+        "SUGGESTIONS": "Suggestions",
+        "SUGGESTION": "Suggestion",
+        "ARIA_LABEL": "Table of subtopics"
+      },
+      "SOCIAL_MEDIA_ANALYSIS_SENTIMENT": {
+        "TITLE": "Sentiment and emotions analysis",
+        "CARD_TITLE": "Select a topic to see more information in the right panel"
+      },
+      "SENTIMENT_ANALYSIS": {
+        "TITLE": "Sentiment analysis",
+        "NO_DATA": "No data to display",
+        "SENTIMENT_ANALYSIS": "Sentiment analysis",
+        "TOPIC": "topic"
+      },
+      "INTERVENTION_FILTER_CARD": {
+        "TITLE": "REGION",
+        "LABEL": "Selected Region",
+        "INTERVENTION": "INTERVENTION",
+        "CARD_TITLE": "SOURCES",
+        "INDICATOR": "INDICATOR",
+        "TIME_INTERVAL": "Time Interval",
+        "DAILY": "Daily Numbers",
+        "SEVEN_AVERAGE": "7 Day Average",
+        "FOURTHEEN_AVERAGE": "14 Day Average",
+        "CUMULATIVE": "CUMULATIVE"
+      },
+      "INTERVENTION_CHART": {
+        "INTERVENTION": "INTERVENTION",
+        "SOURCES": "SOURCES"
+      },
+      "INTERVENTION_CARD_SETTINGS": {
+        "TITLE": "INTERVENTION SETTINGS",
+        "ADD": "Add",
+        "EDIT": "Edit",
+        "INTERVENTION_SETTINGS": "INTERVENTION SETTINGS",
+        "INTERVENTION": "Intervention",
+        "SELECTED_INTERVENTION": "Selected Intervention",
+        "SELECTED_REGION": "Selected Region",
+        "SOURCES": "Sources",
+        "INTERVENTION_NAME": "Intervention Name*",
+        "INTERVENTION_DESCRIPTION": "Intervention Description*",
+        "INTERVALS": "Intervals*",
+        "SELECT_AN_INTERVAL": "Please select an interval!",
+        "CANCEL": "Cancel",
+        "SAVE": "Save",
+        "LABEL": "Intervention*",
+        "REGION": "Region*"
+      },
+      "EMOTION_ANALYSIS": {
+        "EMOTION_ANALYSIS": "Emotion analysis",
+        "NO_DATA": "No data to display",
+        "TOPIC": "topic",
+        "FILTER_BY": "Filter By"
+      }
+    },
+    "AUTH": {
+      "LOGIN": {
+        "TITLE": "Please log in",
+        "PLACEHOLDER_EMAIL": "Username or email *",
+        "PLACEHOLDER_PASSWORD": "Password *",
+        "FORGOT_PASSWORD": "Forgot Password?",
+        "LOGIN": "Login"
+      },
+      "RESET_PASSWORD": {
+        "TITLE": "Reset Password",
+        "PLACEHOLDER": "New Password *",
+        "PLACEHOLDER_CONFIRM": "Confirm New Password *",
+        "RESET": "Reset",
+        "PLACEHOLDER_EMAIL": "Enter your account email *",
+        "DESCR_1": "If the provided email address is registered in our system, we will promptly send an email containing instructions on how to reset the associated password.",
+        "DESCR_2": "Please check your inbox and spam folder for further details.",
+        "SEND": "Send"
+      }
+    },
+    "DASHBOARD": {
+      "LANDING": {
+        "TITLE": "Daily Situation",
+        "DESCR_1": "Daily information about the situation in your country.",
+        "DESCR_2": "Information is presented with indicator cards.",
+        "HIDDEN_CARDS": "Hidden Cards",
+        "SOURCE": "Source",
+        "LAST_UPDATE": "Last Update",
+        "SYNTHESIZED_DATA": "Synthesized Data - Last Update",
+        "UPDATED": "Updated",
+        "SYNTHESIZED_DATA_NAME": "Synthesized Data"
+      },
+      "VACCTIONATIONS": {
+        "VACCINATIONS": "Vaccinations",
+        "TITLE": "People Vaccinated",
+        "WIP": "W.I.P",
+        "NO_RECORDS_FOUND": "No records found",
+        "SUBTITLE": "People Vaccinated",
+        "POPULATION_VACCINATED": "% OF ELIGIBLE POPULATION VACCINATED",
+        "ALL_VACCINATION": "All vaccinations data"
+      },
+      "TESTING": {
+        "TESTING": "Testing",
+        "NUMBER_OF_TESTS_PERFORMED": "Number of Tests Performed",
+        "DESCRIPTION": "The figure shows the number of positive tests reported in the preceding 24 hours.The date attributed to positive tests is the date on which the relevant organisation was notified by the relevant health authority. This is not the same as the date on which people are tested. Part of the notification process is done manually. Sometimes the health authority will not have reported all newly confirmed cases at the moment that the figures are compiled for the preceding 24 hours. Missing notifications are passed on at a later time. Missing or delayed notifications can skew the daily figures. The rolling average filters out this type of fluctuation, and therefore often gives a better picture of the number of infections.",
+        "NUMBER_OF_TESTS_LAST_SEVEN_DAYS": "Number of tests performed - last 7 day",
+        "COMPARED_TO_PREVOUS": "compared to previous 7 days average",
+        "NO_COMPARABLE": "no comparable data",
+        "TOTAL_POSITIVE": "Total number of positive tests - last 7 day",
+        "POSITIVITY_RATE": "Positivity rate - last 7 day",
+        "ALL_TESTING_DATA": "All testing data"
+      },
+      "PARTICIPATORY_SURVEILLANCE": {
+        "TITLE": "Participatory Surveillance",
+        "WIP": "W.I.P",
+        "PREVIOUS_WEEK": "Previous week",
+        "COMPARED_TO_PREVIOUS": "compared to previous 7 days",
+        "NO_COMPARABLE": "no comparable data",
+        "INCIDENCE_ILI": "Incidence ILI",
+        "SUBTITLE": "Active Users (weekly)",
+        "ALL_PARTICIPATORY_DATA": "All participatory surveillance data"
+      },
+      "HUMAN_RESOURCES": {
+        "TITLE": "Human Resources",
+        "STAFF_CAPACITY": "Staff Capacity",
+        "WIP": "W.I.P",
+        "NUMBER_OF_PUBLIC_HEALTH": " Number of Public Health Staff",
+        "INHABITANS": "Per 100,000 inhabitants",
+        "NUMBER_OF_HOSPITAL_STAFF": "Number of Hospital Staff",
+        "AL_HUMAN_RESOURCES_DATA": "All Human Resources data"
+      },
+      "HOSPITALIZATION": {
+        "TITLE": "Hospitalisations",
+        "HOSPITAL_ADMISSIONS": "Hospital Admissions",
+        "DESCRIPTION": "The figures on number of hospital admissions are supplied by the relevant organisation.This data may be collated by a different organisation. This data is available in the form of an open data file. The number of hospital admissions refers to patients admitted to regular wards as well as those admitted directly to the ICU.",
+        "LAST_SEVEN_DAYS": "Last 7 days",
+        "COMPARED_TO_PREVIOUS": "compared to previous 7 days",
+        "NO_COMPARABLE": "no comparable data",
+        "ICU_LAST_SEVEN": "ICU Last 7 days",
+        "SUBTITLE": "Hospital Admissions",
+        "ALL_ADMISSIONS_DATA": "All admissions data"
+      },
+      "GENETIC_VARIATION": {
+        "TITLE": "Genetic Variation",
+        "HTS": "HTS (High Throughput Sequencing)",
+        "DESCRIPTION": "For these variants, clear evidence is available indicating a significant impact on transmissibility, severity and/ or immunity that is likely to have an impact on the epidemiological situation in the EU/EEA. The combined genomic, epidemiological, and in vitro evidence for these properties invokes at least moderate confidence. In addition, all the criteria for variants of interest and under monitoring outlined below apply.",
+        "NO_RECORDS_FOUND": "No records found",
+        "SUBTITLE": "Variants of Concern",
+        "ALL_GENETIC": "All genetic variation data"
+      },
+      "DEATHS": {
+        "TITLE": "Deaths",
+        "DESCRIPTION": " This is the cumulative number of COVID-19 patients whose deaths have been reported to the relevant organisation in the past 24 hours. The date shown is the date on which the organisation was notified by the relevant health authority. This may not be the same as the date on which deaths occurred. The actual number of deceased COVID-19 patients might be higher than the number of deaths reported because there is no requirement to report COVID-19-related deaths.",
+        "DAILY": "Daily",
+        "LAST_SEVEN_DAYS": "Last 7 days",
+        "COMPARED_TO_PREVIOUS": "compared to previous 7 days",
+        "NO_COMPARABLE": "no comparable data",
+        "EXCESS_MORTALITY": "Excess mortality",
+        "CUMULATIVE_NUMBER_OF_DEATHS": "Cumulative number of deaths from all causes compared to projection based on previous years. The cumulative difference between the reported number of deaths since 1 January 2020 and the projected number of deaths for the same period based on previous years. The reported number might not count all deaths that occurred due to incomplete coverage and delays in reporting.",
+        "ALL_DEATHS_DATA": "All deaths data"
+      },
+      "CONTACT_TRACING": {
+        "TITLE": "Contact Tracing",
+        "NUMBER_OF_CONFIRMED_CASES": "Number of confirmed cases reached",
+        "WIP": "W.I.P.",
+        "NUMBER_OF_CASES_IDENTIFIED": "Number of cases identified - current week",
+        "COMPARED_TO_PREVIOUS": "compared to previous 7 days",
+        "NO_COMPARABLE": "no comparable data",
+        "CASES_IDENTIFIED_AND_REACHED": "Number of cases identified and reached",
+        "NUMBER_OF_CASES": "Number of cases that previously had been identified as contact",
+        "ALL_CONTACT_TRACING": "All contact tracing data"
+      },
+      "CASES": {
+        "TITLE": "Cases",
+        "CONFIRMED_POSITIVE_CASES": "Confirmed Positive Cases",
+        "DESCRIPTION": " The figure shows the cumulative number of confirmed cases reported in the preceding 24 hours. The date attributed to positive tests is the date on which the relevant organisation was notified by the relevant health authority.This is not the same as the date on which people are tested. Part of the notification process is donemanually. Sometimes the health authority will not have reported all newly confirmed cases at the moment that the figures are compiled for the preceding 24 hours. Missing notifications are passed on at a later time. Missing or delayed notifications can skew the daily figures. The rolling average filters out this type of fluctuation, and therefore often give a better picture of the number of infections.",
+        "DAILY": "Daily",
+        "DESCR_1": "To present the current epidemiological situation as accurately as possible, late notifications and corrections to false and double notifications going back more than 28 days are not included. On the other hand, the total for the selected period includes all laboratory confirmed cases, including late notifications and corrections",
+        "LAST_SEVEN_DAYS": "Last 7 days",
+        "DETAILS_ON_THE_LAST_SEVEN": " Details on the last seven days. Information about the trend to the right etc.",
+        "COMPARED_TO_PREVIOUS": "compared to previous 7 days",
+        "NO_COMPARABLE": "no comparable data",
+        "INHABITANTS": "Per 100,000 inhabitants",
+        "NEW_CASES": "New cases per 100,000 inhabitants in a certain period of time",
+        "SUBTITLE": "Confirmed Positive Cases",
+        "ALL_CASES_DATA": "All cases data"
+      },
+      "BED_OCCUPANCY": {
+        "TITLE": "Hospitalisations",
+        "BED_OCCUPANCY": "Bed Occupancy",
+        "DESCR_1": "Hospital capacity has had to be organised in new ways as a result of the pandemic to treat Covid and non-Covid patients separately and safely in meeting the enhanced Infection Prevention Control measures. This results in beds and staff being deployed differently from previous years in both emergency and elective settings within the hospital. As a result, caution should be exercised in comparing the overall occupancy rates of this year with previous years. In general, hospitals will experience capacity pressures at lower overall occupancy rates than would have previously been the case.",
+        "DESCR_2": "The published data is based on reports that were sent to the PANDEM-2 application by relevant information providers with intensive care units via the PANDEM-2 application. Due to the different reporting times and procedures, the figures shown here may differ from those published by other institutions.",
+        "WARD_OCCUPANCY": "Ward Occupancy",
+        "WARD_WITH_COVID": "Ward Occupancy with Covid",
+        "WARD_OCCUPANCY_RATE": "Ward Occupancy Rate",
+        "ICU_OCCUPANCY": "ICU Occupancy",
+        "ICU_WITH_COVID": "ICU Occupancy with Covid",
+        "ICU_OCCUPANCY_RATE": "ICU Occupancy Rate",
+        "MEDIAN_LENGTH": "Median Length of Stay",
+        "ALL_HOSPITALIZATION": "All hospitalisations data"
+      }
+    }
+  },
+  "PERMISSIONS": {
+    "role_all": "Can manage roles",
+    "user_all": "Can manage users",
+    "user_my": "Can manage own user",
+    "nuts_all": "Can reimport NUTS data",
+    "import_all": "Can import data",
+    "case_all": "Can access cases page",
+    "contact_all": "Can access contacts page",
+    "patient_all": "Can access hospitalization(patients) page",
+    "bed_all": "Can access hospitalization(beds) page",
+    "death_all": "Can access deaths page",
+    "vaccine_all": "Can access vaccines page",
+    "test_all": "Can access tests page",
+    "variant_all": "Can access genetic variation page",
+    "strain_all": "Can manage strains",
+    "human_resources_all": "Can access human resources page",
+    "survey_all": "Can access surveys page",
+    "participatory_surveillance_all": "Can access participatory surveillance page",
+    "modelling_all": "Can access modelling page",
+    "social_media_analysis_all": "Can access soci al media analysis page",
+    "report_all": "Can access reports page",
+    "primary_care_all": "Can access primary care page",
+    "intervention_all": "Can access interventions page",
+    "population_all": "Can manage population data",
+    "flights_all": "Can access flights page",
+    "configuration_settings_all": "Can manage admin configuration settings",
+    "saved_report_cards_all": "Can access the saved report cards of deleted users",
+    "start_import": "Can start import",
+    "exploration_selections_all": "Can manage exploration selections",
+    "translation_all": "Can manage translation page"
+  },
+  "DATE_PICKER": {
+    "START_DATE": "Start date cannot be later than the end date.",
+    "END_DATE": "End date cannot be earlier than the start date.",
+    "CHECKBOX_TOOLTIP": "Sets endDate to current date and startDate to 3 months before.",
+    "CHECKBOX_TEXT": "Follow Current Date"
+  },
+  "IMPORT_EXPORT": {
+    "ADD": "Add",
+    "IMPORT": "Import Users",
+    "EXPORT": "Export Users",
+    "TEMPLATE": "Generate Excel Template",
+    "TEMPLATE_SCC": "Template generated successfully.",
+    "TEMPLATE_ERR": "Error while generating template.",
+    "EXPORT_SCC": "Users exported successfully.",
+    "EXPORT_ERR": "Error while exporting users.",
+    "IMPORT_SCC": "Users imported successfully.",
+    "IMPORT_ERR": "Error while importing users."
+  },
+  "USER_PAGINATOR": {
+    "INPUT": "User",
+    "PLACEHOLDER": "Search for user with email",
+    "DESCRIPTION": "List of users"
+  },
+  "SHARED": {
+    "CARD_MANAGER": {
+      "TITLE": "GRAPH OPTIONS",
+      "COLLAPSE": "COLLAPSE",
+      "MOVE_UP": "MOVE UP",
+      "MOVE_DOWN": "MOVE DOWN",
+      "COPY_TO_REPORT": "COPY TO REPORT",
+      "REMOVE": "REMOVE",
+      "SEARCH": "Search...",
+      "EXPAND": "Expand",
+      "ADD_OTHER_GRAPH": "ADD OTHER GRAPH"
+    },
+    "HEADER": {
+      "SURVEILLANCE": "SURVEILLANCE",
+      "HEALTHCARE_CAPACITY": "HEALTHCARE CAPACITY",
+      "TESTING_CONTRACT_TRACING": "TESTING & CONTACT TRACING",
+      "INTERVENTIONS": "INTERVENTIONS",
+      "GENETIC_VARIATION": "GENETIC VARIATION",
+      "VACCINES": "VACCINES",
+      "SCENARIOS": "SCENARIOS",
+      "CASES": "Cases",
+      "Deaths": "Deaths",
+      "Participatory_Surveillance": "Participatory Surveillance",
+      "Primary_Care": "Primary Care",
+      "Fights": "Flights",
+      "Hospitalization": "Hospitalisations",
+      "Human_Resources": "Human Resources",
+      "Testing": "Testing",
+      "Contact_Tracing": "Contact Tracing",
+      "Interventions": "Interventions",
+      "SMA": "Social Media Analysis",
+      "High_Throughput_Sequencing": "High Throughput Sequencing",
+      "Vaccination_Uptake": "Vaccination Uptake",
+      "Modelling": "Modelling",
+      "Report_Card": "Report Card",
+      "Exploration": "Exploration",
+      "Users": "Users",
+      "User_Roles": "User Roles",
+      "Administration": "Administration",
+      "Translation": "Translation",
+      "Sign_Out": "Sign Out"
+    },
+    "HAMBURGER": {
+      "Surveillance": "Surveillance",
+      "Healthcare_Capacity": "Healthcare Capacity",
+      "Contact_Tracing": "Contact Tracing",
+      "Interventions": "Interventions",
+      "Genetic_Variation": "Genetic Variation",
+      "Vaccines": "Vaccines",
+      "Scenarios": "Scenarios",
+      "Report_Card": "Report Card",
+      "Exploration": "Exploration",
+      "Users": "Users",
+      "User_Roles": "User Roles",
+      "Administration": "Administration",
+      "Translation": "Translation",
+      "Sign_Out": "Sign Out",
+      "Cases": "Cases",
+      "Deaths": "Deaths",
+      "Participatory_Surveillance": "Participatory Surveillance",
+      "Primary_Care": "Primary Care",
+      "Flights": "Flights",
+      "Hospitalisations": "Hospitalisations",
+      "Human_Resources": "Human Resources",
+      "Testing": "Testing",
+      "SMA": "Social Media Analysis",
+      "High_Throughput_Sequencing": "High Throughput Sequencing",
+      "Vaccination_Uptake": "Vaccination Uptake",
+      "Modelling": "Modelling"
+    },
+    "MAP": {
+      "FILTER_BY": "Filter By",
+      "LOCATION": "Location"
+    }
+  },
+  "ERROR_MESSAGES": {
+    "EMAIL.REQUIRED": "Please enter the email address",
+    "EMAIL.EMAIL": "Please enter a valid email address",
+    "EMAIL.NOT_FOUND": "Email not found!",
+    "SALUTATION.REQUIRED": "Please enter your gender",
+    "USERNAME.REQUIRED": "Please enter your username",
+    "USERNAME.MINLENGTH": "The username must be more than 3 characters",
+    "PASSWORD.REQUIRED": "Please enter your password",
+    "PASSWORD.MINLENGTH": "The password must be at least 8 characters long.",
+    "NEWPASSWORD.REQUIRED": "Please enter a new password",
+    "CONFIRMED_PASSWORD.REQUIRED": "Please confirm your password",
+    "CONFIRMED_PASSWORD.MUSTMATCH": "Passwords must match",
+    "RECAPTCHA.REQUIRED": "Please verify that you are not a robot",
+    "FIRSTNAME.REQUIRED": "Please enter the first name",
+    "LASTNAME.REQUIRED": "Please enter the last name",
+    "PHONENUMBER.REQUIRED": "Please enter the phone number",
+    "PHONE.REQUIRED": "Please enter the agent's phone",
+    "AGENT.REQUIRED": "Please select an agent",
+    "CONFIRMPASSWORD.REQUIRED": "Please confirm your password",
+    "CONFIRMPASSWORD.MUSTMATCH": "Passwords must match",
+    "TITLE.REQUIRED": "Please enter your title",
+    "STREETADDRESS.REQUIRED": "Please enter your street address",
+    "STREETNUMBER.REQUIRED": "Please enter your street number",
+    "ZIP.REQUIRED": "Please enter your zip code",
+    "CITY.REQUIRED": "Please enter your city",
+    "COUNTRY.REQUIRED": "Please enter your country",
+    "STATE.REQUIRED": "Please enter your state",
+    "MOBILE.REQUIRED": "Please enter your mobile",
+    "PERSONALCOUNTRY.REQUIRED": "Please enter your country",
+    "PERSONALSTATE.REQUIRED": "Please enter your state",
+    "PERSONALCITY.REQUIRED": "Please enter your city",
+    "PERSONALSTREETADDRESS.REQUIRED": "Please enter your street address",
+    "PERSONALSTREETNUMBER.REQUIRED": "Please enter your street number",
+    "PERSONALZIP.REQUIRED": "Please enter your zip code",
+    "ROLE.REQUIRED": "Please enter your role",
+    "DEPARTMENT.REQUIRED": "Please enter your department",
+    "LEGALFORM.REQUIRED": "Please enter your legal form!",
+    "COMPANYNAME.REQUIRED": "Please enter your company name!",
+    "DEPARTMENTNAME.REQUIRED": "Please enter your department",
+    "VATID.REQUIRED": "Please enter your vat ID",
+    "COMPANYTAXNUMBER.REQUIRED": "Please enter your company tax number",
+    "COMPANYCOUNTRY.REQUIRED": "Please enter your country",
+    "COMPANYSTATE.REQUIRED": "Please enter your state",
+    "COMPANYCITY.REQUIRED": "Please enter your city",
+    "COMPANYSTREETADDRESS.REQUIRED": "Please enter your street address",
+    "COMPANYSTREETNUMBER.REQUIRED": "Please enter your street number",
+    "COMPANYZIP.REQUIRED": "Please enter your zip code",
+    "LOCATION.REQUIRED": "Please select a region",
+    "INTERVENTIONNAME.REQUIRED": "Please enter a name",
+    "INTERVENTIONDESCRIPTION.REQUIRED": "Please enter a description",
+    "START_DATE.REQUIRED": "Please select a date range",
+    "END_DATE.REQUIRED": "Please select a date range",
+    "NEW_PASSWORD.REQUIRED": "Please enter your new password!",
+    "NEW_PASSWORD.MINLENGTH": "The password must be at least 12 characters long.!",
+    "CONFIRM_NEW_PASSWORD.REQUIRED": "Please confirm your new password!",
+    "CONFIRM_NEW_PASSWORD.CONFIRMEDVALIDATOR": "Passwords must match!"
+  },
+  "MAP_DATES": {
+    "ALL": "All",
+    "SIX_MONTHS": "6 Months",
+    "THREE_MONTHS": "3 Months",
+    "ONE_MONTH": "1 Month",
+    "FOUR_WEEKS": "4 WEEKS",
+    "TWO_WEEKS": "2 WEEKS",
+    "ONE_YEAR": "1 YEAR"
+  },
+  "LINEAR": "Linear",
+  "LOGARITHMIC": "Logarithmic",
+  "PER100K": "Per 100,000 Population",
+  "ABSOLUTE": "Absolute Numbers",
+  "PROPORTION": "Proportion (%)"
+}

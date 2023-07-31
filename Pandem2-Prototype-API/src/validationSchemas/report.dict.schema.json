@@ -1,0 +1,215 @@
+{
+  "$id": "/report#",
+  "definitions": {
+    "reportId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "userId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prepared_for": {
+      "type": "string",
+      "minLength": 1
+    },
+    "epi_week": {
+      "type": "string",
+      "minLength": 1
+    },
+    "report_cards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "itemType": {
+            "type": "string",
+            "minLength": 1
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1
+          },
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "viewType": {
+                "type": "string",
+                "minLength": 1
+              },
+              "startDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "endDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "selectedInterventions": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "selectedCountry": {
+                "$ref": "/nuts#/definitions/nutsResourceEntry"
+              },
+              "selectedRegions": {
+                "type": "array",
+                "items": {
+                  "$ref": "/nuts#/definitions/nutsResourceEntry"
+                }
+              },
+              "selectedTopic": {
+                "type": "object",
+                "properties": {
+                  "id" : {
+                      "type": "string",
+                      "minLength": 1
+                   },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "selectedSources": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "tag": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sourceIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "section": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scenarioId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "graphId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "chartType": {
+            "type": "string",
+            "minLength": 1
+          },
+          "chartPlotType": {
+            "type": "string",
+            "minLength": 1
+          },
+          "viewBy": {
+            "type": "string",
+            "minLength": 1
+          },
+          "viewStyle": {
+            "type": "string",
+            "enum": [
+              "list",
+              "grid"
+            ]
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "plotlines": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required": [
+          "itemType"
+        ]
+      }
+    },
+    "location": {
+      "description": "Report location",
+      "type": "object",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": []
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    
+    "reportResourceEntry": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "$ref": "/report#/definitions/userId"
+        },
+        "name": {
+          "$ref": "/report#/definitions/name"
+        },
+        "summary": {
+          "$ref": "/report#/definitions/summary"
+        },
+        "prepared_for": {
+          "$ref": "/report#/definitions/prepared_for"
+        },
+        "epi_week": {
+          "$ref": "/report#/definitions/epi_week"
+        },
+        "report_cards": {
+          "$ref": "/report#/definitions/report_cards"
+        },
+        "location": {
+          "$ref": "/report#/definitions/location"
+        },
+        "start_date": {
+          "$ref": "/report#/definitions/start_date"
+        },
+        "end_date": {
+          "$ref": "/report#/definitions/end_date"
+        },
+        "_id": {
+          "$ref": "/report#/definitions/reportId"
+        }
+      }
+    }
+  }
+}

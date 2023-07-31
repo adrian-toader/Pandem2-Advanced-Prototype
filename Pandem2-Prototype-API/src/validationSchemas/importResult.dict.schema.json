@@ -1,0 +1,83 @@
+{
+  "$id": "/importResult#",
+  "definitions": {
+    "data_type": {
+      "enum": [
+        "case",
+        "patient",
+        "death",
+        "variant_code",
+        "variant_name"
+      ]
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "no_files": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "no_files_parsed": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "enum": [
+        "in progress",
+        "success",
+        "error"
+      ]
+    },
+    "error": {
+      "type": "object"
+    },
+    "last_file_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "importResultResourceEntry": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "/base#/definitions/mongoID"
+        },
+        "data_type": {
+          "$ref": "/importResult#/definitions/data_type"
+        },
+        "path": {
+          "$ref": "/importResult#/definitions/path"
+        },
+        "no_files": {
+          "$ref": "/importResult#/definitions/no_files"
+        },
+        "no_files_parsed": {
+          "$ref": "/importResult#/definitions/no_files_parsed"
+        },
+        "start_date": {
+          "$ref": "/importResult#/definitions/start_date"
+        },
+        "end_date": {
+          "$ref": "/importResult#/definitions/end_date"
+        },
+        "status": {
+          "$ref": "/importResult#/definitions/status"
+        },
+        "error": {
+          "$ref": "/importResult#/definitions/error"
+        },
+        "last_file_date": {
+          "$ref": "/importResult#/definitions/last_file_date"
+        }
+      }
+    }
+  }
+}

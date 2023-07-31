@@ -1,0 +1,123 @@
+/*
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+*/
+
+.modelling-options-title {
+  text-align: center;
+  color: white;
+  padding: 15px 10px;
+}
+
+.modelling-options-minimized-title {
+  color: white;
+  padding: 0 8px;
+  font-size: 0.8em;
+}
+
+.modelling-options-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #567484;
+  width: 100%;
+  height: 60px;
+}
+
+.modelling-options-section {
+  margin: 15px;
+  text-align: center;
+  border: 3px solid #e5e5e5;
+  padding-bottom: 15px;
+  padding-top: 12px;
+}
+
+.modelling-options-section-minimized {
+  margin: 5px;
+  text-align: center;
+  border: 3px solid #e5e5e5;
+  padding-bottom: 8px;
+  padding-top: 8px;
+}
+
+.modelling-options-section-collapsed {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+:host .mat-list-base {
+  padding-top: 0;
+}
+
+:host ::ng-deep .modelling-options-section-minimized .mat-list-item-content {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+.mat-card {
+  padding: 0;
+}
+
+:host button {
+  width: 100%;
+  text-align: left;
+  min-height: 36px;
+  height: auto !important;
+  min-width: 32px;
+  padding-right: 8px;
+}
+
+:host .modelling-options-section-minimized button {
+  padding: 0 4px;
+}
+
+.mat-primary-button {
+  background-color: #0272c6;
+  color: #fff;
+}
+
+.warning {
+  margin-left: 16px;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+
+.modelling-options-button-content > span {
+  white-space: normal;
+  line-height: 1.4em;
+}
+
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+  .modelling-options-title {
+    padding: 0 8px;
+    font-size: 0.8em;
+  }
+
+  .modelling-options-button-content > span {
+    display: none;
+  }
+
+  .modelling-options-button-content {
+    justify-content: center !important;
+  }
+}

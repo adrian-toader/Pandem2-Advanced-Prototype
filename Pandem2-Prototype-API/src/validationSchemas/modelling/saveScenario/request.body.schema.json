@@ -1,0 +1,24 @@
+{
+  "$id": "modelling.saveScenario.request.body.schema",
+  "description": "Save scenario request body schema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "/modellingScenario#/definitions/modellingScenarioResourceEntry"
+    },
+    {
+      "$ref": "/modellingScenarioDayResult#/definitions/modellingScenarioDayResultResourceEntry"
+    },
+    {
+      "required": [
+        "userId",
+        "modelId",
+        "name",
+        "date",
+        "tags",
+        "location",
+        "parameters"
+      ]
+    }
+  ]
+}

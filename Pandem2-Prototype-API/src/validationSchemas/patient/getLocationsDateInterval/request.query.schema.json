@@ -1,0 +1,40 @@
+{
+  "$id": "patient.getLocationsDateInterval.request.query.schema",
+  "description": "Get time interval in which patients occured for requested locations - request query schema",
+  "type": "object",
+  "properties": {
+    "total_type": {
+      "$ref": "/patient#/definitions/total_type"
+    },
+    "admission_type": {
+      "anyOf": [
+        {
+          "$ref": "/patient#/definitions/admission_type"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/patient#/definitions/admission_type"
+          }
+        }
+      ]
+    },
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "admission_type",
+        "has_comorbidities",
+        "age_group",
+        "variantId"
+      ]
+    }
+  },
+  "required": [
+    "total_type",
+    "admission_type",
+    "location"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "$id": "survey.getSurveyQuestionsList.response.body.schema",
+  "description": "Get survey questions - response body schema",
+  "type":"array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "questionId": {
+        "type": "string"
+      },
+      "text": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "questionId",
+      "text"
+    ]
+  }
+}

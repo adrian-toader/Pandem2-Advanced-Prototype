@@ -1,0 +1,18 @@
+{
+  "$id": "intervention.createIntervention.request.body.schema",
+  "description": "Create intervention request body schema",
+  "allOf": [
+    {
+      "$ref": "/intervention#/definitions/interventionResourceEntry"
+    },
+    {
+      "type": "object",
+      "required": [
+        "name",
+        "location",
+        "start_date",
+        "end_date"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<mat-card>
+  <div class="d-flex align-items-top">
+    <mat-card-title class="flex-grow-1" (mousedown)="$event.stopPropagation()">
+      <div class="row">
+        <div class="col-md-6 text-center text-sm-left">
+          {{'MODULES.HEALTHCARE_CAPACITY.HUMAN_RESOURCES_PUBLIC_HEALTH_STAFF_SUMM.TITLE' | translate}}
+        </div>
+      </div>
+    </mat-card-title>
+    <mat-icon style="cursor: grab">drag_indicator</mat-icon>
+  </div>
+  <div (mousedown)="$event.stopPropagation()">
+    <br />
+    <mat-card-subtitle>
+      <div class="row">
+        <div class="col-md-7 mb-4 text-center text-sm-left">
+          <p>
+            {{'MODULES.HEALTHCARE_CAPACITY.HUMAN_RESOURCES_PUBLIC_HEALTH_STAFF_SUMM.DESCRIPTION' | translate}}
+          </p>
+        </div>
+        <div class="col-md-5 mb-4 text-center text-sm-left text-md-right">
+          <app-sources [sourceType]="SourceType.GRAPH" [sources]="sources" [lastUpdate]="lastUpdate"></app-sources>
+        </div>
+      </div>
+    </mat-card-subtitle>
+    <mat-card-content *ngIf="!isCollapsed">
+      <div class="form-inline">
+        <div class="form-group mr-4 mb-4">
+          <app-chart-time-interval [intervalOptions]="chartsIntervalOptions"
+            (intervalChanged)="changeTimeInterval($event)"
+            [selectedIntervalOption]="selectedIntervalOption"></app-chart-time-interval>
+        </div>
+        <div class="form-group mr-4 mb-4">
+          <ng-container *ngIf="proportionIncreaseChart">
+            <mat-button-toggle-group (change)="changeTotalType($event)" value="Proportion"
+              class="d-none d-md-inline-flex">
+              <mat-button-toggle value="Absolute">{{graphFilterButtons.ABSOLUTE}}</mat-button-toggle>
+              <mat-button-toggle value="100K">{{graphFilterButtons.PER100K}}</mat-button-toggle>
+              <mat-button-toggle value="Proportion">{{graphFilterButtons.PROPORTION}}</mat-button-toggle>
+            </mat-button-toggle-group>
+          </ng-container>
+          <ng-container *ngIf="!proportionIncreaseChart">
+            <mat-button-toggle-group (change)="changeTotalType($event)" [value]="totalType"
+              class="d-none d-md-inline-flex">
+              <mat-button-toggle value="Absolute">{{graphFilterButtons.ABSOLUTE | translate}}</mat-button-toggle>
+              <mat-button-toggle value="100K">{{graphFilterButtons.PER100K | translate}}</mat-button-toggle>
+              <mat-button-toggle value="Proportion">{{graphFilterButtons.PROPORTION | translate}}</mat-button-toggle>
+            </mat-button-toggle-group>
+          </ng-container>
+        </div>
+        <div class="form-group mr-4 mb-4">
+          <mat-button-toggle-group [value]="LinearLog" aria-label="Type" class="type-container" name="fontStyle">
+            <mat-button-toggle (change)="changeHumanResourcesPlotType($event)"
+              value="linear">{{graphFilterButtons.LINEAR | translate}}</mat-button-toggle>
+            <mat-button-toggle (change)="changeHumanResourcesPlotType($event)"
+              value="logarithmic">{{graphFilterButtons.LOGARITHMIC | translate}}</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+      <mat-card>
+        <mat-card-title>
+          {{'MODULES.HEALTHCARE_CAPACITY.HUMAN_RESOURCES_PUBLIC_HEALTH_STAFF_SUMM.PUBLIC_HEALTH_STAFF' | translate}}
+        </mat-card-title>
+        <div *ngIf="isLoading()" class="mat-spinner-container loading-chart-placeholder">
+          <mat-spinner></mat-spinner>
+        </div>
+        <div *ngIf="isLoaded()">
+          <app-highcharts #firstChart
+            (mouseenter)="tooltipSynchronisationService.setSyncRules(firstChartView, secondChartView)"
+            (mousemove)="tooltipSynchronisationService.syncPointers(syncCharts.FirstChart, firstChartView, secondChartView)"
+            (mouseleave)="tooltipSynchronisationService.hideSyncedPointers(firstChartView, secondChartView)"
+            [chartType]="chartType" [xAxisData]="dailyHRChart.total.xAxis" [series]="dailyHRSeries"
+            [showExportMenu]="true" [stacking]="true" [yAxisExtra]="publicHealthStaffYAxisSettings"
+            [yAxisType]="LinearLog"></app-highcharts>
+        </div>
+      </mat-card><br>
+      <mat-card>
+        <mat-card-title>
+          {{'MODULES.HEALTHCARE_CAPACITY.HUMAN_RESOURCES_PUBLIC_HEALTH_STAFF_SUMM.CASES' | translate}}
+        </mat-card-title>
+        <div *ngIf="isLoading()" class="mat-spinner-container loading-chart-placeholder">
+          <mat-spinner></mat-spinner>
+        </div>
+        <div *ngIf="isLoaded()">
+          <app-highcharts #secondChart
+            (mouseenter)="tooltipSynchronisationService.setSyncRules(firstChartView, secondChartView)"
+            (mousemove)="tooltipSynchronisationService.syncPointers(syncCharts.SecondChart, firstChartView, secondChartView)"
+            (mouseleave)="tooltipSynchronisationService.hideSyncedPointers(firstChartView, secondChartView)"
+            [chartType]="chartType" [xAxisData]="dailyCaseChart.total.xAxis" [series]="dailyCaseSeries"
+            [showExportMenu]="true" [stacking]="true" [yAxisType]="LinearLog"></app-highcharts>
+        </div>
+      </mat-card>
+    </mat-card-content>
+  </div>
+</mat-card>

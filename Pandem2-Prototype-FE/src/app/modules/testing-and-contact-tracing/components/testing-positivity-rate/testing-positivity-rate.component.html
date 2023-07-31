@@ -1,0 +1,97 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<mat-card class="testing-positivity-rate-container">
+  <div class="d-flex align-items-top">
+    <mat-card-title class="flex-grow-1" (mousedown)="$event.stopPropagation()">
+      <div class="row">
+        <div class="col-md-12 text-center text-sm-left">
+          {{'MODULES.TESTING_CONTACT_TRACING.TESTING_POSITIVITY_RATE.TITLE' | translate }}
+        </div>
+      </div>
+    </mat-card-title>
+    <mat-icon style="cursor: grab">drag_indicator</mat-icon>
+  </div>
+  <div (mousedown)="$event.stopPropagation()">
+    <br />
+    <mat-card-subtitle>
+      <div class="row">
+        <ng-container *ngIf="chartDescription">
+          <div class="col-md-6 mb-4 text-center text-sm-left" [innerHTML]="chartDescription"></div>
+        </ng-container>
+        <ng-container *ngIf="!chartDescription">
+          <div class="col-md-6 mb-4 text-center text-sm-left">
+            {{'MODULES.TESTING_CONTACT_TRACING.TESTING_POSITIVITY_RATE.PERCENT_OF_NEW_TESTS' | translate }}
+          </div>
+        </ng-container>
+        <div class="col-md-6 mb-4 text-center text-sm-left text-md-right">
+          <app-sources [sourceType]="SourceType.GRAPH" [sources]="sources" [lastUpdate]="lastUpdate"></app-sources>
+        </div>
+      </div>
+    </mat-card-subtitle>
+    <mat-card-content *ngIf="!isCollapsed">
+      <div class="form-inline">
+        <div class="form-group mr-4 mb-4">
+          <app-chart-time-interval (intervalChanged)="changeTimeInterval($event)"
+            [intervalOptions]="chartsIntervalOptions"
+            [selectedIntervalOption]="selectedIntervalOption"></app-chart-time-interval>
+        </div>
+        <div class="form-group mr-4 mb-4">
+          <mat-button-toggle-group [value]="LinearLog" aria-label="Type" class="type-container" name="fontStyle">
+            <mat-button-toggle (change)="changeTestingPositivityPlotType($event)"
+              value="linear">{{graphFilterButtons.LINEAR | translate}}</mat-button-toggle>
+            <mat-button-toggle (change)="changeTestingPositivityPlotType($event)"
+              value="logarithmic">{{graphFilterButtons.LOGARITHMIC | translate}}</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <div class="form-group mr-4 mb-4 text-center text-sm-left">
+          <mat-slide-toggle (change)="setChartSeries($event)" [checked]="is7DayMeanChecked"
+            class="testing-positivity-rate-container__seven-day-mean-toggle mr-4" id="seven-day"
+            [labelPosition]="'before'">{{'MODULES.TESTING_CONTACT_TRACING.TESTING_POSITIVITY_RATE.SEVEN_DAY_MEAN' | translate }}</mat-slide-toggle>
+          <mat-slide-toggle (change)="setChartSeries($event)" [checked]="isTotalTestsChecked"
+            class="testing-positivity-rate-container__total-tests-toggle mr-4" id="total-tests"
+            [labelPosition]="'before'">{{'MODULES.TESTING_CONTACT_TRACING.TESTING_POSITIVITY_RATE.TOTAL_TESTS' | translate }}</mat-slide-toggle>
+          <mat-slide-toggle (change)="setChartSeries($event)" [checked]="isPositiveTestsChecked"
+            class="testing-positivity-rate-container__positive-tests-toggle" id="positive-tests"
+            [labelPosition]="'before'">{{'MODULES.TESTING_CONTACT_TRACING.TESTING_POSITIVITY_RATE.POSITIVE_TESTS_NO' | translate }}</mat-slide-toggle>
+        </div>
+      </div>
+      <div *ngIf="isLoading()" class="mat-spinner-container loading-chart-placeholder">
+        <mat-spinner></mat-spinner>
+      </div>
+      <mat-tab-group (selectedTabChange)="tabClick($event)" class="charts-container" *ngIf="isLoaded()"
+        [selectedIndex]="currentTabIndex" (selectedIndexChange)="updateTabIndex($event)">
+        <mat-tab label="{{'MODULES.TESTING_CONTACT_TRACING.TESTING_POSITIVITY_RATE.DAILY' | translate }}" *ngIf="dailyChartPositive">
+          <app-highcharts #chart [xAxisData]="dailyChartPositive.total.xAxis" [series]="dailySeries"
+            [showExportMenu]="true" [plotOptions]="chartPlotOptions" [secondYAxis]="secondYAxis"
+            [yAxisType]="LinearLog"></app-highcharts>
+        </mat-tab>
+        <mat-tab label="{{'MODULES.TESTING_CONTACT_TRACING.TESTING_POSITIVITY_RATE.WEEKLY' | translate }}" *ngIf="weeklyChartPositive">
+          <app-highcharts #chart [xAxisData]="weeklyChartPositive.total.xAxis" [series]="weeklySeries"
+            [showExportMenu]="true" [plotOptions]="chartPlotOptions" [secondYAxis]="secondYAxis"
+            [yAxisType]="LinearLog"></app-highcharts>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </div>
+</mat-card>

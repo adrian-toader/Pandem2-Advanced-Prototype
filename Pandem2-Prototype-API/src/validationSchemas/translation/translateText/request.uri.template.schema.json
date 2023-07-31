@@ -1,0 +1,13 @@
+{
+  "$id": "translation.translateText.request.uri.template.schema",
+  "description": "Translate a text",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "/base#/definitions/mongoID"
+    }
+  },
+  "required": [
+      "id"
+  ]
+}

@@ -1,0 +1,114 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<div class="container-fluid dashboard-page">
+  <div class="mb-4">
+    <app-modelling-header></app-modelling-header>
+  </div>
+
+  <div class="mb-4">
+    <app-modelling-breadcrumb></app-modelling-breadcrumb>
+  </div>
+
+  <div class="mb-4">
+    <app-modelling-actions></app-modelling-actions>
+  </div>
+
+  <div class="row">
+    <div class="col-xl-12">
+      <h3 class="modelling-title-weight">
+        {{ 'MODULES.MODELLING.PREVIOUS_SCENARIOS.PREVIOUS_SCENARIOS' | translate }}
+      </h3>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!scenarios.length && isScenariosLoaded()">
+    <mat-card class="col-xl-12">
+      <mat-card-title>
+        {{ 'MODULES.MODELLING.PREVIOUS_SCENARIOS.NO_PREVIOUS_SCENARIOS' | translate }}
+      </mat-card-title>
+    </mat-card>
+  </div>
+
+  <div class="row justify-content-between px-3 mt-0" *ngIf="scenarios.length">
+    <div class="d-flex flex-wrap">
+      <div class="prev-scenarios-tags mr-3">
+        <mat-form-field appearance="standard" class="prev-scenarios-form-field">
+          <mat-label>{{ 'MODULES.MODELLING.PREVIOUS_SCENARIOS.FILTER_TITLE' | translate }}</mat-label>
+          <mat-select [formControl]="tags" multiple>
+            <mat-select-trigger>
+              <mat-chip-list class="prev-scenarios-chip-list">
+                <mat-chip
+                  *ngFor="let tag of tags.value"
+                  (removed)="removeTag(tag)" selected>
+                  {{tag}}
+                  <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+              </mat-chip-list>
+            </mat-select-trigger>
+            <mat-option *ngFor="let tag of tagsList" [value]="tag">{{tag}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="prev-scenarios-search">
+        <mat-form-field appearance="standard" class="prev-scenarios-form-field">
+          <mat-label>{{ 'MODULES.MODELLING.PREVIOUS_SCENARIOS.SEARCH_TITLE' | translate }}</mat-label>
+          <input
+            matInput
+            placeholder="{{ 'MODULES.MODELLING.PREVIOUS_SCENARIOS.SEARCH_PLACEHOLDER' | translate }}"
+            [formControl]="searchControl">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="d-flex">
+      <div class="prev-scenarios-sort">
+        <mat-form-field appearance="standard" class="prev-scenarios-form-field">
+          <mat-label>{{ 'MODULES.MODELLING.PREVIOUS_SCENARIOS.SORT_TITLE' | translate }}</mat-label>
+          <mat-select (selectionChange)="sortingChanged($event.value)">
+            <mat-option *ngFor="let sorting of sortings" [value]="sorting.value">
+              {{ 'MODULES.MODELLING.PREVIOUS_SCENARIOS.' + sorting.viewValueKey | translate}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isScenariosLoading()"
+    class="mat-spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="isScenariosLoaded()">
+    <div *ngFor="let scenario of visibleScenarios, let i = index" style="margin-top: 1.5rem;">
+      <div class="row" style="margin-top: 5px;">
+        <div class="col-xl-12">
+          <app-modelling-scenario-summary
+            [scenario]="scenario"
+            [isLatest]="i === 0"
+            (delete)="scenarioDeleted()">
+          </app-modelling-scenario-summary>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

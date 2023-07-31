@@ -1,0 +1,65 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<div>
+  <div class="row justify-content-between">
+    <div class="col-lg-6 col-xl-6 position-relative">
+      <mat-label>{{'MODULES.REPORT_CARD.REPORT_CARD_OPTIONS.TITLE' | translate }}</mat-label>
+      <app-location-select #locationSelect></app-location-select>
+    </div>
+    <form appearance="fill" class="form-group col-lg-6 col-xl-6">
+      <mat-label class="label-margin">
+        {{'MODULES.REPORT_CARD.REPORT_CARD_OPTIONS.CHOOSE_DATE' | translate }}
+      </mat-label>
+      <div class="d-flex">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-input [formGroup]="range" [rangePicker]="picker" class="report-date-select-input">
+          <input matStartDate formControlName="start" placeholder="Start date" (click)="picker.open()" readonly>
+          <input matEndDate formControlName="end" placeholder="End date" (click)="picker.open()" readonly>
+        </mat-date-range-input>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </div>
+    </form>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-xl-12 d-flex justify-content-around">
+      <button mat-raised-button color="primary-button" (click)="onPrintClick()" class="col-xl-3 mx-2 px-5">
+        <div class="row justify-content-between align-items-center">
+          <div>{{'MODULES.REPORT_CARD.REPORT_CARD_OPTIONS.PRINT' | translate }}</div>
+          <mat-icon>print</mat-icon>
+        </div>
+      </button>
+      <button mat-raised-button color="primary-button" (click)="onSaveClick()" class="col-xl-3 mx-2 px-5">
+        <div class="row justify-content-between align-items-center">
+          <div>{{'MODULES.REPORT_CARD.REPORT_CARD_OPTIONS.SAVE' | translate }}</div>
+          <mat-icon>save_alt</mat-icon>
+        </div>
+      </button>
+      <button mat-raised-button color="primary-button" (click)="onLoadClick()" class="col-xl-3 mx-2 px-5">
+        <div class="row justify-content-between align-items-center">
+          <div>{{'MODULES.REPORT_CARD.REPORT_CARD_OPTIONS.OPEN' | translate }}</div>
+          <mat-icon>folder_open</mat-icon>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

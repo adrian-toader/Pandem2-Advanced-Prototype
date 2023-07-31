@@ -1,0 +1,13 @@
+{
+  "$id": "translation.deleteLanguage.request.uri.template.schema",
+  "description": "Delete a language from database",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "/base#/definitions/mongoID"
+    }
+  },
+  "required": [
+      "id"
+  ]
+}

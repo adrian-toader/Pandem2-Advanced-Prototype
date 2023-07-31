@@ -1,0 +1,13 @@
+{
+  "$id": "modelling.deleteModel.request.uri.template.schema",
+  "description": "Delete model URI template schema",
+  "type": "object",
+  "properties": {
+    "modelId": {
+      "$ref": "/base#/definitions/mongoID"
+    }
+  },
+  "required": [
+    "modelId"
+  ]
+}

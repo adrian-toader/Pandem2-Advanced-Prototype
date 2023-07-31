@@ -1,0 +1,66 @@
+{
+  "INVALID_IMPORT_PATH": {
+    "defaultStatusCode": 422,
+    "summary": "Import path does not exists"
+  },
+  "INVALID_PERMISSIONS_ERROR": {
+    "defaultStatusCode": 422,
+    "summary": "Invalid permissions"
+  },
+  "AUTHENTICATION_ERROR": {
+    "defaultStatusCode": 401,
+    "summary": "Authentication error"
+  },
+  "IMPORT_ALREADY_FINISHED": {
+    "defaultStatusCode": 422,
+    "summary": "Import already finished"
+  },
+  "IMPORT_IN_PROGRESS": {
+    "defaultStatusCode": 422,
+    "summary": "An Import action for the same data type is already running"
+  },
+  "GO_DATA_IMPORT_DISABLED": {
+    "defaultStatusCode": 422,
+    "summary": "Go.Data import is disabled"
+  },
+  "GO_DATA_IMPORT_INVALID_PATHOGEN": {
+    "defaultStatusCode": 422,
+    "summary": "Invalid pathogen. Was not found in DB"
+  },
+  "GO_DATA_IMPORT_INVALID_LOCATION": {
+    "defaultStatusCode": 422,
+    "summary": "Invalid location. Was not found in DB"
+  },
+  "NOT_FOUND": {
+    "defaultStatusCode": 404,
+    "summary": "Resource not found"
+  },
+  "ROLE_IN_USE": {
+    "defaultStatusCode": 422,
+    "summary": "There are users with this role. Cannot delete"
+  },
+  "USER_ALREADY_EXISTS": {
+    "defaultStatusCode": 409,
+    "summary": "A user with this email already exists."
+  },
+  "ALREADY_EXISTS": {
+    "defaultStatusCode": 409,
+    "summary": "Resource aleardy exists."
+  },
+  "ERROR_READING_FILE": {
+    "defaultStatusCode": 415,
+    "summary": "Error reading file"
+  },
+  "INVALID_PASSWORD": {
+    "defaultStatusCode": 422,
+    "summary": "Invalid password!"
+  },
+  "VALIDATION_ERROR": {
+    "defaultStatusCode": 400,
+    "summary": "Validation Error!"
+  },
+  "INVALID_TOKEN": {
+    "defaultStatusCode": 422,
+    "summary": "Invalid token!"
+  }
+}

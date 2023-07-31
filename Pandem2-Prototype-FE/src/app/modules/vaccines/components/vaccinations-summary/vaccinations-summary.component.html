@@ -1,0 +1,119 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<mat-card class="summary-section">
+  <div *ngIf="isLoading()" class="mat-spinner-container loading-chart-placeholder">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div class="charts-container" *ngIf="isLoaded()">
+    <mat-card-title>
+      <div class="summary-section__name-icon-container">
+        <div>
+          {{'MODULES.VACCINES.VACCINATIONS_SUMMARY.TITLE' | translate}}
+        </div>
+        <div>
+          <mat-icon (click)="showInfo = !showInfo">info</mat-icon>
+        </div>
+      </div>
+    </mat-card-title>
+    <mat-card-subtitle class="text-center text-sm-left">
+      <app-sources
+        [sourceType]="SourceType.SUMMARY"
+        [sources]="sources"></app-sources>
+    </mat-card-subtitle>
+    <mat-card-content>
+      <p class="text-center text-sm-left info-text" *ngIf="showInfo">
+        {{'MODULES.VACCINES.VACCINATIONS_SUMMARY.WIP' | translate}}
+      </p>
+      <mat-list>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            {{'MODULES.VACCINES.VACCINATIONS_SUMMARY.ALL_POPULATION' | translate}}
+          </div>
+        </mat-list-item>
+        <div style="margin-left:12px">
+          <mat-list-item style="min-height:30px">
+            <div class="col-xl-8 label" >
+              {{'MODULES.VACCINES.VACCINATIONS_SUMMARY.ONE_DOSE' | translate}}
+            </div>
+            <div class="col-xl-4 text-right" >
+              {{summary.All[DoseType.OneDose] | number : defaultNumberFormat}}%
+            </div>
+          </mat-list-item>
+          <mat-list-item style="min-height:30px">
+            <div class="col-xl-8 label">
+              {{'MODULES.VACCINES.VACCINATIONS_SUMMARY.TWO_DOSES' | translate}}
+            </div>
+            <div class="col-xl-4 text-right" >
+              {{summary.All[DoseType.TwoDoses] | number : defaultNumberFormat}}%
+            </div>
+          </mat-list-item>
+          <mat-list-item style="min-height:30px">
+            <div class="col-xl-8 label">
+              {{'MODULES.VACCINES.VACCINATIONS_SUMMARY.THREE_DOSES' | translate}}
+            </div>
+            <div class="col-xl-4 text-right" >
+              {{summary.All[DoseType.ThreePlusDoses] | number : defaultNumberFormat}}%
+            </div>
+          </mat-list-item>
+        </div>
+        <br>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            {{'MODULES.VACCINES.VACCINATIONS_SUMMARY.EMA_RECOMMENDED' | translate}}
+          </div>
+        </mat-list-item>
+        <div style="margin-left:12px">
+          <mat-list-item style="min-height:30px">
+            <div class="col-xl-8 label" >
+              {{'MODULES.VACCINES.VACCINATIONS_SUMMARY.ONE_DOSE' | translate}}
+            </div>
+            <div class="col-xl-4 text-right" >
+              {{summary[Population.EMARecommendedPopulation][DoseType.OneDose] | number : defaultNumberFormat}}%
+            </div>
+          </mat-list-item>
+          <mat-list-item style="min-height:30px">
+            <div class="col-xl-8 label">
+              {{'MODULES.VACCINES.VACCINATIONS_SUMMARY.TWO_DOSES' | translate}}
+            </div>
+            <div class="col-xl-4 text-right" >
+              {{summary[Population.EMARecommendedPopulation][DoseType.TwoDoses] | number : defaultNumberFormat}}%
+            </div>
+          </mat-list-item>
+          <mat-list-item style="min-height:30px">
+            <div class="col-xl-8 label">
+              {{'MODULES.VACCINES.VACCINATIONS_SUMMARY.THREE_DOSES' | translate}}
+            </div>
+            <div class="col-xl-4 text-right" >
+              {{summary[Population.EMARecommendedPopulation][DoseType.ThreePlusDoses] | number : defaultNumberFormat}}%
+            </div>
+          </mat-list-item>
+        </div>
+        <br>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </mat-card-content>
+  </div>
+</mat-card>

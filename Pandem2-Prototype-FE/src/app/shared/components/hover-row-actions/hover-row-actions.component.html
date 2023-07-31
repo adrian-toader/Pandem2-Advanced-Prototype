@@ -1,0 +1,123 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<!-- Hover row -->
+<div
+    class="record-hover-row-effect"
+    [class.visible]="visible"
+    [ngStyle]="hoverRowStyle">
+</div>
+
+<!-- Hover actions -->
+<div
+    #actionsRow
+    [class.partial-visible]="visible && !visibleActions"
+    [class.full-visible]="visible && visibleActions"
+    [class.right]="realPosition === HoverRowActionsPosition.RIGHT"
+    [ngClass]="rowClasses"
+    [ngStyle]="hoverActionsStyle"
+    (mouseenter)="actionsMouseEnter()"
+    (mouseleave)="actionsMouseLeave()"
+>
+    <ng-container
+        *ngFor="let buttonData of realActions">
+        <!-- Icon button -->
+        <ng-container
+            *ngIf="buttonData.type === HoverRowActionType.BUTTON">
+
+            <!-- Link -->
+            <a
+                *ngIf="buttonData.routerLink && !buttonData.isDisabled; else simpleButton"
+                [routerLink]="buttonData.routerLink"
+                [queryParams]="buttonData.queryParams">
+                <button
+                    mat-icon-button
+                    color="accent"
+                    type="button"
+                    [ngClass]="buttonData.class"
+                    (click)="clickedButton(buttonData, $event)"
+                    [matTooltip]="buttonData.iconTooltip | translate:buttonData.iconTooltipTranslateData ? buttonData.iconTooltipTranslateData(actionData) : null">
+                    <span class="xt-icon" [ngClass]="{'compact': isCompactTable}">{{ buttonData.icon }}</span>
+                </button>
+            </a>
+
+            <!-- Simple button -->
+            <ng-template
+                #simpleButton>
+                <span
+                    [matTooltip]="buttonData.disabledTooltip | translate">
+                    <button
+                        mat-icon-button
+                        color="accent"
+                        type="button"
+                        [ngClass]="buttonData.class"
+                        (click)="clickedButton(buttonData)"
+                        [matTooltip]="buttonData.iconTooltip | translate:buttonData.iconTooltipTranslateData ? buttonData.iconTooltipTranslateData(actionData) : null"
+                        [disabled]="buttonData.isDisabled">
+                        <mat-icon [ngClass]="{'compact': isCompactTable}">{{ buttonData.icon }}</mat-icon>
+                    </button>
+                </span>
+            </ng-template>
+        </ng-container>
+
+
+        <!-- Menu -->
+        <ng-container
+            *ngIf="buttonData.type === HoverRowActionType.MENU && buttonData.menuOptions">
+            <button
+                mat-icon-button
+                color="accent"
+                type="button"
+                [ngClass]="buttonData.class"
+                [matMenuTriggerFor]="actionsMenu">
+                <span class="xt-icon" [ngClass]="{'compact': isCompactTable}">{{ buttonData.icon }}</span>
+            </button>
+
+            <mat-menu
+                #actionsMenu="matMenu"
+                class="table-max-sized-menu">
+
+                <!-- Menu Options -->
+                <ng-container
+                    *ngFor="let menuOptionData of buttonData.menuOptions; let isFirst = first; let isLast = last">
+                    <!-- Menu Button -->
+                    <button
+                        *ngIf="menuOptionData.type === HoverRowActionType.BUTTON"
+                        mat-menu-item
+                        type="button"
+                        [ngClass]="menuOptionData.class"
+                        (click)="clickedButton(menuOptionData)"
+                        [disabled]="menuOptionData.isDisabled">
+                        {{ menuOptionData.menuOptionLabel | translate:menuOptionData.menuOptionLabelTranslateData ? menuOptionData.menuOptionLabelTranslateData(actionData) : null }}
+                    </button>
+
+                    <!-- Menu Divider -->
+                    <mat-divider
+                        *ngIf="!isFirst && !isLast && menuOptionData.type === HoverRowActionType.DIVIDER"
+                        [ngClass]="menuOptionData.class">
+                    </mat-divider>
+                </ng-container>
+            </mat-menu>
+        </ng-container>
+    </ng-container>
+</div>

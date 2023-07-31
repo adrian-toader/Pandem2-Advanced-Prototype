@@ -1,0 +1,332 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<mat-dialog-content class="modelling-main-card-manager-dialog">
+  <mat-stepper [linear]="true" #stepper *ngIf="!isLoading && !isRunning && !isError && !isServerError" (selectionChange)="setIndex($event)">
+    <mat-step [stepControl]="configurationFormGroup">
+      <ng-template matStepLabel>
+        {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.MODEL_CONFIGURATION' | translate }}
+      </ng-template>
+      <form [formGroup]="configurationFormGroup" class="modelling-form">
+
+        <div class="modelling-form-title">
+          <mat-card-title>
+            {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.PATHOGEN_TITLE' | translate }}
+          </mat-card-title>
+        </div>
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="pathogenSelect"
+          class="row justify-content-center my-4"
+          (change)="setConfigurationChanged()">
+          <ng-container *ngFor="let model of models">
+            <mat-radio-button [value]="model.id" class="modelling-pathogen-select-button col-md-6 col-lg-4 my-1">
+              <mat-card class="modelling-pathogen-select-card">
+                <mat-card-subtitle>
+                  {{model.name}}
+                </mat-card-subtitle>
+                <mat-card-title>
+                  {{model.pathogen}}
+                </mat-card-title>
+                <mat-card-content class="modelling-pathogen-select-content" *ngIf="model.short_description">
+                  {{model.short_description}}
+                </mat-card-content>
+              </mat-card>
+            </mat-radio-button>
+          </ng-container>
+        </mat-radio-group>
+        <div *ngIf="!models && !noModelsError" class="mat-spinner-container">
+          <mat-spinner></mat-spinner>
+        </div>
+        <div *ngIf="noModelsError" class="alert alert-danger">{{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.ERROR_NO_MODELS_AVAILABLE' | translate }}</div>
+        <p *ngIf="modelNotSelectedError" class="text-center text-danger">{{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.ERROR_NO_MODEL_SELECTED' | translate }}</p>
+
+        <div class="modelling-form-title">
+          <mat-card-title>
+            {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.PREVIOUS_CONFIGURATION_TITLE' | translate }}
+          </mat-card-title>
+        </div>
+        <mat-form-field appearance="outline" class="modelling-form-field col-md-12">
+          <mat-label>
+            {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.PREVIOUS_CONFIGURATION_INPUT' | translate }}
+          </mat-label>
+          <mat-select formControlName="prevConfigurationSelect" (selectionChange)="setConfigurationChanged()">
+            <mat-option [value]="'_defaultconf_'" selected>Default...</mat-option>
+            <mat-option *ngFor="let scenario of userScenarios" [value]="scenario.id">
+              {{scenario.name}}
+              <span class="modelling-form-small-date">| {{moment(scenario.date).format(Constants.DEFAULT_MODELLING_DATE_DISPLAY_FORMAT)}}</span>
+            </mat-option>
+          </mat-select>
+          <mat-hint class="modelling-hint">
+            {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.PREVIOUS_CONFIGURATION_HINT' | translate }}
+          </mat-hint>
+        </mat-form-field>
+
+        <div class="modelling-r0 d-flex col-12 align-items-center justify-content-between">
+          <div class="modelling-form-title text-left col-md-6">
+            <mat-card-title>
+              {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.R0_TITLE' | translate }}
+            </mat-card-title>
+            <small>
+              {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.R0_RANGE' | translate }}
+            </small>
+          </div>
+          <div class="d-flex align-items-center col-md-6 p-0">
+            <mat-slider
+              [min]="Constants.MODELLING_R0_MIN"
+              [max]="Constants.MODELLING_R0_MAX"
+              (change)="onR0ValueChange($event)"
+              (input)="onR0ValueChange($event)"
+              step="0.1"
+              formControlName="r0Value"
+              class="modelling-r0-slider col-8">
+            </mat-slider>
+            <mat-form-field appearance="outline" class="modelling-r0-input col-4 p-0">
+              <input
+                matInput
+                type="number"
+                [min]="Constants.MODELLING_R0_MIN"
+                [max]="Constants.MODELLING_R0_MAX"
+                step="0.1"
+                (change)="onR0ValueChange($event)"
+                (input)="onR0ValueChange($event)"
+                formControlName="r0Value">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="modelling-configuration-region d-flex col-12 mb-4 align-items-center justify-content-between">
+          <div class="modelling-form-title text-left col-md-6">
+            <mat-card-title>
+              {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.REGION_TITLE' | translate }}
+            </mat-card-title>
+          </div>
+          <mat-form-field appearance="outline" class="modelling-form-field col-md-6 p-0">
+            <mat-label>
+              {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.REGION_INPUT' | translate }}
+            </mat-label>
+            <mat-select formControlName="regionSelect">
+              <mat-option *ngFor="let region of regions" [value]="region.code">
+                {{region.name}}
+              </mat-option>
+            </mat-select>
+            <mat-hint class="modelling-hint">
+              {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.REGION_HINT' | translate }}
+            </mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <button mat-raised-button class="modelling-icon-size modelling-button" [mat-dialog-close]="true">
+            <mat-icon aria-hidden="false" aria-label="close button">cancel</mat-icon>
+            {{ 'MODULES.MODELLING.COMMON.CANCEL' | translate }}
+          </button>
+          <button
+            mat-raised-button
+            class="modelling-button modelling-icon-size"
+            matStepperNext
+            (click)="checkFirstStep()"
+            [disabled]="probInfReqInProgress">
+            {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.ENTER_SCENARIO_INFORMATION' | translate }}
+            <mat-icon>arrow_forward</mat-icon>
+          </button>
+        </div>
+
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="dataFormGroup">
+      <ng-template matStepLabel>
+        {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.MODEL_DATA' | translate }}
+      </ng-template>
+      <form [formGroup]="dataFormGroup" class="modelling-form">
+
+        <div class="modelling-form-title">
+          <mat-card-title>
+            {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.SCENARIO_NAME_TITLE' | translate }}
+          </mat-card-title>
+        </div>
+        <mat-form-field appearance="outline" class="modelling-form-field col-md-12">
+          <mat-label>
+            {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.SCENARIO_NAME_INPUT' | translate }}
+          </mat-label>
+          <input matInput formControlName="scenarioName" required>
+          <mat-hint class="modelling-hint">
+            {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.SCENARIO_NAME_HINT' | translate }}
+          </mat-hint>
+        </mat-form-field>
+
+        <div class="modelling-form-title">
+          <mat-card-title>
+            {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.DESCRIPTION_TITLE' | translate }}
+          </mat-card-title>
+        </div>
+        <mat-form-field appearance="outline" class="modelling-form-field col-md-12">
+          <mat-label>
+            {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.DESCRIPTION_INPUT' | translate }}
+          </mat-label>
+          <input matInput formControlName="scenarioDescription">
+          <mat-icon matSuffix>remove_red_eye</mat-icon>
+          <mat-hint class="modelling-hint">
+            {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.DESCRIPTION_HINT' | translate }}
+          </mat-hint>
+        </mat-form-field>
+
+        <div class="modelling-form-title">
+          <mat-card-title>
+            {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.TAGS_TITLE' | translate }}
+          </mat-card-title>
+        </div>
+        <mat-form-field appearance="outline" class="modelling-form-field col-md-12">
+          <mat-label>
+            {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.TAGS_INPUT' | translate }}
+          </mat-label>
+          <mat-chip-list #chipList aria-label="Tag selection">
+            <mat-chip *ngFor="let tag of configurationTags" (removed)="removeTag(tag)">
+              {{tag}}
+              <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+            <input [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="true"
+                   (matChipInputTokenEnd)="addTag($event)">
+          </mat-chip-list>
+          <mat-icon matSuffix>search</mat-icon>
+          <mat-hint class="modelling-hint">
+            {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.TAGS_HINT' | translate }}
+          </mat-hint>
+        </mat-form-field>
+
+        <div class="d-flex justify-content-between">
+          <div>
+            <button mat-raised-button class="modelling-icon-size modelling-button mr-2" [mat-dialog-close]="true">
+              <mat-icon aria-hidden="false" aria-label="close button">cancel</mat-icon>
+              {{ 'MODULES.MODELLING.COMMON.CANCEL' | translate }}
+            </button>
+            <button mat-raised-button class="modelling-button modelling-icon-size" matStepperPrevious>
+              <mat-icon>arrow_back</mat-icon>
+              {{ 'MODULES.MODELLING.COMMON.BACK' | translate }}
+            </button>
+          </div>
+          <button mat-raised-button class="modelling-button modelling-icon-size" matStepperNext>
+            {{ 'MODULES.MODELLING.COMMON.CONTINUE' | translate }}
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+        </div>
+
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>
+        {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.EDIT_PARAMETERS' | translate }}
+      </ng-template>
+
+      <div class="modelling-form-title mt-5">
+        <mat-card-title>
+          {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.EDIT_PARAMETERS_TITLE' | translate }}
+        </mat-card-title>
+      </div>
+      <div class="row justify-content-center my-4">
+        <mat-card class="modelling-pathogen-select-card col-md-6">
+          <mat-card-subtitle>
+            {{selectedModelName}}
+          </mat-card-subtitle>
+          <mat-card-title>
+            {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.MODEL_PARAMETERS' | translate }}
+          </mat-card-title>
+          <mat-card-content class="modelling-pathogen-select-content d-flex flex-column">
+            {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.MODEL_PARAMETERS_DESCRIPTION' | translate }}
+            <button mat-raised-button class="modelling-button align-self-end mt-5 modelling-icon-size" (click)="clickParameterEdit()">
+              <mat-icon>edit</mat-icon>
+              {{ 'MODULES.MODELLING.COMMON.EDIT' | translate }}
+            </button>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="alert alert-warning mt-3" *ngIf="updatedModelWarning">
+          {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.PARAMETERS_UPDATED' | translate }}
+          <br>
+          {{ 'MODULES.MODELLING.SCENARIO_CONFIGURATION.UPDATED_AT' | translate: { date: updatedModelWarning.paramsUpdatedAt } }}
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="prob-inf-warning-placeholder-height mb-3"></div>
+        <div class="alert alert-primary mb-3 prob-inf-warning-placeholder-height" *ngIf="probInfReqInProgress">
+          {{ 'MODULES.MODELLING.STATUS.CALCULATING_PROBABILITY_OF_INFECTION' | translate }}
+        </div>
+        <div class="alert alert-warning mb-3 prob-inf-warning-placeholder-height" *ngIf="probInfReqError">
+          {{ 'MODULES.MODELLING.STATUS.ERROR_CALCULATING_PROBABILITY_OF_INFECTION' | translate }}
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div class="d-flex align-items-center">
+          <button mat-raised-button class="modelling-icon-size modelling-button mr-2" [mat-dialog-close]="true">
+            <mat-icon aria-hidden="false" aria-label="close button">cancel</mat-icon>
+            {{ 'MODULES.MODELLING.COMMON.CANCEL' | translate }}
+          </button>
+          <button mat-raised-button class="modelling-button modelling-icon-size" matStepperPrevious>
+            <mat-icon>arrow_back</mat-icon>
+            {{ 'MODULES.MODELLING.COMMON.BACK' | translate }}
+          </button>
+        </div>
+        <button
+          mat-raised-button
+          class="modelling-button modelling-button-run"
+          (click)="runScenario()"
+          [disabled]="probInfReqInProgress">
+          {{ 'MODULES.MODELLING.COMMON.RUN' | translate }}
+          <mat-icon>play_circle_filled</mat-icon>
+        </button>
+      </div>
+
+    </mat-step>
+  </mat-stepper>
+  <div *ngIf="isLoading" class="mat-spinner-container flex-column flex-grow-1 justify-content-center">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="isRunning" class="mat-spinner-container flex-column flex-grow-1 justify-content-center">
+    <mat-spinner></mat-spinner>
+    <div class="alert alert-primary my-5">
+      {{ 'MODULES.MODELLING.STATUS.RUNNING_SIMULATION' | translate }}
+    </div>
+  </div>
+  <div *ngIf="isError" class="simulation-error-container d-flex flex-column flex-grow-1 justify-content-center align-items-center">
+    <mat-icon>error_outline</mat-icon>
+    <div class="alert alert-danger my-5">
+      {{ 'MODULES.MODELLING.STATUS.ERROR_RUNNING_SIMULATION' | translate }}
+    </div>
+  </div>
+  <div *ngIf="isServerError" class="simulation-error-container d-flex flex-column flex-grow-1 justify-content-center align-items-center">
+    <mat-icon>error_outline</mat-icon>
+    <div class="alert alert-danger my-5">
+      {{ 'MODULES.MODELLING.STATUS.SIMULATION_SERVER_UNAVAILABLE' | translate }}
+    </div>
+  </div>
+</mat-dialog-content>

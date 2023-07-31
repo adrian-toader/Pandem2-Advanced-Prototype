@@ -1,0 +1,135 @@
+{
+  "$id": "/user#",
+  "definitions": {
+    "email": {
+      "type": "string",
+      "minLength": 1,
+      "format": "email"
+    },
+    "roleId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "first_name": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "minLength": 1
+    },
+    "last_name": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "minLength": 1
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "password": {
+      "type": "string",
+      "minLength": 1
+    },
+    "userId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "landing_cards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "minLength": 1
+          },
+          "hidden": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "code",
+          "hidden"
+        ]
+      }
+    },
+    "settings": {
+      "type": "object",
+      "properties": {
+        "data_interval": {
+          "type": "object",
+          "properties": {
+            "start_date": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date-time"
+            },
+            "end_date": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date-time"
+            }
+          }
+        },
+        "color_palette": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "profile_picture": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "language": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "deactivated": {
+      "type": "boolean"
+    },
+    "userResourceEntry": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "$ref": "/user#/definitions/email"
+        },
+        "roleId": {
+          "$ref": "/user#/definitions/roleId"
+        },
+        "role": {
+          "$ref": "/role#/definitions/roleResourceEntry"
+        },
+        "first_name": {
+          "$ref": "/user#/definitions/first_name"
+        },
+        "last_name": {
+          "$ref": "/user#/definitions/last_name"
+        },
+        "landing_cards": {
+          "$ref": "/user#/definitions/landing_cards"
+        },
+        "location": {
+          "$ref": "/user#/definitions/location"
+        },
+        "_id": {
+          "$ref": "/user#/definitions/userId"
+        },
+        "settings": {
+          "$ref": "/user#/definitions/settings"
+        },
+        "deactivated": {
+          "$ref": "/user#/definitions/deactivated"
+        }
+      }
+    }
+  }
+}

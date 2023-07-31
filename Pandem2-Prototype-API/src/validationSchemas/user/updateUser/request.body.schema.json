@@ -1,0 +1,5 @@
+{
+  "$id": "user.updateUser.request.body.schema",
+  "description": "Modify user instance request body schema",
+  "$ref": "/user#/definitions/userResourceEntry"
+}

@@ -1,0 +1,67 @@
+<mat-card >
+  <mat-card-title>
+    <div class="row">
+      <div class="col-md-12 text-center text-sm-left">
+        {{'MODULES.SMA.TOP_5_TOPICS_BY_VOLUME_OF_TWEETS_ANALYSED_FOR' | translate}} {{selectedRegionName}} {{'MODULES.SMA.BETWEEN' | translate}} {{startDate}} {{'MODULES.SMA.AND' | translate}} {{endDate}}
+      </div>
+    </div>
+  </mat-card-title>
+  <br/>
+  <mat-card-subtitle>
+    <div class="col-md-6 mb-4 text-center text-sm-left">
+      <app-sources
+        [lastUpdate]="lastUpdate"
+        [sourceType]="SourceType.GRAPH"
+        [sources]="sources"></app-sources>
+    </div>
+  </mat-card-subtitle>
+  <mat-card-content>
+    <div class="row form-inline">
+      <app-form-select
+        (optionChanged)="retrieveData()"
+        [(ngModel)]="chartType"
+        [clearable]="false"
+        [enableFilterOptions]="false"
+        [options]="chartTypes"
+        [placeholder]="'MODULES.INTERVENTIONS.TOP_TOPICS_BY_VOLUME.FILTER_BY' | translate"
+        class="chart-type-container form-group mr-4 mb-4"
+        optionLabelKey="label"
+        optionValueKey="value"
+      >
+      </app-form-select>
+      <app-form-select (optionChanged)=changeTopic()
+                       *ngIf="!isOnSMAPage"
+                       [clearable]="false"
+                       [enableFilterOptions]="false"
+                       [options]="topicLabelValuePairs"
+                       [placeholder]="'MODULES.INTERVENTIONS.TOP_TOPICS_BY_VOLUME.Topic' | translate"
+                       class="chart-type-container mr-4 mb-4"
+                       optionLabelKey="label"
+                       optionValueKey="value"
+      >
+      </app-form-select>
+      <div class="col-md-6 form-group mr-4 mb-4 text-center text-sm-left">
+        <app-chart-time-interval (intervalChanged)="changeTimeInterval($event)"
+                                 [intervalOptions]="chartsIntervalOptions"
+                                 [selectedIntervalOption]="selectedIntervalOption">
+        </app-chart-time-interval>
+      </div>
+    </div>
+    <div *ngIf="isLoading()"
+         class="mat-spinner-container loading-chart-placeholder">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="isLoaded()"
+         class="charts-container">
+      <app-intervention-chart
+        [selectedInterventions]="selectedInterventions"
+        [startDate]="startDate"
+        [endDate]="endDate"
+        [isOnInterventionPage] ="true"
+        [series]="dailySeries"
+        [xAxisData]="dailyChart.total.xAxis"
+        [isOnSMA]="true"
+      ></app-intervention-chart>
+    </div>
+  </mat-card-content>
+</mat-card>

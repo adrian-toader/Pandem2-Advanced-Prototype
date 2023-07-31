@@ -1,0 +1,99 @@
+[
+  {
+    "type": "interest",
+    "pathogen": "U07.1",
+    "code": "B.1.621",
+    "lineage": "B.1.621",
+    "name": "Mu",
+    "country_first_detected": "Columbia",
+    "spike_mutations": "B.R346K, E484K, N501Y, D614G, P681H",
+    "date_first_detection": "2021-01-15"
+  },
+  {
+    "type": "interest",
+    "pathogen": "U07.1",
+    "lineage": "C.37",
+    "code": "C.37",
+    "name": "Lambda",
+    "country_first_detected": "Peru",
+    "spike_mutations": "L452Q, F490S, D614G",
+    "date_first_detection": "2020-12-15"
+  },
+  {
+    "type": "interest",
+    "pathogen": "U07.1",
+    "lineage": "AY.4.2",
+    "code": "AY.4.2",
+    "country_first_detected": "United Kingdom",
+    "spike_mutations": "L452R, T478K, D614G, P681R, A222V, Y145H",
+    "date_first_detection": "2021-06-15"
+  },
+  {
+    "type": "concern",
+    "pathogen": "U07.1",
+    "lineage": "B.1.1.7",
+    "code": "B.1.1.7",
+    "name": "Alpha",
+    "color": "#f0e442"
+  },
+  {
+    "type": "concern",
+    "pathogen": "U07.1",
+    "lineage": "B.1.351",
+    "code": "B.1.351",
+    "name": "Beta",
+    "color": "#56b4e9",
+    "country_first_detected": "South Africa",
+    "spike_mutations": "K417N, E484K, N501Y, D614G, A701V",
+    "date_first_detection": "2020-09-15",
+    "impact_transmissibility": "Increased (v) (1)",
+    "impact_immunity": "Increased (v) (2,3)",
+    "impact_severity": "Increased (v) (4,5)",
+    "transmission_eu_eea": "Community"
+  },
+  {
+    "type": "concern",
+    "pathogen": "U07.1",
+    "lineage": "P.1",
+    "code": "P.1",
+    "name": "Gamma",
+    "color": "#009e73",
+    "country_first_detected": "Brazil",
+    "spike_mutations": "K417T, E484K, N501Y, D614G, H655Y",
+    "date_first_detection": "2020-12-15",
+    "impact_transmissibility": "Increased (v) (6)",
+    "impact_immunity": "Increased (v) (7)",
+    "impact_severity": "Increased (v) (5)",
+    "transmission_eu_eea": "Community"
+  },
+  {
+    "type": "concern",
+    "pathogen": "U07.1",
+    "lineage": "B.1.617.2",
+    "code": "B.1.617.2",
+    "name": "Delta",
+    "color": "#cc79a7",
+    "country_first_detected": "India",
+    "spike_mutations": "L452R, T478K, D614G, P681R",
+    "date_first_detection": "2020-12-15",
+    "impact_transmissibility": "Increased (v) (8)",
+    "impact_immunity": "Increased (v) (9-11)",
+    "impact_severity": "Increased (v) (10, 12)",
+    "transmission_eu_eea": "Community"
+  },
+  {
+    "type": "concern",
+    "pathogen": "U07.1",
+    "lineage": "B.1.1.529",
+    "code": "B.1.1.529",
+    "name": "Omicron",
+    "color": "#0072b2",
+    "country_first_detected": "South Africa and Botswana",
+    "spike_mutations": "(x)",
+    "date_first_detection": "2021-11-15",
+    "impact_transmissibility": "Unclear (v) (13-15) a",
+    "impact_immunity": "Increased (v) (16)",
+    "impact_severity": "Unclear (v) (17, 18) b",
+    "transmission_eu_eea": "Community"
+  }
+]

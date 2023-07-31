@@ -1,0 +1,18 @@
+{
+  "$id": "user.changePassword.request.body.schema",
+  "description": "Change user's password",
+  "type": "object",
+  "properties": {
+      "new_password": {
+        "type": "string",
+        "minLength": 12
+      },
+      "current_password": {
+        "type": "string",
+        "minLength": 1
+      }
+  },
+  "required": [
+      "new_password"
+  ]
+}

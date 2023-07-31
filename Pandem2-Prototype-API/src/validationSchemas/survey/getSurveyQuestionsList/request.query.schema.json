@@ -1,0 +1,11 @@
+{
+  "$id": "survey.getSurveyQuestionsList.request.query.schema",
+  "description": "Get survey questions - request query schema",
+  "type": "object",
+  "properties": {
+    "surveyId": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

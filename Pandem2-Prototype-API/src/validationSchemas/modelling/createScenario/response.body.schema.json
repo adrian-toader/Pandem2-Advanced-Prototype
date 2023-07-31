@@ -1,0 +1,70 @@
+{
+  "$id": "modelling.createScenario.response.body.schema",
+  "description": "Create scenario response body schema",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "$ref": "/modellingScenario#/definitions/userId"
+    },
+    "modelId": {
+      "$ref": "/modellingScenario#/definitions/modelId"
+    },
+    "name": {
+      "$ref": "/modellingScenario#/definitions/name"
+    },
+    "r0": {
+      "$ref": "/modellingScenario#/definitions/r0"
+    },
+    "date": {
+      "$ref": "/modellingScenario#/definitions/date"
+    },
+    "description": {
+      "$ref": "/modellingScenario#/definitions/description"
+    },
+    "tags": {
+      "$ref": "/modellingScenario#/definitions/tags"
+    },
+    "location": {
+      "$ref": "/modellingScenario#/definitions/location"
+    },
+    "parameters": {
+      "$ref": "/modellingScenario#/definitions/parameters"
+    },
+    "sections_details": {
+      "$ref": "/modellingScenario#/definitions/sections_details"
+    },
+    "day_results": {
+      "type": "array",
+      "items": {
+        "$ref": "/modellingScenarioDayResult#/definitions/modellingScenarioDayResultResourceEntry"
+      }
+    },
+    "processed_results": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      }
+    },
+    "exploration": {
+      "$ref": "/modellingScenario#/definitions/exploration"
+    },
+    "is_visible": {
+      "$ref": "/modellingScenario#/definitions/is_visible"
+    },
+    "alternatives": {
+      "$ref": "/modellingScenario#/definitions/alternatives"
+    }
+  },
+  "required": [
+    "userId",
+    "modelId",
+    "name",
+    "date",
+    "tags",
+    "location",
+    "parameters"
+  ]
+}

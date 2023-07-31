@@ -1,0 +1,20 @@
+{
+  "$id": "strain.retrieveStrainList.response.body.schema",
+  "description": "Retrieve strain list response body schema",
+  "type": "array",
+  "items": {
+    "allOf": [
+      {
+        "$ref": "/strain#/definitions/strainResourceEntry"
+      },
+      {
+        "required": [
+          "_id",
+          "pathogen",
+          "name",
+          "color"
+        ]
+      }
+    ]
+  }
+}

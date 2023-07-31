@@ -1,0 +1,239 @@
+/*
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+*/
+
+.modelling-section {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.modelling-title-weight {
+  font-weight: 500 !important;
+}
+
+.modelling-info-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0272c6;
+  font-size: 32px;
+  width: 38px;
+  height: 38px;
+  border-radius: 38px;
+  cursor: pointer;
+  background-color: #f4f6f7;
+  outline: 1px solid #79747e;
+}
+
+.modelling-view-icon-size {
+  font-size: 28px;
+}
+
+.modelling-info-active-button {
+  color: #f4f6f7;
+  background-color: #0272c6;
+}
+
+.modelling-title-text {
+  flex-grow: 1;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.modelling-title-icons {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.modelling-section-spinner-container {
+  width: 100%;
+  height: auto !important;
+}
+
+.modelling-scenario-title-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-height: 2.8em;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border-radius: 8px;
+  background-color: #f4f6f7;
+}
+
+.modelling-scenario-title-margins {
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+.modelling-scenario-location {
+  font-size: 0.9em;
+  background-color: #e0e0e0;
+  color: rgba(0, 0, 0, 0.87);
+  padding: 2px 10px 2px 6px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.modelling-scenario-location > mat-icon {
+  transform: scale(0.8);
+}
+
+.modelling-section-element {
+  position: relative;
+  padding: 1em;
+}
+
+.modelling-section-element-horizontal-line::before {
+  content: "";
+  background: #dbdbdb;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
+  height: 1px;
+}
+
+.modelling-section-element-vertical-line::after {
+  content: "";
+  background: #dbdbdb;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 85%;
+  width: 1px;
+}
+
+.modelling-section-expand {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.modelling-section-expand-button {
+  background-color: transparent;
+  padding: 10px 0px 0px 0px;
+  line-height: 0;
+  border: 0;
+}
+
+.modelling-section-expand-button > mat-icon {
+  font-size: 3em;
+  width: 3em;
+  color: gray;
+}
+
+.stress-indicator-warning {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+
+  mat-icon {
+    color: red;
+    transform: scale(1.3);
+    align-self: flex-end;
+  }
+  .stress-indicator-warning-number-group {
+    display: flex;
+    gap: 8px;
+  }
+  .stress-indicator-warning-number {
+    font-size: 1.5em;
+  }
+  .stress-indicator-warning-text {
+    margin-top: 6px;
+  }
+}
+
+.potential-deaths-card-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.potential-deaths-card-row > mat-icon {
+  font-weight: 600;
+}
+
+.potential-deaths-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-basis: 50%;
+
+  .potential-deaths-card-number {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    mat-icon {
+      color: red;
+      transform: scale(1.3);
+    }
+
+    span {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+  }
+}
+
+.potential-deaths-result-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: #efd2ce;
+
+  mat-icon {
+    color: red;
+    transform: scale(1.3);
+  }
+
+  span {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .potential-deaths-card-row {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .modelling-title-icons > .modelling-info-icon.modelling-view-icon-size {
+    display: none;
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$id": "participatorySurveillance.getLocationsDateInterval.request.query.schema",
+  "description": "Get time interval in which participatory surveillance occured for requested locations - request query schema",
+  "type": "object",
+  "properties": {
+    "subcategory": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/participatorySurveillance#/definitions/subcategory"
+          }
+        },
+        {
+          "$ref": "/participatorySurveillance#/definitions/subcategory"
+        }
+      ]
+    },
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "visit_type": {
+      "$ref": "/participatorySurveillance#/definitions/visit_type"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "visit_type"
+      ]
+    }
+  },
+  "required": [
+    "subcategory",
+    "location"
+  ]
+}

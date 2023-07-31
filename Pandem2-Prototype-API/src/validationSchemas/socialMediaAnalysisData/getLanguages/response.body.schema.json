@@ -1,0 +1,21 @@
+{
+  "$id": "socialMediaAnalysisData.getLanguages.response.body.schema",
+  "description": "Get social media analysis languages response body schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "code": {
+        "type": "string",
+        "minLength": 1
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required": [
+      "code"
+    ]
+  }
+}

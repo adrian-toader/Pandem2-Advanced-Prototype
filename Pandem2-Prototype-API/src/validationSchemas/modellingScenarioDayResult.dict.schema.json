@@ -1,0 +1,1665 @@
+{
+  "$id": "/modellingScenarioDayResult#",
+  "definitions": {
+    "scenarioId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+
+    "day": {
+      "type": "number",
+      "minimum": 0
+    },
+    "actual_cases_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "actual_cases_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "actual_cases_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "actual_cases_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "actual_cases_e": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_in_hospital_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_in_hospital_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_in_hospital_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_in_hospital_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "hospital_admissions_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "hospital_admissions_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "hospital_admissions_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "hospital_admissions_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "hospital_discharges_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "hospital_discharges_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "hospital_discharges_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "hospital_discharges_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "icu_admissions_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "icu_admissions_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "icu_admissions_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "icu_admissions_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "icu_discharges_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "icu_discharges_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "icu_discharges_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "icu_discharges_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "deaths_in_hospital_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "deaths_in_hospital_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "deaths_in_hospital_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "deaths_in_hospital_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "beds": {
+      "type": "number",
+      "minimum": 0
+    },
+    "occupied_ward_beds": {
+      "type": "number",
+      "minimum": 0
+    },
+    "physical_ward_beds_available": {
+      "type": "number",
+      "minimum": 0
+    },
+    "expected_beds_freed": {
+      "type": "number",
+      "minimum": 0
+    },
+    "patients_waiting_for_ward_bed_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "patients_waiting_for_ward_bed_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "patients_waiting_for_ward_bed_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "patients_waiting_for_ward_bed_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "in_ward_overflow_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "in_ward_overflow_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "in_ward_overflow_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "in_ward_overflow_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "physical_ward_beds_needed": {
+      "type": "number",
+      "minimum": 0
+    },
+    "physical_ward_beds_gap": {
+      "type": "number",
+      "minimum": 0
+    },
+    "max_available_nurses": {
+      "type": "number",
+      "minimum": 0
+    },
+    "absent_nurses": {
+      "type": "number",
+      "minimum": 0
+    },
+    "nurses_at_work": {
+      "type": "number",
+      "minimum": 0
+    },
+    "occupied_nurses": {
+      "type": "number",
+      "minimum": 0
+    },
+    "available_nurses": {
+      "type": "number",
+      "minimum": 0
+    },
+    "expected_nurses_freed": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_nurses_needed_for_incoming_patients": {
+      "type": "number",
+      "minimum": 0
+    },
+    "nurses_gap": {
+      "type": "number",
+      "minimum": 0
+    },
+    "extra_staff_needed_for_overflow_patients": {
+      "type": "number",
+      "minimum": 0
+    },
+    "staffed_ward_beds_available": {
+      "type": "number",
+      "minimum": 0
+    },
+    "staffed_ward_beds_needed": {
+      "type": "number",
+      "minimum": 0
+    },
+    "staffed_ward_beds_gap": {
+      "type": "number",
+      "minimum": 0
+    },
+    "ward_admissions_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "ward_admissions_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "ward_admissions_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "ward_admissions_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "moving_to_ward_overflow_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "moving_to_ward_overflow_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "moving_to_ward_overflow_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "moving_to_ward_overflow_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "icu_beds": {
+      "type": "number",
+      "minimum": 0
+    },
+    "occupied_icu_beds": {
+      "type": "number",
+      "minimum": 0
+    },
+    "physical_icu_beds_available": {
+      "type": "number",
+      "minimum": 0
+    },
+    "expected_icu_beds_freed": {
+      "type": "number",
+      "minimum": 0
+    },
+    "patients_waiting_for_icu_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "patients_waiting_for_icu_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "patients_waiting_for_icu_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "patients_waiting_for_icu_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "in_icu_overflow_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "in_icu_overflow_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "in_icu_overflow_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "in_icu_overflow_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "physical_icu_beds_needed": {
+      "type": "number",
+      "minimum": 0
+    },
+    "physical_icu_beds_gap": {
+      "type": "number",
+      "minimum": 0
+    },
+    "max_available_icu_nurses": {
+      "type": "number",
+      "minimum": 0
+    },
+    "absent_icu_nurses": {
+      "type": "number",
+      "minimum": 0
+    },
+    "icu_nurses_at_work": {
+      "type": "number",
+      "minimum": 0
+    },
+    "occupied_icu_nurses": {
+      "type": "number",
+      "minimum": 0
+    },
+    "available_icu_nurses": {
+      "type": "number",
+      "minimum": 0
+    },
+    "expected_icu_nurses_freed": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_icu_nurses_needed_for_incoming_patients": {
+      "type": "number",
+      "minimum": 0
+    },
+    "icu_nurses_gap": {
+      "type": "number",
+      "minimum": 0
+    },
+    "staffed_equipped_icu_beds_available": {
+      "type": "number",
+      "minimum": 0
+    },
+    "staffed_equipped_icu_beds_needed": {
+      "type": "number",
+      "minimum": 0
+    },
+    "staffed_equipped_icu_beds_gap": {
+      "type": "number",
+      "minimum": 0
+    },
+    "moving_to_icu_overflow_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "moving_to_icu_overflow_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "moving_to_icu_overflow_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "moving_to_icu_overflow_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "at_risk_of_dying_from_lack_of_icu_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "at_risk_of_dying_from_lack_of_icu_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "at_risk_of_dying_from_lack_of_icu_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "at_risk_of_dying_from_lack_of_icu_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "ventilators_in_stock": {
+      "type": "number",
+      "minimum": 0
+    },
+    "ventilators_in_use": {
+      "type": "number",
+      "minimum": 0
+    },
+    "ventilators_available": {
+      "type": "number",
+      "minimum": 0
+    },
+    "expected_ventilators_freed": {
+      "type": "number",
+      "minimum": 0
+    },
+    "ventilators_needed_for_incoming_icu_patients": {
+      "type": "number",
+      "minimum": 0
+    },
+    "gap_in_ventilators": {
+      "type": "number",
+      "minimum": 0
+    },
+    "pandemic_ppe_stock": {
+      "type": "number",
+      "minimum": 0
+    },
+    "ppe_needed": {
+      "type": "number",
+      "minimum": 0
+    },
+    "ppe_gap": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_ppe_used": {
+      "type": "number",
+      "minimum": 0
+    },
+    "interrupted_ppe_supply": {
+      "type": "boolean"
+    },
+
+    "total_needed_icu_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_needed_icu_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_needed_icu_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_needed_icu_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_icu_admissions_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_icu_admissions_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_icu_admissions_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_icu_admissions_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_needed_ward_bed_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_needed_ward_bed_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_needed_ward_bed_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_needed_ward_bed_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_ward_admissions_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_ward_admissions_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_ward_admissions_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_ward_admissions_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "potential_deaths_due_to_lack_of_icu_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "potential_deaths_due_to_lack_of_icu_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "potential_deaths_due_to_lack_of_icu_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "potential_deaths_due_to_lack_of_icu_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_deaths_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_deaths_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_deaths_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_deaths_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "peak_icu_demand": {
+      "type": "number",
+      "minimum": 0
+    },
+    "peak_demand_icu_beds": {
+      "type": "number",
+      "minimum": 0
+    },
+    "peak_demand_icu_nurses": {
+      "type": "number",
+      "minimum": 0
+    },
+    "peak_demand_ventilators": {
+      "type": "number",
+      "minimum": 0
+    },
+    "peak_ward_demand": {
+      "type": "number",
+      "minimum": 0
+    },
+    "peak_demand_ward_beds": {
+      "type": "number",
+      "minimum": 0
+    },
+    "peak_demand_nurses": {
+      "type": "number",
+      "minimum": 0
+    },
+    "peak_demand_ppe": {
+      "type": "number",
+      "minimum": 0
+    },
+
+    "activate_surge_strategy_1": {
+      "type": "boolean"
+    },
+    "activate_surge_strategy_2": {
+      "type": "boolean"
+    },
+    "activate_surge_strategy_3": {
+      "type": "boolean"
+    },
+    "activate_surge_strategy_4": {
+      "type": "boolean"
+    },
+
+    "attack_rate_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "attack_rate_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "attack_rate_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "attack_rate_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "attack_rate_e": {
+      "type": "number",
+      "minimum": 0
+    },
+    "vaccination_capacity": {
+      "type": "number",
+      "minimum": 0
+    },
+    "contact_tracing_capacity": {
+      "type": "number",
+      "minimum": 0
+    },
+    "testing_capacity": {
+      "type": "number",
+      "minimum": 0
+    },
+    "mobility_index": {
+      "type": "number",
+      "minimum": 0
+    },
+
+    "deaths_in_icu_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "deaths_in_icu_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "deaths_in_icu_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "deaths_in_icu_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "confirmed_cases_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "confirmed_cases_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "confirmed_cases_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "confirmed_cases_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "confirmed_cases_e": {
+      "type": "number",
+      "minimum": 0
+    },
+    "pandemic_ward_demand_factor": {
+      "type": "number",
+      "minimum": 0
+    },
+    "pandemic_icu_demand_factor": {
+      "type": "number",
+      "minimum": 0
+    },
+    "stress_code": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_initial_ward_bed_capacity": {
+      "type": "number",
+      "minimum": 0
+    },
+    "initial_pandemic_ward_bed_capacity": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_initial_icu_bed_capacity": {
+      "type": "number",
+      "minimum": 0
+    },
+    "initial_pandemic_icu_bed_capacity": {
+      "type": "number",
+      "minimum": 0
+    },
+
+    "deceased_moved_to_morgue": {
+      "type": "number",
+      "minimum": 0
+    },
+    "deceased_moved_to_temporary_morgues": {
+      "type": "number",
+      "minimum": 0
+    },
+    "max_available_physicians": {
+      "type": "number",
+      "minimum": 0
+    },
+    "absent_physicians": {
+      "type": "number",
+      "minimum": 0
+    },
+    "physicians_at_work": {
+      "type": "number",
+      "minimum": 0
+    },
+    "in_morgues": {
+      "type": "number",
+      "minimum": 0
+    },
+    "in_temporary_morgues": {
+      "type": "number",
+      "minimum": 0
+    },
+    "antivirals_administered_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "antivirals_administered_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "antivirals_administered_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "antivirals_administered_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "previous_vaccines_administered_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "previous_vaccines_administered_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "previous_vaccines_administered_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "previous_vaccines_administered_d": {
+      "type": "number",
+      "minimum": 0
+    },
+
+    "cumulative_cases_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "cumulative_cases_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "cumulative_cases_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "cumulative_cases_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "cumulative_cases_e": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_admissions_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_admissions_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_admissions_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_admissions_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "peak_ward_demand_factor": {
+      "type": "number",
+      "minimum": 0
+    },
+    "peak_icu_demand_factor": {
+      "type": "number",
+      "minimum": 0
+    },
+    "cumulative_confirmed_cases_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "cumulative_confirmed_cases_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "cumulative_confirmed_cases_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "cumulative_confirmed_cases_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "cumulative_confirmed_cases_e": {
+      "type": "number",
+      "minimum": 0
+    },
+    "need_icu_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "need_icu_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "need_icu_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "need_icu_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "need_ward_bed_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "need_ward_bed_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "need_ward_bed_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "need_ward_bed_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_expected_deaths": {
+      "type": "number",
+      "minimum": 0
+    },
+    "ward_nurse_absenteeism_rate": {
+      "type": "number",
+      "minimum": 0
+    },
+    "icu_nurse_absenteeism_rate": {
+      "type": "number",
+      "minimum": 0
+    },
+    "all_nurses_absenteeism_rate": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_unable_to_access_ward_bed": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_unable_to_access_icu": {
+      "type": "number",
+      "minimum": 0
+    },
+
+    "vaccination_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "vaccination_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "vaccination_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "vaccination_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "vaccination_e": {
+      "type": "number",
+      "minimum": 0
+    },
+    "cumulative_vaccination_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "cumulative_vaccination_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "cumulative_vaccination_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "cumulative_vaccination_d": {
+      "type": "number",
+      "minimum": 0
+    },
+    "cumulative_vaccination_e": {
+      "type": "number",
+      "minimum": 0
+    },
+
+    "patients_in_icu_bed_a": {
+      "type": "number",
+      "minimum": 0
+    },
+    "patients_in_icu_bed_b": {
+      "type": "number",
+      "minimum": 0
+    },
+    "patients_in_icu_bed_c": {
+      "type": "number",
+      "minimum": 0
+    },
+    "patients_in_icu_bed_d": {
+      "type": "number",
+      "minimum": 0
+    },
+
+    "oxygen_consumption_per_day_in_icu": {
+      "type": "number",
+      "minimum": 0
+    },
+    "oxygen_consumption_per_day_in_wards": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_daily_oxygen_consumption": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_oxygen_used": {
+      "type": "number",
+      "minimum": 0
+    },
+    "pandemic_morgue_capacity": {
+      "type": "number",
+      "minimum": 0
+    },
+
+    "modellingScenarioDayResultResourceEntry": {
+      "type": "object",
+      "properties": {
+        "scenarioId": {
+          "$ref": "/modellingScenarioDayResult#/definitions/scenarioId"
+        },
+
+        "day": {
+          "$ref": "/modellingScenarioDayResult#/definitions/day"
+        },
+        "actual_cases_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/actual_cases_a"
+        },
+        "actual_cases_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/actual_cases_b"
+        },
+        "actual_cases_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/actual_cases_c"
+        },
+        "actual_cases_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/actual_cases_d"
+        },
+        "actual_cases_e": {
+          "$ref": "/modellingScenarioDayResult#/definitions/actual_cases_e"
+        },
+        "total_in_hospital_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_in_hospital_a"
+        },
+        "total_in_hospital_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_in_hospital_b"
+        },
+        "total_in_hospital_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_in_hospital_c"
+        },
+        "total_in_hospital_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_in_hospital_d"
+        },
+        "hospital_admissions_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/hospital_admissions_a"
+        },
+        "hospital_admissions_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/hospital_admissions_b"
+        },
+        "hospital_admissions_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/hospital_admissions_c"
+        },
+        "hospital_admissions_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/hospital_admissions_d"
+        },
+        "hospital_discharges_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/hospital_discharges_a"
+        },
+        "hospital_discharges_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/hospital_discharges_b"
+        },
+        "hospital_discharges_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/hospital_discharges_c"
+        },
+        "hospital_discharges_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/hospital_discharges_d"
+        },
+        "icu_admissions_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/icu_admissions_a"
+        },
+        "icu_admissions_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/icu_admissions_b"
+        },
+        "icu_admissions_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/icu_admissions_c"
+        },
+        "icu_admissions_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/icu_admissions_d"
+        },
+        "icu_discharges_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/icu_discharges_a"
+        },
+        "icu_discharges_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/icu_discharges_b"
+        },
+        "icu_discharges_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/icu_discharges_c"
+        },
+        "icu_discharges_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/icu_discharges_d"
+        },
+        "deaths_in_hospital_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/deaths_in_hospital_a"
+        },
+        "deaths_in_hospital_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/deaths_in_hospital_b"
+        },
+        "deaths_in_hospital_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/deaths_in_hospital_c"
+        },
+        "deaths_in_hospital_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/deaths_in_hospital_d"
+        },
+        "beds": {
+          "$ref": "/modellingScenarioDayResult#/definitions/beds"
+        },
+        "occupied_ward_beds": {
+          "$ref": "/modellingScenarioDayResult#/definitions/occupied_ward_beds"
+        },
+        "physical_ward_beds_available": {
+          "$ref": "/modellingScenarioDayResult#/definitions/physical_ward_beds_available"
+        },
+        "expected_beds_freed": {
+          "$ref": "/modellingScenarioDayResult#/definitions/expected_beds_freed"
+        },
+        "patients_waiting_for_ward_bed_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/patients_waiting_for_ward_bed_a"
+        },
+        "patients_waiting_for_ward_bed_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/patients_waiting_for_ward_bed_b"
+        },
+        "patients_waiting_for_ward_bed_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/patients_waiting_for_ward_bed_c"
+        },
+        "patients_waiting_for_ward_bed_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/patients_waiting_for_ward_bed_d"
+        },
+        "in_ward_overflow_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/in_ward_overflow_a"
+        },
+        "in_ward_overflow_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/in_ward_overflow_b"
+        },
+        "in_ward_overflow_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/in_ward_overflow_c"
+        },
+        "in_ward_overflow_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/in_ward_overflow_d"
+        },
+        "physical_ward_beds_needed": {
+          "$ref": "/modellingScenarioDayResult#/definitions/physical_ward_beds_needed"
+        },
+        "physical_ward_beds_gap": {
+          "$ref": "/modellingScenarioDayResult#/definitions/physical_ward_beds_gap"
+        },
+        "max_available_nurses": {
+          "$ref": "/modellingScenarioDayResult#/definitions/max_available_nurses"
+        },
+        "absent_nurses": {
+          "$ref": "/modellingScenarioDayResult#/definitions/absent_nurses"
+        },
+        "nurses_at_work": {
+          "$ref": "/modellingScenarioDayResult#/definitions/nurses_at_work"
+        },
+        "occupied_nurses": {
+          "$ref": "/modellingScenarioDayResult#/definitions/occupied_nurses"
+        },
+        "available_nurses": {
+          "$ref": "/modellingScenarioDayResult#/definitions/available_nurses"
+        },
+        "expected_nurses_freed": {
+          "$ref": "/modellingScenarioDayResult#/definitions/expected_nurses_freed"
+        },
+        "total_nurses_needed_for_incoming_patients": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_nurses_needed_for_incoming_patients"
+        },
+        "nurses_gap": {
+          "$ref": "/modellingScenarioDayResult#/definitions/nurses_gap"
+        },
+        "extra_staff_needed_for_overflow_patients": {
+          "$ref": "/modellingScenarioDayResult#/definitions/extra_staff_needed_for_overflow_patients"
+        },
+        "staffed_ward_beds_available": {
+          "$ref": "/modellingScenarioDayResult#/definitions/staffed_ward_beds_available"
+        },
+        "staffed_ward_beds_needed": {
+          "$ref": "/modellingScenarioDayResult#/definitions/staffed_ward_beds_needed"
+        },
+        "staffed_ward_beds_gap": {
+          "$ref": "/modellingScenarioDayResult#/definitions/staffed_ward_beds_gap"
+        },
+        "ward_admissions_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/ward_admissions_a"
+        },
+        "ward_admissions_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/ward_admissions_b"
+        },
+        "ward_admissions_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/ward_admissions_c"
+        },
+        "ward_admissions_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/ward_admissions_d"
+        },
+        "moving_to_ward_overflow_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/moving_to_ward_overflow_a"
+        },
+        "moving_to_ward_overflow_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/moving_to_ward_overflow_b"
+        },
+        "moving_to_ward_overflow_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/moving_to_ward_overflow_c"
+        },
+        "moving_to_ward_overflow_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/moving_to_ward_overflow_d"
+        },
+        "icu_beds": {
+          "$ref": "/modellingScenarioDayResult#/definitions/icu_beds"
+        },
+        "occupied_icu_beds": {
+          "$ref": "/modellingScenarioDayResult#/definitions/occupied_icu_beds"
+        },
+        "physical_icu_beds_available": {
+          "$ref": "/modellingScenarioDayResult#/definitions/physical_icu_beds_available"
+        },
+        "expected_icu_beds_freed": {
+          "$ref": "/modellingScenarioDayResult#/definitions/expected_icu_beds_freed"
+        },
+        "patients_waiting_for_icu_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/patients_waiting_for_icu_a"
+        },
+        "patients_waiting_for_icu_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/patients_waiting_for_icu_b"
+        },
+        "patients_waiting_for_icu_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/patients_waiting_for_icu_c"
+        },
+        "patients_waiting_for_icu_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/patients_waiting_for_icu_d"
+        },
+        "in_icu_overflow_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/in_icu_overflow_a"
+        },
+        "in_icu_overflow_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/in_icu_overflow_b"
+        },
+        "in_icu_overflow_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/in_icu_overflow_c"
+        },
+        "in_icu_overflow_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/in_icu_overflow_d"
+        },
+        "physical_icu_beds_needed": {
+          "$ref": "/modellingScenarioDayResult#/definitions/physical_icu_beds_needed"
+        },
+        "physical_icu_beds_gap": {
+          "$ref": "/modellingScenarioDayResult#/definitions/physical_icu_beds_gap"
+        },
+        "max_available_icu_nurses": {
+          "$ref": "/modellingScenarioDayResult#/definitions/max_available_icu_nurses"
+        },
+        "absent_icu_nurses": {
+          "$ref": "/modellingScenarioDayResult#/definitions/absent_icu_nurses"
+        },
+        "icu_nurses_at_work": {
+          "$ref": "/modellingScenarioDayResult#/definitions/icu_nurses_at_work"
+        },
+        "occupied_icu_nurses": {
+          "$ref": "/modellingScenarioDayResult#/definitions/occupied_icu_nurses"
+        },
+        "available_icu_nurses": {
+          "$ref": "/modellingScenarioDayResult#/definitions/available_icu_nurses"
+        },
+        "expected_icu_nurses_freed": {
+          "$ref": "/modellingScenarioDayResult#/definitions/expected_icu_nurses_freed"
+        },
+        "total_icu_nurses_needed_for_incoming_patients": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_icu_nurses_needed_for_incoming_patients"
+        },
+        "icu_nurses_gap": {
+          "$ref": "/modellingScenarioDayResult#/definitions/icu_nurses_gap"
+        },
+        "staffed_equipped_icu_beds_available": {
+          "$ref": "/modellingScenarioDayResult#/definitions/staffed_equipped_icu_beds_available"
+        },
+        "staffed_equipped_icu_beds_needed": {
+          "$ref": "/modellingScenarioDayResult#/definitions/staffed_equipped_icu_beds_needed"
+        },
+        "staffed_equipped_icu_beds_gap": {
+          "$ref": "/modellingScenarioDayResult#/definitions/staffed_equipped_icu_beds_gap"
+        },
+        "moving_to_icu_overflow_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/moving_to_icu_overflow_a"
+        },
+        "moving_to_icu_overflow_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/moving_to_icu_overflow_b"
+        },
+        "moving_to_icu_overflow_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/moving_to_icu_overflow_c"
+        },
+        "moving_to_icu_overflow_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/moving_to_icu_overflow_d"
+        },
+        "at_risk_of_dying_from_lack_of_icu_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/at_risk_of_dying_from_lack_of_icu_a"
+        },
+        "at_risk_of_dying_from_lack_of_icu_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/at_risk_of_dying_from_lack_of_icu_b"
+        },
+        "at_risk_of_dying_from_lack_of_icu_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/at_risk_of_dying_from_lack_of_icu_c"
+        },
+        "at_risk_of_dying_from_lack_of_icu_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/at_risk_of_dying_from_lack_of_icu_d"
+        },
+        "ventilators_in_stock": {
+          "$ref": "/modellingScenarioDayResult#/definitions/ventilators_in_stock"
+        },
+        "ventilators_in_use": {
+          "$ref": "/modellingScenarioDayResult#/definitions/ventilators_in_use"
+        },
+        "ventilators_available": {
+          "$ref": "/modellingScenarioDayResult#/definitions/ventilators_available"
+        },
+        "expected_ventilators_freed": {
+          "$ref": "/modellingScenarioDayResult#/definitions/expected_ventilators_freed"
+        },
+        "ventilators_needed_for_incoming_icu_patients": {
+          "$ref": "/modellingScenarioDayResult#/definitions/ventilators_needed_for_incoming_icu_patients"
+        },
+        "gap_in_ventilators": {
+          "$ref": "/modellingScenarioDayResult#/definitions/gap_in_ventilators"
+        },
+        "pandemic_ppe_stock": {
+          "$ref": "/modellingScenarioDayResult#/definitions/pandemic_ppe_stock"
+        },
+        "ppe_needed": {
+          "$ref": "/modellingScenarioDayResult#/definitions/ppe_needed"
+        },
+        "ppe_gap": {
+          "$ref": "/modellingScenarioDayResult#/definitions/ppe_gap"
+        },
+        "total_ppe_used": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_ppe_used"
+        },
+        "interrupted_ppe_supply": {
+          "$ref": "/modellingScenarioDayResult#/definitions/interrupted_ppe_supply"
+        },
+
+        "total_needed_icu_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_needed_icu_a"
+        },
+        "total_needed_icu_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_needed_icu_b"
+        },
+        "total_needed_icu_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_needed_icu_c"
+        },
+        "total_needed_icu_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_needed_icu_d"
+        },
+        "total_icu_admissions_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_icu_admissions_a"
+        },
+        "total_icu_admissions_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_icu_admissions_b"
+        },
+        "total_icu_admissions_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_icu_admissions_c"
+        },
+        "total_icu_admissions_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_icu_admissions_d"
+        },
+        "total_needed_ward_bed_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_needed_ward_bed_a"
+        },
+        "total_needed_ward_bed_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_needed_ward_bed_b"
+        },
+        "total_needed_ward_bed_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_needed_ward_bed_c"
+        },
+        "total_needed_ward_bed_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_needed_ward_bed_d"
+        },
+        "total_ward_admissions_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_ward_admissions_a"
+        },
+        "total_ward_admissions_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_ward_admissions_b"
+        },
+        "total_ward_admissions_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_ward_admissions_c"
+        },
+        "total_ward_admissions_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_ward_admissions_d"
+        },
+        "potential_deaths_due_to_lack_of_icu_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/potential_deaths_due_to_lack_of_icu_a"
+        },
+        "potential_deaths_due_to_lack_of_icu_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/potential_deaths_due_to_lack_of_icu_b"
+        },
+        "potential_deaths_due_to_lack_of_icu_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/potential_deaths_due_to_lack_of_icu_c"
+        },
+        "potential_deaths_due_to_lack_of_icu_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/potential_deaths_due_to_lack_of_icu_d"
+        },
+        "total_deaths_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_deaths_a"
+        },
+        "total_deaths_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_deaths_b"
+        },
+        "total_deaths_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_deaths_c"
+        },
+        "total_deaths_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_deaths_d"
+        },
+        "peak_icu_demand": {
+          "$ref": "/modellingScenarioDayResult#/definitions/peak_icu_demand"
+        },
+        "peak_demand_icu_beds": {
+          "$ref": "/modellingScenarioDayResult#/definitions/peak_demand_icu_beds"
+        },
+        "peak_demand_icu_nurses": {
+          "$ref": "/modellingScenarioDayResult#/definitions/peak_demand_icu_nurses"
+        },
+        "peak_demand_ventilators": {
+          "$ref": "/modellingScenarioDayResult#/definitions/peak_demand_ventilators"
+        },
+        "peak_ward_demand": {
+          "$ref": "/modellingScenarioDayResult#/definitions/peak_ward_demand"
+        },
+        "peak_demand_ward_beds": {
+          "$ref": "/modellingScenarioDayResult#/definitions/peak_demand_ward_beds"
+        },
+        "peak_demand_nurses": {
+          "$ref": "/modellingScenarioDayResult#/definitions/peak_demand_nurses"
+        },
+        "peak_demand_ppe": {
+          "$ref": "/modellingScenarioDayResult#/definitions/peak_demand_ppe"
+        },
+
+        "activate_surge_strategy_1": {
+          "$ref": "/modellingScenarioDayResult#/definitions/activate_surge_strategy_1"
+        },
+        "activate_surge_strategy_2": {
+          "$ref": "/modellingScenarioDayResult#/definitions/activate_surge_strategy_2"
+        },
+        "activate_surge_strategy_3": {
+          "$ref": "/modellingScenarioDayResult#/definitions/activate_surge_strategy_3"
+        },
+        "activate_surge_strategy_4": {
+          "$ref": "/modellingScenarioDayResult#/definitions/activate_surge_strategy_4"
+        },
+
+        "attack_rate_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/attack_rate_a"
+        },
+        "attack_rate_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/attack_rate_b"
+        },
+        "attack_rate_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/attack_rate_c"
+        },
+        "attack_rate_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/attack_rate_d"
+        },
+        "attack_rate_e": {
+          "$ref": "/modellingScenarioDayResult#/definitions/attack_rate_e"
+        },
+        "vaccination_capacity": {
+          "$ref": "/modellingScenarioDayResult#/definitions/vaccination_capacity"
+        },
+        "contact_tracing_capacity": {
+          "$ref": "/modellingScenarioDayResult#/definitions/contact_tracing_capacity"
+        },
+        "testing_capacity": {
+          "$ref": "/modellingScenarioDayResult#/definitions/testing_capacity"
+        },
+        "mobility_index": {
+          "$ref": "/modellingScenarioDayResult#/definitions/mobility_index"
+        },
+
+        "deaths_in_icu_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/deaths_in_icu_a"
+        },
+        "deaths_in_icu_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/deaths_in_icu_b"
+        },
+        "deaths_in_icu_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/deaths_in_icu_c"
+        },
+        "deaths_in_icu_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/deaths_in_icu_d"
+        },
+        "confirmed_cases_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/confirmed_cases_a"
+        },
+        "confirmed_cases_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/confirmed_cases_b"
+        },
+        "confirmed_cases_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/confirmed_cases_c"
+        },
+        "confirmed_cases_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/confirmed_cases_d"
+        },
+        "confirmed_cases_e": {
+          "$ref": "/modellingScenarioDayResult#/definitions/confirmed_cases_e"
+        },
+        "pandemic_ward_demand_factor": {
+          "$ref": "/modellingScenarioDayResult#/definitions/pandemic_ward_demand_factor"
+        },
+        "pandemic_icu_demand_factor": {
+          "$ref": "/modellingScenarioDayResult#/definitions/pandemic_icu_demand_factor"
+        },
+        "stress_code": {
+          "$ref": "/modellingScenarioDayResult#/definitions/stress_code"
+        },
+        "total_initial_ward_bed_capacity": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_initial_ward_bed_capacity"
+        },
+        "initial_pandemic_ward_bed_capacity": {
+          "$ref": "/modellingScenarioDayResult#/definitions/initial_pandemic_ward_bed_capacity"
+        },
+        "total_initial_icu_bed_capacity": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_initial_icu_bed_capacity"
+        },
+        "initial_pandemic_icu_bed_capacity": {
+          "$ref": "/modellingScenarioDayResult#/definitions/initial_pandemic_icu_bed_capacity"
+        },
+
+        "deceased_moved_to_morgue": {
+          "$ref": "/modellingScenarioDayResult#/definitions/deceased_moved_to_morgue"
+        },
+        "deceased_moved_to_temporary_morgues": {
+          "$ref": "/modellingScenarioDayResult#/definitions/deceased_moved_to_temporary_morgues"
+        },
+        "max_available_physicians": {
+          "$ref": "/modellingScenarioDayResult#/definitions/max_available_physicians"
+        },
+        "absent_physicians": {
+          "$ref": "/modellingScenarioDayResult#/definitions/absent_physicians"
+        },
+        "physicians_at_work": {
+          "$ref": "/modellingScenarioDayResult#/definitions/physicians_at_work"
+        },
+        "in_morgues": {
+          "$ref": "/modellingScenarioDayResult#/definitions/in_morgues"
+        },
+        "in_temporary_morgues": {
+          "$ref": "/modellingScenarioDayResult#/definitions/in_temporary_morgues"
+        },
+        "antivirals_administered_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/antivirals_administered_a"
+        },
+        "antivirals_administered_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/antivirals_administered_b"
+        },
+        "antivirals_administered_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/antivirals_administered_c"
+        },
+        "antivirals_administered_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/antivirals_administered_d"
+        },
+        "previous_vaccines_administered_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/previous_vaccines_administered_a"
+        },
+        "previous_vaccines_administered_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/previous_vaccines_administered_b"
+        },
+        "previous_vaccines_administered_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/previous_vaccines_administered_c"
+        },
+        "previous_vaccines_administered_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/previous_vaccines_administered_d"
+        },
+
+        "cumulative_cases_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/cumulative_cases_a"
+        },
+        "cumulative_cases_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/cumulative_cases_b"
+        },
+        "cumulative_cases_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/cumulative_cases_c"
+        },
+        "cumulative_cases_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/cumulative_cases_d"
+        },
+        "cumulative_cases_e": {
+          "$ref": "/modellingScenarioDayResult#/definitions/cumulative_cases_e"
+        },
+        "total_admissions_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_admissions_a"
+        },
+        "total_admissions_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_admissions_b"
+        },
+        "total_admissions_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_admissions_c"
+        },
+        "total_admissions_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_admissions_d"
+        },
+        "peak_ward_demand_factor": {
+          "$ref": "/modellingScenarioDayResult#/definitions/peak_ward_demand_factor"
+        },
+        "peak_icu_demand_factor": {
+          "$ref": "/modellingScenarioDayResult#/definitions/peak_icu_demand_factor"
+        },
+        "cumulative_confirmed_cases_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/cumulative_confirmed_cases_a"
+        },
+        "cumulative_confirmed_cases_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/cumulative_confirmed_cases_b"
+        },
+        "cumulative_confirmed_cases_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/cumulative_confirmed_cases_c"
+        },
+        "cumulative_confirmed_cases_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/cumulative_confirmed_cases_d"
+        },
+        "cumulative_confirmed_cases_e": {
+          "$ref": "/modellingScenarioDayResult#/definitions/cumulative_confirmed_cases_e"
+        },
+        "need_icu_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/need_icu_a"
+        },
+        "need_icu_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/need_icu_b"
+        },
+        "need_icu_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/need_icu_c"
+        },
+        "need_icu_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/need_icu_d"
+        },
+        "need_ward_bed_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/need_ward_bed_a"
+        },
+        "need_ward_bed_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/need_ward_bed_b"
+        },
+        "need_ward_bed_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/need_ward_bed_c"
+        },
+        "need_ward_bed_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/need_ward_bed_d"
+        },
+        "total_expected_deaths": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_expected_deaths"
+        },
+        "ward_nurse_absenteeism_rate": {
+          "$ref": "/modellingScenarioDayResult#/definitions/ward_nurse_absenteeism_rate"
+        },
+        "icu_nurse_absenteeism_rate": {
+          "$ref": "/modellingScenarioDayResult#/definitions/icu_nurse_absenteeism_rate"
+        },
+        "all_nurses_absenteeism_rate": {
+          "$ref": "/modellingScenarioDayResult#/definitions/all_nurses_absenteeism_rate"
+        },
+        "total_unable_to_access_ward_bed": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_unable_to_access_ward_bed"
+        },
+        "total_unable_to_access_icu": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_unable_to_access_icu"
+        },
+        "vaccination_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/vaccination_a"
+        },
+        "vaccination_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/vaccination_b"
+        },
+        "vaccination_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/vaccination_c"
+        },
+        "vaccination_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/vaccination_d"
+        },
+        "vaccination_e": {
+          "$ref": "/modellingScenarioDayResult#/definitions/vaccination_e"
+        },
+        "cumulative_vaccination_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/cumulative_vaccination_a"
+        },
+        "cumulative_vaccination_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/cumulative_vaccination_b"
+        },
+        "cumulative_vaccination_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/cumulative_vaccination_c"
+        },
+        "cumulative_vaccination_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/cumulative_vaccination_d"
+        },
+        "cumulative_vaccination_e": {
+          "$ref": "/modellingScenarioDayResult#/definitions/cumulative_vaccination_e"
+        },
+        "patients_in_icu_bed_a": {
+          "$ref": "/modellingScenarioDayResult#/definitions/patients_in_icu_bed_a"
+        },
+        "patients_in_icu_bed_b": {
+          "$ref": "/modellingScenarioDayResult#/definitions/patients_in_icu_bed_b"
+        },
+        "patients_in_icu_bed_c": {
+          "$ref": "/modellingScenarioDayResult#/definitions/patients_in_icu_bed_c"
+        },
+        "patients_in_icu_bed_d": {
+          "$ref": "/modellingScenarioDayResult#/definitions/patients_in_icu_bed_d"
+        },
+
+        "oxygen_consumption_per_day_in_icu": {
+          "$ref": "/modellingScenarioDayResult#/definitions/oxygen_consumption_per_day_in_icu"
+        },
+        "oxygen_consumption_per_day_in_wards": {
+          "$ref": "/modellingScenarioDayResult#/definitions/oxygen_consumption_per_day_in_wards"
+        },
+        "total_daily_oxygen_consumption": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_daily_oxygen_consumption"
+        },
+        "total_oxygen_used": {
+          "$ref": "/modellingScenarioDayResult#/definitions/total_oxygen_used"
+        },
+        "pandemic_morgue_capacity": {
+          "$ref": "/modellingScenarioDayResult#/definitions/pandemic_morgue_capacity"
+        },
+
+        "_id": {
+          "$ref": "/base#/definitions/mongoID"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "$id": "socialMediaAnalysisData.getTopicsSummary.response.body.schema",
+  "description": "Get social media analysis data summary response body schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "topicId": {
+        "$ref": "/socialMediaAnalysisData#/definitions/topicId"
+      },
+      "highestEmotion": {
+        "$ref": "/socialMediaAnalysisData#/definitions/emotion"
+      },
+      "highestEmotionValue": {
+        "type": "number"
+      },
+      "totalEmotionCount": {
+        "type": "number"
+      },
+      "highestSentiment": {
+        "$ref": "/socialMediaAnalysisData#/definitions/sentiment"
+      },
+      "highestSentimentValue": {
+        "type": "number"
+      },
+      "totalSentimentCount": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "topicId"
+    ]
+  }
+}

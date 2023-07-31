@@ -1,0 +1,18 @@
+{
+  "$id": "intervention.createIntervention.response.body.schema",
+  "description": "Create intervention response body schema",
+  "allOf": [
+    {
+      "$ref": "/intervention#/definitions/interventionResourceEntry"
+    },
+    {
+      "required": [
+        "name",
+        "is_custom",
+        "location",
+        "start_date",
+        "end_date"
+      ]
+    }
+  ]
+}

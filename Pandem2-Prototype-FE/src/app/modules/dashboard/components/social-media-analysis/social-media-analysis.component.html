@@ -1,0 +1,68 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<mat-card class="landing-card summary-section">
+  <div class="summary-section__name-icon-container">
+    <div>{{'MODULES.SMA.EMOTION_AND_SENTIMENT_ANALYSIS' | translate}}</div>
+    <div class="card-actions">
+      <mat-icon>drag_indicator</mat-icon>
+      <mat-icon (click)="hide()">visibility_off</mat-icon>
+      <mat-icon (click)="showInfo = !showInfo">info</mat-icon>
+    </div>
+  </div>
+  <mat-card-title class="text-center text-sm-left no-margin">{{'MODULES.SMA.TOP_FIVE_TOPICS' | translate}}</mat-card-title>
+
+  <mat-card-subtitle class="text-center text-sm-left no-margin">
+    <app-sources
+      [sourceType]="SourceType.SUMMARY"
+      [sources]="sources">
+    </app-sources>
+    <br/>
+    {{'MODULES.SMA.REGION' | translate}} {{this.selectedRegionCode}}
+  </mat-card-subtitle>
+  <mat-card-content>
+    <p class="info-text" *ngIf="showInfo">
+      {{'MODULES.SMA.WIP' | translate}}
+    </p>
+    <mat-list>
+      <mat-list-item>
+        <div class="col-xl-12">
+          <strong>{{postNumber | number : defaultNumberFormat}}</strong> {{'MODULES.SMA.POSTS_ANALYSED_BETWEEN' | translate}} {{displayStartDate}} {{'MODULES.SMA.AND' | translate}} {{displayEndDate}}
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <a [routerLink]="'interventions/social-media-analysis'"><h3>Social Media Analysis</h3> </a>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="col-xl-12" *ngIf="topicsData">
+          <app-social-media-analysis-sentiment-and-emotion-summary [maxNoOfTopics]="5" [selectableRows]="false" [chartHeight]="72" [noPadding]="true" [topicsData]="topicsData" [endDate]="endDateFormatted" [startDate]="startDateFormatted">
+          </app-social-media-analysis-sentiment-and-emotion-summary>
+        </div>
+      </mat-list-item>
+      <mat-divider [inset]="true"></mat-divider>
+    </mat-list>
+  </mat-card-content>
+
+  <div class="col-xl-12 more-link">
+    <a [routerLink]="'interventions/social-media-analysis'">{{'MODULES.SMA.ALL_DATA' | translate}}</a>
+  </div>
+</mat-card>

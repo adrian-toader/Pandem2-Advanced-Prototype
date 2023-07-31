@@ -1,0 +1,202 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<div class="variants-of-concern">
+
+  <mat-card>
+    <mat-card-title>
+      <div class="row">
+        <div class="col-md-12 text-center text-sm-left">
+          {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TITLE' | translate}}
+        </div>
+      </div>
+    </mat-card-title>
+    <br/>
+    <mat-card-subtitle>
+      <div class="row">
+        <div class="col-md-7 mb-4 text-center text-sm-left">
+          <p>{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.DESCRIPTION' | translate}}
+          </p>
+        </div>
+        <div class="col-md-5 mb-4 text-center text-sm-left text-md-right">
+          <app-sources
+            [sourceType]="SourceType.GRAPH"
+            [sources]="sources">
+          </app-sources>
+        </div>
+      </div>
+    </mat-card-subtitle>
+    <mat-card-content [ngStyle]="{'display': isCollapsed === true ? 'none' :'block'}">
+      <div class="mb-5">
+        <mat-tab-group #tabs (click)="tabClick()" (selectedTabChange)="changeVariant($event)"
+                       [(selectedIndex)]="activeTabIndex" animationDuration="0ms">
+          <mat-tab>
+            <table aria-label="'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.VARIANTS_INFO' | translate">
+              <thead>
+              <th> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TH_1' | translate}}</th>
+              <th>{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TH_2' | translate}}</th>
+              <th> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TH_3' | translate}}</th>
+              <th> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TH_4' | translate}}</th>
+              <th> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TH_5' | translate}}</th>
+              <th> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TH_6' | translate}}</th>
+              <th> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TH_7' | translate}}</th>
+              <th> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TH_8' | translate}}</th>
+              </thead>
+              <tbody>
+              <tr>
+                <td>
+                  {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TD_1' | translate}}
+                </td>
+                <td>
+                  {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TD_2' | translate}}
+                </td>
+                <td>
+                  {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TD_3' | translate}}
+                </td>
+                <td>
+                  {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TD_4' | translate}}
+                </td>
+                <td colspan="3">
+                  <div>{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.EACH' | translate}} <strong>{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.INCREASED' | translate}}</strong>,
+                    <strong>{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.REDUCED' | translate}}</strong>, <strong>{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.SIMILAR' | translate}}</strong>,
+                    <strong>{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.UNCLEAR' | translate}}</strong>,
+                    {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.OR' | translate}} <strong>{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.NO_EVIDENCE' | translate}}</strong><br>
+                    <ul style="list-style-position: inside;">
+                      <li>
+                        <strong>{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.INCREASED' | translate}}</strong> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.OR' | translate}} <strong>{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.MEANS' | translate}}</strong> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.INCREASED' | translate}}
+                      </li>
+                      <li>
+                        <strong>{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.SIMILAR_UPP' | translate}}</strong> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.MEANS_THAT' | translate}}
+                      </li>
+                      <li>
+                        <strong>{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.UNCLEAR_UPP' | translate}}</strong> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.MEANS_UNCLEAR' | translate}}
+                      </li>
+                      <li>
+                        <strong>{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.NO_EVIDENCE_UPP' | translate}}</strong> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.MEANS_EVIDENCE' | translate}}
+                      </li>
+                      <li>
+                        {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.THE_EVIDENCE' | translate}} <strong>v</strong> or
+                        <strong>m</strong>{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TO_INDICATE' | translate}}
+                        <strong>(v)</strong> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.OR_FOR' | translate}} <strong>(m)</strong>.
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+                <td>
+                  {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.CATEGORISED' | translate}} <strong>{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.DOMINANT' | translate}}</strong>, <strong>{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.COMMUNITY' | translate}}</strong>, <strong>{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.OUTBREAK' | translate}}</strong>,
+                  {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.AND' | translate}} <strong> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.SPORADIC' | translate}}</strong>.
+                  {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.THE_CATEGORIES_ARE' | translate}}
+                </td>
+              </tr>
+
+              </tbody>
+            </table>
+
+          </mat-tab>
+          <mat-tab *ngFor="let variant of variants" label="{{variant.name | uppercase}}">
+            <table [attr.aria-label]="variant.name + ' data'" class="variants-of-concern__data-table">
+              <thead>
+                <th> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TH_1' | translate}}</th>
+                <th>{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TH_2' | translate}}</th>
+                <th> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TH_3' | translate}}</th>
+                <th> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TH_4' | translate}}</th>
+                <th> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TH_5' | translate}}</th>
+                <th> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TH_6' | translate}}</th>
+                <th> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TH_7' | translate}}</th>
+                <th> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN.TH_8' | translate}}</th>
+              </thead>
+              <tbody>
+              <tr>
+                <td>
+                  <a href='https://cov-lineages.org/global_report_{{variant.lineage}}.html' style="text-decoration: underline; color: black;"
+                     target='_blank'>{{variant.lineage}}</a>
+                </td>
+                <td>
+                  {{variant.country_first_detected}}
+                </td>
+                <td>
+                  {{variant.spike_mutations}}
+                </td>
+                <td>
+                  {{moment(variant.date_first_detection).format('MMM YYYY')}}
+                </td>
+                <td>
+                  {{variant.impact_transmissibility}}
+                </td>
+                <td>
+                  {{variant.impact_immunity}}
+                </td>
+                <td>
+                  {{variant.impact_severity}}
+                </td>
+                <td>
+                  {{variant.transmission_eu_eea}}
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+      <div class="row">
+        <div class="col-lg-7">
+          <app-variants-of-concern-tree
+            #tree>
+          </app-variants-of-concern-tree>
+        </div>
+        <div class="col-lg-5">
+          <mat-card class="world-map">
+            <app-map
+              #map
+              [filters]="geographicalAreaFilters"
+              [hasCustomTitle]="true"
+              [hideInputs]=true
+              [isZoomDisabled]="true"
+              [mapHeight]=800
+              [module]="'variants'"
+              [removeLegends]="true"
+              [selectedFilterValue]="currentVariant"
+            ></app-map>
+          </mat-card>
+        </div>
+      </div>
+      <div *ngIf="currentVariant !== 'None'">
+        <div *ngIf="isLoading()"
+             class="mat-spinner-container loading-chart-placeholder">
+          <mat-spinner></mat-spinner>
+        </div>
+        <div *ngIf="isLoaded()" class="row">
+          <div *ngIf="dailyChart" class="col-lg-12">
+            <mat-card>
+              <app-highcharts [chartType]="chartType" [hideLegend]="true"
+                              [proportionChart]="true" [series]="dailySeries"
+                              [showExportMenu]="true"
+                              [stacking]="true" [xAxisData]="dailyChart.total.xAxis"
+
+              ></app-highcharts>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

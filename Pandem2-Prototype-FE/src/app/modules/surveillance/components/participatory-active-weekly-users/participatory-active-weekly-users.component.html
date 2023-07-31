@@ -1,0 +1,80 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<mat-card>
+  <div class="d-flex align-items-top">
+    <mat-card-title class="flex-grow-1" (mousedown)="$event.stopPropagation()">
+      <div class="row">
+        <div class="col-md-6 text-center text-sm-left"> {{'MODULES.SURVEILLANCE.PARTICIPATORY_ACTIVE_WEEKLY_USERS.TITLE' | translate }}</div>
+      </div>
+    </mat-card-title>
+    <mat-icon style="cursor: grab">drag_indicator</mat-icon>
+  </div>
+  <div (mousedown)="$event.stopPropagation()">
+    <br/>
+    <mat-card-subtitle>
+      <div class="row">
+        <div class="col-md-6 mb-4 text-center text-sm-left"
+          [innerHTML]="chartDescription ? chartDescription : ('MODULES.SURVEILLANCE.PARTICIPATORY_ACTIVE_WEEKLY_USERS.CHART_DESCRIPTION' | translate) ">
+        </div>
+        <div class="col-md-6 mb-4 text-center text-sm-left text-md-right">
+          <app-sources
+            [sourceType]="SourceType.GRAPH"
+            [sources]="sources"
+            [lastUpdate]="lastUpdate"></app-sources>
+        </div>
+      </div>
+    </mat-card-subtitle>
+    <mat-card-content *ngIf="!isCollapsed">
+      <div class="form-inline">
+        <div class="form-group mr-4 mb-4">
+          <app-chart-time-interval
+            (intervalChanged)="changeTimeInterval($event)"
+            [intervalOptions]="chartsIntervalOptions"
+            [selectedIntervalOption]="selectedIntervalOption"
+          ></app-chart-time-interval>
+        </div>
+        <div class="form-group mr-4 mb-4">
+          <mat-button-toggle-group [value]="LinearLog" aria-label="Type" class="type-container" name="fontStyle">
+            <mat-button-toggle (change)="changeActiveWeeklyUsersPlotType($event)" value="linear">{{graphFilterButtons.LINEAR | translate}}</mat-button-toggle>
+            <mat-button-toggle (change)="changeActiveWeeklyUsersPlotType($event)" value="logarithmic">{{graphFilterButtons.LOGARITHMIC | translate}}</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+
+      </div>
+      <div *ngIf="isLoading()" class="mat-spinner-container loading-chart-placeholder">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div *ngIf="isLoaded()">
+        <mat-card-title>{{'MODULES.SURVEILLANCE.PARTICIPATORY_ACTIVE_WEEKLY_USERS.ACTIVE_USERS_WEEKLY' | translate }}</mat-card-title>
+        <app-highcharts
+          [xAxisData]="weeklyActiveUsers.total.xAxis"
+          [series]="weeklySeries"
+          [yAxisType]="LinearLog"
+          [showExportMenu]="true"
+          [stacking]="true"
+        ></app-highcharts>
+      </div>
+    </mat-card-content>
+  </div>
+</mat-card>

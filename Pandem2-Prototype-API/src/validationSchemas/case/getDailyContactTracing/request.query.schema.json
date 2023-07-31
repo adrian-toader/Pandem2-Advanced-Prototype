@@ -1,0 +1,32 @@
+{
+  "$id": "case.getDailyContactTracing.request.query.schema",
+  "description": "Get daily contact tracing cases request params schema",
+  "type": "object",
+  "properties": {
+    "total_type": {
+      "$ref": "/case#/definitions/total_type"
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "none"
+      ]
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "location",
+    "total_type"
+  ]
+}

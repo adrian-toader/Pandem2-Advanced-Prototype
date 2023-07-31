@@ -1,0 +1,49 @@
+{
+  "$id": "socialMediaAnalysisData.getLocationsDateInterval.request.query.schema",
+  "description": "Get time interval in which social media analysis data occured for requested locations - request query schema",
+  "type": "object",
+  "properties": {
+    "subcategory": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/socialMediaAnalysisData#/definitions/subcategory"
+          }
+        },
+        {
+          "$ref": "/socialMediaAnalysisData#/definitions/subcategory"
+        }
+      ]
+    },
+    "language": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "emotion": {
+      "$ref": "/socialMediaAnalysisData#/definitions/emotion"
+    },
+    "sentiment": {
+      "$ref": "/socialMediaAnalysisData#/definitions/sentiment"
+    },
+    "topicId": {
+      "$ref": "/socialMediaAnalysisData#/definitions/topicId"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "emotion",
+        "sentiment",
+        "topic",
+        "topicId"
+      ]
+    }
+  },
+  "required": [
+    "subcategory",
+    "location"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$id": "modelling.getProbabilityOfInfection.request.uri.query.schema",
+  "description": "Get probability of infection request params schema",
+  "type": "object",
+  "properties": {
+    "r0": {
+      "type": "number"
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "r0",
+    "location"
+  ]
+}

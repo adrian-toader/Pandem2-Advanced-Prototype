@@ -1,0 +1,56 @@
+{
+  "$id": "socialMediaAnalysisData.getLocationsDaily.request.query.schema",
+  "description": "Get total number of social media analysis data for a time interval, grouped by locations - request query schema",
+  "type": "object",
+  "properties": {
+    "subcategory": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/socialMediaAnalysisData#/definitions/subcategory"
+          }
+        },
+        {
+          "$ref": "/socialMediaAnalysisData#/definitions/subcategory"
+        }
+      ]
+    },
+    "language": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "emotion": {
+      "$ref": "/socialMediaAnalysisData#/definitions/emotion"
+    },
+    "sentiment": {
+      "$ref": "/socialMediaAnalysisData#/definitions/sentiment"
+    },
+    "topicId": {
+      "$ref": "/socialMediaAnalysisData#/definitions/topicId"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "emotion",
+        "sentiment",
+        "topic",
+        "topicId"
+      ]
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "subcategory",
+    "location"
+  ]
+}

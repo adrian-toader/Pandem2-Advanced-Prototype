@@ -1,0 +1,48 @@
+{
+  "$id": "bed.getLocationsDaily.request.query.schema",
+  "description": "Get total number of beds occupancy for a time interval, grouped by locations - request query schema",
+  "type": "object",
+  "properties": {
+    "subcategory": {
+      "$ref": "/bed#/definitions/subcategory"
+    },
+    "total_type": {
+      "$ref": "/bed#/definitions/total_type"
+    },
+    "bed_type": {
+      "anyOf": [
+        {
+          "$ref": "/bed#/definitions/bed_type"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/bed#/definitions/bed_type"
+          }
+        }
+      ]
+    },
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "occupation_type",
+        "bed_type"
+      ]
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "total_type",
+    "location"
+  ]
+}

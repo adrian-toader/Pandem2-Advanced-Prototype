@@ -1,0 +1,13 @@
+{
+  "$id": "user.updateUserPageState.request.uri.template.schema",
+  "description": "Update the userState object in the database",
+  "type": "object",
+  "properties": {
+    "page": {
+      "$ref": "/base#/definitions/userPageState"
+    }
+  },
+  "required": [
+    "page"
+  ]
+}

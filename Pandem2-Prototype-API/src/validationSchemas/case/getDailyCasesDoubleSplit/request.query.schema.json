@@ -1,0 +1,60 @@
+{
+  "$id": "case.getDailyCasesDoubleSplit.request.query.schema",
+  "description": "Get daily cases double split request params schema",
+  "type": "object",
+  "properties": {
+    "location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subcategory": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/case#/definitions/subcategory"
+          }
+        },
+        {
+          "$ref": "/case#/definitions/subcategory"
+        }
+      ]
+    },
+    "total_type": {
+      "$ref": "/case#/definitions/total_type"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "gender",
+        "age_group",
+        "comorbidity",
+        "subcategory",
+        "variantId"
+      ]
+    },
+    "second_split": {
+      "type": "string",
+      "enum": [
+        "gender",
+        "age_group",
+        "comorbidity",
+        "subcategory",
+        "variantId"
+      ]
+    }
+  },
+  "required": [
+    "location",
+    "subcategory",
+    "total_type"
+  ]
+}

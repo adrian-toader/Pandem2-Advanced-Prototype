@@ -1,0 +1,142 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<mat-card>
+  <div class="d-flex align-items-top">
+    <mat-card-title class="flex-grow-1" (mousedown)="$event.stopPropagation()">
+      <div class="row">
+        <div class="col-md-12 text-center text-sm-left">
+          {{'MODULES.VACCINES.VACCINATION_COVERAGE.TITLE' | translate}}
+        </div>
+      </div>
+    </mat-card-title>
+    <mat-icon style="cursor: grab">drag_indicator</mat-icon>
+  </div>
+  <div (mousedown)="$event.stopPropagation()">
+    <br>
+    <mat-card-subtitle>
+      <div class="row">
+        <ng-container *ngIf="data?.chartDescription">
+          <div class="col-md-7 mb-4 text-center text-sm-left" [innerHTML]="data.chartDescription"></div>
+        </ng-container>
+        <ng-container *ngIf="!data?.chartDescription">
+          <div class="col-md-7 mb-4 text-center text-sm-left">
+            <p>
+              {{'MODULES.VACCINES.VACCINATION_COVERAGE.VACCINATION_STEP' | translate}}
+            </p>
+            <p>
+              {{'MODULES.VACCINES.VACCINATION_COVERAGE.VACCINATION_EUROPEAN' | translate}}
+            </p>
+          </div>
+        </ng-container>
+        <div class="col-md-5 mb-4 text-center text-sm-left text-md-right">
+          <app-sources
+            [sourceType]="SourceType.GRAPH"
+            [sources]="data?.sources"
+            [lastUpdate]="data?.lastUpdate"></app-sources>
+        </div>
+      </div>
+    </mat-card-subtitle>
+    <mat-card-content *ngIf="!isCollapsed">
+      <div class="form-inline">
+        <div class="form-group mr-4 mb-4">
+          <app-chart-time-interval (intervalChanged)="changeTimeInterval($event)"
+            [intervalOptions]="chartsIntervalOptions"
+            [selectedIntervalOption]="selectedIntervalOption"></app-chart-time-interval>
+        </div>
+        <div class="form-group mr-4 mb-4">
+          <mat-button-toggle-group [(ngModel)]="population" aria-label="Type"
+            class="d-none d-md-inline-flex type-container" name="fontStyle">
+            <mat-button-toggle (change)="changeSubcategory($event)" value="{{Population.AllPopulation}}">
+              {{'MODULES.VACCINES.VACCINATION_COVERAGE.ALL_POPULATION' | translate}}
+            </mat-button-toggle>
+            <mat-button-toggle (change)="changeSubcategory($event)" value="{{Population.EMARecommendedPopulation}}">
+              {{'MODULES.VACCINES.VACCINATION_COVERAGE.EMA_PRIORITY' | translate}}
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <div class="form-group mr-4 mb-4">
+          <mat-button-toggle-group [value]="LinearLog" aria-label="Type" class="type-container" name="fontStyle">
+            <mat-button-toggle (change)="changeVaccinationCoveragePlotType($event)"
+              value="linear">{{graphFilterButtons.LINEAR | translate}}</mat-button-toggle>
+            <mat-button-toggle (change)="changeVaccinationCoveragePlotType($event)"
+              value="logarithmic">{{graphFilterButtons.LOGARITHMIC | translate}}</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+      <mat-card>
+        <mat-card-title class="text-center text-sm-left">
+          <div class="row">
+            <div class="col-xl-6">
+              {{'MODULES.VACCINES.VACCINATION_COVERAGE.SECOND_TITLE' | translate}}
+            </div>
+            <div class="col-xl-6 text-right">
+              <mat-card-content>
+                <ng-container *ngIf="!chartPlotOptions.bar.grouping">
+                  <mat-radio-group (change)='changeGraphType($event)'>
+                    <mat-radio-button [checked]="true" value="proportional">{{'MODULES.VACCINES.VACCINATION_COVERAGE.PROPORTIONAL' | translate}}</mat-radio-button>
+                    <mat-radio-button value="grouped" style="margin-left:16px">{{'MODULES.VACCINES.VACCINATION_COVERAGE.GROUPED' | translate}}</mat-radio-button>
+                  </mat-radio-group>
+                </ng-container>
+                <ng-container *ngIf="chartPlotOptions.bar.grouping">
+                  <mat-radio-group (change)='changeGraphType($event)'>
+                    <mat-radio-button value="proportional">{{'MODULES.VACCINES.VACCINATION_COVERAGE.PROPORTIONAL' | translate}}</mat-radio-button>
+                    <mat-radio-button [checked]="true" value="grouped" style="margin-left:16px">{{'MODULES.VACCINES.VACCINATION_COVERAGE.GROUPED' | translate}}</mat-radio-button>
+                  </mat-radio-group>
+                </ng-container>
+              </mat-card-content>
+            </div>
+          </div>
+        </mat-card-title>
+        <mat-card-content>
+          <div class="row">
+            <div class="col-xl-12">
+              <div *ngIf="isLoading()" class="mat-spinner-container loading-chart-placeholder">
+                <mat-spinner></mat-spinner>
+              </div>
+              <div *ngIf="isLoaded()">
+                <app-highcharts [xAxisData]="[populationLabel]" [showExportMenu]="true" [series]="summarySeries"
+                  chartType="bar" [plotOptions]="chartPlotOptions" [chart]="barChartOptions" [toolTip]="chartToolTip"
+                  [yAxisType]="LinearLog"></app-highcharts>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <br>
+      <mat-card>
+        <mat-card-title class="text-center text-sm-left">{{'MODULES.VACCINES.VACCINATION_COVERAGE.THIRD_TITLE' | translate}}</mat-card-title>
+        <mat-card-content>
+          <div *ngIf="isLoading()" class="mat-spinner-container loading-chart-placeholder">
+            <mat-spinner></mat-spinner>
+          </div>
+          <div *ngIf="isLoaded()">
+            <app-highcharts [chart]="chartOptions" [showExportMenu]="true" [xAxisData]="data?.xAxis"
+              [series]="overTimeSeries" chartType="column" [yAxisName]="''" [chartTitle]="''"
+              [plotOptions]="casesChartPlotOptions" [toolTip]="chartToolTip" [yAxisType]="LinearLog"></app-highcharts>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-card-content>
+  </div>
+</mat-card>

@@ -1,0 +1,18 @@
+{
+  "$id": "administration.getGoDataConfig.response.body.schema",
+  "description": "Retrieve the goData object from the database, or if it is not found, retrieve it from the config.json file.",
+  "type": "object",
+  "properties": {
+    "url": {
+      "$ref": "/base#/definitions/url"
+    },
+    "credentials": {
+      "$ref": "/base#/definitions/goDataCredentials"
+    },
+    "importEnabled": {
+      "type": "boolean",
+      "default": "false"
+    }
+  },
+  "required": []
+}

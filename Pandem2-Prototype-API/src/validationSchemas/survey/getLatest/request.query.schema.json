@@ -1,0 +1,14 @@
+{
+  "$id": "survey.getLatest.request.query.schema",
+  "description": "Get latest survey request params schema",
+  "type": "object",
+  "properties": {
+    "location": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "location"
+  ]
+}

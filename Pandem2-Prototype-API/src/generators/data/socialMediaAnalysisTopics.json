@@ -1,0 +1,151 @@
+{
+  "pathogens": [
+    {
+      "code": "U07.1",
+      "name": "COVID-19"
+    }
+  ],
+  "topics": [
+    {
+      "pathogenCode": "U07.1",
+      "name": "Current treatments"
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Vaccination"
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Immunity passport"
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Travel measures"
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Vaccination progress",
+      "parent": {
+        "pathogenCode": "U07.1",
+        "name": "Vaccination"
+      }
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "School closure"
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Remote working"
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "COVID-19 Variants"
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Health system"
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Impact on health"
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Vaccine the elderly",
+      "parent": {
+        "pathogenCode": "U07.1",
+        "name": "Vaccination"
+      }
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Stop vaccination",
+      "parent": {
+        "pathogenCode": "U07.1",
+        "name": "Vaccination"
+      }
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Immunity pass",
+      "parent": {
+        "pathogenCode": "U07.1",
+        "name": "Vaccination"
+      }
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Vaccination update",
+      "parent": {
+        "pathogenCode": "U07.1",
+        "name": "Vaccination"
+      }
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Vaccine children",
+      "parent": {
+        "pathogenCode": "U07.1",
+        "name": "Vaccination"
+      }
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Vaccination and hospitalisations",
+      "parent": {
+        "pathogenCode": "U07.1",
+        "name": "Vaccination"
+      }
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Adverse events following immunization",
+      "parent": {
+        "pathogenCode": "U07.1",
+        "name": "Vaccination"
+      }
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Priority vaccination for those aged 65 or older",
+      "parent": {
+        "pathogenCode": "U07.1",
+        "name": "Vaccine the elderly"
+      }
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Vaccination of the elderly as soon as possible",
+      "parent": {
+        "pathogenCode": "U07.1",
+        "name": "Vaccine the elderly"
+      }
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Easy access to health professionals for older people",
+      "parent": {
+        "pathogenCode": "U07.1",
+        "name": "Vaccine the elderly"
+      }
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Vaccination and evidence-based practice soon",
+      "parent": {
+        "pathogenCode": "U07.1",
+        "name": "Vaccine the elderly"
+      }
+    },
+    {
+      "pathogenCode": "U07.1",
+      "name": "Safe vaccines for my 90-year-old mother",
+      "parent": {
+        "pathogenCode": "U07.1",
+        "name": "Vaccine the elderly"
+      }
+    }
+  ]
+}
+

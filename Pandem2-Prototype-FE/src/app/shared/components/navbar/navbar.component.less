@@ -1,0 +1,239 @@
+/*
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+*/
+
+@import "_variables.less";
+
+app-navbar {
+  background: #fff;
+  .box-shadow(0 1rem 1rem rgba(0, 0, 0, 0.25));
+  .flex(flex);
+  .flex_align_items(center);
+  .flex_direction(column);
+  .flex_justify(space-between);
+  height: calc(~"100vh - 7rem");
+  left: 0;
+  position: fixed;
+  top: 7rem;
+  .transition(0.3s linear);
+  width: 25rem;
+  z-index: 16;
+
+  @media @md {
+    width: 20rem;
+  }
+
+  @media @lt-md {
+    height: calc(~"100vh - 6rem");
+    left: -25rem;
+    position: fixed;
+    top: 6rem;
+  }
+
+  &:before {
+    background: rgba(0, 0, 0, 0.1);
+    content: "";
+    display: block;
+    height: 0.1rem;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  ul.mainmenu {
+    display: block;
+    height: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 1rem;
+    position: relative;
+    top: 0;
+    width: 100%;
+
+    @media @lt-md {
+      padding: 1rem 0.2rem;
+    }
+
+    li {
+      a {
+        .border-radius(0.5rem);
+        color: @text-color;
+        display: block;
+        font-weight: 700;
+        padding: 1rem;
+        position: relative;
+        .transition(0.3s linear);
+        white-space: nowrap;
+        width: 100%;
+
+        &:before {
+          background: @blue-color;
+          .border-radius(0.5rem);
+          content: "";
+          display: block;
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          .transition(0.3s linear);
+          width: 0;
+          z-index: -1;
+        }
+
+        &:after {
+          background: @blue-color;
+          .border-radius(0.5rem);
+          color: #fff;
+          content: attr(content);
+          font-size: 1.4rem;
+          font-weight: 300;
+          left: 5rem;
+          opacity: 0;
+          padding: 0.5rem;
+          position: absolute;
+          top: 50%;
+          .transition(0.3s linear);
+          .translate(0, -50%);
+          visibility: hidden;
+        }
+
+        i {
+          margin-right: 1rem;
+          text-align: center;
+          .transition(0.3s linear);
+          width: 2rem;
+        }
+
+        span {
+          padding: 0.5rem 1rem;
+          .transition(0.3s linear);
+        }
+
+        &.active,
+        &:hover {
+          background: rgba(@blue-color, 0.2);
+
+          &:before {
+            width: 4rem;
+          }
+
+          i {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  .navbar-collapse-btn {
+    background: #fff;
+    border: 0.1rem solid rgba(0, 0, 0, 0.1);
+    .border-radius(50%);
+    bottom: 0.5rem;
+    cursor: pointer;
+    .flex(flex);
+    .flex_align_items(center);
+    .flex_direction(row);
+    .flex_justify(center);
+    height: 2.4rem;
+    left: 23.8rem;
+    position: fixed;
+    .transition(0.3s linear);
+    width: 2.4rem;
+    z-index: 15;
+
+    @media @md {
+      left: 18.8rem;
+    }
+
+    @media @lt-md {
+      display: none;
+    }
+
+    i {
+      color: rgba(0, 0, 0, 0.2);
+      .transition(0.3s linear);
+    }
+
+    &:hover {
+      border-color: @blue-color;
+
+      i {
+        color: @blue-color;
+      }
+    }
+  }
+}
+
+@media @gt-sm {
+  .navbar-collapsed {
+    app-navbar {
+      width: 6rem;
+
+      ul.mainmenu {
+        li {
+          a {
+            span {
+              opacity: 0;
+              visibility: hidden;
+            }
+
+            &:hover {
+              &:after {
+                opacity: 1;
+                visibility: visible;
+              }
+            }
+          }
+        }
+      }
+
+      .navbar-collapse-btn {
+        left: 4.8rem;
+      }
+    }
+  }
+}
+
+.menu-open {
+  app-navbar {
+    left: 0;
+  }
+}
+
+.mobile-trigger {
+  cursor: pointer;
+  display: block;
+  left: 0;
+  padding: 1.9rem 1.5rem;
+  position: fixed;
+  top: 0;
+
+  @media @gt-sm {
+    display: none;
+  }
+
+  i {
+    font-size: 2rem;
+  }
+}

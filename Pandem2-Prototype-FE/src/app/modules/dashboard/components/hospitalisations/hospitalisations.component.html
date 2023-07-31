@@ -1,0 +1,125 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<mat-card class="landing-card summary-section">
+  <div *ngIf="isLoading()" class="mat-spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="isLoaded()">
+    <div class="summary-section__name-icon-container">
+      <div> {{'MODULES.DASHBOARD.HOSPITALIZATION.TITLE' | translate }}</div>
+      <div class="card-actions">
+        <mat-icon>drag_indicator</mat-icon>
+        <mat-icon (click)="hide()">visibility_off</mat-icon>
+        <mat-icon (click)="showInfo = !showInfo">info</mat-icon>
+      </div>
+    </div>
+    <mat-card-title class="text-center text-sm-left"> {{'MODULES.DASHBOARD.HOSPITALIZATION.HOSPITAL_ADMISSIONS' | translate }}</mat-card-title>
+
+    <mat-card-subtitle class="text-center text-sm-left">
+      <app-sources
+        [sourceType]="SourceType.SUMMARY"
+        [sources]="sources">
+      </app-sources>
+    </mat-card-subtitle>
+
+    <mat-card-content>
+      <p class="info-text" *ngIf="showInfo">
+        {{'MODULES.DASHBOARD.HOSPITALIZATION.DESCRIPTION' | translate }}
+      </p>
+      <mat-list>
+        <mat-list-item>
+          <div class="col-xl-9 label">
+            {{'MODULES.DASHBOARD.HOSPITALIZATION.LAST_SEVEN_DAYS' | translate }}
+          </div>
+          <div class="col-xl-3 value text-right">
+            {{last7Days | number : defaultNumberFormat}}
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="col-xl-7 label"> {{'MODULES.DASHBOARD.HOSPITALIZATION.COMPARED_TO_PREVIOUS' | translate }}</div>
+          <div *ngIf="percentageIsFinite(evolutionPercentage)" class="col-xl-5 value text-right">
+            <div class="evolution-container alert alert-danger" *ngIf="positiveEvolution">
+              <mat-icon class="evolution-container__icon">keyboard_arrow_up</mat-icon>
+              {{evolution | number : defaultNumberFormat}} <span>({{evolutionPercentage| number : defaultNumberFormat}}%)</span>
+            </div>
+            <div class="evolution-container alert alert-success" *ngIf="!positiveEvolution">
+              <mat-icon class="evolution-container__icon">keyboard_arrow_down</mat-icon>
+              {{Math.abs(evolution) | number : defaultNumberFormat}} <span>({{evolutionPercentage| number : defaultNumberFormat}}%)</span>
+            </div>
+          </div>
+          <div *ngIf="!percentageIsFinite(evolutionPercentage)" class="col-xl-5 value text-right">
+            {{'MODULES.DASHBOARD.HOSPITALIZATION.NO_COMPARABLE' | translate }}
+          </div>
+        </mat-list-item>
+        <mat-divider [inset]="true"></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-9 label">
+            {{'MODULES.DASHBOARD.HOSPITALIZATION.ICU_LAST_SEVEN' | translate }}
+          </div>
+          <div class="col-xl-3 value text-right">
+            {{icuLast7Days | number : defaultNumberFormat}}
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="col-xl-7 label"> {{'MODULES.DASHBOARD.HOSPITALIZATION.COMPARED_TO_PREVIOUS' | translate }}</div>
+          <div *ngIf="percentageIsFinite(icuEvolutionPercentage)" class="col-xl-5 value" style="text-align:right;">
+            <div class="evolution-container alert alert-danger" *ngIf="icuPositiveEvolution">
+              <mat-icon class="evolution-container__icon">keyboard_arrow_up</mat-icon>
+              {{icuEvolution}} <span>({{icuEvolutionPercentage| number : defaultNumberFormat}}%)</span>
+            </div>
+            <div class="evolution-container alert alert-success" *ngIf="!icuPositiveEvolution">
+              <mat-icon class="evolution-container__icon">keyboard_arrow_down</mat-icon>
+              {{Math.abs(icuEvolution)}} <span>({{icuEvolutionPercentage| number : defaultNumberFormat}}
+              %)</span>
+            </div>
+          </div>
+          <div *ngIf="!percentageIsFinite(icuEvolutionPercentage)" class="col-xl-5 value" style="text-align:right;">
+            {{'MODULES.DASHBOARD.HOSPITALIZATION.NO_COMPARABLE' | translate }}
+          </div>
+        </mat-list-item>
+        <mat-divider [inset]="true"></mat-divider>
+        <a [routerLink]="'healthcare-capacity/hospitalisations'">
+          <mat-card-title class="text-center text-sm-left mt-2 mb-4">
+            <h5>{{'MODULES.DASHBOARD.HOSPITALIZATION.SUBTITLE' | translate }}</h5>
+          </mat-card-title>
+          <div class="row">
+            <div class="col-12">
+              <app-highcharts
+                [chartType]="chartType"
+                [chart]="chartOptions"
+                [series]="chartData.total.yAxis"
+                [hideLegend]="true"
+                [height]="300"
+                [xAxisData]="chartData.total.xAxis">
+              </app-highcharts>
+            </div>
+          </div>
+        </a>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </mat-card-content>
+    <div class="col-xl-12 more-link">
+      <a [routerLink]="'healthcare-capacity/hospitalisations'">{{'MODULES.DASHBOARD.HOSPITALIZATION.ALL_ADMISSIONS_DATA' | translate }}</a>
+    </div>
+  </div>
+</mat-card>

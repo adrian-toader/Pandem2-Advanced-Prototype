@@ -1,0 +1,115 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<mat-card class="modelling-section">
+  <div class="row">
+    <div class="modelling-title-text">
+      <h3 class="modelling-title-weight">{{ 'MODULES.MODELLING.PEAK_DEMAND.TITLE' | translate }}</h3>
+    </div>
+    <div class="modelling-title-icons text-right">
+      <mat-icon
+        *ngIf="scenarios.length > 1"
+        class="modelling-info-icon modelling-view-icon-size"
+        [class.modelling-info-active-button]="viewStyle===ModellingViewTypes.List"
+        matTooltip="{{ 'MODULES.MODELLING.TOOLTIPS.LIST_VIEW' | translate }}"
+        (click)="switchView(ModellingViewTypes.List)">
+        view_list
+      </mat-icon>
+      <mat-icon
+        *ngIf="scenarios.length > 1"
+        class="modelling-info-icon modelling-view-icon-size"
+        [class.modelling-info-active-button]="viewStyle===ModellingViewTypes.Grid"
+        matTooltip="{{ 'MODULES.MODELLING.TOOLTIPS.GRID_VIEW' | translate }}"
+        (click)="switchView(ModellingViewTypes.Grid)">
+        view_module
+      </mat-icon>
+      <mat-icon
+        class="modelling-info-icon"
+        matTooltip="{{ 'MODULES.MODELLING.TOOLTIPS.SCENARIO_INFORMATION' | translate }}"
+        (click)="openInfoDialog()">
+        info_outline
+      </mat-icon>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <p>{{ 'MODULES.MODELLING.PEAK_DEMAND.DESCRIPTION' | translate }}</p>
+    </div>
+  </div>
+
+  <div class="modelling-section-expand" *ngIf="isCollapsed">
+    <button class="modelling-section-expand-button" (click)="expandClicked()" aria-label="Expand">
+      <mat-icon>expand_more</mat-icon>
+    </button>
+  </div>
+
+  <div class="row flex-grow-1" *ngIf="!isCollapsed">
+    <div *ngIf="!isLoaded" class="mat-spinner-container modelling-section-spinner-container">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <ng-container *ngIf="isLoaded">
+      <div
+        *ngFor="let scenario of scenarios, let i = index"
+        class="modelling-section-element"
+        [class.modelling-section-element-horizontal-line]="styleProps[i] && styleProps[i].hLine && viewStyle === ModellingViewTypes.Grid"
+        [class.modelling-section-element-vertical-line]="styleProps[i] && styleProps[i].vLine && viewStyle === ModellingViewTypes.Grid"
+        [class.col-xl-12]="styleProps[i] && styleProps[i].col12 || viewStyle === ModellingViewTypes.List"
+        [class.col-lg-6]="styleProps[i] && styleProps[i].col6 && viewStyle === ModellingViewTypes.Grid"
+        [class.col-lg-4]="styleProps[i] && styleProps[i].col4 && viewStyle === ModellingViewTypes.Grid">
+        <div>
+          <div class="mb-3">
+            <div class="modelling-scenario-title-container" [class.modelling-scenario-title-margins]="viewStyle === ModellingViewTypes.List">
+              <div>
+                <span *ngIf="i === 0">{{ 'MODULES.MODELLING.COMMON.BASELINE' | translate }}</span>
+                  <span *ngIf="i >= 1">{{ 'MODULES.MODELLING.COMMON.ALTERNATIVE' | translate }}</span>
+                  {{ 'MODULES.MODELLING.COMMON.SCENARIO' | translate }}: {{scenario.name}}
+              </div>
+              <div class="modelling-scenario-location">
+                <mat-icon>location_on</mat-icon>
+                {{scenario.location}}
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="chartData[i] && chartData[i].size">
+            <div class="col-12">
+              <app-highcharts
+                [chartType]="'column'"
+                [series]="chartSeries[i]"
+                [showExportMenu]="true"
+                [xAxis]="chartXAxis"
+                [xAxisData]="xAxisData"
+                [plotOptions]="chartPlotOptions"
+                [toolTip]="chartTooltip"
+                [chartTitle]="'MODULES.MODELLING.PEAK_DEMAND.CHART_TITLE' | translate"
+                [chartSubtitle]="'MODULES.MODELLING.PEAK_DEMAND.CHART_SUBTITLE' | translate"
+                [height]="450">
+              </app-highcharts>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</mat-card>

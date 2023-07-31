@@ -1,0 +1,73 @@
+{
+  "$id": "participatorySurveillance.getLocationsDaily.response.body.schema",
+  "description": "Get total number of participatory surveillance for a time interval, grouped by locations response body schema",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "total": {
+                  "type": "number"
+                },
+                "min_confidence": {
+                  "type": "number"
+                },
+                "max_confidence": {
+                  "type": "number"
+                },
+                "split": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "total": {
+                        "type": "number"
+                      },
+                      "min_confidence": {
+                        "type": "number"
+                      },
+                      "max_confidence": {
+                        "type": "number"
+                      },
+                      "split_value": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "total"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "code",
+                "total"
+              ]
+            }
+          }
+        },
+        "required": [
+          "date",
+          "locations"
+        ]
+      }
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
+}

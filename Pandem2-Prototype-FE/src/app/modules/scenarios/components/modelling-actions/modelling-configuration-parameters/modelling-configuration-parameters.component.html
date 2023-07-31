@@ -1,0 +1,365 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<mat-dialog-content class="modelling-parameters-main-card-manager-dialog">
+  <ng-container *ngIf="!isLoading && !isRunning && !isServerError">
+    <mat-card class="mb-4">
+      <div class="modelling-form-title">
+        <mat-card-title>
+          {{ 'MODULES.MODELLING.PARAMETER_CONFIGURATION.CHOOSE_PARAMETERS_TITLE' | translate }}
+          {{ 'MODULES.MODELLING.COMMON.CLICK' | translate }}
+          <mat-icon style="vertical-align: text-bottom">info</mat-icon>
+          {{ 'MODULES.MODELLING.PARAMETER_CONFIGURATION.CHOOSE_PARAMETERS_INFO' | translate }}
+        </mat-card-title>
+        <div class="summary-section__name-icon-container modelling-input-info-button">
+          <mat-icon
+            (click)="showInfo = !showInfo"
+            matTooltip="{{(showInfo ? 'MODULES.MODELLING.COMMON.HIDE' : 'MODULES.MODELLING.COMMON.SHOW') | translate }} {{'MODULES.MODELLING.PARAMETER_CONFIGURATION.PARAMETER_DEFINITIONS' | translate }}">
+            info
+          </mat-icon>
+        </div>
+      </div>
+    </mat-card>
+
+    <div class="d-flex justify-content-between mb-4" *ngIf="isComparison">
+      <div class="modelling-form-title text-left">
+        <mat-card-title>
+          {{ 'MODULES.MODELLING.PARAMETER_CONFIGURATION.RESET_PARAMETERS_TITLE' | translate }}
+        </mat-card-title>
+      </div>
+      <button mat-raised-button class="modelling-button-accent-color modelling-configuration-restore-button" (click)="resetParameterEdit()">
+        {{ 'MODULES.MODELLING.PARAMETER_CONFIGURATION.RESET_BUTTON' | translate }}
+        <mat-icon>restore</mat-icon>
+      </button>
+    </div>
+
+    <mat-accordion [formGroup]="parametersFormGroup" [@.disabled]="disableAnimation">
+      <mat-expansion-panel class="modelling-configuration-expansion-panel" *ngFor="let category of paramsCategories">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="col-md-5">
+            {{category.categoryLabel}}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{category.categoryDescription}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          <div *ngFor="let elem of category.subcategories">
+
+            <div class="param-subcategory-simple-title col-md-12" *ngIf="!elem.ages">
+              {{elem.subcategoryLabel}}
+            </div>
+            <div class="param-subcategory-age-group-title col-md-12" *ngIf="elem.ages">
+              <div class="col-md-6">{{elem.subcategoryLabel}}</div>
+              <div class="param-subcategory-ages col-md-6 d-flex justify-content-end p-0 flex-wrap">
+                <div [ngClass]="'col-lg-' + (bsColumnWidth[paramsAgeGroups.size] || 4)"
+                  class="text-right"
+                  *ngFor="let age of paramsAgeGroups">
+                  {{ 'MODULES.MODELLING.AGES.' + (age | uppercase) | translate }}
+                </div>
+              </div>
+            </div>
+
+            <ng-container *ngIf="!elem.name">
+              <div class="row param-input-row" *ngFor="let form of paramsDetails[category.category]">
+                <div class="d-flex param-input col-12">
+                  <div class="param-config-form-name col-md-6">{{form.name}}</div>
+
+                  <div class="param-input-values col-md-6 d-flex flex-wrap justify-content-end" *ngIf="form.values.length > 1">
+                    <ng-container *ngFor="let ageGroup of form.values">
+                      <div class="d-flex align-items-center" [ngClass]="'col-lg-' + (bsColumnWidth[paramsAgeGroups.size] || 4)">
+                        <div class="modelling-param-age-lt-lg col-4 p-0 pr-1 text-right">
+                          {{ 'MODULES.MODELLING.AGES.' + (ageGroup.age | uppercase) | translate }}
+                        </div>
+                        <ng-container *ngIf="form.type !== 'boolean'">
+                          <mat-form-field appearance="outline" class="param-config-form-field">
+                            <input
+                              [type]="form.type"
+                              [step]="form.step"
+                              matInput
+                              (change)="onInputChange($event, form.key + '[' + ageGroup.age + ']')"
+                              (input)="onInputChange($event, form.key + '[' + ageGroup.age + ']')"
+                              [formControlName]="form.key + '[' + ageGroup.age + ']'"
+                              [readonly]="form.readonly">
+                          </mat-form-field>
+                        </ng-container>
+                      </div>
+
+                      <ng-container *ngIf="form.type === 'boolean'">
+                        <mat-slide-toggle
+                          [formControlName]="form.key + '[' + ageGroup.age + ']'"
+                          [name]="form.key + '[' + ageGroup.age + ']'"
+                          (change)="onSlideToggle($event, form.key + '[' + ageGroup.age + ']')"
+                          class="param-config-switch"
+                          color="primary-color">
+                        </mat-slide-toggle>
+                      </ng-container>
+                    </ng-container>
+                  </div>
+
+                  <div class="param-input-values col-md-6 d-flex flex-wrap justify-content-end" *ngIf="form.values.length === 1">
+                    <ng-container
+                      *ngIf="form.values[0].limits
+                      && form.values[0].limits.min !== undefined
+                      && form.values[0].limits.max !== undefined">
+                      <mat-slider
+                        [min]="form.values[0].limits.min"
+                        [max]="form.values[0].limits.max"
+                        [value]="form.values[0].value"
+                        [formControlName]="form.key + '_slider'"
+                        (change)="onSliderChange($event, form.key)"
+                        (input)="onSliderChange($event, form.key)"
+                        [step]="form.step"
+                        class="param-config-slider" [ngClass]="'col-lg-' + (bsColumnWidth[paramsAgeGroups.size] || 4)">
+                      </mat-slider>
+                    </ng-container>
+
+                    <ng-container *ngIf="form.type !== 'boolean'">
+                      <mat-form-field appearance="outline" class="param-config-form-field" [ngClass]="'col-lg-' + (bsColumnWidth[paramsAgeGroups.size] || 4)">
+                        <input
+                          [type]="form.type"
+                          [step]="form.step"
+                          matInput
+                          (change)="onInputChange($event, form.key)"
+                          (input)="onInputChange($event, form.key)"
+                          [formControlName]="form.key"
+                          [readonly]="form.readonly">
+                      </mat-form-field>
+                    </ng-container>
+
+                    <ng-container *ngIf="form.type === 'boolean'">
+                      <mat-slide-toggle
+                        [formControlName]="form.key"
+                        [name]="form.key"
+                        (change)="onSlideToggle($event, form.key)"
+                        class="param-config-switch"
+                        color="primary-color">
+                      </mat-slide-toggle>
+                    </ng-container>
+                  </div>
+                </div>
+
+                <div class="col-12 param-description" *ngIf="showInfo">
+                  <span *ngIf="form.description">{{form.description}}</span>
+                  <p *ngIf="form.type !== 'boolean' && form.values[0].limits && form.values[0].limits.min !== undefined">
+                    {{ 'MODULES.MODELLING.INPUTS.PROPERTIES.LIMITS' | translate }}
+                    —
+                    {{ 'MODULES.MODELLING.INPUTS.PROPERTIES.MIN' | translate }}: {{ form.values[0].limits.min }}<span *ngIf="form.values[0].limits.max !== undefined">, {{ 'MODULES.MODELLING.INPUTS.PROPERTIES.MAX' | translate }}: {{ form.values[0].limits.max }}</span>
+                  </p>
+                  <p *ngIf="form.type !== 'boolean' && !form.values[0].limits">
+                    {{ 'MODULES.MODELLING.INPUTS.PROPERTIES.LIMITS' | translate }}
+                    —
+                    {{ 'MODULES.MODELLING.INPUTS.PROPERTIES.MIN' | translate }}: 0
+                  </p>
+                </div>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="elem.name">
+              <div class="row param-input-row" *ngFor="let form of paramsDetails[category.category][elem.name]">
+                <div class="d-flex param-input col-12">
+                  <div class="param-config-form-name col-md-6">{{form.name}}</div>
+
+                  <div class="param-input-values col-md-6 d-flex flex-wrap justify-content-end" *ngIf="form.values.length > 1">
+                    <ng-container *ngFor="let ageGroup of form.values">
+                      <div class="d-flex align-items-center" [ngClass]="'col-lg-' + (bsColumnWidth[paramsAgeGroups.size] || 4)">
+                        <div class="modelling-param-age-lt-lg col-4 p-0 pr-1 text-right">
+                          {{ 'MODULES.MODELLING.AGES.' + (ageGroup.age | uppercase) | translate }}
+                        </div>
+                        <ng-container *ngIf="form.type !== 'boolean'">
+                          <mat-form-field appearance="outline" class="lt-lg-col-8 param-config-form-field">
+                            <input
+                              [type]="form.type"
+                              [step]="form.step"
+                              matInput
+                              (change)="onInputChange($event, form.key + '[' + ageGroup.age + ']')"
+                              (input)="onInputChange($event, form.key + '[' + ageGroup.age + ']')"
+                              [formControlName]="form.key + '[' + ageGroup.age + ']'"
+                              [readonly]="form.readonly">
+                          </mat-form-field>
+                        </ng-container>
+                      </div>
+
+                      <ng-container *ngIf="form.type === 'boolean'">
+                        <mat-slide-toggle
+                          [formControlName]="form.key + '[' + ageGroup.age + ']'"
+                          [name]="form.key + '[' + ageGroup.age + ']'"
+                          (change)="onSlideToggle($event, form.key + '[' + ageGroup.age + ']')"
+                          class="param-config-switch"
+                          color="primary-color">
+                        </mat-slide-toggle>
+                      </ng-container>
+                    </ng-container>
+                  </div>
+
+                  <div class="param-input-values col-md-6 d-flex flex-wrap justify-content-end" *ngIf="form.values.length === 1">
+                    <ng-container
+                      *ngIf="form.values[0].limits
+                      && form.values[0].limits.min !== undefined
+                      && form.values[0].limits.max !== undefined">
+                      <mat-slider
+                        [min]="form.values[0].limits.min"
+                        [max]="form.values[0].limits.max"
+                        [value]="form.values[0].value"
+                        [formControlName]="form.key + '_slider'"
+                        (change)="onSliderChange($event, form.key)"
+                        (input)="onSliderChange($event, form.key)"
+                        [step]="form.step"
+                        class="param-config-slider" [ngClass]="'col-lg-' + (bsColumnWidth[paramsAgeGroups.size] || 4)">
+                      </mat-slider>
+                    </ng-container>
+
+                    <ng-container *ngIf="form.type !== 'boolean'">
+                      <mat-form-field appearance="outline" class="param-config-form-field" [ngClass]="'col-lg-' + (bsColumnWidth[paramsAgeGroups.size] || 4)">
+                        <input
+                          [type]="form.type"
+                          [step]="form.step"
+                          matInput
+                          (change)="onInputChange($event, form.key)"
+                          (input)="onInputChange($event, form.key)"
+                          [formControlName]="form.key"
+                          [readonly]="form.readonly">
+                      </mat-form-field>
+                    </ng-container>
+
+                    <ng-container *ngIf="form.type === 'boolean'">
+                      <mat-slide-toggle
+                        [formControlName]="form.key"
+                        [name]="form.key"
+                        (change)="onSlideToggle($event, form.key)"
+                        class="param-config-switch"
+                        color="primary-color">
+                      </mat-slide-toggle>
+                    </ng-container>
+                  </div>
+                </div>
+
+                <div class="col-12 param-description" *ngIf="showInfo">
+                  <span *ngIf="form.description">{{form.description}}</span>
+                  <p *ngIf="form.type !== 'boolean' && form.values[0].limits && form.values[0].limits.min !== undefined">
+                    {{ 'MODULES.MODELLING.INPUTS.PROPERTIES.LIMITS' | translate }}
+                    —
+                    {{ 'MODULES.MODELLING.INPUTS.PROPERTIES.MIN' | translate }}: {{ form.values[0].limits.min }}<span *ngIf="form.values[0].limits.max !== undefined">, {{ 'MODULES.MODELLING.INPUTS.PROPERTIES.MAX' | translate }}: {{ form.values[0].limits.max }}</span>
+                  </p>
+                  <p *ngIf="form.type !== 'boolean' && !form.values[0].limits">
+                    {{ 'MODULES.MODELLING.INPUTS.PROPERTIES.LIMITS' | translate }}
+                    —
+                    {{ 'MODULES.MODELLING.INPUTS.PROPERTIES.MIN' | translate }}: 0
+                  </p>
+                </div>
+              </div>
+            </ng-container>
+
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <ng-container *ngIf="isComparison">
+      <div class="modelling-form-title mt-5">
+        <mat-card-title>
+          {{ 'MODULES.MODELLING.PARAMETER_CONFIGURATION.ALTERNATIVE_SCENARIO_NAME_TITLE' | translate }}
+        </mat-card-title>
+      </div>
+      <mat-form-field appearance="outline" class="modelling-form-field col-md-12">
+        <mat-label>
+          {{ 'MODULES.MODELLING.PARAMETER_CONFIGURATION.ALTERNATIVE_SCENARIO_NAME_INPUT' | translate }}
+        </mat-label>
+        <input matInput [(ngModel)]="alternativeScenarioName" required>
+      </mat-form-field>
+
+      <div class="modelling-form-title">
+        <mat-card-title>
+          {{ 'MODULES.MODELLING.PARAMETER_CONFIGURATION.REGION_TITLE' | translate }}
+        </mat-card-title>
+      </div>
+      <mat-form-field appearance="outline" class="modelling-form-field col-md-12">
+        <mat-label>
+          {{ 'MODULES.MODELLING.PARAMETER_CONFIGURATION.REGION_INPUT' | translate }}
+        </mat-label>
+        <mat-select [(ngModel)]="alternativeScenarioRegion">
+          <mat-option *ngFor="let region of regions" [value]="region.code">
+            {{region.name}}
+          </mat-option>
+        </mat-select>
+        <mat-hint class="modelling-hint">
+          {{ 'MODULES.MODELLING.PARAMETER_CONFIGURATION.REGION_INPUT_HINT' | translate }}
+        </mat-hint>
+      </mat-form-field>
+    </ng-container>
+
+    <div class="alert alert-danger my-3" *ngIf="showNameWarning">
+      {{ 'MODULES.MODELLING.PARAMETER_CONFIGURATION.NAME_ERROR' | translate }}
+    </div>
+    <div class="alert alert-danger my-3" *ngIf="!isFormValid">
+      {{ 'MODULES.MODELLING.PARAMETER_CONFIGURATION.PARAMETER_ERROR' | translate: { param: invalidParameterName } }}
+    </div>
+
+    <div class="d-flex justify-content-end mt-4">
+      <button mat-raised-button class="modelling-icon-size modelling-button mr-2" (click)="cancelParameterEdit()">
+        <mat-icon aria-hidden="false" aria-label="close button">cancel</mat-icon>
+        {{ 'MODULES.MODELLING.COMMON.CANCEL' | translate }}
+      </button>
+      <button *ngIf="!isComparison" mat-raised-button class="modelling-button modelling-icon-size" (click)="saveParameterEdit()">
+        <mat-icon>save</mat-icon>
+        {{ 'MODULES.MODELLING.COMMON.SAVE' | translate }}
+      </button>
+      <button *ngIf="isComparison" mat-raised-button class="modelling-button modelling-button-run ml-2" (click)="saveParameterEdit()">
+        {{ 'MODULES.MODELLING.COMMON.RUN' | translate }}
+        <mat-icon>play_circle_filled</mat-icon>
+      </button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isLoading">
+    <div class="mat-spinner-container flex-column flex-grow-1 justify-content-center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isRunning">
+    <div class="mat-spinner-container flex-column flex-grow-1 justify-content-center">
+      <mat-spinner></mat-spinner>
+      <div class="alert alert-primary my-5" *ngIf="isProbInfLoading">
+        {{ 'MODULES.MODELLING.STATUS.CALCULATING_PROBABILITY_OF_INFECTION' | translate }}
+      </div>
+      <div class="alert alert-primary my-5" *ngIf="!isProbInfLoading">
+        {{ 'MODULES.MODELLING.STATUS.RUNNING_SIMULATION' | translate }}
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isError">
+    <div class="simulation-error-container d-flex flex-column flex-grow-1 justify-content-center align-items-center">
+      <mat-icon>error_outline</mat-icon>
+      <div class="alert alert-danger my-5">
+        {{ 'MODULES.MODELLING.STATUS.ERROR_RUNNING_SIMULATION' | translate }}
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isServerError">
+    <div class="simulation-error-container d-flex flex-column flex-grow-1 justify-content-center align-items-center">
+      <mat-icon>error_outline</mat-icon>
+      <div class="alert alert-danger my-5">
+        {{ 'MODULES.MODELLING.STATUS.SIMULATION_SERVER_UNAVAILABLE' | translate }}
+      </div>
+    </div>
+  </ng-container>
+</mat-dialog-content>

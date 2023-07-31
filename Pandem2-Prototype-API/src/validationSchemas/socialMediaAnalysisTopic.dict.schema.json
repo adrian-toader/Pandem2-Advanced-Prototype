@@ -1,0 +1,47 @@
+{
+  "$id": "/socialMediaAnalysisTopic#",
+  "definitions": {
+    "pathogenId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "text": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "minLength": 1
+    },
+    "parent_topicId": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "minLength": 1
+    },
+    "socialMediaAnalysisTopicResourceEntry": {
+      "type": "object",
+      "properties": {
+        "pathogenId": {
+          "$ref": "/socialMediaAnalysisTopic#/definitions/pathogenId"
+        },
+        "name": {
+          "$ref": "/socialMediaAnalysisTopic#/definitions/name"
+        },
+        "text": {
+          "$ref": "/socialMediaAnalysisTopic#/definitions/text"
+        },
+        "parent_topicId": {
+          "$ref": "/socialMediaAnalysisTopic#/definitions/parent_topicId"
+        },
+        "_id": {
+          "$ref": "/base#/definitions/mongoID"
+        }
+      }
+    }
+  }
+}

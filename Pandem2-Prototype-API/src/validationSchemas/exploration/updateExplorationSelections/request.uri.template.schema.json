@@ -1,0 +1,13 @@
+{
+  "$id": "exploration.updateExplorationSelections.request.uri.template.schema",
+  "description": "Update the exploration selection from database.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "/base#/definitions/mongoID"
+    }
+  },
+  "required": [
+    "id"
+  ]
+}

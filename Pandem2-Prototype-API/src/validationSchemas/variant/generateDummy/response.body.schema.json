@@ -1,0 +1,20 @@
+{
+  "$id": "variant.generateDummy.response.body.schema",
+  "description": "Generate dummy data for variants - response body schema",
+  "type": "array",
+  "items": {
+    "allOf": [
+      {
+        "$ref": "/variant#/definitions/variantResourceEntry"
+      },
+      {
+        "required": [
+          "_id",
+          "pathogenId",
+          "code",
+          "type"
+        ]
+      }
+    ]
+  }
+}

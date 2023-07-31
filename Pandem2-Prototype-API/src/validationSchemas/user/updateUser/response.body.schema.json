@@ -1,0 +1,15 @@
+{
+  "$id": "user.updateUser.response.body.schema",
+  "description": "Modify user instance response body schema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "/user#/definitions/userResourceEntry"
+    },
+    {
+      "required": [
+        "email"
+      ]
+    }
+  ]
+}

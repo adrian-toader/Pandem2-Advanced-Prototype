@@ -1,0 +1,5 @@
+{
+  "$id": "variant.retrieveVariantList.request.query.schema",
+  "description": "Retrieve Variants List request query schema",
+  "$ref": "/query#/definitions/getListQuery"
+}

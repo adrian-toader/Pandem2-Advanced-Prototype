@@ -1,0 +1,44 @@
+{
+  "$id": "bed.generateDummy.response.body.schema",
+  "description": "Generate dummy data for beds occupancy - response body schema",
+  "type": "object",
+  "patternProperties": {
+    ".+": {
+      "description": "Subcategory entry for created resources number per date",
+      "type": "object",
+      "patternProperties": {
+        ".+": {
+          "description": "Date entry for created resources numbers per date",
+          "type": "object",
+          "patternProperties": {
+            ".+": {
+              "description": "Bed type entry for created resources for current bed type and date",
+              "type": "object",
+              "patternProperties": {
+                ".+": {
+                  "description": "Resource with total or age groups",
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "description": "Total count",
+                      "type": "number"
+                    },
+                    "ageGroups": {
+                      "description": "Split by age group",
+                      "type": "object",
+                      "patternProperties": {
+                        ".+": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

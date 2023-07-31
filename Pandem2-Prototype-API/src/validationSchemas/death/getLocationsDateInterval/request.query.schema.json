@@ -1,0 +1,29 @@
+{
+  "$id": "death.getLocationsDateInterval.request.query.schema",
+  "description": "Get time interval in which deaths occured for requested locations request params schema",
+  "type": "object",
+  "properties": {
+    "subcategory": {
+      "$ref": "/death#/definitions/subcategory"
+    },
+    "admission_type": {
+      "$ref": "/death#/definitions/admission_type"
+    },
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "gender",
+        "age_group",
+        "subcategory",
+        "admission_type"
+      ]
+    }
+  },
+  "required": [
+    "subcategory",
+    "location"
+  ]
+}

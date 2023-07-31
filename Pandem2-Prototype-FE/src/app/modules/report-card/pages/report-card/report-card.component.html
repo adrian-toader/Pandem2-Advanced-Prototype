@@ -1,0 +1,165 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<div class="container-fluid dashboard-page">
+  <div class="row">
+    <div class="col-xl-6 summary-container">
+      <mat-card class="header-card">
+        <mat-card-title class="page-header text-center text-sm-left">
+          <h2 class="page-header">{{'MODULES.REPORT_CARD.REPORT_FOR' | translate:{pathogen,selectedRegionName} }}</h2>
+        </mat-card-title>
+        <mat-card-content class="text-center text-sm-left">
+          <form [formGroup]="reportDetailsForm">
+            <input
+              type="text"
+              class="col-lg-12 report-details-input"
+              formControlName="preparedFor">
+            <input
+              type="text"
+              class="col-lg-12 report-details-input"
+              formControlName="epiWeek">
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-xl-6" id="report-country-selection">
+      <mat-card>
+        <div class="col-lg-11 mx-auto">
+          <app-report-card-options
+            #reportCardOptions
+            [parent]="this"
+            [loadedReportId]="this.loadedReportId"
+            (dateChangedEvent)="getDateChanged($event)"
+            (graphsLoadedEvent)="getLoadedGraphs($event)"
+          ></app-report-card-options>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="row col-lg-11 mx-auto text-center">
+    <div class="col-sm-4 my-4">
+      <app-report-summary-cases></app-report-summary-cases>
+    </div>
+<!--    <div class="col-sm-4 my-4">-->
+<!--      <app-report-summary-deaths></app-report-summary-deaths>-->
+<!--    </div>-->
+    <div class="col-sm-4 my-4">
+      <app-report-summary-hospitalisation-covid></app-report-summary-hospitalisation-covid>
+    </div>
+    <div class="col-sm-4 my-4">
+      <app-report-summary-testing></app-report-summary-testing>
+    </div>
+<!--    <div class="col-sm-4 my-4">-->
+<!--      <app-report-summary-vaccination></app-report-summary-vaccination>-->
+<!--    </div>-->
+<!--    <div class="col-sm-4 my-4">-->
+<!--      <app-report-summary-hospitalisation-non-covid></app-report-summary-hospitalisation-non-covid>-->
+<!--    </div>-->
+  </div>
+
+  <div class="row mb-5" [ngClass]="{'report-page-summary-empty' : !summaryText}">
+    <div class="col-lg-12">
+      <mat-card class="col-lg-12">
+        <mat-card-title class="text-center">{{'MODULES.REPORT_CARD.SUMMARY' | translate }}</mat-card-title>
+        <textarea matInput
+            [(ngModel)]="summaryText"
+            rows="6"
+            placeholder="{{'MODULES.REPORT_CARD.SUMMARY' | translate }}"
+            class="report-page-summary">
+        </textarea>
+      </mat-card>
+    </div>
+  </div>
+
+  <div *ngFor="let item of graphList, let index = index">
+    <app-report-graph-title *ngIf="isTitle(item)" [title]="item.textValue" [index]="index" [parent]="this"></app-report-graph-title>
+    <div *ngIf="isGraph(item)" class="row">
+      <div class="col-xl-10">
+        <app-graph-wrapper #graphComponent [graph]="item"></app-graph-wrapper>
+      </div>
+      <div class="col-xl-2">
+        <app-card-manager #cardManager [graphId]="item.graphId" [parentPage]="this" [isOnReportPage]="true"></app-card-manager>
+      </div>
+    </div>
+    <app-report-graph-description *ngIf="isDescription(item)" [text]="item.textValue" [index]="index" [parent]="this"></app-report-graph-description>
+    <app-report-graph-footer *ngIf="isFooter(item)" [title]="item.textValue" [index]="index" [parent]="this"></app-report-graph-footer>
+
+    <div *ngIf="isMap(item)" class="row mb-4">
+      <div class="col-xl-10">
+        <mat-card class="world-map">
+          <app-map
+            [module]="item.module"
+            [filters]="item.filters"
+            [selectedFilterValue]="item.filters[0].value"
+            [mapHeight]="350"
+            [secondFilter]="item.secondFilter"
+            [selectedSecondFilterValue]="item.secondFilter ? item.secondFilter[0].value : undefined"
+            [colorScheme]="item.colorScheme"
+            [isOnReportPage]="true"
+          ></app-map>
+        </mat-card>
+      </div>
+      <div class="col-xl-2">
+        <app-card-manager #cardManager [graphId]="item.graphId" [parentPage]="this" [isOnReportPage]="true"></app-card-manager>
+      </div>
+    </div>
+
+    <div *ngIf="isReportModellingSection(item)" class="row mb-4">
+      <div class="col-xl-10">
+        <app-modelling-section-wrapper [section]="item.component" [scenarioId]="item.scenarioId" [viewStyle]="item.viewStyle"></app-modelling-section-wrapper>
+      </div>
+      <div class="col-xl-2">
+        <app-card-manager #cardManager [graphId]="item.graphId" [parentPage]="this" [isOnReportPage]="true"></app-card-manager>
+      </div>
+    </div>
+
+    <div *ngIf="isReportModellingExplorationChart(item)" class="row mb-4">
+      <div class="col-xl-10">
+        <app-modelling-exploration-chart [chart]="item" [scenarioId]="item.scenarioId"></app-modelling-exploration-chart>
+      </div>
+      <div class="col-xl-2">
+        <app-card-manager #cardManager [graphId]="item.graphId" [parentPage]="this" [isOnReportPage]="true"></app-card-manager>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-xl-4 mx-auto mt-2 report-page-add-button-container">
+    <mat-card class="col-xl-12 d-flex justify-content-around">
+      <button mat-flat-button class="report-page-add-button">
+        <mat-icon class="add-icon" matTooltip="{{'MODULES.REPORT_CARD.SUMMARY' | translate }}" (click)="openGraphDialog()">add_circle_outline</mat-icon>
+      </button>
+      <button mat-flat-button class="report-page-add-button" [disabled]="isTitle(graphList[0])">
+        <mat-icon class="add-icon" [matTooltip]=addTitleTooltip() (click)="addNewTitle()">title</mat-icon>
+      </button>
+      <button mat-flat-button class="report-page-add-button">
+        <mat-icon class="add-icon" matTooltip="{{'MODULES.REPORT_CARD.ADD_TEXT' | translate }}" (click)="addNewDescription()">notes</mat-icon>
+      </button>
+      <button mat-flat-button class="report-page-add-button" [disabled]="isFooter(graphList[graphList.length - 1])">
+        <mat-icon class="add-icon" [matTooltip]="addFooterTooltip()" (click)="addNewFooter()">note</mat-icon>
+      </button>
+      <button mat-flat-button class="report-page-add-button">
+        <mat-icon class="add-icon" matTooltip="{{'MODULES.REPORT_CARD.ADD_MAP' | translate }}" (click)="openMapDialog()">add_location</mat-icon>
+      </button>
+    </mat-card>
+  </div>
+</div>

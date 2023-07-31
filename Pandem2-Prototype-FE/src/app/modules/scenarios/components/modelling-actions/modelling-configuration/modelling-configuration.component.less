@@ -1,0 +1,227 @@
+/*
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+*/
+
+.mat-primary-color {
+  color: #0272c6;
+}
+
+.modelling-main-card-manager-dialog {
+  width: 800px;
+  min-height: 400px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modelling-form-field {
+  margin-top: 16px;
+}
+
+.modelling-form-field input {
+  height: 100%;
+}
+
+.modelling-form-small-date {
+  font-size: 0.8em;
+  color: gray;
+}
+
+.modelling-button {
+  background-color: #d5dce0 !important;
+  white-space: initial;
+}
+
+.modelling-button-run {
+  font-size: 1.5em;
+  padding: 10px 20px;
+}
+
+.modelling-button-run mat-icon {
+  line-height: 0.65em;
+  font-size: 1.3em;
+  color: #0272c6;
+}
+
+.modelling-icon-size mat-icon {
+  font-size: 1.5em;
+}
+
+.modelling-form-title {
+  text-align: center;
+}
+
+.modelling-form-title > mat-card-title {
+  font-size: 1.2em;
+  color: rgba(0, 0, 0, 0.54);
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+.modelling-pathogen-select-content {
+  white-space: pre-wrap;
+}
+
+.mat-radio-checked .modelling-pathogen-select-card {
+  background-color: #d5dce0;
+}
+
+.modelling-pathogen-select-button > .mat-radio-label > .mat-radio-container {
+  display: none;
+}
+
+.modelling-pathogen-select-button > .mat-radio-label {
+  width: 100%;
+  height: 100%;
+}
+
+.modelling-pathogen-select-button
+  > .mat-radio-label
+  > .mat-radio-label-content {
+  width: 100%;
+  height: 100%;
+}
+
+.modelling-pathogen-select-card {
+  height: 100%;
+}
+
+.modelling-pathogen-select-card > mat-card-subtitle {
+  font-weight: 400;
+  margin-bottom: 4px;
+  font-size: 0.8em;
+}
+
+.modelling-pathogen-select-card > mat-card-content {
+  font-weight: 400;
+  font-size: 0.8em;
+  white-space: normal;
+}
+
+.modelling-hint {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.modelling-form > .mat-form-field {
+  margin-bottom: 8px;
+}
+
+.modelling-form
+  > .mat-form-field
+  > .mat-form-field-wrapper
+  > .mat-form-field-subscript-wrapper {
+  margin-top: 2px;
+  height: 1.5em;
+}
+
+.modelling-form-title > small {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.modelling-r0-input > .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.modelling-r0-slider {
+  background-color: transparent !important;
+}
+
+.modelling-r0-slider .mat-slider-thumb {
+  border-radius: 50% !important;
+  bottom: -22px !important;
+  background-color: #0272c6 !important;
+  border: 12px solid rgba(2, 114, 198, 0.2) !important;
+  background-clip: padding-box;
+  height: 40px !important;
+  width: 40px !important;
+}
+
+.modelling-r0-slider.mat-slider-min-value:not(.mat-slider-thumb-label-showing)
+  .mat-slider-thumb {
+  background-color: #0272c6 !important;
+  border: 12px solid rgba(2, 114, 198, 0.2) !important;
+}
+
+.modelling-r0-slider.mat-slider-min-value:not(
+    .mat-slider-thumb-label-showing
+  ):hover
+  .mat-slider-thumb {
+  background-color: #0272c6;
+  border: 12px solid rgba(2, 114, 198, 0.2);
+}
+
+.modelling-r0-slider.mat-slider.cdk-focused .mat-slider-track-background {
+  background-color: #9fc9e9;
+}
+
+.modelling-r0-slider .mat-slider-wrapper {
+  top: 20px !important;
+}
+
+.modelling-r0-slider .mat-slider-track-wrapper {
+  height: 6px !important;
+}
+
+.modelling-r0-slider .mat-slider-track-background {
+  background-color: #9fc9e9;
+}
+
+.modelling-r0-slider:hover .mat-slider-track-background {
+  background-color: #9fc9e9;
+}
+
+.modelling-r0-slider.mat-slider:not(.mat-slider-disabled).cdk-mouse-focused
+  .mat-slider-thumb {
+  border-width: 12px !important;
+  transform: scale(0.85) !important;
+}
+
+.prob-inf-warning-placeholder-height {
+  min-height: 40px;
+}
+
+.simulation-error-container mat-icon {
+  color: red;
+  font-size: 12rem;
+  width: 12rem;
+  height: 12rem;
+}
+
+@media screen and (max-width: 992px) {
+  .modelling-main-card-manager-dialog {
+    min-width: 260px;
+    width: initial;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .modelling-main-card-manager-dialog {
+    padding: 0;
+  }
+  .modelling-r0 {
+    flex-direction: column;
+  }
+
+  .modelling-configuration-region {
+    flex-direction: column;
+  }
+}

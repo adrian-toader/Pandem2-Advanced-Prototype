@@ -1,0 +1,174 @@
+[
+  {
+    "name": "19A",
+    "pathogen": "U07.1",
+    "color": "#ff7993",
+    "children_strains": ["19B", "20A"]
+  },
+  {
+    "name": "19B",
+    "pathogen": "U07.1",
+    "color": "#ffbeb3",
+    "parent_strain": "19A"
+  },
+  {
+    "name": "20A",
+    "pathogen": "U07.1",
+    "color": "#fa8b36",
+    "parent_strain": "19A",
+    "children_strains": ["20B", "20C", "20E", "21A (Delta)", "21B (Kappa)", "21D (Eta)", "21H (Mu)"]
+  },
+  {
+    "name": "20B",
+    "pathogen": "U07.1",
+    "color": "#e09836",
+    "parent_strain": "20A",
+    "children_strains": ["20D", "20F", "20I (Alpha)", "20J (Gamma)", "21E (Theta)", "21"]
+  },
+  {
+    "name": "20C",
+    "pathogen": "U07.1",
+    "color": "#3ab9b7",
+    "parent_strain": "20A",
+    "children_strains": ["20G", "20H (Beta)", "21C (Epsilon)", "21F (Iota)"]
+  },
+  {
+    "name": "20E",
+    "pathogen": "U07.1",
+    "color": "#c8d0ff",
+    "parent_strain": "20A"
+  },
+  {
+    "name": "21A (Delta)",
+    "pathogen": "U07.1",
+    "variant_code": "B.1.617.2",
+    "color": "#b993ff",
+    "parent_strain": "20A",
+    "children_strains": ["21I (Delta)", "21J (Delta)"]
+  },
+  {
+    "name": "21B (Kappa)",
+    "pathogen": "U07.1",
+    "color": "#ffb4f5",
+    "parent_strain": "20A"
+  },
+  {
+    "name": "21D (Eta)",
+    "pathogen": "U07.1",
+    "color": "#ffb8e7",
+    "parent_strain": "20A"
+  },
+  {
+    "name": "21H (Mu)",
+    "pathogen": "U07.1",
+    "variant_code": "B.1.621",
+    "color": "#ffbad9",
+    "parent_strain": "20A"
+  },
+  {
+    "name": "20D",
+    "pathogen": "U07.1",
+    "color": "#e6d19b",
+    "parent_strain": "20B",
+    "children_strains": ["21G (Lambda)"]
+  },
+  {
+    "name": "20F",
+    "pathogen": "U07.1",
+    "color": "#d4d79a",
+    "parent_strain": "20B"
+  },
+  {
+    "name": "20I (Alpha)",
+    "pathogen": "U07.1",
+    "variant_code": "B.1.1.7",
+    "color": "#f8f2a1",
+    "parent_strain": "20B"
+  },
+  {
+    "name": "20J (Gamma)",
+    "pathogen": "U07.1",
+    "variant_code": "P.1",
+    "color": "#009e73",
+    "url": "https://nextstrain.org/groups/neherlab/ncov/20J.Gamma.V3",
+    "parent_strain": "20B"
+  },
+  {
+    "name": "21E (Theta)",
+    "pathogen": "U07.1",
+    "color": "#9bdfac",
+    "parent_strain": "20B"
+  },
+  {
+    "name": "21",
+    "pathogen": "U07.1",
+    "color": "#37bd93",
+    "parent_strain": "20B",
+    "children_strains": ["21K (Omicron)", "21L (Omicron)"]
+  },
+  {
+    "name": "20G",
+    "pathogen": "U07.1",
+    "color": "#9ddce2",
+    "parent_strain": "20C"
+  },
+  {
+    "name": "20H (Beta)",
+    "pathogen": "U07.1",
+    "variant_code": "B.1.351",
+    "color": "#56b4e9",
+    "url": "https://nextstrain.org/groups/neherlab/ncov/20H.Beta.V2",
+    "parent_strain": "20C"
+  },
+  {
+    "name": "21C (Epsilon)",
+    "pathogen": "U07.1",
+    "color": "#9fd9f4",
+    "parent_strain": "20C"
+  },
+  {
+    "name": "21F (Iota)",
+    "pathogen": "U07.1",
+    "color": "#a7d6ff",
+    "parent_strain": "20C"
+  },
+  {
+    "name": "21I (Delta)",
+    "pathogen": "U07.1",
+    "variant_code": "B.1.617.2",
+    "color": "#cc79a7",
+    "url": "https://nextstrain.org/groups/neherlab/ncov/21I.Delta",
+    "parent_strain": "21A (Delta)"
+  },
+  {
+    "name": "21J (Delta)",
+    "pathogen": "U07.1",
+    "variant_code": "B.1.617.2",
+    "color": "#ff68ff",
+    "url": "https://nextstrain.org/groups/neherlab/ncov/21J.Delta",
+    "parent_strain": "21A (Delta)"
+  },
+  {
+    "name": "21G (Lambda)",
+    "pathogen": "U07.1",
+    "variant_code": "C.37",
+    "color": "#ddd49a",
+    "parent_strain": "20D"
+  },
+  {
+    "name": "21K (Omicron)",
+    "pathogen": "U07.1",
+    "variant_code": "B.1.1.529",
+    "color": "#0072b2",
+    "url": "https://nextstrain.org/groups/neherlab/ncov/21K.Omicron",
+    "parent_strain": "21"
+  },
+  {
+    "name": "21L (Omicron)",
+    "pathogen": "U07.1",
+    "variant_code": "B.1.1.529",
+    "color": "#004870",
+    "url": "https://nextstrain.org/groups/neherlab/ncov/21L.Omicron",
+    "parent_strain": "21"
+  }
+]

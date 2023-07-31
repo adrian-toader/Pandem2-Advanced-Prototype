@@ -1,0 +1,29 @@
+{
+  "$id": "translation.retrieveLanguagesList.response.body.schema",
+  "description": "Retrieve the languages list from database.",
+  "type": "array",
+    "properties": {
+      "_id": {
+        "$ref": "/base#/definitions/mongoID"
+      },
+      "display_name":  {
+        "type": "string"
+      },
+      "country_code": {
+        "$ref": "/translation#/definitions/country_code"
+      },
+      "enabled": {
+        "type": "boolean"
+      }, 
+      "default_language": {
+        "type": "boolean"
+      }
+    },
+  "required": [
+    "_id",
+    "display_name",
+    "country_code",
+    "enabled",
+    "default_language"
+  ]
+}

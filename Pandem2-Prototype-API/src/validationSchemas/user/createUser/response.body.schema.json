@@ -1,0 +1,15 @@
+{
+  "$id": "user.createUser.response.body.schema",
+  "description": "Create user instance response body schema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "/user#/definitions/userResourceEntry"
+    },
+    {
+      "required": [
+        "email"
+      ]
+    }
+  ]
+}

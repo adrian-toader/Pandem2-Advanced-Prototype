@@ -1,0 +1,13 @@
+{
+  "$id": "role.updateRole.request.uri.template.schema",
+  "description": "Modify role instance URI template schema",
+  "type": "object",
+  "properties": {
+    "roleId": {
+      "$ref": "/role#/definitions/roleId"
+    }
+  },
+  "required": [
+    "roleId"
+  ]
+}

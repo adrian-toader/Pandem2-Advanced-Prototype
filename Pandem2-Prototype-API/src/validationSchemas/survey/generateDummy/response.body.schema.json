@@ -1,0 +1,41 @@
+{
+  "$id": "survey.generateDummy.response.body.schema",
+  "description": "Generate dummy data for surveys - response body schema",
+  "type": "object",
+  "patternProperties": {
+    ".+": {
+      "description": "Date entry for created resources numbers per date",
+      "type": "object",
+      "properties": {
+        "questionsAnswers": {
+          "type": "object",
+          "patternProperties": {
+            ".+": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "genderAndAgeGroup": {
+          "type": "object",
+          "patternProperties": {
+            ".+": {
+              "type": "object",
+              "patternProperties": {
+                ".+": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        },
+        "totalNumberOfAnswers": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}
+      

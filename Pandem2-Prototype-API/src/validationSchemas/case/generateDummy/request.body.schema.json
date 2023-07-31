@@ -1,0 +1,33 @@
+{
+  "$id": "case.generateDummy.request.body.schema",
+  "description": "Generate dummy data for cases",
+  "type": "object",
+  "properties": {
+    "pathogenId": {
+      "$ref": "/case#/definitions/pathogenId"
+    },
+    "subcategory": {
+      "$ref": "/case#/definitions/subcategory"
+    },
+    "location": {
+      "$ref": "/case#/definitions/location"
+    },
+    "generate_for_sublocations": {
+      "type": "boolean"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "pathogenId",
+    "location",
+    "start_date",
+    "end_date"
+  ]
+}
