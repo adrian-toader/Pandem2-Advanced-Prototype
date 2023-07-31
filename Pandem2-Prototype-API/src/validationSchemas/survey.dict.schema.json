@@ -1,0 +1,41 @@
+{
+  "$id": "/survey#",
+  "definitions": {
+    "surveyId":{
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "questions": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "questionId": {
+          "$ref": "/base#/definitions/mongoID"
+        }
+      },
+      "required": [
+        "text"
+      ]
+    },
+    "questionResourceEntry": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "/survey#/definitions/surveyId"
+        },
+        "name": {
+          "$ref": "/survey#/definitions/name"
+        },
+        "questions": {
+          "$ref": "/survey#/definitions/questions"
+        }
+      }
+    }
+  }
+}

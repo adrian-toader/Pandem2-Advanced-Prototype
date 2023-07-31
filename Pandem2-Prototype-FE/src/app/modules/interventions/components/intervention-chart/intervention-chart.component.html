@@ -1,0 +1,85 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<mat-card>
+  <div class="row justify-content-between" *ngIf="!isOnInterventionPage">
+    <div class="col-lg-6 position-relative">
+      <mat-card-title> {{'MODULES.INTERVENTIONS.INTERVENTION_CHART.INTERVENTION' | translate}}</mat-card-title>
+      <mat-card-content>
+        <form>
+          <mat-form-field appearance="outline" style="width:100%; padding-top: 3px;">
+            <mat-select class="multiple-input"  [(value)]="selectedInterventions" [formControl]="interventionControl" multiple (selectionChange)="changedIntervention()">
+              <mat-select-trigger>
+                <mat-chip-list>
+                  <mat-chip
+                    *ngFor="let intervention of selectedInterventions"
+                    (removed)="removeIntervention(intervention)" selected>
+                    <div *ngIf="intervention">{{intervention.description ?
+                      intervention.name + " (" + intervention.description + ")" :
+                      intervention.name }}</div>
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                  </mat-chip>
+                </mat-chip-list>
+              </mat-select-trigger>
+              <mat-option *ngFor="let intervention of interventions" [value]="intervention" >{{intervention.description ?
+                intervention.name + " (" + intervention.description + ")" :
+                intervention.name }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+    </div>
+    <div class="col-lg-6 position-relative">
+      <mat-card-title>{{'MODULES.INTERVENTIONS.INTERVENTION_CHART.SOURCES' | translate}}</mat-card-title>
+      <mat-card-content>
+        <form>
+          <mat-form-field appearance="outline" style="width:100% ">
+            <mat-select class="multiple-input" [formControl]="sourceControl" multiple (selectionChange)="changedSource()">
+              <mat-select-trigger>
+                <mat-chip-list>
+                  <mat-chip
+                    *ngFor="let item of sourceControl.value"
+                    (removed)="removeSource(item)" selected>
+                    {{item.tag}}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                  </mat-chip>
+                </mat-chip-list>
+              </mat-select-trigger>
+              <mat-option *ngFor="let tag of sources" [value]="tag" >{{tag.tag}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+    </div>
+  </div>
+  <div #chartContainer>
+    <highcharts-chart *ngIf="display"
+      [Highcharts]="Highcharts"
+      [options]="xchart"
+      [(update)]="updateChart"
+      [oneToOne]="true"
+      (chartInstance)="onChartInstance($event)"
+      [callbackFunction]="refreshChart"
+      style = "width: 100%; display: block;">
+    </highcharts-chart>
+  </div>
+</mat-card>

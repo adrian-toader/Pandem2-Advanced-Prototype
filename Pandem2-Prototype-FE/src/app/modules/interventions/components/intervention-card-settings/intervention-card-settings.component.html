@@ -1,0 +1,49 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<mat-card-title class="text-center text-sm-left page-header">
+  <div class="summary-section__name-icon-container">
+    <h2 class="page-header">{{'MODULES.INTERVENTIONS.INTERVENTION_CARD_SETTINGS.TITLE' | translate}}</h2>
+  </div>
+</mat-card-title>
+<div class="row">
+  <div class="col-lg-12 col-xl-12 d-flex justify-content-around">
+    <button mat-raised-button color="primary-button" (click)="onAddClick()" class="col-xl-3 mx-2 px-5">
+      <div class="row justify-content-between align-items-center">
+        <div>{{'MODULES.INTERVENTIONS.INTERVENTION_CARD_SETTINGS.ADD' | translate}}</div>
+        <mat-icon>add_circle</mat-icon>
+      </div>
+    </button>
+    <button mat-raised-button color="primary-button" (click)="onEditClick()" class="col-xl-3 mx-2 px-5">
+      <div class="row justify-content-between align-items-center">
+        <div>{{'MODULES.INTERVENTIONS.INTERVENTION_CARD_SETTINGS.EDIT' | translate}}</div>
+        <mat-icon>edit</mat-icon>
+      </div>
+    </button>
+<!--    <button mat-raised-button color="primary-button" (click)="onRemoveClick()" class="col-xl-3 mx-2 px-5">-->
+<!--      <div class="row justify-content-between align-items-center">-->
+<!--        <div>Remove</div>-->
+<!--        <mat-icon>clear</mat-icon>-->
+<!--      </div>-->
+<!--    </button>-->
+  </div>
+</div>

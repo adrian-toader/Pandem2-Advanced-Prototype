@@ -1,0 +1,149 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<div class="container-fluid">
+    <!-- Side columns -->
+    <app-side-columns
+            [hidden]="true"
+            [tableColumns]="tableColumns"
+            (visibleColumnsChanged)="applySideColumnsChanged($event)">
+    </app-side-columns>
+    <div class="row">
+        <div class="col-xl-12">
+            <app-topnav>
+                <ng-container dynamic-section>
+                    <div fxLayout="row" fxFlex fxLayoutAlign="space-between center">
+                        <app-breadcrumbs [items]="breadcrumbs"></app-breadcrumbs>
+                        <div class="topnav-actions">
+                          <button mat-raised-button color="accent" [routerLink]="'./create'">
+                            {{'MODULES.USER_ROLE.ROLES_LIST.ADD' | translate}} <span class="xt-icon">addCircle</span>
+                          </button>
+                        </div>
+                    </div>
+                </ng-container>
+            </app-topnav>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-12">
+
+            <mat-card class="page-section page-content">
+
+                <!-- Hover question effects / actions -->
+                <app-hover-row-actions
+                    #hoverRow
+                    [active]="!refreshingList"
+                ></app-hover-row-actions>
+                <div class="table-responsive">
+                    <table mat-table #table [dataSource]="rolesList$ | async" matSort (matSortChange)="sortBy($event)">
+                        <!-- Name -->
+                        <ng-container matColumnDef="name">
+                            <mat-header-cell *matHeaderCellDef>
+                                <div class="table-header-cell" fxLayout="column">
+                                    <div mat-sort-header class="column-header">
+                                        {{'MODULES.USER_ROLE.ROLES_LIST.NAME' | translate}}
+                                    </div>
+                                </div>
+                            </mat-header-cell>
+
+                            <mat-cell *matCellDef="let item">
+                                {{ item.name | titlecase }}
+                            </mat-cell>
+                        </ng-container>
+
+                        <!-- Permissions -->
+                        <ng-container matColumnDef="permissions">
+                            <mat-header-cell *matHeaderCellDef fxFlex>
+                                <div class="table-header-cell" fxLayout="column">
+                                    <div class="column-header" fxLayout="row">
+                        <span>
+                            {{'MODULES.USER_ROLE.ROLES_LIST.PERMISSIONS' | translate}}
+                        </span>
+                                    </div>
+                                </div>
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let item" fxFlex>
+                                <ng-container *ngIf="!isCellExpanded('permissions', item.id)">
+                                    <app-number-of-items-label
+                                            [value]="item.permissionIds?.length"
+                                    ></app-number-of-items-label>
+
+                                    <button
+                                            type="button"
+                                            mat-button
+                                            color="accent"
+                                            (click)="toggleCell('permissions', item.id, true)"
+                                    >
+                                    {{'MODULES.USER_ROLE.ROLES_LIST.EXPAND' | translate}}
+                                    </button>
+                                </ng-container>
+
+                                <div
+                                        *ngIf="isCellExpanded('permissions', item.id)"
+                                        fxLayout="column" fxLayoutAlign="start start">
+                                    <mat-chip-list fxLayout="row wrap">
+                                        <mat-chip
+                                                *ngFor="let permission of item.permissionIds">{{permission | customRoleLabel}}
+                                        </mat-chip>
+                                    </mat-chip-list>
+
+                                    <button
+                                            type="button"
+                                            mat-button
+                                            color="accent"
+                                            (click)="toggleCell('permissions', item.id, false)"
+                                    >
+                                    {{'MODULES.USER_ROLE.ROLES_LIST.COLLAPSE' | translate}}
+                                    </button>
+                                </div>
+                            </mat-cell>
+                        </ng-container>
+
+                        <mat-header-row *matHeaderRowDef="visibleTableColumns"></mat-header-row>
+                        <mat-row
+                                *matRowDef="let item; columns: visibleTableColumns"
+                                app-hover-row-actions
+                                [hoverRowActionsComponent]="hoverRow"
+                                [hoverRowActions]="recordActions"
+                                [hoverRowActionData]="item"
+                        ></mat-row>
+                    </table>
+                </div>
+                <div
+                        *ngIf="refreshingList"
+                        class="mat-table-loading-data">
+                    <mat-spinner></mat-spinner>
+                </div>
+
+                <!-- No data -->
+                <div
+                        *ngIf="!refreshingList && isEmptyList"
+                        class="empty-table-text">
+                        {{'MODULES.USER_ROLE.ROLES_LIST.NO_RECORDS' | translate}}
+                </div>
+
+            </mat-card>
+        </div>
+    </div>
+</div>

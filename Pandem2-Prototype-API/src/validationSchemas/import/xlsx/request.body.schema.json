@@ -1,0 +1,49 @@
+{
+  "$id": "import.xlsx.request.body.schema",
+  "description": "Import data from a xlsx file",
+  "type": "object",
+  "properties": {
+    "source": {
+      "type": "object",
+      "properties": {
+        "fieldname": {
+          "type": "string",
+          "const": "source"
+        },
+        "alue": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "pathogen": {
+      "type": "object",
+      "properties": {
+        "fieldname": {
+          "type": "string",
+          "const": "pathogen"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "file": {
+      "type": "object",
+      "properties": {
+        "fieldname": {
+          "type": "string",
+          "const": "file"
+        },
+        "filename": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

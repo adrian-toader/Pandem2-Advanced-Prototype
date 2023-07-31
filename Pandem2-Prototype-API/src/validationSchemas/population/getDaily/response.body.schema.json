@@ -1,0 +1,46 @@
+{
+  "$id": "population.getDaily.response.body.schema",
+  "description": "Get daily vaccines response body schema",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "total": {
+            "type": "number"
+          },
+          "split": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "number"
+                },
+                "split_value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "total"
+              ]
+            }
+          }
+        },
+        "required": [
+          "date",
+          "total"
+        ]
+      }
+    },
+    "metadata": {
+      "$ref": "/base#/definitions/commonMetadata"
+    }
+  }
+}

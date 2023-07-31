@@ -1,0 +1,49 @@
+{
+  "$id": "case.getLocationsDailyCases.request.query.schema",
+  "description": "Get total number of cases for a time interval for requested locations request params schema",
+  "type": "object",
+  "properties": {
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "subcategory": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/case#/definitions/subcategory"
+          }
+        },
+        {
+          "$ref": "/case#/definitions/subcategory"
+        }
+      ]
+    },
+    "total_type": {
+      "$ref": "/case#/definitions/total_type"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "variantId",
+        "gender",
+        "age_group",
+        "comorbidity",
+        "subcategory"
+      ]
+    }
+  },
+  "required": [
+    "location",
+    "subcategory",
+    "total_type"
+  ]
+}

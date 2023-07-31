@@ -1,0 +1,21 @@
+{
+  "$id": "data.retrieveNUTSList.response.body.schema",
+  "description": "Retrieve NUTS List response body schema",
+  "type": "array",
+  "items": {
+    "allOf": [
+      {
+        "$ref": "/nuts#/definitions/nutsResourceEntry"
+      },
+      {
+        "required": [
+          "code",
+          "name",
+          "level",
+          "source_file",
+          "data"
+        ]
+      }
+    ]
+  }
+}

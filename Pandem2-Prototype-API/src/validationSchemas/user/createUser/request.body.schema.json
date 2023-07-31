@@ -1,0 +1,24 @@
+{
+  "$id": "user.createUser.request.body.schema",
+  "description": "Create user instance request body schema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "/user#/definitions/userResourceEntry"
+    },
+    {
+      "properties": {
+        "password": {
+          "$ref": "/user#/definitions/password"
+        }
+      }
+    },
+    {
+      "required": [
+        "email",
+        "password",
+        "roleId"
+      ]
+    }
+  ]
+}

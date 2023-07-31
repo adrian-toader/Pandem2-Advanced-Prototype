@@ -1,0 +1,61 @@
+{
+  "$id": "population.getLocationsDaily.response.body.schema",
+  "description": "Get total number of populations for a time interval, grouped by locations response body schema",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "total": {
+                  "type": "number"
+                },
+                "split": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "total": {
+                        "type": "number"
+                      },
+                      "split_value": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "total"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "code",
+                "total"
+              ]
+            }
+          }
+        },
+        "required": [
+          "date",
+          "locations"
+        ]
+      }
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
+}

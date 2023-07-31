@@ -1,0 +1,164 @@
+/*
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+*/
+
+button {
+  background: #d5dce0;
+}
+
+.modelling-scenario-summary-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.modelling-scenario-summary-card-content {
+  display: grid;
+  height: 100%;
+}
+
+.mat-chip-disabled {
+  opacity: unset !important;
+}
+
+.scenario-chip {
+  word-break: break-word;
+}
+
+.scenario-description {
+  word-break: break-word;
+  white-space: pre-line;
+}
+
+::ng-deep
+  .scenario-description-textarea.mat-form-field-appearance-standard
+  > .mat-form-field-wrapper
+  > .mat-form-field-flex {
+  padding-top: 0;
+}
+
+::ng-deep
+  .scenario-description-textarea.mat-form-field-appearance-standard
+  > .mat-form-field-wrapper
+  > .mat-form-field-underline {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 185px;
+  transition: 0.7s;
+}
+
+::ng-deep .mat-focused .mat-form-field-underline {
+  width: 100% !important;
+}
+
+::ng-deep
+  .scenario-description-textarea.mat-form-field-appearance-standard
+  > .mat-form-field-wrapper
+  > .mat-form-field-underline
+  .mat-form-field-ripple {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modelling-actions-accent {
+  background-color: #0272c6;
+  color: #fff;
+}
+
+.modelling-title-icons {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.modelling-title-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0272c6;
+  font-size: 28px;
+  width: 35px;
+  height: 35px;
+  border-radius: 35px;
+  cursor: pointer;
+  background-color: #f4f6f7;
+  outline: 1px solid #79747e;
+}
+
+.modelling-title-icon-disabled {
+  color: #79747e;
+}
+
+.modelling-title-text {
+  flex-grow: 1;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.modelling-alternative-actions {
+  display: inline-block;
+  font-size: 0.7em;
+  background-color: #0272c6;
+  color: white;
+  padding: 4px;
+  border-radius: 4px;
+  vertical-align: middle;
+  height: 32px;
+}
+
+.modelling-alternative-actions > span {
+  margin-left: 4px;
+  margin-right: 4px;
+  cursor: pointer;
+}
+
+.modelling-alternative-actions mat-icon {
+  vertical-align: middle;
+  font-size: 20px;
+}
+
+.modelling-alternative-modified {
+  background-color: #567484;
+  cursor: default;
+}
+
+.modelling-alternative-modified > span {
+  cursor: default;
+}
+
+@media screen and (max-width: 767px) {
+  .modelling-actions-full-row {
+    flex-direction: column-reverse;
+  }
+
+  .modelling-actions-buttons-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .modelling-scenario-date {
+    align-self: initial !important;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$id": "translation.editLanguage.request.body.schema",
+  "description": "Edit a language",
+  "type": "object",
+  "properties": {
+      "display_name":  {
+          "type": "string",
+          "minLength": 1
+      },
+      "enabled": {
+          "type": "boolean"
+      }
+  },
+  "required": [
+      "display_name",
+      "enabled"
+  ]
+}

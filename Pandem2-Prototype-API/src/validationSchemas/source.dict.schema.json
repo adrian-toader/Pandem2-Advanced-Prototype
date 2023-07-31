@@ -1,0 +1,27 @@
+{
+  "$id": "/source#",
+  "definitions": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "sourceResourceEntry": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "/source#/definitions/name"
+        },
+        "date": {
+          "$ref": "/source#/definitions/date"
+        },
+        "_id": {
+          "$ref": "/base#/definitions/mongoID"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$id": "administration.getPandemSourceConfig.response.body.schema",
+  "description": "Retrieve the pandemSource object from the database, or if it is not found, retrieve it from the config.json file.",
+  "type": "object",
+  "properties": {
+    "url": {
+      "$ref": "/base#/definitions/url"
+    },
+    "requestTimeout": {
+      "type": "number",
+      "default": 60000
+    }
+  },
+  "required": []
+}

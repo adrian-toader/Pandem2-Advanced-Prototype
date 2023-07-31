@@ -1,0 +1,139 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<button mat-icon-button class="dialog-close-button" [mat-dialog-close]="true">
+  <mat-icon aria-hidden="false" aria-label="close button">close</mat-icon>
+</button>
+<mat-dialog-content class="modelling-card-manager-dialog">
+  <div class="row">
+    <div class="col-12">
+      <div class="modelling-exploration-dialog-title-group">
+        <h3 class="modelling-title-weight">
+          {{ 'MODULES.MODELLING.EXPLORATION.ADD_GRAPH.OUTPUTS_TITLE' | translate }}
+        </h3>
+        <p class="modelling-title-info">
+          {{ 'MODULES.MODELLING.COMMON.CLICK' | translate }}
+          <mat-icon style="vertical-align: text-bottom">info</mat-icon>
+          {{ 'MODULES.MODELLING.EXPLORATION.ADD_GRAPH.OUTPUTS_INFO' | translate }}
+        </p>
+      </div>
+      <div class="summary-section__name-icon-container modelling-outputs-info-button">
+        <mat-icon
+          (click)="showInfo = !showInfo"
+          matTooltip="{{(showInfo ? 'MODULES.MODELLING.COMMON.HIDE' : 'MODULES.MODELLING.COMMON.SHOW') | translate }} {{'MODULES.MODELLING.EXPLORATION.ADD_GRAPH.OUTPUT_DEFINITIONS' | translate}}">
+          info
+        </mat-icon>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 d-flex flex-wrap" [formGroup]="outputsFormGroup">
+      <div class="col-xl-4" *ngFor="let column of outputsDisplay">
+        <div class="d-flex flex-column my-4" *ngFor="let category of column">
+          <div class="modelling-exploration-dialog-category">
+            <h3>{{ 'MODULES.MODELLING.EXPLORATION.ADD_GRAPH.CATEGORIES.' + category.category | translate}}</h3>
+          </div>
+          <mat-card class="modelling-exploration-dialog-category-card d-flex flex-column">
+            <div class="modelling-exploration-dialog-subcategory-group" *ngFor="let subcategory of category.subcategories">
+              <h4 class="modelling-exploration-dialog-subcategory-title" *ngIf="subcategory.subcategory">
+                {{ 'MODULES.MODELLING.EXPLORATION.ADD_GRAPH.CATEGORIES.' + subcategory.subcategory | translate}}
+              </h4>
+              <div class="modelling-exploration-dialog-input-group d-flex" *ngFor="let key of subcategory.keys">
+                <div class="col-9">
+                  <p class="modelling-exploration-dialog-input-name">
+                    {{key.label}}
+                  </p>
+                  <p class="modelling-exloration-description" *ngIf="showInfo && key.description">
+                    {{key.description}}
+                  </p>
+                </div>
+
+                <div class="col-2 modelling-exploration-dialog-ages-group">
+                  <div class="modelling-exploration-dialog-ages" *ngFor="let ageGroup of key.ageGroups">
+                    <p>{{ 'MODULES.MODELLING.AGES.' + (ageGroup | uppercase) | translate }}</p>
+                  </div>
+                </div>
+
+                <div class="col-1 modelling-exploration-dialog-checkbox-group d-flex flex-column">
+                  <ng-container *ngFor="let keyElem of key.keyGroup">
+                    <mat-checkbox
+                      [formControlName]="keyElem"
+                      [color]="'primary'"
+                      (change)="outputCheckboxChanged()">
+                    </mat-checkbox>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="selectedOutputs.length">
+    <div class="col-12" [formGroup]="plotlinesFormGroup">
+      <h3 class="modelling-title-weight">
+        {{ 'MODULES.MODELLING.EXPLORATION.ADD_GRAPH.PLOTLINES_TITLE' | translate }}
+      </h3>
+      <p>
+        {{ 'MODULES.MODELLING.EXPLORATION.ADD_GRAPH.PLOTLINES_DESCRIPTION' | translate }}
+      </p>
+      <div class="modelling-exploration-plotline-group d-flex" *ngFor="let key of selectedOutputs">
+        <p>
+          {{ 'MODULES.MODELLING.OUTPUTS.' + outputs.get(key).key + '.NAME' | translate }}
+          <span *ngIf="outputs.get(key).ageKey">
+            {{ 'MODULES.MODELLING.AGES.' + (outputs.get(key).ageKey | uppercase) | translate }}
+          </span>
+        </p>
+        <mat-checkbox
+          [formControlName]="key"
+          [color]="'primary'">
+        </mat-checkbox>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-12 modelling-exploration-dialog-warning mb-3" *ngIf="showWarning">
+      {{ 'MODULES.MODELLING.EXPLORATION.ADD_GRAPH.NO_OUTPUT_ERROR' | translate }}
+    </div>
+    <div class="col-12 d-flex justify-content-end">
+      <button mat-raised-button class="modelling-icon-size modelling-button mr-2" [mat-dialog-close]="true">
+        <mat-icon aria-hidden="false" aria-label="close button">cancel</mat-icon>
+        {{ 'MODULES.MODELLING.COMMON.CANCEL' | translate }}
+      </button>
+      <button mat-raised-button class="modelling-button modelling-icon-size" (click)="acceptChanges()">
+        <ng-container *ngIf="injectedData.chartIndex === undefined">
+          {{ 'MODULES.MODELLING.COMMON.CREATE_NEW' | translate }}
+          <mat-icon>skip_next</mat-icon>
+        </ng-container>
+        <ng-container *ngIf="injectedData.chartIndex !== undefined">
+          {{ 'MODULES.MODELLING.COMMON.MODIFY' | translate }}
+          <mat-icon>edit</mat-icon>
+        </ng-container>
+      </button>
+    </div>
+  </div>
+</mat-dialog-content>

@@ -1,0 +1,114 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<mat-card class="summary-section">
+  <div *ngIf="isLoading()"
+       class="mat-spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="isLoaded()">
+    <div class="summary-section__name-icon-container">
+      <div>
+        {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN_SUMMARY.GENETIC_VARIATION' | translate}} <span class="label-explanation">{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN_SUMMARY.OPTIONS' | translate}}</span>
+      </div>
+      <div>
+        <mat-icon (click)="showInfo = !showInfo">info</mat-icon>
+      </div>
+    </div>
+    <mat-card-title class="text-center text-sm-left">
+      {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN_SUMMARY.VARIANTS_OF_CONCERN' | translate}}
+    </mat-card-title>
+    <mat-card-subtitle class="text-center text-sm-left">
+      <app-sources
+        [sourceType]="SourceType.SUMMARY"
+        [sources]="sources"></app-sources>
+    </mat-card-subtitle>
+    <mat-card-content>
+      <p *ngIf="showInfo" class="text-center text-sm-left info-text">
+        {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN_SUMMARY.DESCRIPTION' | translate}}
+      </p>
+      <mat-list>
+        <div>
+          <mat-list-item>
+            <div class="col-xl-12 variant-name">
+              <span> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN_SUMMARY.SEQUENCING' | translate}}</span>
+            </div>
+          </mat-list-item>
+          <mat-list-item>
+            <div class="col-xl-12 label">
+              {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN_SUMMARY.POSSIBLE_EXPLANATION' | translate}}
+              <ul style="margin-left: 20px;">
+                <li> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN_SUMMARY.CRITERIA_1' | translate}}</li>
+                <li> {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN_SUMMARY.CRITERIA_2' | translate}}</li>
+              </ul>
+            </div>
+          </mat-list-item>
+          <ng-container *ngIf="proportionOfTests">
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <div class="col-xl-8 label">
+                {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN_SUMMARY.PROPORTION_OF_TESTS' | translate}}
+              </div>
+              <div class="col-xl-4 value text-right">
+                {{proportionOfTests | number: Constants.NUMBER_DEFAULT_FORMAT}}%
+              </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </ng-container>
+        </div>
+        <ng-container *ngIf="variants.length">
+          <div *ngFor="let variant of variants">
+            <mat-list-item style="min-height: 2rem;">
+              <div class="col-xl-12 variant-name">
+                <span [ngStyle]="{'background-color': variant.color}" class="variant-color-circle"></span>
+                <span> {{variant.name}} </span>
+              </div>
+            </mat-list-item>
+            <mat-list-item style="min-height: 2rem;">
+              <div class="col-xl-7 label">
+                {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN_SUMMARY.PROPORTION_OF_SEQUENCES' | translate}}
+              </div>
+              <div class="col-xl-5 value text-right">
+                {{variant.proportion_of_sequences | number: Constants.NUMBER_DEFAULT_FORMAT}}%
+              </div>
+            </mat-list-item>
+            <mat-list-item style="min-height: 2rem;">
+              <div class="col-xl-7 label">
+                {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN_SUMMARY.DATE_OF_DETECTION' | translate}}
+              </div>
+              <div class="col-xl-5 value text-right">
+                {{moment(variant.date_first_detection).format(Constants.DEFAULT_DATE_DISPLAY_FORMAT)}}
+              </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </div>
+        </ng-container>
+        <!-- No data -->
+        <div
+          *ngIf="!variants.length"
+          class="empty-table-text">
+          {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_CONCERN_SUMMARY.NO_RECORDS_FOUND' | translate}}
+        </div>
+      </mat-list>
+    </mat-card-content>
+  </div>
+</mat-card>

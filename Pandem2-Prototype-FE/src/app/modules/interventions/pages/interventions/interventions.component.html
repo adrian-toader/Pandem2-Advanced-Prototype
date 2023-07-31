@@ -1,0 +1,71 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<div class="container-fluid dashboard-page">
+    <div class="row">
+      <div class="col-xl-8">
+        <mat-card class="header-card">
+          <mat-card-title class="text-center text-sm-left page-header">
+            <div class="summary-section__name-icon-container">
+              <h2 class="page-header">{{'MODULES.INTERVENTIONS.INTERVENTIONS.TITLE' | translate }}</h2>
+              <div>
+                <mat-icon (click)="showHelpInfo()">help</mat-icon>
+              </div>
+            </div>
+          </mat-card-title>
+          <mat-card-content class="text-center text-sm-left ">
+            <p>{{'MODULES.INTERVENTIONS.INTERVENTIONS.DESCR_1' | translate }}</p>
+            <p>{{'MODULES.INTERVENTIONS.INTERVENTIONS.DESCR_2' | translate }}</p>
+            <p>{{'MODULES.INTERVENTIONS.INTERVENTIONS.DESCR_3' | translate: {endDate} }}
+            </p>
+            <p></p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-xl-4">
+        <mat-card class="header-card">
+          <div class="col-lg-12 mx-auto">
+            <app-intervention-card-settings
+              #interventionCardSettings
+              [interventions]="interventions"
+              (interventionModified)="refreshInterventions()"
+              [parent]="this"
+            ></app-intervention-card-settings>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  <app-date-picker></app-date-picker>
+    <div class="row">
+      <div class="col-lg-12 mx-auto">
+          <div >
+            <app-intervention-filter-card
+              #interventionFilterCard
+              (interventionsOutput)="interventionsOutput($event)"
+              [intervalStartDate]="startDate"
+              [intervalEndDate]="endDate"
+            >
+            </app-intervention-filter-card>
+          </div>
+      </div>
+    </div>
+  </div>

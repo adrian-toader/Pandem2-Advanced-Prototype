@@ -1,0 +1,5 @@
+{
+  "$id": "intervention.retrieveInterventionList.request.query.schema",
+  "description": "Retrieve intervention list URI template schema",
+  "$ref": "/query#/definitions/getListQuery"
+}

@@ -1,0 +1,45 @@
+{
+  "$id": "participatorySurveillance.getDaily.request.query.schema",
+  "description": "Get daily participatory surveillance request params schema",
+  "type": "object",
+  "properties": {
+    "subcategory": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/participatorySurveillance#/definitions/subcategory"
+          }
+        },
+        {
+          "$ref": "/participatorySurveillance#/definitions/subcategory"
+        }
+      ]
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "visit_type": {
+      "$ref": "/participatorySurveillance#/definitions/visit_type"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "visit_type"
+      ]
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "subcategory",
+    "location"
+  ]
+}

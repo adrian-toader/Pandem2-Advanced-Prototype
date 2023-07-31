@@ -1,0 +1,15 @@
+{
+  "$id": "participatorySurveillance.getLocationsDateInterval.response.body.schema",
+  "description": "Get time interval in which participatory surveillance occured for requested locations response body schema",
+  "type": "object",
+  "properties": {
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

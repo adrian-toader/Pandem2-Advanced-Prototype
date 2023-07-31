@@ -1,0 +1,286 @@
+{
+  "$id": "/modellingModel#",
+  "definitions": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pathogen": {
+      "type": "string",
+      "minLength": 1
+    },
+    "short_description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "tab_title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "title",
+                    "subtitle",
+                    "paragraph",
+                    "textarray",
+                    "image",
+                    "table"
+                  ]
+                },
+                "text_key": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "image_src": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "table_content": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": true
+                  }
+                },
+                "text_array": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "text_key": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "property": {
+                        "type": "string",
+                        "enum": [
+                          "bold",
+                          "italic",
+                          "bolditalic"
+                        ]
+                      },
+                      "href": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "text_key"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "type"
+              ]
+            }
+          }
+        },
+        "required": [
+          "tab_title",
+          "items"
+        ]
+      }
+    },
+    "regional_resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "location": {
+            "type": "string",
+            "minLength": 1
+          },
+          "value": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "DATA",
+              "PUBLIC_HEALTH_POLICIES",
+              "DISEASE_SEVERITY",
+              "HOSPITAL_RESOURCES",
+              "HOSPITAL_SURGE_STRATEGIES",
+              "MODELLING_OPTIONS"
+            ]
+          },
+          "subcategory": {
+            "type": "string",
+            "enum": [
+              "VACCINATION",
+              "MOBILITY",
+              "TESTING_ISOLATION",
+              "CONTACT_TRACING",
+              "MASK_WEARING",
+
+              "HOSPITALISATION_PARAMETERS",
+              "LOS_IN_DAYS",
+              "FATALITY_RATES",
+              "EFFECT_OF_THERAPEUTIC_INTERVENTIONS",
+
+              "PANDEMIC_RESOURCE_ALLOCATION",
+              "RESOURCE_USAGE_RATES",
+              "OXYGEN",
+              "PPE",
+              "THERAPEUTIC_CAPACITY",
+              "MORGUE",
+
+              "STRATEGY_1",
+              "STRATEGY_2",
+              "STRATEGY_3",
+              "STRATEGY_4"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "Number",
+              "Boolean"
+            ]
+          },
+          "step": {
+            "type": "number"
+          },
+          "readonly": {
+            "type": "boolean"
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number"
+                },
+                "limits": {
+                  "type": "object",
+                  "properties": {
+                    "min": {
+                      "type": "number"
+                    },
+                    "max": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "age": {
+                  "type": "string",
+                  "enum": [
+                    "a",
+                    "b",
+                    "c",
+                    "d",
+                    "e"
+                  ]
+                },
+                "ageContact": {
+                  "type": "string",
+                  "enum": [
+                    "aa",
+                    "ab",
+                    "ac",
+                    "ad",
+                    "ba",
+                    "bb",
+                    "bc",
+                    "bd",
+                    "ca",
+                    "cb",
+                    "cc",
+                    "cd",
+                    "da",
+                    "db",
+                    "dc",
+                    "dd"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "name",
+          "key",
+          "type"
+        ]
+      }
+    },
+    "parameters_updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    
+    "modellingModelResourceEntry": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "/modellingModel#/definitions/name"
+        },
+        "key": {
+          "$ref": "/modellingModel#/definitions/key"
+        },
+        "pathogen": {
+          "$ref": "/modellingModel#/definitions/pathogen"
+        },
+        "short_description": {
+          "$ref": "/modellingModel#/definitions/short_description"
+        },
+        "description": {
+          "$ref": "/modellingModel#/definitions/description"
+        },
+        "regional_resources": {
+          "$ref": "/modellingModel#/definitions/regional_resources"
+        },
+        "parameters": {
+          "$ref": "/modellingModel#/definitions/parameters"
+        },
+        "parameters_updated_at": {
+          "$ref": "/modellingModel#/definitions/parameters_updated_at"
+        },
+        "_id": {
+          "$ref": "/base#/definitions/mongoID"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,131 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<mat-card>
+  <div class="d-flex align-items-top">
+    <mat-card-title class="flex-grow-1" (mousedown)="$event.stopPropagation()">
+      <div class="row">
+        <div class="col-md-12 text-center text-sm-left">
+          {{'MODULES.SURVEILLANCE.REPORTED_DEATHS_AND_MORTALITY_RATE.TITLE' | translate }}
+        </div>
+      </div>
+    </mat-card-title>
+    <mat-icon style="cursor: grab">drag_indicator</mat-icon>
+  </div>
+  <div (mousedown)="$event.stopPropagation()">
+    <br/>
+    <mat-card-subtitle>
+      <div class="row">
+        <div class="col-md-6 mb-4 text-center text-sm-left"
+          [innerHTML]="chartDescription ? chartDescription : 'MODULES.SURVEILLANCE.REPORTED_DEATHS_AND_MORTALITY_RATE.TITLE' | translate">
+        </div>
+        <div class="col-md-6 mb-4  text-center text-sm-left text-md-right ">
+          <app-sources
+            [sourceType]="SourceType.GRAPH"
+            [sources]="sources"
+            [lastUpdate]="lastUpdate"></app-sources>
+        </div>
+      </div>
+    </mat-card-subtitle>
+    <mat-card-content *ngIf="!isCollapsed">
+      <div class="form-inline">
+        <div class="form-group mr-4 mb-4">
+          <app-chart-time-interval
+          (intervalChanged)="changeTimeInterval($event)"
+          [intervalOptions]="chartsIntervalOptions"
+          [selectedIntervalOption]="selectedIntervalOption"
+          ></app-chart-time-interval>
+        </div>
+        <div class="form-group mr-4 mb-4">
+          <mat-button-toggle-group [(ngModel)]="LinearLog" aria-label="Type" class="type-container" name="fontStyle">
+            <mat-button-toggle (change)="changePlotType($event)" value="linear">{{graphFilterButtons.LINEAR | translate}}</mat-button-toggle>
+            <mat-button-toggle (change)="changePlotType($event)" value="logarithmic">{{graphFilterButtons.LOGARITHMIC | translate}}</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <div class="form-group mr-4 mb-4">
+          <mat-button-toggle-group [(ngModel)]="subcategory" aria-label="Type" class="d-none d-md-inline-flex type-container" name="fontStyle">
+            <mat-button-toggle (change)="changeSubcategory($event)" value="{{DeathSubcategories.Death}}">
+              {{graphFilterButtons.ABSOLUTE | translate}}
+            </mat-button-toggle>
+            <mat-button-toggle (change)="changeSubcategory($event)" value="{{DeathSubcategories.MortalityRate}}">{{'MODULES.SURVEILLANCE.REPORTED_DEATHS_AND_MORTALITY_RATE.MORTALITY_RATE' | translate }}
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+          <mat-form-field appearance="fill" class="d-block d-md-none">
+            <mat-label>{{'MODULES.SURVEILLANCE.REPORTED_DEATHS_AND_MORTALITY_RATE.TOTAL_TYPE' | translate }}</mat-label>
+            <mat-select [(ngModel)]="subcategory" (selectionChange)="changeSubcategory($event)">
+              <mat-option value="{{DeathSubcategories.Death}}">{{graphFilterButtons.ABSOLUTE | translate}}</mat-option>
+              <mat-option value="{{DeathSubcategories.MortalityRate}}">{{'MODULES.SURVEILLANCE.REPORTED_DEATHS_AND_MORTALITY_RATE.MORTALITY_RATE_LOWERCASE' | translate }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div *ngIf="isLoading()" class="mat-spinner-container loading-chart-placeholder">
+        <mat-spinner></mat-spinner>
+      </div>
+      <mat-tab-group class="charts-container" *ngIf="isLoaded()" [selectedIndex]="currentTabIndex" (selectedIndexChange)="updateTabIndex($event)">
+        <mat-tab label="{{'MODULES.SURVEILLANCE.REPORTED_DEATHS_AND_MORTALITY_RATE.DAILY' | translate }}" *ngIf="dailyChart">
+          <ng-template matTabContent>
+            <app-highcharts
+              [showExportMenu]="true"
+              [xAxisData]="dailyChart.total.xAxis"
+              [series]="dailySeries"
+              [chartType]="chartType"
+              [chart]="chartOptions"
+              [yAxisName]="''"
+              [chartTitle]="''"
+              [yAxisType]="LinearLog"
+            ></app-highcharts>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="{{'MODULES.SURVEILLANCE.REPORTED_DEATHS_AND_MORTALITY_RATE.WEEKLY' | translate }}" *ngIf="weeklyChart">
+          <ng-template matTabContent>
+            <app-highcharts
+              [showExportMenu]="true"
+              [xAxisData]="weeklyChart.total.xAxis"
+              [series]="weeklySeries"
+              [chartType]="chartType"
+              [chart]="chartOptions"
+              [yAxisName]="''"
+              [chartTitle]="''"
+              [yAxisType]="LinearLog"
+            ></app-highcharts>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="{{'MODULES.SURVEILLANCE.REPORTED_DEATHS_AND_MORTALITY_RATE.CUMULATIVE' | translate }}" *ngIf="cumulativeChart">
+          <ng-template matTabContent>
+            <app-highcharts
+              [showExportMenu]="true"
+              [xAxisData]="cumulativeChart.total.xAxis"
+              [series]="cumulativeSeries"
+              [chartType]="chartType"
+              [chart]="chartOptions"
+              [yAxisName]="''"
+              [chartTitle]="''"
+              [yAxisType]="LinearLog"
+            ></app-highcharts>
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </div>
+</mat-card>

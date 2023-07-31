@@ -1,0 +1,82 @@
+{
+  "$id": "/primaryCare#",
+  "definitions": {
+    "pathogen": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subcategory": {
+      "enum": [
+        "Confirmed",
+        "Tested"
+      ]
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "reference",
+        "value"
+      ]
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "total": {
+      "type": "number",
+      "minimum": 0
+    },
+    "is_date_total": {
+      "type": "boolean"
+    },
+    "disease_type": {
+      "type": "string",
+      "enum": [
+        "ILI",
+        "ARI"
+      ]
+    },
+    "primaryCareId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "primaryCareResourceEntry": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "/primaryCare#/definitions/primaryCareId"
+        },
+        "pathogen": {
+          "$ref": "/primaryCare#/definitions/pathogen"
+        },
+        "subcategory": {
+          "$ref": "/primaryCare#/definitions/subcategory"
+        },
+        "location": {
+          "$ref": "/primaryCare#/definitions/location"
+        },
+        "date": {
+          "$ref": "/primaryCare#/definitions/date"
+        },
+        "total": {
+          "$ref": "/primaryCare#/definitions/total"
+        },
+        "is_date_total": {
+          "$ref": "/primaryCare#/definitions/is_date_total"
+        },
+        "disease_type": {
+          "$ref": "/primaryCare#/definitions/disease_type"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "$id": "/query#",
+  "definitions": {
+    "filter": {
+      "description": "MongoDB filter to perform a filtered query. See <https://docs.mongodb.com/manual/tutorial/query-documents/> for detailed information. Example: `{ \"name\": \"nametosearch\" }` for searching item with the specified name or `{ \"name\": { \"$regex\": \"^[a-z].*\" } }` for searching all items with names starting with a lower case letter.",
+      "type": "object"
+    },
+    "projection": {
+      "description": "MongoDB projection allows to select fields to be returned. See <https://docs.mongodb.com/manual/tutorial/project-fields-from-query-results/> for detailed information. Example: `{ \"name\": 1, \"_id\": 0 }` will only return the name fields.",
+      "type": "object"
+    },
+    "sort": {
+      "description": "MongoDB sort allows sorting of the result. See <https://docs.mongodb.com/manual/reference/method/cursor.sort/> for detailed information. Example: `{ \"name\" : -1 }` for sorting by name (descending).",
+      "type": "object"
+    },
+    "skip": {
+      "description": "Skip the first number of elements (also called offset).",
+      "type": "integer",
+      "minimum": 0
+    },
+    "limit": {
+      "description": "Maximum number of elements to be returned.",
+      "type": "integer",
+      "minimum": 0
+    },
+    "getListQuery": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "$ref": "/query#/definitions/filter"
+        },
+        "projection": {
+          "$ref": "/query#/definitions/projection"
+        },
+        "sort": {
+          "$ref": "/query#/definitions/sort"
+        },
+        "skip": {
+          "$ref": "/query#/definitions/skip"
+        },
+        "limit": {
+          "$ref": "/query#/definitions/limit"
+        }
+      }
+    },
+    "getExportQuery": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "$ref": "/query#/definitions/filter"
+        },
+        "projection": {
+          "$ref": "/query#/definitions/projection"
+        },
+        "sort": {
+          "$ref": "/query#/definitions/sort"
+        }
+      }
+    }
+  }
+}

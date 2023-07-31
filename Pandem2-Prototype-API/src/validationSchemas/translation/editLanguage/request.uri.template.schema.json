@@ -1,0 +1,13 @@
+{
+  "$id": "translation.editLanguage.request.uri.template.schema",
+  "description": "Edit a language",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "/base#/definitions/mongoID"
+    }
+  },
+  "required": [
+      "id"
+  ]
+}

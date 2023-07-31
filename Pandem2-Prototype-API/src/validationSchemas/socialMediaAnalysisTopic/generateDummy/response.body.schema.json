@@ -1,0 +1,19 @@
+{
+  "$id": "socialMediaAnalysisTopic.generateDummy.response.body.schema",
+  "description": "Generate dummy data for social media analysis topics - response body schema",
+  "type": "array",
+  "items": {
+    "allOf": [
+      {
+        "$ref": "/socialMediaAnalysisTopic#/definitions/socialMediaAnalysisTopicResourceEntry"
+      },
+      {
+        "required": [
+          "_id",
+          "pathogen",
+          "name"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+/*
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+*/
+@import "../../../../styles/_variables.less";
+
+app-page-404 {
+  .flex(flex);
+  .flex_align_items(center);
+  .flex_direction(column);
+  .flex_justify(center);
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 2rem;
+  position: relative;
+  width: 100%;
+
+  @media only screen and (max-width: 1919px) and (orientation: landscape) {
+    .flex_justify(initial);
+  }
+
+  h1 {
+    color: @blue-color;
+  }
+
+  h3 {
+    font-weight: 400 !important;
+    padding-bottom: 0 !important;
+  }
+
+  img {
+    display: block;
+    margin: 10rem auto;
+    max-width: 75rem;
+    width: 100%;
+
+    @media @sm {
+      margin: 5rem auto;
+      max-width: 50rem;
+    }
+
+    @media @xs {
+      margin: 3rem auto;
+      max-width: 25rem;
+    }
+  }
+
+  .btn {
+    font-size: 2rem;
+
+    @media @sm {
+      font-size: 1.8rem;
+    }
+
+    @media @xs {
+      font-size: 1.6rem;
+    }
+  }
+}

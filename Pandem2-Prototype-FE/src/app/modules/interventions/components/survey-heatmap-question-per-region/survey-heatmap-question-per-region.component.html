@@ -1,0 +1,49 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<mat-card>
+    <div class="row">
+      <div class="col-xl-4">
+        <p style ='size:12'>{{'MODULES.INTERVENTIONS.SURVEY_QUESTIONS.POPULATION_SURVEY' | translate}}: {{question.question}}</p>
+      </div>
+      <div class="col-xl-5">
+        <mat-radio-group (change) ='changeType($event)'>
+          <mat-radio-button [checked]="true" value="heatmap" >{{'MODULES.INTERVENTIONS.SURVEY_QUESTIONS.HEATMAP' | translate}}  </mat-radio-button>
+          <mat-radio-button  value="bar" style="margin-left:16px">{{'MODULES.INTERVENTIONS.SURVEY_QUESTIONS.BAR_CHART' | translate}}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="col-xl-3">
+        {{'MODULES.INTERVENTIONS.SURVEY_QUESTIONS.TREND_OVER_SURVEYS' | translate}}
+      </div>
+    </div>
+<div *ngFor="let location of locationList" class="row" style="margin-top:0.5rem">
+  <div class="col-xl-1">
+    <p style="text-align:right; size:10">{{getNameForLocation(location.location)}}</p>
+  </div>
+  <div *ngIf="chartType==='heatmap'" class="col-xl-11">
+    <app-survey-heatmap-row-question  [location]="location"  [chartType]="'heatmap'"></app-survey-heatmap-row-question>
+  </div>
+  <div *ngIf="chartType==='bar'" class="col-xl-11">
+    <app-survey-heatmap-row-question  [location]="location"  [chartType]="'bar'"></app-survey-heatmap-row-question>
+  </div>
+</div>
+</mat-card>

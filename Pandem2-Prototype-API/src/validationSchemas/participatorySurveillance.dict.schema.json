@@ -1,0 +1,89 @@
+{
+  "$id": "/participatorySurveillance#",
+  "definitions": {
+    "pathogen": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subcategory": {
+      "enum": ["Active Weekly Users", "ILI Incidence", "Covid Incidence", "Visits Cumulative"]
+    },
+    "location": {
+      "description": "Participatory Surveillance location",
+      "type": "object",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "reference",
+        "value"
+      ]
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "total": {
+      "type": "number",
+      "minimum": 0
+    },
+    "is_date_total": {
+      "type": "boolean"
+    },
+    "visit_type": {
+      "type": "string",
+      "enum": ["Emergency", "GP", "Plan", "Hospital", "No Visit", "Other"]
+    },
+    "min_confidence": {
+      "type": "number"
+    },
+    "max_confidence": {
+      "type": "number"
+    },
+    "participatorySurveillanceId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "participatorySurveillanceResourceEntry": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "/participatorySurveillance#/definitions/participatorySurveillanceId"
+        },
+        "pathogen": {
+          "$ref": "/participatorySurveillance#/definitions/pathogen"
+        },
+        "subcategory": {
+          "$ref": "/participatorySurveillance#/definitions/subcategory"
+        },
+        "location": {
+          "$ref": "/participatorySurveillance#/definitions/location"
+        },
+        "date": {
+          "$ref": "/participatorySurveillance#/definitions/date"
+        },
+        "total": {
+          "$ref": "/participatorySurveillance#/definitions/total"
+        },
+        "is_date_total": {
+          "$ref": "/participatorySurveillance#/definitions/is_date_total"
+        },
+        "visit_type": {
+          "$ref": "/participatorySurveillance#/definitions/visit_type"
+        },
+        "min_confidence": {
+          "$ref": "/participatorySurveillance#/definitions/min_confidence"
+        },
+        "max_confidence": {
+          "$ref": "/participatorySurveillance#/definitions/max_confidence"
+        }
+      }
+    }
+  }
+}

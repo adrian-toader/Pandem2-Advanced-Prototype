@@ -1,0 +1,212 @@
+{
+  "$id": "importSources.config.schema",
+  "description": "Schema for importSources.config file",
+  "$defs": {
+    "indicatorConfiguration": {
+      "description": "Indicator configuration",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "cases": {
+      "description": "Container for resource group cases",
+      "type": "object",
+      "patternProperties": {
+        ".+": {
+          "$ref": "#/$defs/indicatorConfiguration"
+        }
+      },
+      "required": [
+        "confirmed_cases",
+        "confirmed_cases_per_100k",
+        "active_cases",
+        "active_cases_per_100k",
+        "recovered_cases",
+        "recovered_cases_per_100k",
+        "rt_number",
+        "number_of_notifications",
+        "number_of_notifications_per_100k"
+      ]
+    },
+    "deaths": {
+      "description": "Container for resource group deaths",
+      "type": "object",
+      "patternProperties": {
+        ".+": {
+          "$ref": "#/$defs/indicatorConfiguration"
+        }
+      },
+      "required": [
+        "deaths",
+        "mortality_rate",
+        "mortality_rate_hospital",
+        "mortality_rate_icu",
+        "excess_mortality"
+      ]
+    },
+    "participatory_surveillance": {
+      "description": "Container for resource group participatory_surveillance",
+      "type": "object",
+      "patternProperties": {
+        ".+": {
+          "$ref": "#/$defs/indicatorConfiguration"
+        }
+      },
+      "required": [
+        "active_weekly_users",
+        "incidence",
+        "incidence_confidence_low",
+        "incidence_confidence_high",
+        "visits"
+      ]
+    },
+    "hospitalisations": {
+      "description": "Container for resource group hospitalisations",
+      "type": "object",
+      "patternProperties": {
+        ".+": {
+          "$ref": "#/$defs/indicatorConfiguration"
+        }
+      },
+      "required": [
+        "hospital_admissions",
+        "hospital_admissions_per_100k",
+        "icu_admissions",
+        "icu_admissions_per_100k",
+        "hospital_bed_occupancy",
+        "hospital_bed_occupancy_per_100k",
+        "hospital_bed_occupancy_with_comorbidities_per_100k",
+        "icu_bed_occupancy",
+        "icu_bed_occupancy_per_100k",
+        "icu_bed_occupancy_with_comorbidities_per_100k",
+        "number_of_operable_beds",
+        "number_of_ward_operable_beds",
+        "number_of_icu_operable_beds",
+        "hospital_length_of_stay"
+      ]
+    },
+    "vaccines": {
+      "description": "Container for resource group vaccines",
+      "type": "object",
+      "patternProperties": {
+        ".+": {
+          "$ref": "#/$defs/indicatorConfiguration"
+        }
+      },
+      "required": [
+        "coverage_one_dose",
+        "coverage_two_doses",
+        "coverage_additional_1_dose",
+        "cumulative_one_dose",
+        "cumulative_two_doses",
+        "cumulative_additional_1_doses",
+        "new_one_dose",
+        "new_two_doses",
+        "new_additional_1_dose"
+      ]
+    },
+    "testing": {
+      "description": "Container for resource group testing",
+      "type": "object",
+      "patternProperties": {
+        ".+": {
+          "$ref": "#/$defs/indicatorConfiguration"
+        }
+      },
+      "required": [
+        "new_performed_tests",
+        "new_performed_tests_per_100k",
+        "positivity_rate"
+      ]
+    },
+    "social_media_analysis": {
+      "description": "Container for resource group social_media_analysis",
+      "type": "object",
+      "patternProperties": {
+        ".+": {
+          "$ref": "#/$defs/indicatorConfiguration"
+        }
+      },
+      "required": [
+        "article_count",
+        "cum_article_count"
+      ]
+    },
+    "population": {
+      "description": "Container for resource group population",
+      "type": "object",
+      "patternProperties": {
+        ".+": {
+          "$ref": "#/$defs/indicatorConfiguration"
+        }
+      },
+      "required": [
+        "population"
+      ]
+    },
+    "interventions": {
+      "description": "Container for resource group interventions",
+      "type": "object",
+      "patternProperties": {
+        ".+": {
+          "$ref": "#/$defs/indicatorConfiguration"
+        }
+      },
+      "required": [
+        "implemented_measures",
+        "implemented_policy"
+      ]
+    },
+    "contact_tracing": {
+      "description": "Container for resource group contact_tracing",
+      "type": "object",
+      "patternProperties": {
+        ".+": {
+          "$ref": "#/$defs/indicatorConfiguration"
+        }
+      },
+      "required": [
+        "contact_tracing_cases_identified",
+        "contact_tracing_cases_reached",
+        "contact_tracing_cases_reached_within_day",
+        "contact_tracing_cases_previously_contacts",
+        "contact_tracing_contacts_identified",
+        "contact_tracing_contacts_reached",
+        "contact_tracing_contacts_reached_within_day"
+      ]
+    },
+    "human_resources": {
+      "description": "Container for resource group human_resources",
+      "type": "object",
+      "patternProperties": {
+        ".+": {
+          "$ref": "#/$defs/indicatorConfiguration"
+        }
+      },
+      "required": [
+        "available_staff",
+        "available_staff_per_100k",
+        "available_staff_variation"
+      ]
+    }
+  },
+  "required": [
+    "cases",
+    "deaths",
+    "participatory_surveillance",
+    "hospitalisations",
+    "vaccines",
+    "testing",
+    "social_media_analysis",
+    "population",
+    "interventions",
+    "contact_tracing",
+    "human_resources"
+  ]
+}

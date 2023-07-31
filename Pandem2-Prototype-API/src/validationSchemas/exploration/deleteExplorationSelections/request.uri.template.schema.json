@@ -1,0 +1,13 @@
+{
+  "$id": "exploration.deleteExplorationSelections.request.uri.template.schema",
+  "description": "Delete the exploration selections from database.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "/base#/definitions/mongoID"
+    }
+  },
+  "required": [
+      "id"
+  ]
+}

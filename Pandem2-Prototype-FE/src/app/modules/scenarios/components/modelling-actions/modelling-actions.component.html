@@ -1,0 +1,87 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<div class="row" *ngIf="!isOnResultsPage">
+  <div class="col-xl-12">
+    <h3 class="modelling-title-weight">
+      {{ 'MODULES.MODELLING.ACTIONS.ACTIONS_TITLE' | translate }}
+    </h3>
+  </div>
+</div>
+<div class="row" *ngIf="!isOnResultsPage">
+  <div class="col-xl-12">
+    <mat-card>
+      <div class="modelling-title-text">
+        <p class="modelling-title-weight pb-2">
+          {{ 'MODULES.MODELLING.ACTIONS.CARD_TITLE' | translate }}
+        </p>
+      </div>
+      <mat-card-title class="text-center text-sm-left">
+        {{ 'MODULES.MODELLING.ACTIONS.CONFIGURE_NEW' | translate }}
+      </mat-card-title>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-lg-12">
+            <p>{{ 'MODULES.MODELLING.ACTIONS.CONFIGURE_NEW_DESCRIPTION' | translate }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 d-flex justify-content-end">
+            <button mat-raised-button class="modelling-actions-accent" (click)="openConfiguration()">
+              <div class="row justify-content-between align-items-center">
+                <mat-icon>keyboard_arrow_right</mat-icon>
+                <div>{{ 'MODULES.MODELLING.COMMON.CREATE_NEW' | translate }}</div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div class="d-flex" style="height: 100%" *ngIf="isOnResultsPage">
+  <div style="width: 100%">
+    <mat-card class="d-flex flex-column" style="height: 100%">
+      <div class="modelling-title-text">
+        <p class="modelling-title-weight p-0">
+          {{ 'MODULES.MODELLING.ACTIONS.CARD_TITLE' | translate }}
+        </p>
+      </div>
+      <mat-card-title class="text-center mt-4">
+        {{ 'MODULES.MODELLING.ACTIONS.CREATE_NEW' | translate }}
+      </mat-card-title>
+      <mat-card-content style="height:100%">
+        <div class="d-flex flex-column justify-content-between" style="height: 100%">
+          <p>{{ 'MODULES.MODELLING.ACTIONS.CREATE_NEW_DESCRIPTION' | translate }}</p>
+          <button mat-raised-button (click)="openConfiguration()" class="align-self-center modelling-actions-accent">
+            <div class="row justify-content-between align-items-center modelling-icon-size">
+              <div>{{ 'MODULES.MODELLING.COMMON.CREATE_NEW' | translate }}</div>
+              <mat-icon>skip_next</mat-icon>
+            </div>
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

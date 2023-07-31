@@ -1,0 +1,5 @@
+{
+  "$id": "data.retrieveNUTSList.request.query.schema",
+  "description": "Retrieve NUTS List request query schema",
+  "$ref": "/query#/definitions/getListQuery"
+}

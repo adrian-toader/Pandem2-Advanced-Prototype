@@ -1,0 +1,83 @@
+/*
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+*/
+
+@import '_colors';
+
+/* variables */
+// left margin to compensate the sidenav menu icon
+@page-left-margin: 56px;
+// right margin to compensate the "Language" topnav item
+@page-right-margin: 145px;
+// font family
+@font-be-vietnam: 'Be Vietnam';
+
+/* Media Queries */
+@desktop-min-size: 1300px;
+@mobile-max-size: 1299px;
+
+@desktop-devices: ~"only screen and (min-width: @{desktop-min-size})";
+@mobile-devices: ~"only screen and (max-width: @{mobile-max-size})";
+@ie11-only: ~"all and (-ms-high-contrast: none)";
+
+/* mixins */
+.dialog-label-value() {
+    display: flex;
+    font-family: @font-be-vietnam;
+    font-size: 16px;
+    padding: 3px 0px;
+
+    >*:first-child {
+        font-weight: 400;
+        margin-right: 10px;
+        color: #8e8e8e;
+
+        &:after {
+            content: ':';
+        }
+    }
+}
+
+.dialog-simple-link() {
+    font-family: @font-be-vietnam;
+    color: #0071e1;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+    padding-top: 10px;
+
+    &:active {
+        color: #0071e1;
+        text-decoration: none;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.small-dialog() {
+    // add max-height in vh so the modal will not exceed the viewport making impossible to click on the buttons or see all content
+    max-height: 95vh !important;
+    width: 600px !important;
+    max-width: 95vw !important;
+}

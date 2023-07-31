@@ -1,0 +1,78 @@
+{
+  "$id": "/strain#",
+  "definitions": {
+    "pathogen": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "variantId": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "minLength": 1
+    },
+    "color": {
+      "type": "string",
+      "minLength": 1
+    },
+    "url": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "minLength": 1
+    },
+    "parent_strainId": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "minLength": 1
+    },
+    "children_strainIds": {
+      "type": [
+        "null",
+        "array"
+      ],
+      "minLength": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "strainResourceEntry": {
+      "type": "object",
+      "properties": {
+        "pathogen": {
+          "$ref": "/strain#/definitions/pathogen"
+        },
+        "name": {
+          "$ref": "/strain#/definitions/name"
+        },
+        "variantId": {
+          "$ref": "/strain#/definitions/variantId"
+        },
+        "color": {
+          "$ref": "/strain#/definitions/color"
+        },
+        "url": {
+          "$ref": "/strain#/definitions/url"
+        },
+        "parent_strainId": {
+          "$ref": "/strain#/definitions/parent_strainId"
+        },
+        "children_strainIds": {
+          "$ref": "/strain#/definitions/children_strainIds"
+        },
+        "_id": {
+          "$ref": "/base#/definitions/mongoID"
+        }
+      }
+    }
+  }
+}

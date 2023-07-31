@@ -1,0 +1,71 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<button mat-icon-button class="dialog-close-button" [mat-dialog-close]="true">
+  <mat-icon aria-hidden="false" aria-label="close button">close</mat-icon>
+</button>
+<mat-dialog-content class="main-card-manager-dialog">
+  <div class="row">
+    <div class="col-12">
+      <div *ngIf="!dataLoaded" class="mat-spinner-container">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div *ngIf="dataLoaded">
+        <mat-card-title class="text-center">
+          {{'MODULES.EXPLORATION.LOAD_SELECTIONS' | translate}}
+        </mat-card-title>
+
+        <form *ngIf="data.length" class="py-4">
+          <div class="form-group load-dialog-form-group">
+            <label for="reportName"> {{'MODULES.EXPLORATION.SEARCH_SELECTION' | translate}}</label>
+            <input type="text" [placeholder]="'MODULES.EXPLORATION.SELECTION_NAME' | translate" class="form-control"
+              [formControl]="searchControl">
+          </div>
+        </form>
+
+        <div class="list-group" *ngIf="filteredData.length">
+          <div class="list-group-item list-group-item-action d-flex" *ngFor="let elem of filteredData">
+            <button class="list-item-button flex-grow-1 d-flex justify-content-between"
+              (click)="onButtonClick(elem._id)">
+              <span>{{elem.name.length > 30 ? elem.name.substring(0,30) + '...' : elem.name}}</span>
+              <div>
+                <span
+                  [style]="{ 'color': elem.is_private ? '#B20000' : '#007BFF', 'margin-right': '5px' }">{{elem.is_private
+                  ? '[PRIVATE]' : '[PUBLIC]' }}</span>
+                <span *ngIf="currentUserId === elem?.userId" style="color: #008000;">[OWNER]</span>
+              </div>
+            </button>
+            <button class="list-remove-button" (click)="onRemoveClick(elem._id, elem.userId)">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+        </div>
+        <p *ngIf="!data.length">
+          {{'MODULES.EXPLORATION.NO_SELECTION_SAVED' | translate}}
+        </p>
+        <p *ngIf="data.length && !filteredData.length">
+          {{'MODULES.EXPLORATION.NO_SELECTION_FOUND' | translate}}
+        </p>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>

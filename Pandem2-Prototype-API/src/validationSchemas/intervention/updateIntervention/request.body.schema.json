@@ -1,0 +1,5 @@
+{
+  "$id": "intervention.updateIntervention.request.body.schema",
+  "description": "Modify intervention instance request body schema",
+  "$ref": "/intervention#/definitions/interventionResourceEntry"
+}

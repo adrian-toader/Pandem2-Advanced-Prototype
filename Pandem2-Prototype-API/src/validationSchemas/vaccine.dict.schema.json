@@ -1,0 +1,102 @@
+{
+  "$id": "/vaccine#",
+  "definitions": {
+    "pathogen": {
+      "description": "Pathogen related to the vaccine",
+      "type": "string"
+    },
+    "date": {
+      "description": "Vaccines statistics reporting date",
+      "type": "string",
+      "format": "date"
+    },
+    "total": {
+      "description": "Vaccines count",
+      "type": "number",
+      "minimum": 0
+    },
+    "location": {
+      "description": "Vaccine location",
+      "type": "object",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "reference",
+        "value"
+      ]
+    },
+    "dose_type": {
+      "description": "Vaccine dose type",
+      "type": "string",
+      "enum": [
+        "1 Dose",
+        "2 Doses",
+        "3+ Doses"
+      ]
+    },
+    "total_type": {
+      "type": "string",
+      "enum": [
+        "Absolute",
+        "Proportion",
+        "Cumulative"
+      ]
+    },
+    "gender": {
+      "type": "string",
+      "enum": [
+        "F",
+        "M"
+      ]
+    },
+    "age_group": {
+      "type": "string"
+    },
+    "healthcare_worker": {
+      "type": "string",
+      "enum": [
+        "Nurses",
+        "Doctors",
+        "Emergency Responders",
+        "Admin Staff"
+      ]
+    },
+    "population_type": {
+      "type": "string"
+    },
+    "vaccineResourceEntry": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "$ref": "/vaccine#/definitions/total"
+        },
+        "dose_type": {
+          "$ref": "/vaccine#/definitions/dose_type"
+        },
+        "location": {
+          "$ref": "/vaccine#/definitions/location"
+        },
+        "gender": {
+          "$ref": "/vaccine#/definitions/admission_type"
+        },
+        "age_group": {
+          "$ref": "/vaccine#/definitions/age_group"
+        },
+        "healthcare_worker": {
+          "$ref": "/vaccine#/definitions/healthcare_worker"
+        },
+        "population_type": {
+          "$ref": "/vaccine#/definitions/population_type"
+        }
+      }
+    }
+  }
+}

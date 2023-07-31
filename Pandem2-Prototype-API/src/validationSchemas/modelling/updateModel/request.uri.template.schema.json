@@ -1,0 +1,13 @@
+{
+  "$id": "modelling.updateModel.request.uri.template.schema",
+  "description": "Update modelling model URI template schema",
+  "type": "object",
+  "properties": {
+    "modelId": {
+      "$ref": "/base#/definitions/mongoID"
+    }
+  },
+  "required": [
+    "modelId"
+  ]
+}

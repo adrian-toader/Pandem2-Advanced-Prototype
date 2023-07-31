@@ -1,0 +1,21 @@
+{
+  "$id": "modelling.updateScenario.response.body.schema",
+  "description": "Modify scenario response body schema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "/modellingScenario#/definitions/modellingScenarioResourceEntry"
+    },
+    {
+      "required": [
+        "userId",
+        "modelId",
+        "name",
+        "date",
+        "tags",
+        "location",
+        "parameters"
+      ]
+    }
+  ]
+}

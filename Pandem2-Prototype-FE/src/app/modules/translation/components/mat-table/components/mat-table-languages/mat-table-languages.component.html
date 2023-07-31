@@ -1,0 +1,89 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<div class="add_language--btn">
+    <span class="language__title">{{'MODULES.TRANSLATION.MAT_TABLE_LANGUAGES.LANGUAGES' | translate}}</span>
+    <button mat-raised-button color="accent" (click)="onCreateLanguage()">
+      {{'MODULES.TRANSLATION.MAT_TABLE_LANGUAGES.CREATE_LANGUAGE' | translate}}<span class="xt-icon">addCircle</span>
+    </button>
+  </div>
+  <div class="table-actionbar">
+    <div class="search-box">
+      <mat-form-field class="translation-page-form-field" appearance="outline">
+        <mat-icon matPrefix>search</mat-icon>
+        <mat-label>{{'MODULES.TRANSLATION.MAT_TABLE_LANGUAGES.SEARCH' | translate}}</mat-label>
+        <input matInput type="text" [(ngModel)]="value" (keyup)="applyFilter($event)">
+        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+  
+  </div>
+
+  <app-hover-row-actions #hoverRow [active]="true"></app-hover-row-actions>
+  
+  <mat-table mat-table #table [dataSource]="dataSource" matSort >
+    <!-- Display Name Column -->
+    <ng-container matColumnDef="display_name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="column-header"> {{'MODULES.TRANSLATION.MAT_TABLE_LANGUAGES.DISPLAY_NAME' | translate}} </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.display_name}} </mat-cell>
+    </ng-container>
+  
+    <!-- Prefix Column -->
+    <ng-container matColumnDef="prefix">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="column-header"> {{'MODULES.TRANSLATION.MAT_TABLE_LANGUAGES.COUNTRY_CODE' | translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.country_code}} </mat-cell>
+    </ng-container>
+  
+    <!-- Enabled Column -->
+    <ng-container matColumnDef="enabled">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="column-header"> {{'MODULES.TRANSLATION.MAT_TABLE_LANGUAGES.ENABLED' | translate}} </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-icon  [ngStyle]="{'color': element.enabled ? '#4fbf67' : 'red'}">{{ element.enabled ? 'check' : 'close' }}</mat-icon>
+      </mat-cell>
+    </ng-container>
+  
+  
+  
+    <!-- Default Language Column -->
+    <ng-container matColumnDef="default">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="column-header"> {{'MODULES.TRANSLATION.MAT_TABLE_LANGUAGES.DEFAULT_LANGUAGE' | translate}} </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-icon [ngStyle]="{'color': element.default_language ? '#4fbf67' : 'red'}">
+          {{ element.default_language ? 'check' : 'close'}}
+        </mat-icon>
+      </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"   
+    app-hover-row-actions
+    [hoverRowActionsComponent]="hoverRow"
+    [hoverRowActions]="recordActions"
+    [hoverRowActionData]="row">
+  </mat-row>
+
+    
+  </mat-table>
+  <!-- table pagination -->
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons  (page)="handlePageChange($event)"></mat-paginator>

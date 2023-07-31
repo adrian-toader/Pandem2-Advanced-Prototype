@@ -1,0 +1,8 @@
+{
+  "$id": "report.retrieveReportsList.response.body.schema",
+  "description": "Retrieve report list response schema",
+  "type": "array",
+  "items": {
+    "$ref": "/report#/definitions/reportResourceEntry"
+  }
+}

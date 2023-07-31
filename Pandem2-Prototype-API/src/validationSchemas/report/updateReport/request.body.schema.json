@@ -1,0 +1,13 @@
+{
+  "$id": "report.updateReport.request.body.schema",
+  "description": "Update report request body schema",
+  "allOf": [
+    {
+      "$ref": "/report#/definitions/reportResourceEntry"
+    },
+    {
+      "type": "object",
+      "required": ["userId"]
+    }
+  ]
+}

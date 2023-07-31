@@ -1,0 +1,197 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<div class="row">
+  <div class="col-xl-12">
+    <mat-card>
+      <div class="row justify-content-between">
+        <div class="col-lg-6 col-xl-6 position-relative">
+          <mat-card-title>{{'MODULES.INTERVENTIONS.INTERVENTION_FILTER_CARD.TITLE' | translate}}</mat-card-title>
+              <mat-card-content style="margin-top: 0.9em">
+                <mat-form-field appearance="fill" style=" width:100%; margin: 0.25em 0; ">
+                  <mat-label>{{'MODULES.INTERVENTIONS.INTERVENTION_FILTER_CARD.LABEL' | translate}}</mat-label>
+                  <mat-select class="region-select" [(value)]="selectedCountry" [formControl]="countryControl" (selectionChange)="changedRegion()">
+                    <mat-option *ngFor="let country of allRegions" [value]="country" >{{country.english_name || country.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </mat-card-content>
+        </div>
+        <div class="col-lg-6 col-xl-6 position-relative">
+          <mat-card-title>{{'MODULES.INTERVENTIONS.INTERVENTION_FILTER_CARD.INTERVENTION' | translate}}</mat-card-title>
+          <mat-card-content>
+            <form>
+              <mat-form-field appearance="outline" style="width:100%; padding-top: 3px;">
+                <mat-select class="multiple-input"  [(value)]="selectedInterventions" [formControl]="interventionControl" multiple (selectionChange)="changedIntervention()">
+                  <mat-select-trigger>
+                    <mat-chip-list>
+                      <mat-chip
+                        *ngFor="let intervention of selectedInterventions"
+                        (removed)="removeIntervention(intervention)" selected>
+                        {{intervention.description ?
+                          intervention.name + " (" + intervention.description + ")" :
+                          intervention.name }}
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                      </mat-chip>
+                      </mat-chip-list>
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let intervention of interventions" [value]="intervention" >{{intervention.description ?
+                      intervention.name + " (" + intervention.description + ")" :
+                      intervention.name }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </form>
+          </mat-card-content>
+        </div>
+      </div>
+      <div class="row justify-content-between">
+        <div class="col-lg-6 col-xl-6 position-relative">
+          <mat-card-title>{{'MODULES.INTERVENTIONS.INTERVENTION_FILTER_CARD.CARD_TITLE' | translate}}</mat-card-title>
+          <mat-card-content>
+            <form>
+              <mat-form-field appearance="outline" style="width:100% ">
+                <mat-select class="multiple-input" [formControl]="sourceControl" multiple (selectionChange)="changedSource()">
+                  <mat-select-trigger>
+                    <mat-chip-list>
+                      <mat-chip
+                        *ngFor="let item of sourceControl.value"
+                        (removed)="removeSource(item)" selected>
+                        {{item.tag}}
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                      </mat-chip>
+                      </mat-chip-list>
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let tag of sources" [value]="tag" >{{tag.tag}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </form>
+          </mat-card-content>
+        </div>
+        <div class="col-lg-6 col-xl-6 position-relative">
+          <mat-card-title>{{'MODULES.INTERVENTIONS.INTERVENTION_FILTER_CARD.INDICATOR' | translate}}</mat-card-title>
+          <mat-card-content>
+            <form>
+              <mat-form-field appearance="outline" style="width:100% ">
+                <mat-select class="multiple-input" [formControl]="indicatorControl" multiple (selectionChange)="changedIndicator()">
+                  <mat-select-trigger>
+                    <mat-chip-list>
+                      <mat-chip
+                        *ngFor="let indicator of indicatorControl.value"
+                        (removed)="removeIndicator(indicator)" selected>
+                        {{indicator.name}}
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                      </mat-chip>
+                      </mat-chip-list>
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let indicator of indicators" [value]="indicator" >{{indicator.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </form>
+          </mat-card-content>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>
+<div class="row" [style]="{display: selectedIndicators.length > 0 ? 'block': 'none'}">
+  <div class="col-xl-12">
+    <mat-card>
+      <mat-card-subtitle>
+        {{'MODULES.INTERVENTIONS.INTERVENTION_FILTER_CARD.TIME_INTERVAL' | translate}}
+      </mat-card-subtitle>
+      <div class="row">
+        <div class="col-xl-6">
+          <div class="form-inline">
+            <div class="form-group mr-4">
+              <mat-button-toggle-group [(ngModel)]="dataInterval" aria-label="Type" class="type-container" name="fontStyle">
+              <mat-button-toggle (change)="switchInterval($event)" value="daily">{{'MODULES.INTERVENTIONS.INTERVENTION_FILTER_CARD.DAILY' | translate}}</mat-button-toggle>
+              <mat-button-toggle (change)="switchInterval($event)" value="7days">{{'MODULES.INTERVENTIONS.INTERVENTION_FILTER_CARD.SEVEN_AVERAGE' | translate}}</mat-button-toggle>
+              <mat-button-toggle (change)="switchInterval($event)" value="14days">{{'MODULES.INTERVENTIONS.INTERVENTION_FILTER_CARD.FOURTHEEN_AVERAGE' | translate}}</mat-button-toggle>
+              <mat-button-toggle (change)="switchInterval($event)" value="cumulative">{{'MODULES.INTERVENTIONS.INTERVENTION_FILTER_CARD.CUMULATIVE' | translate}}</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6">
+          <div class="form-inline">
+            <div class="form-group mr-4" *ngIf="displayTotalType">
+              <mat-button-toggle-group [(ngModel)]="dataType" aria-label="Type" class="type-container" name="fontStyle">
+              <mat-button-toggle (change)="switchDataType($event)" value="Absolute">{{graphFilterButtons.ABSOLUTE | translate}}</mat-button-toggle>
+              <mat-button-toggle (change)="switchDataType($event)" value="100K">{{graphFilterButtons.PER100K | translate}}</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+            <div class="form-group">
+              <mat-button-toggle-group [(ngModel)]="plotType" aria-label="Type" class="type-container" name="fontStyle">
+              <mat-button-toggle (change)="switchPlotType($event)" value="linear">{{graphFilterButtons.LINEAR | translate}}</mat-button-toggle>
+              <mat-button-toggle (change)="switchPlotType($event)" value="logarithmic">{{graphFilterButtons.LOGARITHMIC | translate}}</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-xl-6">
+      </div>
+      <div class="col-xl-6" *ngIf="selectedIndicators.length > 0">
+        <ng-container *ngFor="let item of selectedCountries">
+          <div class="grid-region">
+            <span [ngStyle]="{'background-color': item.color}" class="country-color-square"></span>
+            <span style="font-size: .7vw;"> {{item.english_name || item.name}} </span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="row">
+    <div [ngClass]="graphIsOnInterventionPage() === true ? 'col-xl-10' : 'col-xl-12'">
+      <app-exploration-graphs-container
+        [indicatorList]="selectedIndicators"
+        [regionList]="selectedCountries"
+        [isLog]="isLog"
+        [dataInterval]="dataInterval"
+        [dataType]="dataType"
+        [startDate]="startDate"
+        [endDate]="endDate"
+      ></app-exploration-graphs-container>
+    </div>
+    <div *ngIf="selectedIndicators.length > 0 && graphIsOnInterventionPage() === true" class="col-xl-2">
+      <app-card-manager #cardManager [isOnInterventionPage]="true" [graphId]="'app-intervention-filter-card'" [graphParameters]="getInterventionGraphParameters()" [parentPage]="this"
+         ></app-card-manager>
+    </div>
+    </div>
+      <div *ngIf="interventionControl.value.length > 0 && graphIsOnInterventionPage() === true" class="row">
+        <div class="col-xl-10">
+         <app-intervention-chart
+           [selectedInterventions]="selectedInterventions"
+           [startDate]="startDate"
+           [endDate]="endDate"
+           [selectedSources]="selectedSources"
+           [selectedCountry]="selectedCountry"
+           [isOnInterventionPage] ="true"></app-intervention-chart>
+        </div>
+        <div class="col-xl-2">
+          <app-card-manager #cardManager [isOnInterventionPage]="true"
+                            [graphParameters]="getGraphParameters()"
+                            [graphId] ="'app-intervention-chart'" [parentPage]="this"></app-card-manager>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

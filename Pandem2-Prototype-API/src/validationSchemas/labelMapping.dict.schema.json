@@ -1,0 +1,40 @@
+{
+  "$id": "/labelMapping#",
+  "definitions": {
+    "resource": {
+      "type": "string",
+      "enum": [
+        "vaccine"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "description": "Usually references source field from resource"
+    },
+    "code": {
+      "type": "string",
+      "description": "Field value, as received from PandemSource"
+    },
+    "label": {
+      "type": "string",
+      "description": "Field label, as received from PandemSource"
+    },
+    "labelMappingResourceEntry": {
+      "type": "object",
+      "properties": {
+        "resource": {
+          "$ref": "/labelMapping#/definitions/resource"
+        },
+        "type": {
+          "$ref": "/labelMapping#/definitions/type"
+        },
+        "code": {
+          "$ref": "/labelMapping#/definitions/code"
+        },
+        "label": {
+          "$ref": "/labelMapping#/definitions/label"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+/*
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+*/
+
+.progress {
+  width: 100%;
+  min-height: 50px;
+  background-color: #eff3ff;
+  vertical-align: middle;
+  position: relative;
+  line-height: unset !important;
+}
+
+.progress-bar {
+  background-color: #9ecae1;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+.topic-name {
+  color: #0b0c0c;
+  word-break: normal;
+  max-width: 75%;
+  font-size: 14px;
+  white-space: normal;
+  text-align: left;
+  position: absolute;
+  left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.volume-text {
+  color: #075985;
+  font-size: 14px;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header-topic {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.header-topic-name {
+  text-align: left;
+  padding: 5px;
+}
+
+.header-volume-text {
+  text-align: right;
+  padding: 5px;
+}
+
+.mat-row.hovered {
+  background: #eee;
+}
+
+.mat-row.selected {
+  background: rgba(107, 174, 214, 0.3) !important;
+}
+
+.mat-column-topic {
+  width: 45%;
+}
+
+.mat-column-trend {
+  width: 5%;
+  text-align: center;
+}
+
+.mat-column-emotion {
+  width: 25%;
+  min-width: 100px;
+}
+
+.mat-column-sentiment {
+  width: 25%;
+  min-width: 100px;
+}
+
+th.mat-header-cell {
+  text-align: center;
+  font-weight: normal;
+  background: #ffffff;
+  font-size: 12px;
+}

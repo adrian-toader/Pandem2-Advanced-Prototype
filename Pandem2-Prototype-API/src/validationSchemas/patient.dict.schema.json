@@ -1,0 +1,84 @@
+{
+  "$id": "/patient#",
+  "definitions": {
+    "date": {
+      "description": "Patients statistics reporting date",
+      "type": "string",
+      "format": "date"
+    },
+    "total": {
+      "description": "Patients count",
+      "type": "number",
+      "minimum": 0
+    },
+    "total_type": {
+      "description": "Patients count type",
+      "type": "string",
+      "enum": [
+        "Absolute",
+        "100K"
+      ]
+    },
+    "location": {
+      "description": "Patients location",
+      "type": "object",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "reference",
+        "value"
+      ]
+    },
+    "admission_type": {
+      "description": "Patients admission type",
+      "type": "string",
+      "enum": [
+        "Hospital",
+        "ICU"
+      ]
+    },
+    "has_comorbidities": {
+      "type": "boolean"
+    },
+    "age_group": {
+      "type": "string"
+    },
+    "variant": {
+      "type": "string"
+    },
+    "patientResourceEntry": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "$ref": "/patient#/definitions/total"
+        },
+        "total_type": {
+          "$ref": "/patient#/definitions/total_type"
+        },
+        "location": {
+          "$ref": "/patient#/definitions/location"
+        },
+        "admission_type": {
+          "$ref": "/patient#/definitions/admission_type"
+        },
+        "has_comorbidities": {
+          "$ref": "/patient#/definitions/has_comorbidities"
+        },
+        "age_group": {
+          "$ref": "/patient#/definitions/age_group"
+        },
+        "variant": {
+          "$ref": "/patient#/definitions/variant"
+        }
+      }
+    }
+  }
+}

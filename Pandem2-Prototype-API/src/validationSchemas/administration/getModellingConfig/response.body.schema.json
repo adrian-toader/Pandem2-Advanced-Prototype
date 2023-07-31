@@ -1,0 +1,11 @@
+{
+  "$id": "administration.getModellingConfig.response.body.schema",
+  "description": "Retrieve the modelling object from the database, or if it is not found, retrieve it from the config.json file.",
+  "type": "object",
+  "properties": {
+    "url": {
+      "$ref": "/base#/definitions/url"
+    }
+  },
+  "required": []
+}

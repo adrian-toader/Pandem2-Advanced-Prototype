@@ -1,0 +1,49 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<div class="breadcrumbs" fxLayout="row">
+
+    <mat-list class="breadcrumbs-list" fxLayout="row" fxLayoutAlign="start center" fxFlex>
+
+        <ng-container *ngFor="let item of items; let last = last;">
+
+            <mat-list-item class="breadcrumb-item" [ngClass]="{'active': item.active}">
+                <a *ngIf="!item.active" class="a-no-style"
+                    [routerLink]="item.link" [queryParams]="item.params"
+                    (click)="item.onClick()">
+                    {{item.label | translate: item.translateData}}
+                </a>
+                <div *ngIf="item.active">
+                    {{item.label | translate: item.translateData}}
+                </div>
+            </mat-list-item>
+
+            <mat-list-item *ngIf="displaySeparator && (addSeparatorAtTheEnd || !last)" class="breadcrumb-separator">
+                <span style="display: flex;" [innerHTML]="separator"></span>
+            </mat-list-item>
+
+        </ng-container>
+
+    </mat-list>
+
+</div>

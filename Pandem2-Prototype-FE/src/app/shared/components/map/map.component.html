@@ -1,0 +1,145 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<div *ngIf="!hideInputs" class="form-inline map-control">
+  <div class="form-group mr-4 mb-4">
+    <app-form-select
+      class="chart-type-container"
+      [options]="filters"
+      optionLabelKey="label"
+      optionValueKey="value"
+      [(ngModel)]="selectedFilterValue"
+      [placeholder]="'SHARED.MAP.FILTER_BY' | translate"
+      [clearable]="false"
+      (optionChanged)="retrieveData(nutsLevel, selectedRegionCode)"
+      [enableFilterOptions]="false"
+    ></app-form-select>
+  </div>
+  <div *ngIf="secondFilter"class="form-group mr-4 mb-4">
+    <app-form-select
+      class="chart-type-container"
+      [options]="secondFilter"
+      optionLabelKey="label"
+      optionValueKey="value"
+      [(ngModel)]="selectedSecondFilterValue"
+      [placeholder]="'SHARED.MAP.FILTER_BY' | translate"
+      [clearable]="false"
+      (optionChanged)="retrieveData(nutsLevel, selectedRegionCode)"
+      [enableFilterOptions]="false"
+    ></app-form-select>
+  </div>
+  <div class="form-group mr-4 mb-4">
+    <mat-button-toggle-group
+      [(ngModel)]="nutsLevel"
+      name="nuts"
+      aria-label="Type"
+      value="0"
+      class="d-none d-md-inline-flex nuts-container"
+      (change)="nutsLevelChanged($event.value, selectedRegionCode)"
+    >
+      <mat-button-toggle
+        [matTooltip]="selectedRegionCode !== 'EU' ? nuts0DisabledTooltip : ''"
+        [disabled]="selectedRegionCode !== 'EU'"
+        value="0"
+      >NUTS 0</mat-button-toggle>
+      <mat-button-toggle
+        [matTooltip]="selectedRegionCode === 'EU' ? nuts123DisabledTooltip : ''"
+        [disabled]="selectedRegionCode === 'EU' || isOnReportPage && +focusNutsLevel > 1"
+        value="1"
+        #toggleButton
+      >NUTS 1</mat-button-toggle>
+      <mat-button-toggle
+        [matTooltip]="selectedRegionCode === 'EU' ? nuts123DisabledTooltip : ''"
+        [disabled]="selectedRegionCode === 'EU' || isOnReportPage && +focusNutsLevel > 2"
+        value="2"
+      >NUTS 2</mat-button-toggle>
+      <mat-button-toggle
+        [matTooltip]="selectedRegionCode === 'EU' ? nuts123DisabledTooltip : ''"
+        [disabled]="selectedRegionCode === 'EU' || isOnReportPage && +focusNutsLevel > 3"
+        value="3"
+      >NUTS 3</mat-button-toggle>
+    </mat-button-toggle-group>
+    <mat-form-field appearance="fill" class="d-block d-md-none chart-type-container">
+      <mat-label>NUTS</mat-label>
+      <mat-select
+        value="bar-chart"
+        [(ngModel)]="nutsLevel"
+        (selectionChange)="nutsLevelChanged($event.value, selectedRegionCode)"
+      >
+        <mat-option value="0">NUTS 0</mat-option>
+        <mat-option value="1">NUTS 1</mat-option>
+        <mat-option value="2">NUTS 2</mat-option>
+        <mat-option value="3">NUTS 3</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="form-group mr-4 mb-4">
+    <app-form-select
+      class="chart-type-container"
+      [options]="regions"
+      optionLabelKey="name"
+      optionValueKey="code"
+      [(ngModel)]="selectedRegionCode"
+      [placeholder]="'SHARED.MAP.LOCATION' | translate"
+      [clearable]="false"
+      (optionChanged)="switchFocus($event.code,$event.name)"
+      [disabled]="isOnReportPage"
+    ></app-form-select>
+  </div>
+</div>
+<div *ngIf="!loaded" style="height:{{mapHeight}}px" class="mat-spinner-container">
+  <mat-spinner></mat-spinner>
+</div>
+<highcharts-chart
+  *ngIf="loaded"
+  class="geographical-area-container"
+  [callbackFunction]=cb
+  [Highcharts]="Highcharts"
+  [constructorType]="chartConstructor"
+  [options]="chartOptions"
+  [(update)]="updateFlag"
+  (updateChange)="onUpdateChange()"
+  [oneToOne]="true"
+  style="height:{{mapHeight}}px"
+></highcharts-chart>
+<p class="display-date text-center text-sm-left" *ngIf="displaySlider && !hideInputs">{{sliderDisplayValue}}</p>
+<div class="form-inline map-control map-slider" *ngIf="displaySlider && !hideInputs">
+  <mat-slider
+    [(ngModel)]="sliderCurrentlySelectedIndex"
+    tickInterval="1"
+    step="1"
+    min="0"
+    max="{{sliderDateDiff}}"
+    (change)="sliderDateChanged($event.value)"
+  ></mat-slider>
+  <mat-icon *ngIf="!sliderEnded && !sliderPlaying" class="date-player slider-control" (click)="runDateSlider()">
+    play_arrow
+  </mat-icon>
+  <mat-icon *ngIf="!sliderEnded &&sliderPlaying" class="date-stop slider-control" (click)="stopDateSlider()">
+    pause
+  </mat-icon>
+  <mat-icon *ngIf="!sliderPlaying && sliderEnded" class="date-replay ml-4 slider-control"(click)="runDateSlider(0)">
+    replay
+  </mat-icon>
+</div>
+

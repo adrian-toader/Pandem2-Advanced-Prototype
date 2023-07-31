@@ -1,0 +1,43 @@
+{
+  "$id": "humanResource.getDaily.request.query.schema",
+  "description": "Get daily human resources request params schema",
+  "type": "object",
+  "properties": {
+    "subcategory": {
+      "anyOf": [
+        {
+          "$ref": "/humanResource#/definitions/subcategory"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/humanResource#/definitions/subcategory"
+          }
+        }
+      ]
+    },
+    "total_type": {
+      "$ref": "/humanResource#/definitions/total_type"
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "split": {
+      "type": "string"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "subcategory",
+    "location",
+    "total_type"
+  ]
+}

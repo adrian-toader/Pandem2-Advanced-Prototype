@@ -1,0 +1,144 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<div class="container-fluid dashboard-page">
+  <div class="mb-4">
+    <app-modelling-header></app-modelling-header>
+  </div>
+
+  <div class="mb-4">
+    <app-modelling-breadcrumb></app-modelling-breadcrumb>
+  </div>
+
+  <ng-container *ngIf="scenarios[0]">
+    <div class="row mb-4">
+      <div class="col-xl-10">
+        <div style="height:100%; width:100%;">
+          <app-modelling-scenario-summary
+            [scenario]="scenarios[0]"
+            [scenarios]="scenarios"
+            [currentModel]="model"
+            [isOnResultsPage]="true"
+            [updateEnabled]="updateEnabled"
+            [isScenarioSaved]="isScenarioSaved"
+            [isLatest]="true"
+            (delete)="scenarioDeleted()"
+            (save)="saveClicked()"
+            (alternativeRemoved)="alternativeRemoved($event)"
+            (descriptionChanged)="descriptionChanged($event)">
+          </app-modelling-scenario-summary>
+        </div>
+      </div>
+      <div class="col-xl-2">
+        <app-modelling-actions
+          [isOnResultsPage]="true"
+          [scenarios]="scenarios"
+          [prevModel]="model">
+        </app-modelling-actions>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Show the results corresponding to the scenario model -->
+  <mat-card *ngIf="!isLoaded" class="mat-spinner-container modelling-section-spinner-container">
+    <mat-spinner></mat-spinner>
+  </mat-card>
+  <ng-container *ngIf="modelKey && isLoaded && showData">
+
+    <mat-tab-group class="modelling-tab mt-3" (selectedTabChange)="tabChanged($event)" [(selectedIndex)]="selectedTab">
+      <mat-tab *ngFor="let tab of modellingTabs.get(modelKey), let tabIndex = index">
+        <ng-template mat-tab-label>
+          <h5 class="modelling-title-weight">{{ 'MODULES.MODELLING.RESULTS.' + tab.title | translate }}</h5>
+          <p class="modelling-tab-description" *ngIf="tab.description">
+            {{ 'MODULES.MODELLING.RESULTS.' + tab.description | translate }}
+          </p>
+        </ng-template>
+
+        <mat-card *ngIf="!tab.isLoaded" class="mat-spinner-container modelling-section-spinner-container">
+          <mat-spinner></mat-spinner>
+        </mat-card>
+        <ng-container *ngIf="tab.isLoaded">
+          <div
+            *ngFor="let element of tab.sections, let i = index"
+            class="d-flex mb-4 modelling-section"
+            [class.modelling-section-wrap]="minimizedLengths.includes(chartData.length)">
+            <div
+              class="modelling-graph-section p-0 modelling-graph-section-max-column"
+              [class.gt-lg-col-10]="!minimizedLengths.includes(chartData.length) || element.viewStyle === ModellingViewTypes.List"
+              [class.modelling-graph-section-max-column]="minimizedLengths.includes(chartData.length) && element.viewStyle === ModellingViewTypes.Grid"
+              *ngIf="element.id !== modellingSections.Exploration">
+              <app-modelling-section-wrapper
+                [section]="element.section"
+                [sectionId]="element.id"
+                [scenarios]="scenarios"
+                [chartData]="chartData"
+                [xAxis]="xAxis"
+                [isCollapsed]="element.isCollapsed"
+                [viewStyle]="element.viewStyle"
+                (expand)="expandSection(tabIndex, i)"
+                (viewStyleChanged)="viewStyleChanged(tabIndex, i, $event)"
+              ></app-modelling-section-wrapper>
+            </div>
+            <div class="col-12 p-0" *ngIf="element.id === modellingSections.Exploration">
+              <app-modelling-section-wrapper
+                #explorationElement
+                [section]="element.section"
+                [sectionId]="element.id"
+                [scenarios]="scenarios"
+                [chartData]="chartData"
+                [xAxis]="xAxis"
+                [isCollapsed]="element.isCollapsed"
+                [viewStyle]="element.viewStyle"
+                [isScenarioSaved]="isScenarioSaved"
+                (explorationChangedStatus)="updateSavingStatus($event)"
+                (viewStyleChanged)="viewStyleChanged(tabIndex, i, $event)"
+                (expand)="expandSection(tabIndex, i)"
+              ></app-modelling-section-wrapper>
+            </div>
+            <div
+              class="modelling-graph-options p-0 pl-3"
+              [class.gt-lg-col-2]="!minimizedLengths.includes(chartData.length) || element.viewStyle === ModellingViewTypes.List"
+              [class.modelling-graph-options-min-column]="minimizedLengths.includes(chartData.length) && element.viewStyle === ModellingViewTypes.Grid"
+              *ngIf="element.id !== modellingSections.Exploration">
+              <app-modelling-card-manager
+                [index]="i"
+                [lastIndex]="modellingTabs.get(modelKey)[tabIndex].sections.length - 1"
+                [chartPage]="this"
+                [isCollapsed]="element.isCollapsed"
+                [isSection]="true"
+                [isMinimized]="minimizedLengths.includes(chartData.length) && element.viewStyle === ModellingViewTypes.Grid"
+                [isScenarioSaved]="isScenarioSaved"
+                [isCopyDisabled]="element.isCopiedToReport"
+                [showCopyWarning]="!isScenarioSaved"
+                (collapseEvent)="collapseIndex(tabIndex, $event)"
+                (moveUpEvent)="moveUpIndex(tabIndex, $event)"
+                (moveDownEvent)="moveDownIndex(tabIndex, $event)"
+                (copyToReportEvent)="copyToReport(tabIndex, $event)">
+              </app-modelling-card-manager>
+            </div>
+          </div>
+        </ng-container>
+      </mat-tab>
+    </mat-tab-group>
+  </ng-container>
+</div>

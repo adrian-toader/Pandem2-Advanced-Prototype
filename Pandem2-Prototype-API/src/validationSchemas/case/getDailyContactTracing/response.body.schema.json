@@ -1,0 +1,38 @@
+{
+  "$id": "case.getDailyContactTracing.response.body.schema",
+  "description": "Get daily contact tracing cases response body schema",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "total": {
+            "type": "number"
+          },
+          "reached": {
+            "type": "number"
+          },
+          "reached_within_a_day": {
+            "type": "number"
+          },
+          "were_previous_contacts": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "date",
+          "total"
+        ]
+      }
+    },
+    "metadata": {
+      "$ref": "/base#/definitions/importMetadata"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$id": "contact.getDaily.response.body.schema",
+  "description": "Get daily contacts response body schema",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "total": {
+            "type": "number"
+          },
+          "reached": {
+            "type": "number"
+          },
+          "reached_within_a_day": {
+            "type": "number"
+          },
+          "contact_tracing_policy":{
+            "type": "string"
+          }
+        },
+        "required": [
+          "date",
+          "total",
+          "reached",
+          "reached_within_a_day"
+        ]
+      }
+    },
+    "metadata": {
+      "$ref": "/base#/definitions/importMetadata"
+    }
+  }
+}

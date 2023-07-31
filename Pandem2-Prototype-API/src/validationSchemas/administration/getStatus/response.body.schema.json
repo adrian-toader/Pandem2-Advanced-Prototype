@@ -1,0 +1,29 @@
+{
+  "$id": "administration.getStatus.response.body.schema",
+  "description": "The response body schema for the administration.getStatus endpoint",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["in service (partial)", "in service", "out of service"]
+    },
+    "services": {
+      "type": "object",
+      "properties": {
+        "database": {
+          "type": "string",
+          "enum": ["in service", "out of service"]
+        },
+        "pandemSource": {
+          "type": "string",
+          "enum": ["in service", "out of service"]
+        },
+        "modelling": {
+          "type": "string",
+          "enum": ["in service", "out of service"]
+        }
+      }
+    }
+  },
+  "required": []
+}

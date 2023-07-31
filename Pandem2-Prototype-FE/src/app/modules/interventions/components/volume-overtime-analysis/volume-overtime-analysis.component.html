@@ -1,0 +1,109 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<mat-card *ngIf="!selectedTopic">
+  <div class="row">
+    <div class="col-md-12 text-center text-sm-left">
+      {{'MODULES.INTERVENTIONS.VOLUME_OVERTIME.VOLUME_OVERTIME' | translate }}:
+    </div>
+  </div>
+  <br>
+  {{'MODULES.INTERVENTIONS.VOLUME_OVERTIME.NO_DATA_TO_DISPLAY' | translate }}
+</mat-card>
+<mat-card *ngIf="selectedTopic">
+  <mat-card-title>
+    <div class="row">
+      <div class="col-md-12 text-center text-sm-left">
+        {{'MODULES.INTERVENTIONS.VOLUME_OVERTIME.VOLUME_OVERTIME' | translate }}: <strong>{{selectedTopic?.name}}</strong> {{'MODULES.INTERVENTIONS.VOLUME_OVERTIME.TOPIC' | translate }}
+      </div>
+    </div>
+  </mat-card-title>
+  <br/>
+  <mat-card-subtitle>
+    <div class="col-md-6 mb-4 text-center text-sm-left">
+      <app-sources
+        [lastUpdate]="lastUpdate"
+        [sourceType]="SourceType.GRAPH"
+        [sources]="sources"></app-sources>
+    </div>
+  </mat-card-subtitle>
+  <mat-card-content>
+    <div class="row form-inline">
+      <app-form-select
+        (optionChanged)=changeGraphType()
+        [(ngModel)]="chartType"
+        [clearable]="false"
+        [enableFilterOptions]="false"
+        [options]="chartTypes"
+        [placeholder]="'Filter By'"
+        class="chart-type-container form-group mr-4 mb-4"
+        optionLabelKey="label"
+        optionValueKey="value"
+      >
+      </app-form-select>
+      <app-form-select (optionChanged)=changeTopic()
+                       *ngIf="!isOnSMAPage"
+                       [(ngModel)]="selectedTopic"
+                       [clearable]="false"
+                       [enableFilterOptions]="false"
+                       [options]="topicLabelValuePairs"
+                       [placeholder]="'Topic'"
+                       class="chart-type-container mr-4 mb-4"
+                       optionLabelKey="label"
+                       optionValueKey="value"
+      >
+      </app-form-select>
+      <div class="col-md-6 form-group mr-4 mb-4 text-center text-sm-left" *ngIf="viewStyle !== 'list'">
+        <app-chart-time-interval (intervalChanged)="changeTimeInterval($event)"
+                                 [intervalOptions]="chartsIntervalOptions"
+                                 [selectedIntervalOption]="selectedIntervalOption">
+        </app-chart-time-interval>
+      </div>
+    </div>
+    <div class="row form-inline" *ngIf="viewStyle === 'list'">
+      <div class="col-md-6 form-group mr-4 mb-4 text-center text-sm-left" >
+        <app-chart-time-interval (intervalChanged)="changeTimeInterval($event)"
+                                 [intervalOptions]="chartsIntervalOptions"
+                                 [selectedIntervalOption]="selectedIntervalOption">
+        </app-chart-time-interval>
+      </div>
+    </div>
+    <div *ngIf="isLoading()"
+         class="mat-spinner-container loading-chart-placeholder">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="isLoaded() && dailyChart && selectedRegionCode"
+         class="charts-container">
+      <app-intervention-chart
+        [selectedInterventions]="selectedInterventions"
+        [selectedRegionCode]="this.smaRegionCode ? this.smaRegionCode : this.selectedRegionCode"
+        [startDate]="startDate"
+        [endDate]="endDate"
+        [isOnInterventionPage] ="true"
+        [series]="dailySeries"
+        [xAxisData]="dailyChart.total.xAxis"
+        [isOnSMA]="true"
+        [proportionChart]="true"
+      ></app-intervention-chart>
+    </div>
+  </mat-card-content>
+</mat-card>

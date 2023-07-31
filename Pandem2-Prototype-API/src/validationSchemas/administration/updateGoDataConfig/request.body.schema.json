@@ -1,0 +1,22 @@
+{
+  "$id": "administration.updateGoDataConfig.request.body.schema",
+  "description": "Update the goData object in the database",
+  "type": "object",
+  "properties": {
+    "url": {
+      "$ref": "/base#/definitions/url"
+    },
+    "credentials": {
+      "$ref": "/base#/definitions/goDataCredentials"
+    },
+    "importEnabled": {
+      "type": "boolean",
+      "default": "false"
+    }
+  },
+  "required": [
+    "url",
+    "credentials",
+    "importEnabled"
+  ]
+}

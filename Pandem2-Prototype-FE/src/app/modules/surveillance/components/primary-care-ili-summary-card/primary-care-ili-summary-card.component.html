@@ -1,0 +1,138 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<mat-card class="summary-section">
+  <div *ngIf="isLoading()" class="mat-spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="isLoaded()">
+    <div class="summary-section__name-icon-container">
+      <div>{{'MODULES.SURVEILLANCE.PRIMARY_CARE_ILI_SUMMARY_CARD.TITLE' | translate }}</div>
+      <div>
+        <mat-icon (click)="showInfo = !showInfo">info</mat-icon>
+      </div>
+    </div>
+    <mat-card-title class="text-center text-sm-left">
+      {{ selectedRegionName }}
+    </mat-card-title>
+    <mat-card-subtitle class="text-center text-sm-left mb-3">
+      <app-sources
+        [sourceType]="SourceType.SUMMARY"
+        [sources]="sources">
+      </app-sources>
+    </mat-card-subtitle>
+    <mat-card-content>
+      <mat-card-title class="illness-title">
+        {{'MODULES.SURVEILLANCE.PRIMARY_CARE_ILI_SUMMARY_CARD.INFLUENZA' | translate }}
+      </mat-card-title>
+      <p class="text-center text-sm-left info-text" *ngIf="showInfo">
+        {{'MODULES.SURVEILLANCE.PRIMARY_CARE_ILI_SUMMARY_CARD.WIP' | translate }}
+      </p>
+      <mat-list>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <h6>{{'MODULES.SURVEILLANCE.PRIMARY_CARE_ILI_SUMMARY_CARD.THIS_WEEK' | translate }}</h6>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            <ul class="ml-5"><li>{{'MODULES.SURVEILLANCE.PRIMARY_CARE_ILI_SUMMARY_CARD.NUMBER_OF_PEOPLE_TESTED' | translate }}</li></ul>
+            <p class="info-text" *ngIf="showInfo"> {{'MODULES.SURVEILLANCE.PRIMARY_CARE_ILI_SUMMARY_CARD.WIP' | translate }}</p>
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{ currentWeekTested | number: defaultNumberFormat }}
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            <ul class="ml-5"><li>{{'MODULES.SURVEILLANCE.PRIMARY_CARE_ILI_SUMMARY_CARD.PERCENTAGE_OF_TESTED' | translate }}</li></ul>
+            <p class="info-text" *ngIf="showInfo">{{'MODULES.SURVEILLANCE.PRIMARY_CARE_ILI_SUMMARY_CARD.WIP' | translate }}</p>
+          </div>
+          <div *ngIf="percentageIsFinite(currentWeekPositivity)" class="col-xl-4 value text-right">
+            {{ currentWeekConfirmed | number: defaultNumberFormat }}
+            ({{ currentWeekPositivity | number: defaultNumberFormat}}%)
+          </div>
+          <div *ngIf="!percentageIsFinite(currentWeekPositivity)" class="col-xl-4 ">
+            <p class ="mt-4">{{'MODULES.SURVEILLANCE.PRIMARY_CARE_ILI_SUMMARY_CARD.NO_COMPARABLE_DATA' | translate }}</p>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-list-item>
+          <h6>{{'MODULES.SURVEILLANCE.PRIMARY_CARE_ILI_SUMMARY_CARD.LAST_WEEK' | translate }}</h6>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            <ul class="ml-5"><li>{{'MODULES.SURVEILLANCE.PRIMARY_CARE_ILI_SUMMARY_CARD.NUMBER_OF_PEOPLE_TESTED' | translate }}</li></ul>
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{ previousWeekTested | number: defaultNumberFormat }}
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            <ul class="ml-5"><li>{{'MODULES.SURVEILLANCE.PRIMARY_CARE_ILI_SUMMARY_CARD.PERCENTAGE_OF_TESTED' | translate }}</li></ul>
+          </div>
+          <div *ngIf="percentageIsFinite(previousWeekPositivity)" class="col-xl-4 value text-right">
+            {{ previousWeekConfirmed | number: defaultNumberFormat }}
+            ({{ previousWeekPositivity | number: defaultNumberFormat}}%)
+          </div>
+          <div *ngIf="!percentageIsFinite(previousWeekPositivity)" class="col-xl-4 ">
+            <p class ="mt-4">{{'MODULES.SURVEILLANCE.PRIMARY_CARE_ILI_SUMMARY_CARD.POSITIVITY_CHANGE' | translate }}</p>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            <ul class="ml-5"><li>{{'MODULES.SURVEILLANCE.PRIMARY_CARE_ILI_SUMMARY_CARD.NO_COMPARABLE_DATA' | translate }}</li></ul>
+          </div>
+          <div *ngIf="percentageIsFinite(evolution)" class="col-xl-4 value text-right">
+            <div
+              class="evolution-container alert alert-danger"
+              *ngIf="positiveEvolution">
+              <mat-icon class="evolution-container__icon">
+                keyboard_arrow_up
+              </mat-icon>
+              {{ evolution | number: defaultNumberFormat }}%
+            </div>
+            <div
+              class="evolution-container alert alert-success"
+              *ngIf="!positiveEvolution">
+              <mat-icon class="evolution-container__icon">
+                keyboard_arrow_down
+              </mat-icon>
+              {{ Math.abs(evolution) | number: defaultNumberFormat }}%
+            </div>
+          </div>
+          <div *ngIf="!percentageIsFinite(evolution)" class="col-xl-4">
+            <p class ="mt-4">{{'MODULES.SURVEILLANCE.PRIMARY_CARE_ILI_SUMMARY_CARD.NO_COMPARABLE_DATA' | translate }}</p>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </mat-card-content>
+  </div>
+</mat-card>

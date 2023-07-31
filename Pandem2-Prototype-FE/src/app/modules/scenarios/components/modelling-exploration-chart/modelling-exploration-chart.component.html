@@ -1,0 +1,182 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<mat-card class="modelling-exploration-loading-chart-card" *ngIf="!isLoaded">
+  <div class="mat-spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+</mat-card>
+<mat-card class="modelling-exploration-loading-chart-card" *ngIf="chart === undefined">
+  <div class="mat-spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+</mat-card>
+<mat-card *ngIf="chart && chart.series && chart.series.length" class="mb-4" [class.modelling-exploration-full-card]="!chart.isCollapsed">
+  <mat-card-title>{{ 'MODULES.MODELLING.EXPLORATION.CHART.TITLE' | translate }}</mat-card-title>
+  <mat-card-content>
+    <div class="row">
+      <div class="col-xl-3">
+        <mat-form-field
+          class="col-xl-12"
+          [ngClass]="{'modelling-exploration-chip-list-fix': !chart.plotlines.length}"
+          appearance="outline"
+          (click)="openModifyGraph()">
+          <mat-label>{{ 'MODULES.MODELLING.EXPLORATION.CHART.PLOTLINES' | translate }}</mat-label>
+          <mat-chip-list class="modelling-exploration-chip-list">
+            <mat-chip *ngFor="let chip of chart.plotlines" (removed)="removePlotline(chip)">
+              {{ 'MODULES.MODELLING.OUTPUTS.' + outputs.get(chip).key + '.NAME' | translate }}
+              <span *ngIf="outputs.get(chip).ageKey">
+                &nbsp;{{ 'MODULES.MODELLING.AGES.' + (outputs.get(chip).ageKey | uppercase) | translate }}
+              </span>
+              <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+          </mat-chip-list>
+        </mat-form-field>
+      </div>
+
+      <div class="col-xl-9">
+        <mat-form-field class="col-xl-12" appearance="outline" (click)="openModifyGraph()">
+          <mat-label>{{ 'MODULES.MODELLING.EXPLORATION.CHART.VALUES' | translate }}</mat-label>
+          <mat-chip-list class="modelling-exploration-chip-list">
+            <mat-chip *ngFor="let chip of chart.values" (removed)="removeValue(chip)">
+              {{ 'MODULES.MODELLING.OUTPUTS.' + outputs.get(chip).key + '.NAME' | translate }}
+              <span *ngIf="outputs.get(chip).ageKey">
+                &nbsp;{{ 'MODULES.MODELLING.AGES.' + (outputs.get(chip).ageKey | uppercase) | translate }}
+              </span>
+              <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+          </mat-chip-list>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="!chart.isCollapsed">
+      <div class="col-xl-12">
+        <mat-button-toggle-group
+          class="mr-3"
+          (change)="changeChartType($event)"
+          [value]="chart.chartType">
+          <mat-button-toggle value="spline">
+            {{ 'MODULES.MODELLING.EXPLORATION.CHART.LINE_CHART' | translate }}
+          </mat-button-toggle>
+          <mat-button-toggle value="column">
+            {{ 'MODULES.MODELLING.EXPLORATION.CHART.BAR_CHART' | translate }}
+          </mat-button-toggle>
+          <mat-button-toggle value="area">
+            {{ 'MODULES.MODELLING.EXPLORATION.CHART.AREA_CHART' | translate }}
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <mat-button-toggle-group
+          class="mr-3"
+          (change)="changePlotType($event)"
+          [value]="chart.chartPlotType">
+          <mat-button-toggle value="linear">{{ 'MODULES.MODELLING.EXPLORATION.CHART.LINEAR' | translate }}</mat-button-toggle>
+          <mat-button-toggle value="logarithmic">{{ 'MODULES.MODELLING.EXPLORATION.CHART.LOG' | translate }}</mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <mat-button-toggle-group
+          *ngIf="scenarios.length > 1"
+          (change)="changeViewBy($event)"
+          [value]="chart.viewBy">
+          <mat-button-toggle value="scenario">
+            {{ 'MODULES.MODELLING.EXPLORATION.CHART.VIEW_BY_SCENARIO' | translate }}
+          </mat-button-toggle>
+          <mat-button-toggle value="indicator">
+            {{ 'MODULES.MODELLING.EXPLORATION.CHART.VIEW_BY_INDICATOR' | translate }}
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="!chart.isCollapsed">
+      <div class="col-xl-12">
+        <div class="modelling-exploration-card">
+          <div class="row">
+            <ng-container *ngIf="!chart.viewBy || chart.viewBy === 'scenario'">
+              <div
+              *ngFor="let scenario of scenarios, let i = index"
+              class="modelling-section-element"
+              [class.modelling-section-element-horizontal-line]="styleProps[i] && styleProps[i].hLine && viewStyle === ModellingViewTypes.Grid"
+              [class.modelling-section-element-vertical-line]="styleProps[i] && styleProps[i].vLine && viewStyle === ModellingViewTypes.Grid"
+              [class.col-xl-12]="styleProps[i] && styleProps[i].col12 || viewStyle === ModellingViewTypes.List"
+              [class.col-lg-6]="styleProps[i] && styleProps[i].col6 && viewStyle === ModellingViewTypes.Grid"
+              [class.col-lg-4]="styleProps[i] && styleProps[i].col4 && viewStyle === ModellingViewTypes.Grid">
+                <div>
+                  <div class="mb-3">
+                    <div class="modelling-scenario-title-container" [class.modelling-scenario-title-margin]="viewStyle === ModellingViewTypes.List">
+                      <div>
+                        <span *ngIf="i === 0">{{ 'MODULES.MODELLING.COMMON.BASELINE' | translate }}</span>
+                        <span *ngIf="i >= 1">{{ 'MODULES.MODELLING.COMMON.ALTERNATIVE' | translate }}</span>
+                        {{ 'MODULES.MODELLING.COMMON.SCENARIO' | translate }}: {{scenario.name}}
+                      </div>
+                      <div class="modelling-scenario-location">
+                        <mat-icon>location_on</mat-icon>
+                        {{scenario.location}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row" *ngIf="chartData[i] && chartData[i].size">
+                    <div class="col-12">
+                      <app-highcharts
+                        #chartContainer
+                        [chartType]="chart.chartType"
+                        [yAxisType]="chart.chartPlotType"
+                        [yAxisExtra]="chart.plotlineData[i]"
+                        [series]="chart.series[i]"
+                        [showExportMenu]="true"
+                        [xAxisData]="xAxis"
+                        [skipYAxisMinValue]="true">
+                      </app-highcharts>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+
+            <div class="col-xl-12 d-flex flex-wrap" *ngIf="chart.viewBy === 'indicator'">
+              <ng-container *ngFor="let indicator of chart.indicators">
+                <div class="col-md-4">
+                  <app-highcharts
+                    #chartContainer
+                    [chartType]="chart.chartType"
+                    [yAxisType]="chart.chartPlotType"
+                    [series]="indicator.series"
+                    [chartTitle]="indicator.title"
+                    [showExportMenu]="true"
+                    [xAxisData]="xAxis"
+                    [skipYAxisMinValue]="true">
+                  </app-highcharts>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

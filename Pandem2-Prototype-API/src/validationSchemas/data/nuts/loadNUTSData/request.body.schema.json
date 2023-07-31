@@ -1,0 +1,19 @@
+{
+  "$id": "data.loadNUTSData.request.body.schema",
+  "description": "Load NUTS data into the database",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "eu_nuts_0",
+        "eu_nuts_1",
+        "eu_nuts_2",
+        "eu_nuts_3"
+      ]
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

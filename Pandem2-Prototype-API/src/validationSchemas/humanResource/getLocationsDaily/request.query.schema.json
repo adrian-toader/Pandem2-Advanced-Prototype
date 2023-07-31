@@ -1,0 +1,32 @@
+{
+  "$id": "humanResource.getLocationsDaily.request.query.schema",
+  "description": "Get total number of hr staff for a time interval, grouped by locations - request query schema",
+  "type": "object",
+  "properties": {
+    "subcategory": {
+      "$ref": "/humanResource#/definitions/subcategory"
+    },
+    "total_type": {
+      "$ref": "/humanResource#/definitions/total_type"
+    },
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "split": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "subcategory",
+    "total_type",
+    "location"
+  ]
+}

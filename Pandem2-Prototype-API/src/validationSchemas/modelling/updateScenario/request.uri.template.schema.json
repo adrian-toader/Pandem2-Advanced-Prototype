@@ -1,0 +1,13 @@
+{
+  "$id": "modelling.updateScenario.request.uri.template.schema",
+  "description": "Modify scenario URI template schema",
+  "type": "object",
+  "properties": {
+    "scenarioId": {
+      "$ref": "/base#/definitions/mongoID"
+    }
+  },
+  "required": [
+    "scenarioId"
+  ]
+}

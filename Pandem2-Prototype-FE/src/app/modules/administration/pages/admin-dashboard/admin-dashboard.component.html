@@ -1,0 +1,276 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<mat-card>
+  <h3>Import</h3>
+  <br>
+  <div *ngIf="haveImportPermission">
+    <mat-card-title>{{'MODULES.ADMINISTRATION.NEW_IMPORT' | translate}}</mat-card-title>
+    <div class="row" style="width:100%;">
+      <form (submit)="importFromPandemSource()" style="width:100%;">
+        <div class="col-xl-12">
+          <mat-form-field appearance="fill" style="width:100%;">
+            <mat-label>{{'MODULES.ADMINISTRATION.SELECT_IMPORT_DATA_TYPE' | translate}}</mat-label>
+            <mat-select [(value)]="selectedImports" multiple>
+              <mat-option *ngFor="let option of importOptions" [value]="option" (click)="isAllSelected()" [disabled]="selectedImports.includes('all') && option !== 'all'">{{option}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field *ngIf="selectedImports.includes('socialMediaAnalysisData') || selectedImports.includes('all') " appearance="fill" style="width:100%;">
+            <mat-label>{{'MODULES.ADMINISTRATION.IMPORT_SMA_SUGGESTIONS' | translate}}</mat-label>
+            <mat-select [(value)]="importSuggestion" >
+              <mat-option [value]="false">False</mat-option>
+              <mat-option [value]="true">True</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="accent">{{'MODULES.ADMINISTRATION.START_IMPORT' | translate}}</button>
+      </form>
+    </div>
+  </div>
+  <br>
+  <mat-card-title>
+    <div class="row">
+      <div class="col-xl-7">
+        {{'MODULES.ADMINISTRATION.IMPORT_DETAILS' | translate}}
+      </div>
+    </div>
+  </mat-card-title>
+  <br>
+  <mat-card-content>
+    <mat-card-subtitle>
+      <span><strong>{{'MODULES.ADMINISTRATION.IMPORT_STATUS' | translate}}</strong></span>
+    </mat-card-subtitle>
+    <div>
+      <table mat-table [dataSource]="importResultsDataSource" aria-describedby="import">
+        <ng-container matColumnDef="start_date">
+          <th mat-header-cell *matHeaderCellDef>{{'MODULES.ADMINISTRATION.START_DATE' | translate}}</th>
+          <td mat-cell *matCellDef="let element">{{element.start_date}}</td>
+        </ng-container>
+        <ng-container matColumnDef="end_date">
+          <th mat-header-cell *matHeaderCellDef>{{'MODULES.ADMINISTRATION.END_DATE' | translate}}</th>
+          <td mat-cell *matCellDef="let element">{{element.end_date}}</td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>{{'MODULES.ADMINISTRATION.STATUS' | translate}}</th>
+          <td mat-cell *matCellDef="let element">{{element.status}}</td>
+        </ng-container>
+        <ng-container matColumnDef="data_type">
+          <th mat-header-cell *matHeaderCellDef>{{'MODULES.ADMINISTRATION.DATA_TYPE' | translate}}</th>
+          <td mat-cell *matCellDef="let element">{{element.data_type}}</td>
+        </ng-container>
+        <ng-container matColumnDef="error">
+          <th mat-header-cell *matHeaderCellDef>{{'MODULES.ADMINISTRATION.INFO' | translate}}</th>
+          <td mat-cell *matCellDef="let element"><button mat-button *ngIf="element.error_message" (click)="showErrorMessage(element.error_message)">Show error message</button></td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="importResultsColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: importResultsColumns;"></tr>
+      </table>
+      <mat-paginator #paginator1 [pageSizeOptions]="[5, 10, 20]" [length]=importResultsDataSource.data.length
+        showFirstLastButtons>
+      </mat-paginator>
+    </div>
+    <br>
+    <mat-card-title>
+      <div class="row">
+        <div class="col-xl-7">
+          {{'MODULES.ADMINISTRATION.SOURCE_INFO' | translate}}
+        </div>
+        <div class="col-xl-5" style="height:0.7rem">
+          <mat-card-content>
+            <mat-form-field style="width: 70%; float:right">
+              <mat-label>{{'MODULES.ADMINISTRATION.SOURCE' | translate}}</mat-label>
+              <input matInput placeholder="Search for source..." [(ngModel)]="searchSource"
+                     (ngModelChange)="lookFor($event)" type="text">
+              <button matSuffix mat-icon-button aria-label="Clear" (click)="resetFilter()">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          </mat-card-content>
+        </div>
+      </div>
+      <br>
+    </mat-card-title>
+    <div>
+      <table mat-table [dataSource]="sourcesDataSource" aria-describedby="source-description">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>{{'MODULES.ADMINISTRATION.NAME' | translate}}</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>{{'MODULES.ADMINISTRATION.DESCRIPTION' | translate}}</th>
+          <td mat-cell *matCellDef="let element">{{element.description}}</td>
+        </ng-container>
+        <ng-container matColumnDef="active">
+          <th mat-header-cell *matHeaderCellDef>{{'MODULES.ADMINISTRATION.ACTIVE' | translate}}</th>
+          <td mat-cell *matCellDef="let element">{{element.active}}</td>
+        </ng-container>
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>{{'MODULES.ADMINISTRATION.LAST_IMPORT_DATE' | translate}}</th>
+          <td mat-cell *matCellDef="let element">{{element.date}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="dataSourcesColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: dataSourcesColumns;"></tr>
+      </table>
+      <mat-paginator #paginator2 [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>
+<br>
+
+<mat-card class="mb-5" *ngIf="haveConfigurationPermissions">
+  <mat-card-title>
+   {{'MODULES.ADMINISTRATION.CONFIG_URL' | translate}}
+  </mat-card-title>
+  <mat-card-content>
+    <div class="d-flex align-items-start justify-content-between flex-wrap">
+      <div style="min-width: 460px;" class="col-6">
+        <mat-card-subtitle>
+          <br />
+          <span><strong>{{ 'MODULES.ADMINISTRATION.CHANGE_SOURCE_URL' | translate:{ name: 'MODULES.ADMINISTRATION.PANDEM_SOURCE' | translate } }}</strong></span>
+        </mat-card-subtitle>
+        <div class=" d-flex shadow-sm px-5 rounded justify-content-between align-items-center">
+          <div class="w-100">
+            <app-form-input class="mr-4" name="PandemSource" (ngModelChange)="pandemSourceButtonDisabled = false"
+              [(ngModel)]="pandemSource.url" [placeholder]="'MODULES.ADMINISTRATION.URL' | translate:{ name: 'MODULES.ADMINISTRATION.PANDEM_SOURCE' | translate }" required="true">
+            </app-form-input>
+            <app-form-input class="mr-4" name="RequestTimeout" (ngModelChange)="pandemSourceButtonDisabled = false"
+              [(ngModel)]="pandemSource.requestTimeout" [placeholder]="'MODULES.ADMINISTRATION.REQUEST_TIMEOUT' | translate" required="true">
+            </app-form-input>
+          </div>
+          <button type="button" (click)="changePandemURL()" [disabled]="pandemSourceButtonDisabled" style="height: 47px"
+            class="btn btn-success ml-4">{{'MODULES.ADMINISTRATION.SAVE' | translate}}</button>
+        </div>
+      </div>
+      <div style="min-width: 460px;" class="col-6">
+        <mat-card-subtitle>
+          <br />
+          <span><strong>{{ 'MODULES.ADMINISTRATION.CHANGE_SOURCE_URL' | translate:{ name: 'MODULES.ADMINISTRATION.GO_DATA' | translate } }}</strong></span>
+        </mat-card-subtitle>
+        <div class=" d-flex justify-content-between align-items-center shadow-sm px-5 rounded">
+          <div class="w-100">
+            <app-form-input name="GoData" (ngModelChange)="goDataButtonDisabled = false" [(ngModel)]="goData.url"
+              [placeholder]="'MODULES.ADMINISTRATION.URL' | translate:{ name: 'MODULES.ADMINISTRATION.GO_DATA' | translate }" required="true">
+            </app-form-input>
+            <app-form-input type="text" name="clientId" (ngModelChange)="goDataButtonDisabled = false"
+              [(ngModel)]="goData.credentials.clientId" [placeholder]="'MODULES.ADMINISTRATION.CLIENT_ID' | translate">
+            </app-form-input>
+            <app-form-input type="text" name="clientSecret" (ngModelChange)="goDataButtonDisabled = false"
+              [(ngModel)]="goData.credentials.clientSecret" [placeholder]="'MODULES.ADMINISTRATION.CLIENT_SECRET' | translate">
+            </app-form-input>
+            <mat-slide-toggle (change)="toggleButton($event)" [checked]="goData.importEnabled"
+              [labelPosition]="'before'" class="mr-5" id="admissions">{{'MODULES.ADMINISTRATION.IMPORT_ENABLED' | translate}}
+            </mat-slide-toggle>
+
+          </div>
+          <button type="button" (click)="changeGoDataURL()" [disabled]="goDataButtonDisabled" style="height: 47px"
+            class="btn btn-success ml-4">{{'MODULES.ADMINISTRATION.SAVE' | translate}}</button>
+        </div>
+      </div>
+      <div style="min-width: 460px;" class="col-6">
+        <mat-card-subtitle>
+          <br />
+          <span><strong>{{ 'MODULES.ADMINISTRATION.CHANGE_SOURCE_URL' | translate:{ name: 'MODULES.ADMINISTRATION.MODELLING' | translate } }}</strong></span>
+        </mat-card-subtitle>
+        <div class=" d-flex shadow-sm px-5 rounded justify-content-between align-items-center">
+          <div class="w-100">
+            <app-form-input class="mr-4" name="Modelling" (ngModelChange)="modellingButtonDisabled = false"
+              [(ngModel)]="modelling.url" [placeholder]="'MODULES.ADMINISTRATION.URL' | translate:{ name: 'MODULES.ADMINISTRATION.MODELLING' | translate }" required="true">
+            </app-form-input>
+          </div>
+          <button type="button" (click)="changeModellingUrl()" [disabled]="modellingButtonDisabled" style="height: 47px"
+            class="btn btn-success ml-4">{{'MODULES.ADMINISTRATION.SAVE' | translate}}</button>
+        </div>
+      </div>
+      <div style="min-width: 460px;" class="col-6">
+        <mat-card-subtitle>
+          <br />
+          <span><strong>{{ 'MODULES.ADMINISTRATION.CHANGE_SOURCE_URL' | translate:{ name: 'MODULES.ADMINISTRATION.SERVICE_GATEWAY' | translate } }}</strong></span>
+        </mat-card-subtitle>
+        <div class=" d-flex shadow-sm px-5 rounded justify-content-between align-items-center">
+          <div class="w-100">
+            <app-form-input class="mr-4" name="ServiceGateway" (ngModelChange)="serviceGatewayButtonDisabled = false"
+              [(ngModel)]="serviceGateway.url" [placeholder]="'MODULES.ADMINISTRATION.URL' | translate:{ name: 'MODULES.ADMINISTRATION.SERVICE_GATEWAY' | translate }" required="true">
+            </app-form-input>
+            <app-form-input class="mr-4" name="Timeout" (ngModelChange)="serviceGatewayButtonDisabled = false"
+              [(ngModel)]="serviceGateway.timeout" [placeholder]="'MODULES.ADMINISTRATION.TIMEOUT' | translate" required="true">
+            </app-form-input>
+          </div>
+          <button type="button" (click)="changeServiceGateway()" [disabled]="serviceGatewayButtonDisabled"
+            style="height: 47px" class="btn btn-success ml-4">{{'MODULES.ADMINISTRATION.SAVE' | translate}}</button>
+        </div>
+      </div>
+    </div>
+
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="mb-5">
+  <mat-card-title>
+    {{'MODULES.ADMINISTRATION.SERVICE_AVAILABILITY' | translate}}
+  </mat-card-title>
+  <mat-card-content>
+    <div class="d-flex align-items-start justify-content-between flex-wrap">
+      <div style="min-width: 460px;" class="col-6">
+        <mat-card-subtitle>
+          <br />
+          <span><strong>{{'MODULES.ADMINISTRATION.API_AVAILABILITY' | translate}}:</strong></span>
+          <span class="ml-2" [style.color]="getColor(servicesStatuses?.status)">
+            {{ servicesStatuses?.status }}
+          </span>
+        </mat-card-subtitle>
+      </div>
+    </div>
+    <div style="margin-left: 3rem;">
+      <div class="d-flex align-items-start justify-content-between flex-wrap">
+        <div style="min-width: 460px;" class="col-6">
+          <mat-card-subtitle>
+            <span style="font-size: 14px;">{{'MODULES.ADMINISTRATION.DATABASE' | translate}}:</span>
+            <span class="ml-2" [style.color]="getColor(servicesStatuses?.services?.database)">
+              {{ servicesStatuses?.services?.database }}
+            </span></mat-card-subtitle>
+        </div>
+      </div>
+      <div class="d-flex align-items-start justify-content-between flex-wrap">
+        <div style="min-width: 460px;" class="col-6">
+          <mat-card-subtitle>
+            <span>{{'MODULES.ADMINISTRATION.PANDEM_SOURCE' | translate}}:</span>
+            <span class="ml-2" [style.color]="getColor(servicesStatuses?.services?.pandemSource)">
+              {{ servicesStatuses?.services?.pandemSource }}
+            </span>
+          </mat-card-subtitle>
+        </div>
+      </div>
+      <div class="d-flex align-items-start justify-content-between flex-wrap">
+        <div style="min-width: 460px;" class="col-6">
+          <mat-card-subtitle>
+            <span>{{'MODULES.ADMINISTRATION.MODELLING' | translate}}:</span>
+            <span class="ml-2" [style.color]="getColor(servicesStatuses?.services?.modelling)">
+              {{ servicesStatuses?.services?.modelling }}
+            </span>
+          </mat-card-subtitle>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

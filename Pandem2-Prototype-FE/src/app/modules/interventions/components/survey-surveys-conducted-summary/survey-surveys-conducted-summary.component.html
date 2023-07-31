@@ -1,0 +1,65 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<mat-card class="summary-section">
+  <div *ngIf="isLoading()"
+       class="mat-spinner-container">
+      <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="isLoaded()">
+    <div class="summary-section__name-icon-container">
+      <div>
+        {{'MODULES.INTERVENTIONS.SURVEY_CONDUCTED.TITLE' | translate}}
+      </div>
+      <div>
+          <mat-icon (click)="showInfo = !showInfo">info</mat-icon>
+      </div>
+  </div>
+  <mat-card-title class="text-center text-sm-left">
+    {{'MODULES.INTERVENTIONS.SURVEY_CONDUCTED.CARD_TITLE' | translate}}
+  </mat-card-title>
+      <mat-card-subtitle class="text-center text-sm-left">
+        <app-sources
+          [sourceType]="SourceType.SUMMARY"
+          [sources]="sources">
+        </app-sources>
+      </mat-card-subtitle>
+      <mat-card-content>
+          <p class="text-center text-sm-left info-text" *ngIf="showInfo">
+            {{'MODULES.INTERVENTIONS.SURVEY_CONDUCTED.DESCRIPTION' | translate}}
+          </p>
+          <mat-list>
+            <div *ngFor="let survey of surveyList">
+              <mat-list-item>
+                <div class="col-xl-7 label">
+                  <p style="text-decoration:underline;color:dodgerblue"> {{survey.name}}: {{moment(survey.date).format('MM.DD.YYYY')}} </p>
+                </div>
+                <div class="col-xl-5 value text-right">
+                  {{survey.responses}} {{'MODULES.INTERVENTIONS.SURVEY_CONDUCTED.RESPONSES' | translate}}
+                </div>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              </div>
+          </mat-list>
+      </mat-card-content>
+  </div>
+</mat-card>

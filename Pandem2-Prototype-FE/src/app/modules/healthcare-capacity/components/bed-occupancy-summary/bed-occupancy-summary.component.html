@@ -1,0 +1,164 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<mat-card class="summary-section">
+  <div *ngIf="isLoading()"
+       class="mat-spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="isLoaded()">
+    <div class="summary-section__name-icon-container">
+      <div>
+        {{'MODULES.HEALTHCARE_CAPACITY.BED_OCCUPANCY_SUMMARY.TITLE' | translate}}
+      </div>
+      <div>
+        <mat-icon (click)="showInfo = !showInfo">info</mat-icon>
+      </div>
+    </div>
+    <mat-card-title class="text-center text-sm-left">
+      {{'MODULES.HEALTHCARE_CAPACITY.BED_OCCUPANCY_SUMMARY.CARD_TITLE' | translate}}
+    </mat-card-title>
+    <mat-card-subtitle class="text-center text-sm-left">
+      <app-sources
+        [sourceType]="SourceType.SUMMARY"
+        [sources]="sources">
+      </app-sources>
+    </mat-card-subtitle>
+    <mat-card-content>
+      <p class="text-center text-sm-left info-text" *ngIf="showInfo">
+        {{'MODULES.HEALTHCARE_CAPACITY.BED_OCCUPANCY_SUMMARY.DESCRIPTION' | translate}}
+        <br/><br/>
+        {{'MODULES.HEALTHCARE_CAPACITY.BED_OCCUPANCY_SUMMARY.DESCR_2' | translate}}
+      </p>
+      <mat-list>
+        <div class="reduced-height">
+          <mat-list-item>
+            <div class="col-xl-8 label">
+              {{'MODULES.HEALTHCARE_CAPACITY.BED_OCCUPANCY_SUMMARY.NUMBER_OF_OPERABLE_BEDS' | translate}}
+            </div>
+            <div class="col-xl-4 value text-right">
+              {{totalBeds | number : defaultNumberFormat}}
+            </div>
+          </mat-list-item>
+        </div>
+        <div class="reduced-height">
+          <mat-list-item>
+            <div class="col-xl-8 label">
+              - {{'MODULES.HEALTHCARE_CAPACITY.BED_OCCUPANCY_SUMMARY.Ward' | translate}}
+            </div>
+            <div class="col-xl-4 value text-right">
+              {{wardBeds | number : defaultNumberFormat}}
+              <br/>
+            </div>
+          </mat-list-item>
+        </div>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            - {{'MODULES.HEALTHCARE_CAPACITY.BED_OCCUPANCY_SUMMARY.ICU' | translate}}
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{icuBeds | number : defaultNumberFormat}}
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            {{'MODULES.HEALTHCARE_CAPACITY.BED_OCCUPANCY_SUMMARY.WARD_OCCUPANCY' | translate}}
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{wardOccupancy | number : defaultNumberFormat}}
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            {{'MODULES.HEALTHCARE_CAPACITY.BED_OCCUPANCY_SUMMARY.WARD_OCCUPANCY_COVID' | translate}}
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{wardOccupancyWithCovid | number : defaultNumberFormat}}
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            <span class="comparedTo"> -proportion with Comorbidities </span>
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{wardProportionWithComorbidities | number : fourDecimalFormat}}%
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            {{'MODULES.HEALTHCARE_CAPACITY.BED_OCCUPANCY_SUMMARY.WARD_OCCUPANCY_RATE' | translate}}
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{bedOccupancyRateWard | number : fourDecimalFormat}}%
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            {{'MODULES.HEALTHCARE_CAPACITY.BED_OCCUPANCY_SUMMARY.ICU_OCCUPANCY' | translate}}
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{icuOccupancy | number : defaultNumberFormat}}
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            {{'MODULES.HEALTHCARE_CAPACITY.BED_OCCUPANCY_SUMMARY.ICU_OCCUPANCY_COVID' | translate}}
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{icuOccupancyWithCovid | number : defaultNumberFormat}}
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            <span class="comparedTo"> -{{'MODULES.HEALTHCARE_CAPACITY.BED_OCCUPANCY_SUMMARY.PROPORTION_COMORBIDITIES' | translate}} </span>
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{icuProportionWithComorbidities | number : fourDecimalFormat}}%
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            {{'MODULES.HEALTHCARE_CAPACITY.BED_OCCUPANCY_SUMMARY.ICU_OCCUPANCY_RATE' | translate}}
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{bedOccupancyRateICU | number : fourDecimalFormat}}%
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            {{'MODULES.HEALTHCARE_CAPACITY.BED_OCCUPANCY_SUMMARY.MEDIAN_LENGTH' | translate}}
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{medianLengthOfStay}}
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </div>
+</mat-card>

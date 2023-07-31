@@ -1,0 +1,220 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<div class="row">
+  <div class="col-md-4">
+    <mat-card class="summary-section">
+      <div>
+        <div class="summary-section__name-icon-container">
+          <div>
+            {{'MODULES.INTERVENTIONS.SOCIAL_MEDIA_ANALYSIS_SUGGESTION.TITLE' | translate}}
+          </div>
+        </div>
+        <mat-card-title class="text-center text-sm-left">
+          {{'MODULES.SMA.TOP_TEN_TOPICS_FOR_SUGGESTION_BETWEEN' | translate}} {{displayStartDate}} {{'MODULES.SMA.AND' | translate}} {{displayEndDate}}
+          <span *ngIf="selectedRegion && selectedRegion.english_name"> {{selectedRegion.english_name}}</span>
+          <span *ngIf="selectedRegion && !selectedRegion.english_name"> {{selectedRegion.name}}</span>
+        </mat-card-title>
+        <mat-card-subtitle class="text-center text-sm-left">
+          {{'MODULES.INTERVENTIONS.SOCIAL_MEDIA_ANALYSIS_SUGGESTION.CARD_TITLE' | translate}}
+        </mat-card-subtitle>
+        <mat-card-content>
+          <div *ngIf="isLoadingTopics()"
+            class="mat-spinner-container">
+          <mat-spinner></mat-spinner>
+          </div>
+          <div *ngIf="isLoadedTopics()">
+            <div *ngIf="topics.length === 0">
+              {{'MODULES.INTERVENTIONS.SOCIAL_MEDIA_ANALYSIS_SUGGESTION.NO_DATA' | translate}}
+            </div>
+            <div *ngIf="topics.length > 0">
+              <table mat-table [dataSource]="dataSourceTopics" class="mat-elevation-z0" aria-label="Table of topics">
+
+                <!-- Id Column -->
+                <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef> Id </th>
+                  <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <!-- Topic Column -->
+                <ng-container matColumnDef="topic">
+                  <th mat-header-cell *matHeaderCellDef>
+                    <div class="header-topic">
+                      <span class="header-topic-name">{{'MODULES.INTERVENTIONS.SOCIAL_MEDIA_ANALYSIS_SUGGESTION.Topic' | translate}}</span>
+                      <span class="header-volume-text">{{'MODULES.INTERVENTIONS.SOCIAL_MEDIA_ANALYSIS_SUGGESTION.VOLUME' | translate}}</span>
+                    </div>
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="progress">
+                      <div class="progress-bar"
+                        role="progressbar"
+                        [attr.aria-valuenow]="element.volume"
+                        [ngStyle]="{'width.%': element.volume / maxVolumePercentage * 100}">
+                        <span class="topic-name">{{element.name}}</span>
+                        <span class="volume-text">{{element.volume + '%'}}</span>
+                      </div>
+                    </div>
+                  </td>
+                </ng-container>
+
+                <!-- Trend Column -->
+                <ng-container matColumnDef="trend">
+                  <th mat-header-cell *matHeaderCellDef> {{'MODULES.INTERVENTIONS.SOCIAL_MEDIA_ANALYSIS_SUGGESTION.TREND' | translate}} </th>
+                  <td mat-cell *matCellDef="let element">
+                    <mat-icon *ngIf="!element.upwardsTrend">trending_down</mat-icon>
+                      <mat-icon *ngIf="element.upwardsTrend">trending_up</mat-icon>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedTopicColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedTopicColumns;"
+                    (click)="selectTopicRow(row)"
+                    [ngClass]="{hovered: row.hovered, selected: selectionTopic.isSelected(row)}"
+                    (mouseover)="row.hovered = true" (mouseout)="row.hovered = false">
+                </tr>
+              </table>
+            </div>
+          </div>
+        </mat-card-content>
+      </div>
+    </mat-card>
+  </div>
+  <div class="col-md-4">
+    <div *ngIf="selectedTopic">
+      <mat-card class="summary-section">
+        <div>
+          <div class="summary-section__name-icon-container">
+            <div>
+              {{'MODULES.INTERVENTIONS.SOCIAL_MEDIA_ANALYSIS_SUGGESTION.SUGGESTION_ANALYSIS' | translate}}
+            </div>
+          </div>
+          <mat-card-title class="text-center text-sm-left">
+            {{'MODULES.INTERVENTIONS.SOCIAL_MEDIA_ANALYSIS_SUGGESTION.SUBTOPICS' | translate}}
+          </mat-card-title>
+          <mat-card-subtitle class="text-center text-sm-left">
+            {{'MODULES.INTERVENTIONS.SOCIAL_MEDIA_ANALYSIS_SUGGESTION.SELECT_A_TOPIC' | translate}}
+          </mat-card-subtitle>
+          <mat-card-content>
+            <div *ngIf="isLoadingSubtopics()"
+              class="mat-spinner-container">
+            <mat-spinner></mat-spinner>
+            </div>
+            <div *ngIf="isLoadedSubtopics()">
+              <div *ngIf="subtopics.length === 0">
+                {{'MODULES.INTERVENTIONS.SOCIAL_MEDIA_ANALYSIS_SUGGESTION.NO_DATA' | translate}}
+              </div>
+              <div *ngIf="subtopics.length > 0">
+                <table mat-table [dataSource]="dataSourceSubtopics" class="mat-elevation-z0" aria-label="'MODULES.INTERVENTIONS.SOCIAL_MEDIA_ANALYSIS_SUGGESTION.ARIA_LABEL' | translate">
+
+                  <!-- Id Column -->
+                  <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> Id </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                  </ng-container>
+
+                  <!-- Subtopic Column -->
+                  <ng-container matColumnDef="subtopic">
+                    <th mat-header-cell *matHeaderCellDef>
+                      <div class="header-topic">
+                        <span class="header-topic-name">{{'MODULES.INTERVENTIONS.SOCIAL_MEDIA_ANALYSIS_SUGGESTION.SUBTOPICS' | translate}}</span>
+                      </div>
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      <div class="subtopic">
+                        <span class="topic-name">{{element.name}}</span>
+                      </div>
+                    </td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="displayedSubtopicColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedSubtopicColumns;"
+                      (click)="selectSubtopicRow(row)"
+                      [ngClass]="{hovered: row.hovered, selected: selectionSubtopic.isSelected(row)}"
+                      (mouseover)="row.hovered = true" (mouseout)="row.hovered = false">
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </mat-card-content>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div *ngIf="selectedSubtopic">
+      <mat-card class="summary-section">
+        <div>
+          <div class="summary-section__name-icon-container">
+            <div>
+              {{'MODULES.INTERVENTIONS.SOCIAL_MEDIA_ANALYSIS_SUGGESTION.SUGGESTION_ANALYSIS' | translate}}
+            </div>
+          </div>
+          <mat-card-title class="text-center text-sm-left">
+            {{'MODULES.INTERVENTIONS.SOCIAL_MEDIA_ANALYSIS_SUGGESTION.SUGGESTIONS' | translate}}
+          </mat-card-title>
+          <mat-card-subtitle class="text-center text-sm-left">
+            &nbsp;
+          </mat-card-subtitle>
+          <mat-card-content>
+            <div *ngIf="isLoadingTopicSuggestions()"
+              class="mat-spinner-container">
+            <mat-spinner></mat-spinner>
+            </div>
+            <div *ngIf="isLoadedTopicSuggestions()">
+              <div *ngIf="topicSuggestions.length === 0">
+                {{'MODULES.INTERVENTIONS.SOCIAL_MEDIA_ANALYSIS_SUGGESTION.NO_DATA' | translate}}
+              </div>
+              <div *ngIf="topicSuggestions.length > 0">
+                <table mat-table [dataSource]="dataSourceTopicSuggestions" class="mat-elevation-z0" aria-label="Table of topic suggestions">
+
+                  <!-- Id Column -->
+                  <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> Id </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                  </ng-container>
+
+                  <!-- Topic Suggestion Column -->
+                  <ng-container matColumnDef="suggestion">
+                    <th mat-header-cell *matHeaderCellDef>
+                      <div class="header-topic">
+                        <span class="header-topic-name">{{'MODULES.INTERVENTIONS.SOCIAL_MEDIA_ANALYSIS_SUGGESTION.SUGGESTIONS' | translate}}</span>
+                      </div>
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      <div class="subtopic">
+                        <span class="topic-name">{{element.name}}</span>
+                      </div>
+                    </td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="displayedTopicSuggestionColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedTopicSuggestionColumns;">
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </mat-card-content>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

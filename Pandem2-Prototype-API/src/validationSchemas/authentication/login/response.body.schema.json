@@ -1,0 +1,15 @@
+{
+  "$id": "authentication.login.response.body.schema",
+  "description": "Login response body schema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "/authentication#/definitions/sessionResourceEntry"
+    },
+    {
+      "required": [
+        "token"
+      ]
+    }
+  ]
+}

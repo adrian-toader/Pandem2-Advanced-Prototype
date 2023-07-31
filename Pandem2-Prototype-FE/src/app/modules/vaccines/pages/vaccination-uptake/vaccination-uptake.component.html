@@ -1,0 +1,64 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<div class="container-fluid dashboard-page">
+  <div class="row">
+    <div class="col-xl-12">
+      <mat-card class="header-card">
+        <mat-card-title class="page-header text-center text-sm-left">
+          <div class="summary-section__name-icon-container">
+            <h2 class="page-header">{{'Vaccination in ' | uppercase}}  {{selectedRegionName | uppercase}}</h2>
+            <div>
+              <mat-icon (click)="showHelpInfo()">help</mat-icon>
+            </div>
+          </div>
+        </mat-card-title>
+        <mat-card-content class="text-center text-sm-left">
+          <p>{{'MODULES.VACCINES.VACCINATION_UPTAKE.TITLE' | translate}}</p>
+          <p>{{'MODULES.VACCINES.VACCINATION_UPTAKE.SUBTITLE' | translate}}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <app-date-picker></app-date-picker>
+  <div class="row">
+    <div class="col-lg-5 summary-container" *ngIf="!isEurope">
+      <app-vaccinations-summary></app-vaccinations-summary>
+    </div>
+    <div [class.col-lg-7]="!isEurope" [class.col-lg-12]="isEurope">
+      <mat-card class="world-map">
+          <app-map
+                  [module]="'vaccinations'"
+                  [filters]='doseAreaFilters'
+                  [selectedFilterValue]="DoseType.OneDose"
+                  [secondFilter]='populationAreaFilters'
+                  [selectedSecondFilterValue]="'All'"
+                  [mapHeight]="350"
+          ></app-map>
+      </mat-card>
+    </div>
+  </div>
+  <div *ngIf="!isEurope">
+    <app-drag-drop [graphList]="graphList" (graphListUpdated)="handleGraphListUpdate($event)" (cardsUpdated)="handleCardsListUpdate($event)" [parentPage]="this"></app-drag-drop>
+  </div>
+</div>

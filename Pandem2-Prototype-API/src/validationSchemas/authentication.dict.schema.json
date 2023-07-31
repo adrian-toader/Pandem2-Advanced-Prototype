@@ -1,0 +1,43 @@
+{
+  "$id": "/authentication#",
+  "definitions": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "minLength": 1
+    },
+    "password": {
+      "type": "string",
+      "minLength": 1
+    },
+    "token": {
+      "type": "string",
+      "minLength": 1
+    },
+    "userId": {
+      "$ref": "/user#/definitions/userId"
+    },
+    "loginResourceEntry": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "$ref": "/authentication#/definitions/email"
+        },
+        "password": {
+          "$ref": "/authentication#/definitions/password"
+        }
+      }
+    },
+    "sessionResourceEntry": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "$ref": "/authentication#/definitions/token"
+        },
+        "userId": {
+          "$ref": "/authentication#/definitions/userId"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$id": "modelling.retrieveScenarioList.request.uri.query.schema",
+  "description": "Retrieve scenario list - request URI query schema",
+  "type": "object",
+  "properties": {
+    "filter": {
+      "$ref": "/query#/definitions/filter"
+    },
+    "projection": {
+      "$ref": "/query#/definitions/projection"
+    },
+    "sort": {
+      "$ref": "/query#/definitions/sort"
+    },
+    "skip": {
+      "$ref": "/query#/definitions/skip"
+    },
+    "limit": {
+      "$ref": "/query#/definitions/limit"
+    }
+  }
+}

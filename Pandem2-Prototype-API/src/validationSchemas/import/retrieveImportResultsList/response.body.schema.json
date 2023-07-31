@@ -1,0 +1,45 @@
+{
+  "$id": "import.retrieveImportResultsList.response.body.schema",
+  "description": "Retrieve Import results list response body schema",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "data_type",
+          "start_date",
+          "status"
+        ],
+        "properties": {
+          "data_type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "in progress",
+              "success",
+              "error"
+            ]
+          },
+          "error_message": {
+            "type": "string"
+          },
+          "error": {
+          }
+        }
+      }
+    }
+  }
+}

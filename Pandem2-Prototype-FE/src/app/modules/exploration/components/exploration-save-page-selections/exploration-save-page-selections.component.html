@@ -1,0 +1,62 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<button mat-icon-button class="dialog-close-button" [mat-dialog-close]="true">
+  <mat-icon aria-hidden="false" aria-label="close button">close</mat-icon>
+</button>
+<mat-dialog-content class="main-card-manager-dialog">
+  <div>
+    <div *ngIf="!dataLoaded" class="mat-spinner-container">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="dataLoaded">
+      <mat-card-title class="text-center">
+        {{
+          injectedData.activeSelectionId ? ('MODULES.EXPLORATION.UPDATE_SELECTIONS' | translate) : ('MODULES.EXPLORATION.SAVE_SELECTIONS' |
+          translate) }}
+      </mat-card-title>
+      <mat-card-content class="d-flex align-items-center justify-content-center">
+        <div style="width: 500px;" class="d-flex flex-column justify-content-between shadow-sm px-5 rounded">
+          <div>
+            <app-form-input type="text" name="clientId" (ngModelChange)="saveButtonDisabled = false"
+              [(ngModel)]="currentState.name" [placeholder]="'MODULES.EXPLORATION.SELECTIONS_NAME' | translate"
+              required="true" minlength="1">
+            </app-form-input>
+            <app-form-input type="text" name="clientSecret" (ngModelChange)="saveButtonDisabled = false" required="true"
+              minlength="1" [(ngModel)]="currentState.description"
+              [placeholder]="'MODULES.EXPLORATION.SELECTIONS_DESCRIPTION' | translate">
+            </app-form-input>
+            <mat-slide-toggle (change)="toggleButton($event)" [checked]="currentState.is_private"
+              [labelPosition]="'before'" class="mr-2" id="admissions">{{'MODULES.EXPLORATION.IS_PRIVATE' | translate}}
+            </mat-slide-toggle>
+          </div>
+          <button type="button" (click)="injectedData.activeSelectionId ? onUpdateClick() : saveSelections()"
+            [disabled]="saveButtonDisabled" style="height: 47px;" class="btn btn-success mt-2">{{
+            injectedData.activeSelectionId ? ('MODULES.EXPLORATION.UPDATE' | translate) : ('MODULES.EXPLORATION.SAVE' |
+            translate) }}</button>
+          <button id="exploration__btn" *ngIf="injectedData.activeSelectionId" type="button" (click)="onRemoveClick()"
+            style="height: 47px" class="btn btn-danger mt-2">{{'MODULES.EXPLORATION.DELETE' | translate}}</button>
+        </div>
+      </mat-card-content>
+    </div>
+  </div>
+</mat-dialog-content>

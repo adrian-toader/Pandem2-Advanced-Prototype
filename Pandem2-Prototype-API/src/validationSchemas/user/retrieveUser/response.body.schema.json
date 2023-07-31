@@ -1,0 +1,27 @@
+{
+  "$id": "user.retrieveUser.response.body.schema",
+  "description": "Retrieve user instance response body schema",
+  "type": "object",
+  "properties": {
+    "data": {
+      "allOf": [
+        {
+          "$ref": "/user#/definitions/userResourceEntry"
+        },
+        {
+          "required": [
+            "email"
+          ]
+        }
+      ]
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "role": {
+         "$ref": "/role#/definitions/roleResourceEntry"
+        }
+      }
+    }
+  }
+}

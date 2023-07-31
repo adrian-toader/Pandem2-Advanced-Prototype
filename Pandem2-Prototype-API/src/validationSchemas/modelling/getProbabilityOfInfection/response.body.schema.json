@@ -1,0 +1,10 @@
+{
+  "$id": "modelling.getProbabilityOfInfection.response.body.schema",
+  "description": "Get probability of infection response body schema",
+  "type": "object",
+  "properties": {
+    "probability_of_infection": {
+      "type": "number"
+    }
+  }
+}

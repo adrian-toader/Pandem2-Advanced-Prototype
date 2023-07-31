@@ -1,0 +1,16 @@
+{
+  "$id": "authentication.login.request.body.schema",
+  "description": "Create login request body schema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "/authentication#/definitions/loginResourceEntry"
+    },
+    {
+      "required": [
+        "email",
+        "password"
+      ]
+    }
+  ]
+}

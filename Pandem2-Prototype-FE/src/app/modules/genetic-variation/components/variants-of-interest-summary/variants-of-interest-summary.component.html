@@ -1,0 +1,97 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<mat-card class="summary-section">
+  <div *ngIf="isLoading()"
+       class="mat-spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="isLoaded()">
+    <div class="summary-section__name-icon-container">
+      <div>
+        {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_INTEREST_SUMMARY.GENETIC_VARIATION' | translate}} <span class="label-explanation">{{'MODULES.GENETIC_VARIATION.VARIANTS_OF_INTEREST_SUMMARY.OPTIONS' | translate}}</span>
+      </div>
+      <div>
+        <mat-icon (click)="showInfo = !showInfo">info</mat-icon>
+      </div>
+    </div>
+    <mat-card-title class="text-center text-sm-left">
+      {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_INTEREST_SUMMARY.VARIANTS_OF_INTEREST' | translate}}
+    </mat-card-title>
+    <mat-card-subtitle class="text-center text-sm-left">
+      <app-sources
+        [sourceType]="SourceType.SUMMARY"
+        [sources]="sources"></app-sources>
+    </mat-card-subtitle>
+    <mat-card-content>
+      <p *ngIf="showInfo" class="text-center text-sm-left info-text">
+        {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_INTEREST_SUMMARY.DESCRIPTION' | translate}}
+      </p>
+      <mat-list>
+        <div *ngFor="let variant of variants" class="mb-4">
+          <mat-list-item>
+            <div class="col-xl-12 variant-name">
+              {{variant.name || 'N/A'}}
+            </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <div class="col-xl-8 label">
+              {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_INTEREST_SUMMARY.LINEAGE' | translate}}
+            </div>
+            <div class="col-xl-4 value text-right">
+              <a href="https://cov-lineages.org/lineage.html?lineage={{variant.lineage}}" target="_blank">
+                {{variant.lineage}}</a>
+            </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <div class="col-xl-8 label">
+              {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_INTEREST_SUMMARY.COUNTRY_FIRST_DETECTED' | translate}}
+            </div>
+            <div class="col-xl-4 value text-right">
+              {{variant.country_first_detected}}
+            </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <div class="col-xl-6 label">
+              {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_INTEREST_SUMMARY.SPIKE_MUTATION' | translate}}
+            </div>
+            <div class="col-xl-6 text-right spike-mutation-of-interest">
+              {{variant.spike_mutations}}
+            </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <div class="col-xl-8 label">
+              {{'MODULES.GENETIC_VARIATION.VARIANTS_OF_INTEREST_SUMMARY.DATE_OF_DETECTION' | translate}}
+            </div>
+            <div class="col-xl-4 value text-right">
+              {{moment(variant.date_first_detection).format('MMMM YYYY')}}
+            </div>
+          </mat-list-item>
+        </div>
+      </mat-list>
+    </mat-card-content>
+  </div>
+</mat-card>

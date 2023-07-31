@@ -1,0 +1,5 @@
+{
+  "$id": "role.updateRole.request.body.schema",
+  "description": "Modify role instance request body schema",
+  "$ref": "/role#/definitions/roleResourceEntry"
+}

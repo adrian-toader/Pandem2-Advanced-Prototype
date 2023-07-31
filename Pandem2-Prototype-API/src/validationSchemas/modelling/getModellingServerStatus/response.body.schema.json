@@ -1,0 +1,13 @@
+{
+  "$id": "modelling.getModellingServerStatus.response.body.schema",
+  "description": "Retrieve modelling server status response schema",
+  "type": "object",
+  "properties": {
+    "online": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "online"
+  ]
+}

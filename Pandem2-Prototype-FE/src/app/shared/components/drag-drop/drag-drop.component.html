@@ -1,0 +1,58 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 25/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<div cdkDropListGroup>
+  <div class="mt-1-5" cdkDropList (cdkDropListDropped)="drop($event)">
+    <div *ngIf="!isVariantsPage; else variants">
+      <div class="row" *ngFor="let item of graphList">
+        <div class="col-xl-10" [attr.id]="item.graphId" cdkDrag>
+            <app-graph-wrapper [graph]="item"></app-graph-wrapper>
+        </div>
+        <div class="col-xl-2">
+          <app-card-manager #cardManager [graphId]="item.graphId" [parentPage]="parentPage"></app-card-manager>
+        </div>
+      </div>
+    </div>
+    <ng-template #variants>
+      <ng-container *ngFor="let item of graphList">
+        <mat-card *ngIf="item.graphId === 'app-non-genomic-hospitalised'" class="col-xl-12 mb-4">
+          <mat-card-title>
+            SIMULATED DATA BELOW
+          </mat-card-title>
+          <mat-card-content>
+            The graphs below use simulated data.<br>
+            Simulating data is the process of taking 2 real datasets and combining the likely outputs
+            to extrapolate missing data points and specificity.
+          </mat-card-content>
+        </mat-card>
+        <div class="row">
+          <div [attr.id]="item.graphId" class="col-xl-10" cdkDrag>
+            <app-graph-wrapper [graph]="item"></app-graph-wrapper>
+          </div>
+          <div class="col-xl-2">
+            <app-card-manager #cardManager [graphId]="item.graphId" [parentPage]="parentPage"></app-card-manager>
+          </div>
+        </div>
+      </ng-container>
+    </ng-template>
+  </div>
+</div>

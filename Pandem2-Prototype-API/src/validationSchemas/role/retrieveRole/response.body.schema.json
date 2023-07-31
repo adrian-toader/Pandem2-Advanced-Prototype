@@ -1,0 +1,15 @@
+{
+  "$id": "role.retrieveRole.response.body.schema",
+  "description": "Retrieve role instance response body schema",
+  "allOf": [
+    {
+      "$ref": "/role#/definitions/roleResourceEntry"
+    },
+    {
+      "required": [
+        "name",
+        "permissions"
+      ]
+    }
+  ]
+}

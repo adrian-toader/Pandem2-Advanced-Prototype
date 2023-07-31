@@ -1,0 +1,114 @@
+{
+  "$id": "/intervention#",
+  "definitions": {
+    "pathogenId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "reference",
+        "value"
+      ]
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "subcategory": {
+      "enum": [
+        "Testing Policy",
+        "Contact Tracing Policy",
+        "Implemented Measure"
+      ]
+    },
+    "interventionId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "import_metadata": {
+      "type": "object",
+      "properties": {
+        "sourceId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "minLength": 1
+        },
+        "importId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "interventionResourceEntry": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "/intervention#/definitions/interventionId"
+        },
+        "pathogenId": {
+          "$ref": "/intervention#/definitions/pathogenId"
+        },
+        "subcategory": {
+          "$ref": "/intervention#/definitions/subcategory"
+        },
+        "location": {
+          "$ref": "/intervention#/definitions/location"
+        },
+        "start_date": {
+          "$ref": "/intervention#/definitions/start_date"
+        },
+        "end_date": {
+          "$ref": "/intervention#/definitions/end_date"
+        },
+        "is_custom": {
+          "type": "boolean"
+        },
+        "name": {
+          "$ref": "/intervention#/definitions/name"
+        },
+        "description": {
+          "$ref": "/intervention#/definitions/description"
+        },
+        "intervals": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        },
+        "import_metadata": {
+          "$ref": "/intervention#/definitions/import_metadata"
+        }
+      }
+    }
+  }
+}

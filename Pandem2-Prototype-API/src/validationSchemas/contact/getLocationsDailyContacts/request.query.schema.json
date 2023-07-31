@@ -1,0 +1,25 @@
+{
+  "$id": "contact.getLocationsDailyContacts.request.query.schema",
+  "description": "Get total number of contacts for a time interval for requested locations request params schema",
+  "type": "object",
+  "properties": {
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "total_type": {
+      "$ref": "/contact#/definitions/total_type"
+    }
+  },
+  "required": [
+    "location",
+    "total_type"
+  ]
+}

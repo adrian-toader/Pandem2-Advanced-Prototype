@@ -1,0 +1,251 @@
+{
+  "$id": "/modellingScenario#",
+  "definitions": {
+    "userId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "modelId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "r0": {
+      "type": "number"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 2000
+    },
+    "tags": {
+      "type": [
+        "null",
+        "array"
+      ],
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number"
+                },
+                "age": {
+                  "type": "string",
+                  "enum": [
+                    "a",
+                    "b",
+                    "c",
+                    "d",
+                    "e"
+                  ]
+                },
+                "ageContact": {
+                  "type": "string",
+                  "enum": [
+                    "aa",
+                    "ab",
+                    "ac",
+                    "ad",
+                    "ba",
+                    "bb",
+                    "bc",
+                    "bd",
+                    "ca",
+                    "cb",
+                    "cc",
+                    "cd",
+                    "da",
+                    "db",
+                    "dc",
+                    "dd"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "key"
+        ]
+      }
+    },
+    "sections_details": {
+      "type": [
+        "null",
+        "array"
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "isCollapsed": {
+            "type": "boolean"
+          },
+          "viewStyle": {
+            "type": "string",
+            "enum": [
+              "list",
+              "grid"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "isCollapsed",
+          "viewStyle"
+        ]
+      }
+    },
+    "exploration": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "chart_type": {
+            "type": "string",
+            "enum": [
+              "spline",
+              "column",
+              "area"
+            ]
+          },
+          "chart_plot_type": {
+            "type": "string",
+            "enum": [
+              "linear",
+              "logarithmic"
+            ]
+          },
+          "view_by": {
+            "type": "string",
+            "enum": [
+              "scenario",
+              "indicator"
+            ]
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "plotlines": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required": [
+          "chart_type",
+          "chart_plot_type",
+          "view_by",
+          "values",
+          "plotlines"
+        ]
+      }
+    },
+    "is_visible": {
+      "type": "boolean"
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      }
+    },
+    
+    "modellingScenarioResourceEntry": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "$ref": "/modellingScenario#/definitions/userId"
+        },
+        "modelId": {
+          "$ref": "/modellingScenario#/definitions/modelId"
+        },
+        "name": {
+          "$ref": "/modellingScenario#/definitions/name"
+        },
+        "r0": {
+          "$ref": "/modellingScenario#/definitions/r0"
+        },
+        "date": {
+          "$ref": "/modellingScenario#/definitions/date"
+        },
+        "description": {
+          "$ref": "/modellingScenario#/definitions/description"
+        },
+        "tags": {
+          "$ref": "/modellingScenario#/definitions/tags"
+        },
+        "location": {
+          "$ref": "/modellingScenario#/definitions/location"
+        },
+        "parameters": {
+          "$ref": "/modellingScenario#/definitions/parameters"
+        },
+        "sections_details": {
+          "$ref": "/modellingScenario#/definitions/sections_details"
+        },
+        "exploration": {
+          "$ref": "/modellingScenario#/definitions/exploration"
+        },
+        "is_visible": {
+          "$ref": "/modellingScenario#/definitions/is_visible"
+        },
+        "alternatives": {
+          "$ref": "/modellingScenario#/definitions/alternatives"
+        },
+        "_id": {
+          "$ref": "/base#/definitions/mongoID"
+        }
+      }
+    }
+  }
+}

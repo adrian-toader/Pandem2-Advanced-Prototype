@@ -1,0 +1,22 @@
+{
+  "$id": "survey.getDaily.request.query.schema",
+  "description": "Get daily surveys request params schema",
+  "type": "object",
+  "properties": {
+    "location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "location"
+  ]
+}

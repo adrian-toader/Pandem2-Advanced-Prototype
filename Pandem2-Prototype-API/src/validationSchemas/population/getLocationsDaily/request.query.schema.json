@@ -1,0 +1,42 @@
+{
+  "$id": "population.getLocationsDaily.request.query.schema",
+  "description": "Get total number of populations for a time interval, grouped by locations - request query schema",
+  "type": "object",
+  "properties": {
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "subcategory": {
+      "$ref": "/population#/definitions/subcategory"
+    },
+    "gender": {
+      "$ref": "/population#/definitions/gender"
+    },
+    "age_group": {
+      "$ref": "/population#/definitions/age_group"
+    },
+    "risk_group": {
+      "$ref": "/population#/definitions/risk_group"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "gender",
+        "age_group",
+        "risk_group"
+      ]
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "subcategory",
+    "location"
+  ]
+}

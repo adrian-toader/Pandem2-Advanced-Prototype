@@ -1,0 +1,13 @@
+{
+  "$id": "translation.uploadTranslationFile.request.uri.template.schema",
+  "description": "Upload a language file",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "/base#/definitions/mongoID"
+    }
+  },
+  "required": [
+      "id"
+  ]
+}

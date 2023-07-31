@@ -1,0 +1,34 @@
+{
+  "$id": "socialMediaAnalysisData.generateDummy.request.body.schema",
+  "description": "Generate dummy data for Social Media Analysis Data",
+  "type": "object",
+  "properties": {
+    "pathogenId": {
+      "$ref": "/socialMediaAnalysisData#/definitions/pathogenId"
+    },
+    "location": {
+      "$ref": "/socialMediaAnalysisData#/definitions/location"
+    },
+    "subcategory": {
+      "$ref": "/socialMediaAnalysisData#/definitions/subcategory"
+    },
+    "generate_for_sublocations": {
+      "type": "boolean"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "pathogenId",
+    "generate_for_sublocations",
+    "location",
+    "start_date",
+    "end_date"
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "$id": "/bed#",
+  "definitions": {
+    "pathogenId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "total": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_type": {
+      "type": "string",
+      "enum": [
+        "Absolute",
+        "100K"
+      ]
+    },
+    "subcategory": {
+      "type": "string",
+      "enum": [
+        "Bed Occupancy",
+        "Number of Beds",
+        "Length of Stay"
+      ]
+    },
+    "bed_type": {
+      "type": "string",
+      "enum": [
+        "Hospital",
+        "ICU",
+        "Operable"
+      ]
+    },
+    "age_group": {
+      "type": "string"
+    },
+    "occupation_type": {
+      "type": "string",
+      "enum": [
+        "COVID-19",
+        "Non-COVID-19",
+        "Free"
+      ]
+    },
+    "location": {
+      "description": "Patients location",
+      "type": "object",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "reference",
+        "value"
+      ]
+    },
+    "bedResourceEntry": {
+      "type": "object",
+      "properties": {
+        "pathogenId": {
+          "$ref": "/bed#/definitions/pathogenId"
+        },
+        "date": {
+          "$ref": "/bed#/definitions/date"
+        },
+        "total": {
+          "$ref": "/bed#/definitions/total"
+        },
+        "total_type": {
+          "$ref": "/bed#/definitions/total_type"
+        },
+        "subcategory": {
+          "$ref": "/bed#/definitions/subcategory"
+        },
+        "bed_type": {
+          "$ref": "/bed#/definitions/bed_type"
+        },
+        "age_group": {
+          "$ref": "/bed#/definitions/age_group"
+        },
+        "occupation_type": {
+          "$ref": "/bed#/definitions/occupation_type"
+        },
+        "location": {
+          "$ref": "/bed#/definitions/location"
+        }
+      }
+    }
+  }
+}

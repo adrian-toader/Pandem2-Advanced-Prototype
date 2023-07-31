@@ -1,0 +1,121 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<div class="position-relative">
+  <form class="card-manager-dialog-form">
+    <div class="d-flex align-items-center location-select-input">
+      <mat-icon class="location-select-icon-size">search</mat-icon>
+      <input
+        type="text"
+        placeholder="Search"
+        [formControl]="searchControl"
+        (click)="onSearchClick()"
+        (focusin)="onSearchFocus()"
+      />
+    </div>
+  </form>
+
+  <div class="position-absolute location-select-menu" style="z-index: 2" *ngIf="expandedSelection">
+    <mat-card style="padding:10px">
+      <div class="form-inline">
+        <div class="form-group">
+          <button mat-raised-button class="nuts-buttons" [color]="toggleStyle[toggleArray[0]]"
+                  (click)="switchToggle([1,0,0,0],0)">NUTS 0
+          </button>
+        </div>
+        <div class="form-group">
+          <button mat-raised-button class="nuts-buttons" [color]="toggleStyle[toggleArray[1]]"
+                  (click)="switchToggle([0,1,0,0],1)">NUTS 1
+          </button>
+        </div>
+        <div class="form-group">
+          <button mat-raised-button class="nuts-buttons" [color]="toggleStyle[toggleArray[2]]"
+                  (click)="switchToggle([0,0,1,0],2)">NUTS 2
+          </button>
+        </div>
+        <div class="form-group">
+          <button mat-raised-button class="nuts-buttons" [color]="toggleStyle[toggleArray[3]]"
+                  (click)="switchToggle([0,0,0,1],3)">NUTS 3
+          </button>
+        </div>
+      </div>
+    </mat-card>
+
+    <mat-card style="padding:0px 16px;">
+      <form>
+        <mat-form-field appearance="outline" style="font-size: 1rem;">
+          <mat-label style="font-size: 1.2em;">Sort by</mat-label>
+          <mat-select [formControl]="sortControl">
+            <mat-option selected value="country">Country</mat-option>
+            <mat-option value="county">County</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-button class="sort-button" (click)="onSortClick()">
+          <mat-icon
+            class="location-select-icon-size"
+            [ngClass]="{'sort-button-flipped': selectedFilter === 'country' && sortTypeCountry === 'asc' || selectedFilter === 'county' && sortTypeCounty === 'asc'}">
+            sort
+          </mat-icon>
+        </button>
+      </form>
+    </mat-card>
+
+    <mat-card style="padding:0px;">
+      <form>
+        <mat-list class="location-select-base">
+          <ng-container *ngIf="nutsLevel === 0">
+            <mat-list-item *ngFor="let item of countryList" class="location-select-item">
+              <button mat-button type="button" class="location-select-button"
+                      style="text-align: left"
+                      (click)="onRegionChange(item.code, item.name, item?.english_name)">{{item.english_name || item.name}}</button>
+            </mat-list-item>
+          </ng-container>
+          <ng-container *ngIf="nutsLevel !==0">
+            <ng-container *ngIf="!countryList.length">
+              <div style="height:20px" class="mat-spinner-container">
+                <mat-spinner
+                  diameter="20"
+                ></mat-spinner>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="countryList.length">
+              <mat-accordion>
+                <mat-expansion-panel *ngFor="let item of countryList">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>{{item.english_name || item.name}}</mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <mat-list-item *ngFor="let child of item.children" class="location-select-item">
+                    <button mat-button type="button" class="location-select-button"
+                            (click)="onRegionChange(child.code, child.name, item?.english_name)">
+                      {{child.name.length > 28 ? child.name.substring(0, 28) + '...' : child.name}}
+                    </button>
+                  </mat-list-item>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </ng-container>
+          </ng-container>
+        </mat-list>
+      </form>
+    </mat-card>
+  </div>
+</div>

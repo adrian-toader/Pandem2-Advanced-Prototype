@@ -1,0 +1,27 @@
+{
+  "$id": "/dataSource#",
+  "definitions": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "date": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dataSourceMetadataEntry": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "/base#/definitions/mongoID"
+        },
+        "name": {
+          "$ref": "/dataSource#/definitions/name"
+        },
+        "date": {
+          "$ref": "/dataSource#/definitions/date"
+        }
+      }
+    }
+  }
+}

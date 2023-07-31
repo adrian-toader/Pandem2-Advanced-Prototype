@@ -1,0 +1,22 @@
+{
+  "$id": "authentication.resetPassword.request.body.schema",
+  "description": "Reset the user's password",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "token": {
+        "type": "string"
+    },
+    "new_password": {
+        "type": "string"
+    }
+  },
+  "required": [
+    "userId",
+    "token",
+    "new_password"
+  ]
+}
+    

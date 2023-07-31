@@ -1,0 +1,5 @@
+{
+  "$id": "import.retrieveDataSourcesList.request.uri.query.schema",
+  "description": "Retrieve Data sources List request query schema",
+  "$ref": "/query#/definitions/getListQuery"
+}

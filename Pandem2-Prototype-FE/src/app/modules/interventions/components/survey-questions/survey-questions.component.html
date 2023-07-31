@@ -1,0 +1,167 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<div *ngIf="isLoading()"
+  class="mat-spinner-container loading-chart-placeholder">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf = "isLoaded()">
+  <div *ngIf="selectedQuestion===undefined" class="row">
+    <div class="col-xl-12">
+      <mat-card>
+        <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-label> {{'MODULES.INTERVENTIONS.SURVEY_QUESTIONS.ALL_QUESTIONS' | translate}}</mat-label>
+          <mat-select [formControl]="questions" (selectionChange)="questionChange($event)" >
+            <mat-option>{{'MODULES.INTERVENTIONS.SURVEY_QUESTIONS.ALL_QUESTIONS' | translate}}</mat-option>
+            <mat-option *ngFor="let question of surveyQuestionData" [value]="question">{{question.question}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card>
+    </div>
+  </div>
+  <div *ngIf="selectedQuestion!==undefined" class="row">
+    <div class="col-xl-7">
+      <mat-card>
+        <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-label>{{'MODULES.INTERVENTIONS.SURVEY_QUESTIONS.ALL_QUESTIONS' | translate}}</mat-label>
+          <mat-select [formControl]="questions" (selectionChange)="questionChange($event)" >
+            <mat-option>{{'MODULES.INTERVENTIONS.SURVEY_QUESTIONS.ALL_QUESTIONS' | translate}}</mat-option>
+            <mat-option *ngFor="let question of surveyQuestionData" [value]="question">{{question.question}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card>
+    </div>
+    <div class="col-xl-2">
+      <mat-card>
+        <p style="text-align: center;">{{'MODULES.INTERVENTIONS.SURVEY_QUESTIONS.LATEST_RESULT' | translate}}</p>
+        <div style="text-align: center">
+            <div class="evolution-container alert alert-success">
+              <span>{{latestResultPercentage}}%</span>
+            </div>
+        </div>
+      </mat-card>
+    </div>
+    <div class="col-xl-3">
+    <mat-card>
+      <p style="text-align: center;">{{'MODULES.INTERVENTIONS.SURVEY_QUESTIONS.CHANGE_COMPARED' | translate}}</p>
+      <div style="text-align: center; padding: 0;">
+        <div class="evolution-container alert alert-danger" *ngIf="!latestResultComparedPositiveEvolution">
+          <mat-icon class="evolution-container__icon">keyboard_arrow_down</mat-icon>
+          {{latestResultCompared}} <span>({{latestResultComparedPercentage| number : defaultNumberFormat}}%)</span>
+        </div>
+        <div class="evolution-container alert alert-success" *ngIf="latestResultComparedPositiveEvolution">
+          <mat-icon class="evolution-container__icon">keyboard_arrow_up</mat-icon>
+          {{Math.abs(latestResultCompared)}} <span>({{latestResultComparedPercentage| number : defaultNumberFormat}}%)</span>
+        </div>
+      </div>
+      </mat-card>
+    </div>
+  </div>
+  <br>
+  <div class="row" *ngIf="selectedQuestion===undefined">
+    <div class="col-xl-12">
+      <mat-card>
+        <div class="row">
+          <div class="col-xl-4">
+            <p style="text-align:center">{{'MODULES.INTERVENTIONS.SURVEY_QUESTIONS.QUESTION_ASKED' | translate}}</p>
+          </div>
+          <div class="col-xl-4">
+            <div class="row">
+              <div class="col-md-6 label" *ngIf="nutsLevel !=='4'">
+              <p> {{'MODULES.INTERVENTIONS.SURVEY_QUESTIONS.MEDIAN_RESPONSE' | translate}} , {{selectedRegionName}}</p>
+              </div>
+              <div *ngIf="nutsLevel !=='4'" class="col-md-6 label">
+                <mat-slide-toggle
+                (change)="switchWithVariance($event)"
+                [checked]="isVariance">
+                  <p style="text-align:center"> {{'MODULES.INTERVENTIONS.SURVEY_QUESTIONS.WITH_VARIANCE' | translate}}</p>
+                </mat-slide-toggle>
+              </div>
+              <div *ngIf="nutsLevel ==='4'" class="col-md-6 label">
+                <mat-radio-group (change)='changeBarChart($event)'>
+                  <mat-radio-button [checked]="isHeatMap" value="heatmap" >{{'MODULES.INTERVENTIONS.SURVEY_QUESTIONS.HEATMAP' | translate}}  </mat-radio-button>
+                  <mat-radio-button [checked]="!isHeatMap" value="bar" style="margin-left:16px">{{'MODULES.INTERVENTIONS.SURVEY_QUESTIONS.BAR_CHART' | translate}}</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4">
+            <p style="text-align:center">{{'MODULES.INTERVENTIONS.SURVEY_QUESTIONS.TREND_OVER_SURVEYS' | translate}}</p>
+          </div>
+        </div>
+        <div *ngFor="let question of surveyQuestionData" class="row" style="margin-top:0">
+          <div class="col-xl-4">
+            <p style="text-align:left">{{question.question}}</p>
+          </div>
+          <div class="col-xl-4">
+            <app-survey-median-response-row
+            [question]="question"
+            [isVariance]="isVariance"
+            [chartInputType]="heatMapOrBarChart"
+            [nutsLevel]="nutsLevel"
+            ></app-survey-median-response-row>
+          </div>
+          <div class="col-xl-4">
+            <app-survey-trend-row [question]="question"></app-survey-trend-row>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <br>
+  <div *ngIf="selectedQuestion!==undefined">
+    <div class="row">
+      <div class="col-xl-12">
+        <mat-card>
+          <mat-card-title>
+            {{'MODULES.INTERVENTIONS.SURVEY_QUESTIONS.POPULATION_SURVEY' | translate}}: {{selectedQuestion.question}}
+          </mat-card-title>
+          <mat-card-content>
+            <app-highcharts [xAxisData]="selectedQuestionChart.total.xAxis" style="width: 100%;"
+              [series]="selectedQuestionSeries"
+              [chartType]="undefined"
+              [chart]="chartQuestionOptions"
+              [hideLegend] ="true"
+              ></app-highcharts>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row" *ngIf="selectedQuestion!==undefined">
+    <div class="col-xl-12">
+      <app-survey-heatmap-question-per-region
+      [question]="selectedQuestion"
+      [selectedRegionCode]="selectedRegionCode"
+      [displayOnlyParentData]="nutsLevel === '4'"
+      [regionList]="regionList"
+      ></app-survey-heatmap-question-per-region>
+    </div>
+  </div>
+  <br>
+  <div *ngIf="nutsLevel!=='4' && selectedQuestion===undefined" class="row">
+    <div class="col-xl-12">
+      <app-survey-heatmap-survey-per-region [questionList]="surveyQuestionData" [regionList]="regionList"></app-survey-heatmap-survey-per-region>
+    </div>
+  </div>
+</div>

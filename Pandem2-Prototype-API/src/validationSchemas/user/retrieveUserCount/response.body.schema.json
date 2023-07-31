@@ -1,0 +1,11 @@
+{
+  "$id": "user.retrieveUserCount.response.body.schema",
+  "description": "Response body schema for retrieveUser function",
+  "type": "object",
+  "properties": {
+    "count": {
+      "type": "number"
+    }
+  },
+  "required": ["count"]
+}

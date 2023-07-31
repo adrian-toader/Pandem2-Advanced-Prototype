@@ -1,0 +1,39 @@
+{
+  "description": "Schema for user validation for import to excelFile",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "minLength": 1,
+      "format": "email"
+    },
+    "role": {
+      "type": "string",
+      "minLength": 1
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "password": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "email",
+    "password",
+    "firstName",
+    "lastName",
+    "location",
+    "role"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$id": "modelling.getModellingParameters.response.body.schema",
+  "description": "Retrieve modelling parameters response body schema",
+  "type": "object",
+  "patternProperties": {
+    ".+": {
+      "type": "object",
+      "properties": {
+        "readonly": {
+          "type": "boolean"
+        },
+        "value": {
+          "type": "number"
+        },
+        "limits": {
+          "type": "object",
+          "properties": {
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "required": [
+        "readonly"
+      ]
+    }
+  }
+}

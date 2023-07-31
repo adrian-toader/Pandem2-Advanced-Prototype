@@ -1,0 +1,27 @@
+{
+  "$id": "exploration.createExplorationSelections.request.body.schema",
+  "description": "Create a new exploration selections in database.",
+  "type": "object",
+  "properties": {
+      "name": {
+          "type": "string",
+          "minLength": 1
+      },
+      "description": {
+          "type": "string",
+          "minLength": 1
+      },
+      "is_private": {
+          "type": "boolean"
+      },
+      "settings": {
+          "type": "object"
+      }
+  },
+  "required": [
+      "name",
+      "description",
+      "is_private",
+      "settings"
+  ]
+}

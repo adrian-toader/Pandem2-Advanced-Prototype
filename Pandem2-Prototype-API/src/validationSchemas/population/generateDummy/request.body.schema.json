@@ -1,0 +1,21 @@
+{
+  "$id": "population.generateDummy.request.body.schema",
+  "description": "Generate Population dummy data request body schema",
+  "type": "object",
+  "properties": {
+    "location": {
+      "$ref": "/population#/definitions/location"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "generate_for_sublocations": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "location",
+    "date"
+  ]
+}

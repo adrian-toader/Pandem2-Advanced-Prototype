@@ -1,0 +1,35 @@
+{
+  "$id": "primaryCare.getDaily.request.query.schema",
+  "description": "Get daily primary care request params schema",
+  "type": "object",
+  "properties": {
+    "subcategory": {
+      "$ref": "/primaryCare#/definitions/subcategory"
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "disease_type": {
+      "$ref": "/primaryCare#/definitions/disease_type"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "disease_type"
+      ]
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "subcategory",
+    "location"
+  ]
+}

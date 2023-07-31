@@ -1,0 +1,13 @@
+{
+  "$id": "report.retrieveReportListForUser.request.uri.template.schema",
+  "description": "Retrieve report list URI template schema",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "$ref": "/report#/definitions/userId"
+    }
+  },
+  "required": [
+    "userId"
+  ]
+}

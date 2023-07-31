@@ -1,0 +1,35 @@
+{
+  "$id": "import.goData.data.request.body.schema",
+  "description": "Get Go.Data data schema",
+  "type": "object",
+  "properties": {
+    "pathogen": {
+      "$ref": "/case#/definitions/pathogenId"
+    },
+    "location": {
+      "$ref": "/case#/definitions/location"
+    },
+    "import_for_sublocations": {
+      "type": "boolean"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "data_type": {
+      "type": "string",
+      "default": "all"
+    }
+  },
+  "required": [
+    "data_type",
+    "pathogen",
+    "start_date",
+    "end_date",
+    "location"
+  ]
+}

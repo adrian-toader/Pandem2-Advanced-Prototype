@@ -1,0 +1,18 @@
+{
+  "$id": "role.retrieveRoleList.response.body.schema",
+  "description": "Retrieve role instances list response schema",
+  "type": "array",
+  "items": {
+    "allOf": [
+      {
+        "$ref": "/role#/definitions/roleResourceEntry"
+      },
+      {
+        "required": [
+          "name",
+          "permissions"
+        ]
+      }
+    ]
+  }
+}

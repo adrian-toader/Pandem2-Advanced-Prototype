@@ -1,0 +1,41 @@
+{
+  "$id": "vaccine.getLocationsDateInterval.request.query.schema",
+  "description": "Get time interval for vaccines for requested locations - request query schema",
+  "type": "object",
+  "properties": {
+    "pathogenId": {
+      "type": "string"
+    },
+    "dose_type": {
+      "$ref": "/vaccine#/definitions/dose_type"
+    },
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "population_type": {
+      "$ref": "/vaccine#/definitions/population_type"
+    },
+    "gender": {
+      "$ref": "/vaccine#/definitions/gender"
+    },
+    "age_group": {
+      "$ref": "/vaccine#/definitions/age_group"
+    },
+    "healthcare_worker": {
+      "$ref": "/vaccine#/definitions/healthcare_worker"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "dose_type",
+        "gender",
+        "age_group",
+        "healthcare_worker",
+        "population_type"
+      ]
+    }
+  },
+  "required": [
+    "location"
+  ]
+}

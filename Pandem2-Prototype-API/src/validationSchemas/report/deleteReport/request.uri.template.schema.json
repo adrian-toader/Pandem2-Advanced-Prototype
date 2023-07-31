@@ -1,0 +1,13 @@
+{
+  "$id": "report.deleteReport.request.uri.template.schema",
+  "description": "Delete report URI template schema",
+  "type": "object",
+  "properties": {
+    "reportId": {
+      "$ref": "/report#/definitions/reportId"
+    }
+  },
+  "required": [
+    "reportId"
+  ]
+}

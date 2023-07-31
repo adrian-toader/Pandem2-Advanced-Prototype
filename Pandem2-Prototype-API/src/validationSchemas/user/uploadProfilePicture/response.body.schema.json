@@ -1,0 +1,15 @@
+{
+  "$id": "user.uploadProfilePicture.response.body.schema",
+  "description": "Upload profile picture response body schema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "/user#/definitions/userResourceEntry"
+    },
+    {
+      "required": [
+        "email"
+      ]
+    }
+  ]
+}

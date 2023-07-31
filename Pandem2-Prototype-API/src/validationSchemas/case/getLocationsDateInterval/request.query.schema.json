@@ -1,0 +1,41 @@
+{
+  "$id": "case.getLocationsDateInterval.request.query.schema",
+  "description": "Get time interval in which cases occured for requested locations request params schema",
+  "type": "object",
+  "properties": {
+    "subcategory": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/case#/definitions/subcategory"
+          }
+        },
+        {
+          "$ref": "/case#/definitions/subcategory"
+        }
+      ]
+    },
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "total_type": {
+      "$ref": "/case#/definitions/total_type"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "variantId",
+        "gender",
+        "age_group",
+        "comorbidity",
+        "subcategory"
+      ]
+    }
+  },
+  "required": [
+    "subcategory",
+    "location",
+    "total_type"
+  ]
+}

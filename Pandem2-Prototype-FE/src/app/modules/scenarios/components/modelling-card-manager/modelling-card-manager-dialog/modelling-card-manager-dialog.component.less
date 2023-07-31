@@ -1,0 +1,165 @@
+/*
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+*/
+
+.mat-primary-button {
+  background-color: #d5dce0;
+}
+
+.modelling-button {
+  background-color: #d5dce0 !important;
+}
+
+.mat-primary-color {
+  color: #0272c6;
+}
+
+.mat-primary-button-selected {
+  background-color: #0272c6;
+  color: #fff;
+}
+
+.modelling-icon-size mat-icon {
+  font-size: 1.5em;
+}
+
+.modelling-card-manager-dialog {
+  width: 80vw !important;
+  height: 80vh;
+}
+
+.dialog-close-button {
+  float: right;
+  top: -24px;
+  right: -24px;
+}
+
+.modelling-exploration-dialog-title-group {
+  padding-right: 40px;
+}
+
+.modelling-title-weight {
+  font-weight: 500 !important;
+}
+
+.modelling-title-info {
+  color: rgba(0, 0, 0, 0.54);
+  padding-bottom: 0 !important;
+  font-size: 1.2em;
+}
+
+.modelling-outputs-info-button {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  cursor: pointer;
+}
+
+.modelling-exloration-description {
+  color: rgba(0, 0, 0, 0.54);
+  margin-top: 0.25em !important;
+}
+
+.modelling-exploration-dialog-category {
+  background-color: #3ebfff;
+  color: white;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.modelling-exploration-dialog-category-card {
+  padding: 0;
+}
+
+.modelling-exploration-dialog-subcategory-title {
+  background-color: #d5dce04d;
+  padding: 10px !important;
+}
+
+.modelling-exploration-dialog-input-group {
+  margin-top: 6px;
+  margin-bottom: 6px;
+  align-items: center;
+}
+
+.modelling-exploration-dialog-input-name {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.modelling-exploration-dialog-ages-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 6px;
+  padding: 0 3px;
+}
+
+.modelling-exploration-dialog-ages p {
+  padding: 2px 0px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.modelling-exploration-dialog-checkbox-group {
+  gap: 6px;
+}
+
+.modelling-exploration-plotline-group {
+  gap: 10px;
+}
+
+.modelling-exploration-dialog-warning {
+  text-align: right;
+  color: red;
+}
+
+@media screen and (max-width: 992px) {
+  .modelling-exploration-dialog-panel {
+    max-width: unset !important;
+    width: 100%;
+    height: 100%;
+
+    .mat-dialog-container {
+      max-width: 100vw;
+      max-height: 100vh;
+      height: 100%;
+      width: 100%;
+
+      .mat-dialog-content {
+        max-height: unset !important;
+      }
+    }
+  }
+
+  .modelling-card-manager-dialog {
+    width: 95vw !important;
+    height: 85vh;
+  }
+
+  .modelling-card-manager-dialog .col-12,
+  .modelling-card-manager-dialog .col-xl-4 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

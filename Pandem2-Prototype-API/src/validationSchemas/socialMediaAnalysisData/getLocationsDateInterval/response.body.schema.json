@@ -1,0 +1,15 @@
+{
+  "$id": "socialMediaAnalysisData.getLocationsDateInterval.response.body.schema",
+  "description": "Get time interval in which social media analysis data occured for requested locations response body schema",
+  "type": "object",
+  "properties": {
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

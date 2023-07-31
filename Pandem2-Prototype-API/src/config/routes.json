@@ -1,0 +1,2905 @@
+[
+  {
+    "defaultController": "RoleController",
+    "path": "/roles",
+    "methods": {
+      "GET": {
+        "action": "retrieveRoleList",
+        "tags": [
+          "Roles"
+        ],
+        "permissions": [
+          "role_all"
+        ],
+        "requireAuthentication": true,
+        "responses": {
+          "200": "role.retrieveRoleList.response.body.schema"
+        }
+      },
+      "POST": {
+        "action": "createRole",
+        "tags": [
+          "Roles"
+        ],
+        "permissions": [
+          "role_all"
+        ],
+        "requireAuthentication": false,
+        "validationSchemas": {
+          "body": "role.createRole.request.body.schema"
+        },
+        "responses": {
+          "201": "role.createRole.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "RoleController",
+    "path": "/roles/:roleId",
+    "methods": {
+      "GET": {
+        "action": "retrieveRole",
+        "tags": [
+          "Roles"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "role_all"
+        ],
+        "validationSchemas": {
+          "params": "role.retrieveRole.request.uri.template.schema"
+        },
+        "responses": {
+          "200": "role.retrieveRole.response.body.schema"
+        }
+      },
+      "PUT": {
+        "action": "updateRole",
+        "tags": [
+          "Roles"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "role_all"
+        ],
+        "validationSchemas": {
+          "params": "role.updateRole.request.uri.template.schema",
+          "body": "role.updateRole.request.body.schema"
+        },
+        "responses": {
+          "200": "role.updateRole.response.body.schema"
+        }
+      },
+      "DELETE": {
+        "action": "deleteRole",
+        "tags": [
+          "Roles"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "role_all"
+        ],
+        "validationSchemas": {
+          "params": "role.deleteRole.request.uri.template.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "UserController",
+    "path": "/users",
+    "methods": {
+      "GET": {
+        "action": "retrieveUserList",
+        "tags": [
+          "Users"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "user_all"
+        ],
+        "validationSchemas": {
+          "query": "user.retrieveUsersList.request.uri.query.schema"
+        },
+        "responses": {
+          "200": "user.retrieveUserList.response.body.schema"
+        }
+      },
+      "POST": {
+        "action": "createUser",
+        "tags": [
+          "Users"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "user_all"
+        ],
+        "validationSchemas": {
+          "body": "user.createUser.request.body.schema"
+        },
+        "responses": {
+          "200": "user.createUser.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "UserController",
+    "path": "/users/:userId",
+    "methods": {
+      "GET": {
+        "action": "retrieveUser",
+        "tags": [
+          "Users"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "user_all",
+          "user_my"
+        ],
+        "validationSchemas": {
+          "params": "user.retrieveUser.request.uri.template.schema"
+        },
+        "responses": {
+          "200": "user.retrieveUser.response.body.schema"
+        }
+      },
+      "PUT": {
+        "action": "updateUser",
+        "tags": [
+          "Users"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "user_all",
+          "user_my"
+        ],
+        "validationSchemas": {
+          "params": "user.updateUser.request.uri.template.schema",
+          "body": "user.updateUser.request.body.schema"
+        },
+        "responses": {
+          "200": "user.updateUser.response.body.schema"
+        }
+      },
+      "DELETE": {
+        "action": "deleteUser",
+        "tags": [
+          "Users"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "user_all"
+        ],
+        "validationSchemas": {
+          "params": "user.deleteUser.request.uri.template.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "UserController",
+    "path": "/users/:userId/upload-profile-picture",
+    "methods": {
+      "POST": {
+        "action": "uploadProfilePicture",
+        "tags": [
+          "Users"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "user_all",
+          "user_my"
+        ],
+        "validationSchemas": {
+          "params": "user.uploadProfilePicture.request.uri.template.schema"
+        },
+        "responses": {
+          "200": "user.uploadProfilePicture.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "AuthenticationController",
+    "path": "/auth/login",
+    "methods": {
+      "POST": {
+        "action": "login",
+        "tags": [
+          "Auth"
+        ],
+        "validationSchemas": {
+          "body": "authentication.login.request.body.schema"
+        },
+        "responses": {
+          "200": "authentication.login.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "AuthenticationController",
+    "path": "/auth/logout",
+    "methods": {
+      "POST": {
+        "action": "logout",
+        "tags": [
+          "Auth"
+        ],
+        "requireAuthentication": true
+      }
+    }
+  },
+  {
+    "defaultController": "AuthenticationController",
+    "path": "/auth/forgot-password",
+    "methods": {
+      "POST": {
+        "action": "forgotPassword",
+        "tags": [
+          "Auth"
+        ],
+        "requireAuthentication": false,
+        "permissions": [],
+        "validationSchemas": {
+          "body": "authentication.forgotPassword.request.body.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "AuthenticationController",
+    "path": "/auth/reset-password",
+    "methods": {
+      "POST": {
+        "action": "resetPassword",
+        "tags": [
+          "Auth"
+        ],
+        "requireAuthentication": false,
+        "permissions": [],
+        "validationSchemas": {
+          "body": "authentication.resetPassword.request.body.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "AuthenticationController",
+    "path": "/auth/verify-reset-password-token",
+    "methods": {
+      "POST": {
+        "action": "verifyResetPasswordToken",
+        "tags": [
+          "Auth"
+        ],
+        "requireAuthentication": false,
+        "permissions": [],
+        "validationSchemas": {
+          "body": "authentication.verifyResetPasswordToken.request.body.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "DataController",
+    "path": "/data/nuts",
+    "methods": {
+      "POST": {
+        "action": "loadNUTSData",
+        "tags": [
+          "NUTS"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "nuts_all"
+        ],
+        "validationSchemas": {
+          "body": "data.loadNUTSData.request.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "DataController",
+    "path": "/data/nuts/get-data",
+    "methods": {
+      "POST": {
+        "action": "retrieveNUTSList",
+        "tags": [
+          "NUTS"
+        ],
+        "requireAuthentication": false,
+        "validationSchemas": {
+          "body": "data.retrieveNUTSList.request.query.schema"
+        },
+        "responses": {
+          "200": "data.retrieveNUTSList.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "DataController",
+    "path": "/data/nuts/map-source",
+    "methods": {
+      "GET": {
+        "action": "getMapSource",
+        "tags": [
+          "NUTS"
+        ],
+        "requireAuthentication": false,
+        "validationSchemas": {
+          "query": "data.getMapSource.request.query.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ImportController",
+    "path": "/import/results",
+    "methods": {
+      "GET": {
+        "action": "retrieveImportResultsList",
+        "tags": [
+          "Import"
+        ],
+        "requireAuthentication": true,
+        "validationSchemas": {
+          "query": "import.retrieveImportResultsList.request.uri.query.schema"
+        },
+        "responses": {
+          "200": "import.retrieveImportResultsList.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ImportController",
+    "path": "/import/results/:importResultId",
+    "methods": {
+      "GET": {
+        "action": "retrieveImportResult",
+        "tags": [
+          "Import"
+        ],
+        "requireAuthentication": true,
+        "validationSchemas": {
+          "params": "import.retrieveImportResult.request.uri.template.schema"
+        },
+        "responses": {
+          "200": "import.retrieveImportResult.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ImportController",
+    "path": "/import/results/:importResultId/resume",
+    "methods": {
+      "POST": {
+        "action": "resumeImport",
+        "tags": [
+          "Import"
+        ],
+        "requireAuthentication": true,
+        "validationSchemas": {
+          "params": "import.resumeImport.request.uri.template.schema"
+        },
+        "responses": {
+          "200": "import.resumeImport.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ImportController",
+    "path": "/import/xlsx",
+    "methods": {
+      "POST": {
+        "action": "importXlsx",
+        "tags": [
+          "Import"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "import_all"
+        ],
+        "validationSchemas": {
+          "body": "import.xlsx.request.body.schema"
+        },
+        "responses": {
+          "200": "import.xlsx.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ImportController",
+    "path": "/import/data-sources",
+    "methods": {
+      "GET": {
+        "action": "retrieveDataSourcesList",
+        "tags": [
+          "Import"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "import_all"
+        ],
+        "validationSchemas": {
+          "query": "import.retrieveDataSourcesList.request.uri.query.schema"
+        },
+        "responses": {
+          "200": "import.retrieveDataSourcesList.response.body.schema"
+        }
+      },
+      "POST": {
+        "action": "importDataSources",
+        "tags": [
+          "Import - Pandem-source"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "import_all"
+        ]
+      }
+    }
+  },
+  {
+    "defaultController": "ImportController",
+    "path": "/import/data-sources/tags",
+    "methods": {
+      "GET": {
+        "action": "retrieveDataSourceTagsList",
+        "tags": [
+          "Import"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "import_all"
+        ],
+        "validationSchemas": {
+          "query": "import.retrieveDataSourceTagsList.request.query.schema"
+        },
+        "responses": {
+          "200": "import.retrieveDataSourceTagsList.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ImportController",
+    "path": "/import/data",
+    "methods": {
+      "POST": {
+        "action": "importPandemSourceData",
+        "tags": [
+          "Import - Pandem-source"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "import_all"
+        ],
+        "validationSchemas": {
+          "body": "import.data.request.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ImportController",
+    "path": "/import/go-data/data",
+    "methods": {
+      "POST": {
+        "action": "importGoDataData",
+        "tags": [
+          "Import - Go.Data"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "import_all"
+        ],
+        "validationSchemas": {
+          "body": "import.goData.data.request.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "LabelMappingController",
+    "path": "/label-mapping",
+    "methods": {
+      "GET": {
+        "action": "retrieveLabelMappingList",
+        "tags": [
+          "Label Mapping"
+        ],
+        "requireAuthentication": true,
+        "validationSchemas": {
+          "query": "labelMapping.retrieveLabelMappingList.request.query.schema"
+        },
+        "responses": {
+          "200": "labelMapping.retrieveLabelMappingList.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "CaseController",
+    "path": "/cases/generate-dummy",
+    "methods": {
+      "POST": {
+        "action": "generateDummyData",
+        "tags": [
+          "Cases"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "case_all"
+        ],
+        "validationSchemas": {
+          "body": "case.generateDummy.request.body.schema"
+        },
+        "responses": {
+          "201": "case.generateDummy.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "CaseController",
+    "path": "/cases/get-all-daily",
+    "methods": {
+      "GET": {
+        "action": "getDaily",
+        "tags": [
+          "Cases"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "case_all"
+        ],
+        "validationSchemas": {
+          "query": "case.getDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "case.getDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "CaseController",
+    "path": "/cases/get-all-daily-cases-double-split",
+    "methods": {
+      "GET": {
+        "action": "getDailyCasesDoubleSplit",
+        "tags": [
+          "Cases"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "case_all"
+        ],
+        "validationSchemas": {
+          "query": "case.getDailyCasesDoubleSplit.request.query.schema"
+        },
+        "responses": {
+          "200": "case.getDailyCasesDoubleSplit.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "CaseController",
+    "path": "/cases/get-all-daily-contact-tracing",
+    "methods": {
+      "GET": {
+        "action": "getDailyContactTracing",
+        "tags": [
+          "ContactTracingCases"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "case_all",
+          "contact_all"
+        ],
+        "validationSchemas": {
+          "query": "case.getDailyContactTracing.request.query.schema"
+        },
+        "responses": {
+          "200": "case.getDailyContactTracing.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "CaseController",
+    "path": "/cases/get-locations-daily-cases",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDailyCases",
+        "tags": [
+          "Cases"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "case_all"
+        ],
+        "validationSchemas": {
+          "query": "case.getLocationsDailyCases.request.query.schema"
+        },
+        "responses": {
+          "200": "case.getLocationsDailyCases.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "CaseController",
+    "path": "/cases/get-locations-daily-contact-tracing",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDailyContactTracing",
+        "tags": [
+          "ContactTracingCases"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "contact_all"
+        ],
+        "validationSchemas": {
+          "query": "case.getLocationsDailyContactTracing.request.query.schema"
+        },
+        "responses": {
+          "200": "case.getLocationsDailyContactTracing.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "CaseController",
+    "path": "/cases/get-locations-date-interval",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDateInterval",
+        "tags": [
+          "Cases"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "case_all"
+        ],
+        "validationSchemas": {
+          "query": "case.getLocationsDateInterval.request.query.schema"
+        },
+        "responses": {
+          "200": "case.getLocationsDateInterval.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "PatientController",
+    "path": "/patients/generate-dummy",
+    "methods": {
+      "POST": {
+        "action": "generateDummyData",
+        "tags": [
+          "Patients"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "patient_all"
+        ],
+        "validationSchemas": {
+          "body": "patient.generateDummy.request.body.schema"
+        },
+        "responses": {
+          "201": "patient.generateDummy.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "PatientController",
+    "path": "/patients/get-all-daily",
+    "methods": {
+      "GET": {
+        "action": "getDaily",
+        "tags": [
+          "Patients"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "patient_all"
+        ],
+        "validationSchemas": {
+          "query": "patient.getDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "patient.getDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "PatientController",
+    "path": "/patients/get-locations-daily",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDaily",
+        "tags": [
+          "Patients"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "patient_all"
+        ],
+        "validationSchemas": {
+          "query": "patient.getLocationsDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "patient.getLocationsDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "PatientController",
+    "path": "/patients/get-locations-date-interval",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDateInterval",
+        "tags": [
+          "Patients"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "patient_all"
+        ],
+        "validationSchemas": {
+          "query": "patient.getLocationsDateInterval.request.query.schema"
+        },
+        "responses": {
+          "200": "patient.getLocationsDateInterval.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "BedController",
+    "path": "/beds/generate-dummy",
+    "methods": {
+      "POST": {
+        "action": "generateDummyData",
+        "tags": [
+          "Beds"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "bed_all"
+        ],
+        "validationSchemas": {
+          "body": "bed.generateDummy.request.body.schema"
+        },
+        "responses": {
+          "201": "bed.generateDummy.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "BedController",
+    "path": "/beds/get-all-daily",
+    "methods": {
+      "GET": {
+        "action": "getDaily",
+        "tags": [
+          "Beds"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "bed_all"
+        ],
+        "validationSchemas": {
+          "query": "bed.getDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "bed.getDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "BedController",
+    "path": "/beds/get-locations-daily",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDaily",
+        "tags": [
+          "Beds"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "bed_all"
+        ],
+        "validationSchemas": {
+          "query": "bed.getLocationsDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "bed.getLocationsDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "BedController",
+    "path": "/beds/get-locations-date-interval",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDateInterval",
+        "tags": [
+          "Beds"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "bed_all"
+        ],
+        "validationSchemas": {
+          "query": "bed.getLocationsDateInterval.request.query.schema"
+        },
+        "responses": {
+          "200": "bed.getLocationsDateInterval.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "DeathController",
+    "path": "/deaths/generate-dummy",
+    "methods": {
+      "POST": {
+        "action": "generateDummyData",
+        "tags": [
+          "Deaths"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "death_all"
+        ],
+        "validationSchemas": {
+          "body": "death.generateDummy.request.body.schema"
+        },
+        "responses": {
+          "201": "death.generateDummy.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "DeathController",
+    "path": "/deaths/get-all-daily",
+    "methods": {
+      "GET": {
+        "action": "getDaily",
+        "tags": [
+          "Deaths"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "death_all"
+        ],
+        "validationSchemas": {
+          "query": "death.getDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "death.getDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "DeathController",
+    "path": "/deaths/get-locations-daily",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDaily",
+        "tags": [
+          "Deaths"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "death_all"
+        ],
+        "validationSchemas": {
+          "query": "death.getLocationsDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "death.getLocationsDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "DeathController",
+    "path": "/deaths/get-locations-date-interval",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDateInterval",
+        "tags": [
+          "Deaths"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "death_all"
+        ],
+        "validationSchemas": {
+          "query": "death.getLocationsDateInterval.request.query.schema"
+        },
+        "responses": {
+          "200": "death.getLocationsDateInterval.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "VaccineController",
+    "path": "/vaccines/generate-dummy",
+    "methods": {
+      "POST": {
+        "action": "generateDummyData",
+        "tags": [
+          "Vaccines"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "vaccine_all"
+        ],
+        "validationSchemas": {
+          "body": "vaccine.generateDummy.request.body.schema"
+        },
+        "responses": {
+          "201": "vaccine.generateDummy.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "VaccineController",
+    "path": "/vaccines/get-all-daily",
+    "methods": {
+      "GET": {
+        "action": "getDaily",
+        "tags": [
+          "Vaccines"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "vaccine_all"
+        ],
+        "validationSchemas": {
+          "query": "vaccine.getDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "vaccine.getDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "VaccineController",
+    "path": "/vaccines/get-locations-daily",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDaily",
+        "tags": [
+          "Vaccines"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "vaccine_all"
+        ],
+        "validationSchemas": {
+          "query": "vaccine.getLocationsDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "vaccine.getLocationsDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "VaccineController",
+    "path": "/vaccines/get-locations-date-interval",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDateInterval",
+        "tags": [
+          "Vaccines"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "vaccine_all"
+        ],
+        "validationSchemas": {
+          "query": "vaccine.getLocationsDateInterval.request.query.schema"
+        },
+        "responses": {
+          "200": "vaccine.getLocationsDateInterval.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "TestController",
+    "path": "/tests/generate-dummy",
+    "methods": {
+      "POST": {
+        "action": "generateDummyData",
+        "tags": [
+          "Tests"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "test_all"
+        ],
+        "validationSchemas": {
+          "body": "test.generateDummy.request.body.schema"
+        },
+        "responses": {
+          "201": "test.generateDummy.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "TestController",
+    "path": "/tests/get-all-daily",
+    "methods": {
+      "GET": {
+        "action": "getDaily",
+        "tags": [
+          "Tests"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "test_all"
+        ],
+        "validationSchemas": {
+          "query": "test.getDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "test.getDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "TestController",
+    "path": "/tests/get-locations-daily",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDailyTests",
+        "tags": [
+          "Tests"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "test_all"
+        ],
+        "validationSchemas": {
+          "query": "test.getLocationsDailyTests.request.query.schema"
+        },
+        "responses": {
+          "200": "test.getLocationsDailyTests.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "TestController",
+    "path": "/tests/get-locations-date-interval",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDateInterval",
+        "tags": [
+          "Tests"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "test_all"
+        ],
+        "validationSchemas": {
+          "query": "test.getLocationsDateInterval.request.query.schema"
+        },
+        "responses": {
+          "200": "test.getLocationsDateInterval.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "VariantController",
+    "path": "/variants",
+    "methods": {
+      "GET": {
+        "action": "retrieveVariantList",
+        "tags": [
+          "Variants"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "variant_all"
+        ],
+        "validationSchemas": {
+          "query": "variant.retrieveVariantList.request.query.schema"
+        },
+        "responses": {
+          "200": "variant.retrieveVariantList.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "VariantController",
+    "path": "/variants/generate-dummy",
+    "methods": {
+      "POST": {
+        "action": "generateDummyData",
+        "tags": [
+          "Variants"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "variant_all"
+        ],
+        "responses": {
+          "201": "variant.generateDummy.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "StrainController",
+    "path": "/strains",
+    "methods": {
+      "GET": {
+        "action": "retrieveStrainList",
+        "tags": [
+          "Strains"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "strain_all"
+        ],
+        "responses": {
+          "200": "strain.retrieveStrainList.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "StrainController",
+    "path": "/strains/generate-dummy",
+    "methods": {
+      "POST": {
+        "action": "generateDummyData",
+        "tags": [
+          "Strains"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "strain_all"
+        ],
+        "responses": {
+          "201": "strain.generateDummy.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ContactController",
+    "path": "/contacts/generate-dummy",
+    "methods": {
+      "POST": {
+        "action": "generateDummyData",
+        "tags": [
+          "Contacts"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "contact_all"
+        ],
+        "validationSchemas": {
+          "body": "contact.generateDummy.request.body.schema"
+        },
+        "responses": {
+          "201": "contact.generateDummy.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ContactController",
+    "path": "/contacts/get-all-daily",
+    "methods": {
+      "GET": {
+        "action": "getDaily",
+        "tags": [
+          "Contacts"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "contact_all"
+        ],
+        "validationSchemas": {
+          "query": "contact.getDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "contact.getDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ContactController",
+    "path": "/contacts/get-locations-daily",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDailyContacts",
+        "tags": [
+          "Contacts"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "contact_all"
+        ],
+        "validationSchemas": {
+          "query": "contact.getLocationsDailyContacts.request.query.schema"
+        },
+        "responses": {
+          "200": "contact.getLocationsDailyContacts.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "HumanResourceController",
+    "path": "/human-resources/generate-dummy",
+    "methods": {
+      "POST": {
+        "action": "generateDummyData",
+        "tags": [
+          "Human Resources"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "human_resources_all"
+        ],
+        "validationSchemas": {
+          "body": "humanResource.generateDummy.request.body.schema"
+        },
+        "responses": {
+          "201": "humanResource.generateDummy.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "HumanResourceController",
+    "path": "/human-resources/get-all-daily",
+    "methods": {
+      "GET": {
+        "action": "getDaily",
+        "tags": [
+          "Human Resources"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "human_resources_all"
+        ],
+        "validationSchemas": {
+          "query": "humanResource.getDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "humanResource.getDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "HumanResourceController",
+    "path": "/human-resources/get-locations-daily",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDaily",
+        "tags": [
+          "Human Resources"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "human_resources_all"
+        ],
+        "validationSchemas": {
+          "query": "humanResource.getLocationsDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "humanResource.getLocationsDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "SurveyController",
+    "path": "/surveys/generate-dummy",
+    "methods": {
+      "POST": {
+        "action": "generateDummyData",
+        "tags": [
+          "Population Surveys"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "survey_all"
+        ],
+        "validationSchemas": {
+          "body": "survey.generateDummy.request.body.schema"
+        },
+        "responses": {
+          "201": "survey.generateDummy.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "SurveyController",
+    "path": "/surveys/get-all-daily",
+    "methods": {
+      "GET": {
+        "action": "getDaily",
+        "tags": [
+          "Population Surveys"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "survey_all"
+        ],
+        "validationSchemas": {
+          "query": "survey.getDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "survey.getDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "SurveyController",
+    "path": "/surveys/get-latest",
+    "methods": {
+      "GET": {
+        "action": "getLatest",
+        "tags": [
+          "Population Surveys"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "survey_all"
+        ],
+        "validationSchemas": {
+          "query": "survey.getLatest.request.query.schema"
+        },
+        "responses": {
+          "200": "survey.getLatest.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "SurveyController",
+    "path": "/surveys/get-locations-daily",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDaily",
+        "tags": [
+          "Population Surveys"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "survey_all"
+        ],
+        "validationSchemas": {
+          "query": "survey.getLocationsDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "survey.getLocationsDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "SurveyController",
+    "path": "/surveys/get-questions",
+    "methods": {
+      "GET": {
+        "action": "getSurveyQuestionsList",
+        "tags": [
+          "Population Surveys"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "survey_all"
+        ],
+        "validationSchemas": {
+          "query": "survey.getSurveyQuestionsList.request.query.schema"
+        },
+        "responses": {
+          "200": "survey.getSurveyQuestionsList.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ParticipatorySurveillanceController",
+    "path": "/participatory-surveillance/generate-dummy",
+    "methods": {
+      "POST": {
+        "action": "generateDummyData",
+        "tags": [
+          "Participatory Surveillance"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "participatory_surveillance_all"
+        ],
+        "validationSchemas": {
+          "body": "participatorySurveillance.generateDummy.request.body.schema"
+        },
+        "responses": {
+          "201": "participatorySurveillance.generateDummy.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ParticipatorySurveillanceController",
+    "path": "/participatory-surveillance/get-all-daily",
+    "methods": {
+      "GET": {
+        "action": "getDaily",
+        "tags": [
+          "Participatory Surveillance"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "participatory_surveillance_all"
+        ],
+        "validationSchemas": {
+          "query": "participatorySurveillance.getDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "participatorySurveillance.getDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ParticipatorySurveillanceController",
+    "path": "/participatory-surveillance/get-locations-daily",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDaily",
+        "tags": [
+          "Participatory Surveillance"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "participatory_surveillance_all"
+        ],
+        "validationSchemas": {
+          "query": "participatorySurveillance.getLocationsDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "participatorySurveillance.getLocationsDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ParticipatorySurveillanceController",
+    "path": "/participatory-surveillance/get-locations-date-interval",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDateInterval",
+        "tags": [
+          "Participatory Surveillance"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "participatory_surveillance_all"
+        ],
+        "validationSchemas": {
+          "query": "participatorySurveillance.getLocationsDateInterval.request.query.schema"
+        },
+        "responses": {
+          "200": "participatorySurveillance.getLocationsDateInterval.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ModellingController",
+    "path": "/modelling/parameters",
+    "methods": {
+      "GET": {
+        "action": "getModellingParameters",
+        "tags": [
+          "Modelling"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "modelling_all"
+        ],
+        "responses": {
+          "200": "modelling.getModellingParameters.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ModellingController",
+    "path": "/modelling/simulate",
+    "methods": {
+      "POST": {
+        "action": "simulateModel",
+        "tags": [
+          "Modelling"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "modelling_all"
+        ],
+        "validationSchemas": {
+          "body": "modelling.simulateModel.request.body.schema"
+        },
+        "responses": {
+          "200": "modelling.simulateModel.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ModellingController",
+    "path": "/modelling/get-modelling-server-status",
+    "methods": {
+      "GET": {
+        "action": "getModellingServerStatus",
+        "tags": [
+          "Modelling"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "modelling_all"
+        ],
+        "responses": {
+          "200": "modelling.getModellingServerStatus.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ModellingController",
+    "path": "/modelling/models",
+    "methods": {
+      "POST": {
+        "action": "createModel",
+        "tags": [
+          "Modelling"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "modelling_all"
+        ],
+        "validationSchemas": {
+          "body": "modelling.createModel.request.body.schema"
+        },
+        "responses": {
+          "200": "modelling.createModel.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ModellingController",
+    "path": "/modelling/models",
+    "methods": {
+      "GET": {
+        "action": "retrieveModelList",
+        "tags": [
+          "Modelling"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "modelling_all"
+        ],
+        "responses": {
+          "200": "modelling.retrieveModelList.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ModellingController",
+    "path": "/modelling/models/:modelId",
+    "methods": {
+      "PUT": {
+        "action": "updateModel",
+        "tags": [
+          "Modelling"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "modelling_all"
+        ],
+        "validationSchemas": {
+          "params": "modelling.updateModel.request.uri.template.schema",
+          "body": "modelling.updateModel.request.body.schema"
+        },
+        "responses": {
+          "200": "modelling.updateModel.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ModellingController",
+    "path": "/modelling/models/:modelId",
+    "methods": {
+      "DELETE": {
+        "action": "deleteModel",
+        "tags": [
+          "Modelling"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "modelling_all"
+        ],
+        "validationSchemas": {
+          "params": "modelling.deleteModel.request.uri.template.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "ModellingController",
+    "path": "/modelling/scenarios",
+    "methods": {
+      "POST": {
+        "action": "createScenario",
+        "tags": [
+          "Modelling"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "modelling_all"
+        ],
+        "validationSchemas": {
+          "body": "modelling.createScenario.request.body.schema"
+        },
+        "responses": {
+          "200": "modelling.createScenario.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ModellingController",
+    "path": "/modelling/save-scenarios",
+    "methods": {
+      "POST": {
+        "action": "saveScenario",
+        "tags": [
+          "Modelling"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "modelling_all"
+        ],
+        "validationSchemas": {
+          "body": "modelling.saveScenario.request.body.schema"
+        },
+        "responses": {
+          "200": "modelling.saveScenario.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ModellingController",
+    "path": "/modelling/scenarios/user/:userId",
+    "methods": {
+      "GET": {
+        "action": "retrieveScenarioList",
+        "tags": [
+          "Modelling"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "modelling_all"
+        ],
+        "validationSchemas": {
+          "params": "modelling.retrieveScenarioList.request.uri.template.schema"
+        },
+        "responses": {
+          "200": "modelling.retrieveScenarioList.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ModellingController",
+    "path": "/modelling/scenario-details/:scenarioId",
+    "methods": {
+      "GET": {
+        "action": "getScenarioDetails",
+        "tags": [
+          "Modelling"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "modelling_all"
+        ],
+        "validationSchemas": {
+          "params": "modelling.getScenarioDetails.request.uri.template.schema"
+        },
+        "responses": {
+          "200": "modelling.getScenarioDetails.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ModellingController",
+    "path": "/modelling/get-probability-of-infection",
+    "methods": {
+      "GET": {
+        "action": "getProbabilityOfInfection",
+        "tags": [
+          "Modelling"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "modelling_all"
+        ],
+        "validationSchemas": {
+          "query": "modelling.getProbabilityOfInfection.request.uri.query.schema"
+        },
+        "responses": {
+          "200": "modelling.getProbabilityOfInfection.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ModellingController",
+    "path": "/modelling/scenarios/:scenarioId",
+    "methods": {
+      "GET": {
+        "action": "getScenarioById",
+        "tags": [
+          "Modelling"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "modelling_all"
+        ],
+        "validationSchemas": {
+          "params": "modelling.getScenarioById.request.uri.template.schema"
+        },
+        "responses": {
+          "200": "modelling.getScenarioById.response.body.schema"
+        }
+      },
+      "PUT": {
+        "action": "updateScenario",
+        "tags": [
+          "Modelling"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "modelling_all"
+        ],
+        "validationSchemas": {
+          "params": "modelling.updateScenario.request.uri.template.schema",
+          "body": "modelling.updateScenario.request.body.schema"
+        },
+        "responses": {
+          "200": "modelling.updateScenario.response.body.schema"
+        }
+      },
+      "DELETE": {
+        "action": "deleteScenario",
+        "tags": [
+          "Modelling"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "modelling_all"
+        ],
+        "validationSchemas": {
+          "params": "modelling.deleteScenario.request.uri.template.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "SocialMediaAnalysisController",
+    "path": "/sma-topics/generate-dummy",
+    "methods": {
+      "POST": {
+        "action": "generateDummyTopicData",
+        "tags": [
+          "Social Media Analysis Topic"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "social_media_analysis_all"
+        ],
+        "responses": {
+          "201": "socialMediaAnalysisTopic.generateDummy.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "SocialMediaAnalysisController",
+    "path": "/sma-data/generate-dummy",
+    "methods": {
+      "POST": {
+        "action": "generateDummyData",
+        "tags": [
+          "Social Media Analysis Data"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "social_media_analysis_all"
+        ],
+        "validationSchemas": {
+          "body": "socialMediaAnalysisData.generateDummy.request.body.schema"
+        },
+        "responses": {
+          "201": "socialMediaAnalysisData.generateDummy.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "SocialMediaAnalysisController",
+    "path": "/sma-data/get-all-daily",
+    "methods": {
+      "GET": {
+        "action": "getDaily",
+        "tags": [
+          "Social Media Analysis Data"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "social_media_analysis_all"
+        ],
+        "validationSchemas": {
+          "query": "socialMediaAnalysisData.getDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "socialMediaAnalysisData.getDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "SocialMediaAnalysisController",
+    "path": "/sma-data/get-locations-daily",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDaily",
+        "tags": [
+          "Social Media Analysis Data"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "social_media_analysis_all"
+        ],
+        "validationSchemas": {
+          "query": "socialMediaAnalysisData.getLocationsDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "socialMediaAnalysisData.getLocationsDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "SocialMediaAnalysisController",
+    "path": "/sma-data/get-locations-date-interval",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDateInterval",
+        "tags": [
+          "Social Media Analysis Data"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "social_media_analysis_all"
+        ],
+        "validationSchemas": {
+          "query": "socialMediaAnalysisData.getLocationsDateInterval.request.query.schema"
+        },
+        "responses": {
+          "200": "socialMediaAnalysisData.getLocationsDateInterval.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "SocialMediaAnalysisController",
+    "path": "/sma-data/get-topics-summary",
+    "methods": {
+      "GET": {
+        "action": "getTopicsSummary",
+        "tags": [
+          "Social Media Analysis Data"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "social_media_analysis_all"
+        ],
+        "validationSchemas": {
+          "query": "socialMediaAnalysisData.getTopicsSummary.request.query.schema"
+        },
+        "responses": {
+          "200": "socialMediaAnalysisData.getTopicsSummary.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "SocialMediaAnalysisController",
+    "path": "/sma-data/get-languages",
+    "methods": {
+      "GET": {
+        "action": "getLanguages",
+        "tags": [
+          "Social Media Analysis Data"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "social_media_analysis_all"
+        ],
+        "validationSchemas": {
+          "query": "socialMediaAnalysisData.getLanguages.request.query.schema"
+        },
+        "responses": {
+          "200": "socialMediaAnalysisData.getLanguages.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ReportController",
+    "path": "/reports",
+    "methods": {
+      "POST": {
+        "action": "createReport",
+        "tags": [
+          "Report"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "report_all"
+        ],
+        "validationSchemas": {
+          "body": "report.createReport.request.body.schema"
+        },
+        "responses": {
+          "200": "report.createReport.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ReportController",
+    "path": "/reports/:reportId",
+    "methods": {
+      "PUT": {
+        "action": "updateReport",
+        "tags": ["Report"],
+        "requireAuthentication": true,
+        "permissions": ["report_all"],
+        "validationSchemas": {
+          "params": "report.updateReport.request.uri.template.schema",
+          "body": "report.updateReport.request.body.schema"
+        },
+        "responses": {
+          "200": "report.updateReport.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ReportController",
+    "path": "/reports/user/:userId",
+    "methods": {
+      "GET": {
+        "action": "retrieveReportListForUser",
+        "tags": [
+          "Report"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "report_all"
+        ],
+        "validationSchemas": {
+          "params": "report.retrieveReportListForUser.request.uri.template.schema"
+        },
+        "responses": {
+          "200": "report.retrieveReportListForUser.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ReportController",
+    "path": "/reports",
+    "methods": {
+      "GET": {
+        "action": "retrieveReportsList",
+        "tags": [
+          "Report"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "saved_report_cards_all"
+        ],
+        "responses": {
+          "200": "report.retrieveReportsList.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ReportController",
+    "path": "/reports/:reportId",
+    "methods": {
+      "DELETE": {
+        "action": "deleteReport",
+        "tags": [
+          "Report"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "report_all"
+        ],
+        "validationSchemas": {
+          "params": "report.deleteReport.request.uri.template.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "PrimaryCareController",
+    "path": "/primary-care/generate-dummy",
+    "methods": {
+      "POST": {
+        "action": "generateDummyData",
+        "tags": [
+          "Primary Care"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "primary_care_all"
+        ],
+        "validationSchemas": {
+          "body": "primaryCare.generateDummy.request.body.schema"
+        },
+        "responses": {
+          "201": "primaryCare.generateDummy.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "PrimaryCareController",
+    "path": "/primary-care/get-all-daily",
+    "methods": {
+      "GET": {
+        "action": "getDaily",
+        "tags": [
+          "Primary Care"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "primary_care_all"
+        ],
+        "validationSchemas": {
+          "query": "primaryCare.getDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "primaryCare.getDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "PrimaryCareController",
+    "path": "/primary-care/get-locations-daily",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDaily",
+        "tags": [
+          "Primary Care"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "primary_care_all"
+        ],
+        "validationSchemas": {
+          "query": "primaryCare.getLocationsDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "primaryCare.getLocationsDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "PrimaryCareController",
+    "path": "/primary-care/get-locations-date-interval",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDateInterval",
+        "tags": [
+          "Primary Care"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "primary_care_all"
+        ],
+        "validationSchemas": {
+          "query": "primaryCare.getLocationsDateInterval.request.query.schema"
+        },
+        "responses": {
+          "200": "primaryCare.getLocationsDateInterval.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "InterventionController",
+    "path": "/interventions/generate-dummy",
+    "methods": {
+      "POST": {
+        "action": "generateDummyData",
+        "tags": [
+          "Intervention"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "intervention_all"
+        ],
+        "validationSchemas": {
+          "body": "intervention.generateDummy.request.body.schema"
+        },
+        "responses": {
+          "201": "intervention.generateDummy.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "InterventionController",
+    "path": "/interventions",
+    "methods": {
+      "POST": {
+        "action": "createIntervention",
+        "tags": [
+          "Intervention"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "intervention_all"
+        ],
+        "validationSchemas": {
+          "body": "intervention.createIntervention.request.body.schema"
+        },
+        "responses": {
+          "201": "intervention.createIntervention.response.body.schema"
+        }
+      },
+      "GET": {
+        "action": "retrieveInterventionList",
+        "tags": [
+          "Intervention"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "intervention_all"
+        ],
+        "validationSchemas": {
+          "query": "intervention.retrieveInterventionList.request.query.schema"
+        },
+        "responses": {
+          "200": "intervention.retrieveInterventionList.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "InterventionController",
+    "path": "/interventions/:interventionId",
+    "methods": {
+      "PATCH": {
+        "action": "updateIntervention",
+        "tags": [
+          "Intervention"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "intervention_all"
+        ],
+        "validationSchemas": {
+          "params": "intervention.updateIntervention.request.uri.template.schema",
+          "body": "intervention.updateIntervention.request.body.schema"
+        },
+        "responses": {
+          "200": "intervention.updateIntervention.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "PopulationController",
+    "path": "/populations/generate-dummy",
+    "methods": {
+      "POST": {
+        "action": "generateDummyData",
+        "tags": [
+          "Populations"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "population_all"
+        ],
+        "validationSchemas": {
+          "body": "population.generateDummy.request.body.schema"
+        },
+        "responses": {
+          "201": "population.generateDummy.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "PopulationController",
+    "path": "/populations/get-all-daily",
+    "methods": {
+      "GET": {
+        "action": "getDaily",
+        "tags": [
+          "Populations"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "population_all"
+        ],
+        "validationSchemas": {
+          "query": "population.getDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "population.getDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "PopulationController",
+    "path": "/populations/get-locations-daily",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDaily",
+        "tags": [
+          "Populations"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "population_all"
+        ],
+        "validationSchemas": {
+          "query": "population.getLocationsDaily.request.query.schema"
+        },
+        "responses": {
+          "200": "population.getLocationsDaily.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "PopulationController",
+    "path": "/populations/get-locations-date-interval",
+    "methods": {
+      "GET": {
+        "action": "getLocationsDateInterval",
+        "tags": [
+          "Populations"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "population_all"
+        ],
+        "validationSchemas": {
+          "query": "population.getLocationsDateInterval.request.query.schema"
+        },
+        "responses": {
+          "200": "population.getLocationsDateInterval.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "AdministrationController",
+    "path": "/administration/service-status",
+    "methods": {
+      "GET": {
+        "action": "getStatus",
+        "tags": ["Status"],
+        "responses": {
+          "200": "administration.getStatus.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "AdministrationController",
+    "path": "/administration/config/pandem-source",
+    "methods": {
+      "PUT": {
+        "action": "updatePandemSourceConfig",
+        "tags": [
+          "Config - Pandem-source"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "configuration_settings_all"
+        ],
+        "validationSchemas": {
+          "body": "administration.updatePandemSourceConfig.request.body.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "AdministrationController",
+    "path": "/administration/config/pandem-source",
+    "methods": {
+      "GET": {
+        "action": "getPandemSourceConfig",
+        "tags": [
+          "Config - Pandem-source"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "configuration_settings_all"
+        ],
+        "validationSchemas": {},
+        "responses": {
+          "200": "administration.getPandemSourceConfig.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "AdministrationController",
+    "path": "/administration/config/go-data",
+    "methods": {
+      "PUT": {
+        "action": "updateGoDataConfig",
+        "tags": [
+          "Config - GoData"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "configuration_settings_all"
+        ],
+        "validationSchemas": {
+          "body": "administration.updateGoDataConfig.request.body.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "AdministrationController",
+    "path": "/administration/config/go-data",
+    "methods": {
+      "GET": {
+        "action": "getGoDataConfig",
+        "tags": [
+          "Config - GoData"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "configuration_settings_all"
+        ],
+        "validationSchemas": {},
+        "responses": {
+          "200": "administration.getGoDataConfig.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "AdministrationController",
+    "path": "/administration/config/modelling",
+    "methods": {
+      "PUT": {
+        "action": "updateModellingConfig",
+        "tags": [
+          "Config - Modelling"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "configuration_settings_all"
+        ],
+        "validationSchemas": {
+          "body": "administration.updateModellingConfig.request.body.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "AdministrationController",
+    "path": "/administration/config/modelling",
+    "methods": {
+      "GET": {
+        "action": "getModellingConfig",
+        "tags": [
+          "Config - Modelling"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "configuration_settings_all"
+        ],
+        "validationSchemas": {},
+        "responses": {
+          "200": "administration.getModellingConfig.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "AdministrationController",
+    "path": "/administration/config/service-gateway",
+    "methods": {
+      "PUT": {
+        "action": "updateServiceGatewayConfig",
+        "tags": [
+          "Config - ServiceGateway"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "configuration_settings_all"
+        ],
+        "validationSchemas": {
+          "body": "administration.updateServiceGatewayConfig.request.body.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "AdministrationController",
+    "path": "/administration/config/service-gateway",
+    "methods": {
+      "GET": {
+        "action": "getServiceGatewayConfig",
+        "tags": [
+          "Config - ServiceGateway"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "configuration_settings_all"
+        ],
+        "validationSchemas": {},
+        "responses": {
+          "200": "administration.getServiceGatewayConfig.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "UserController",
+    "path": "/users/page-state/:page",
+    "methods": {
+      "GET": {
+        "action": "getUserPageState",
+        "tags": [
+          "UserPageState"
+        ],
+        "requireAuthentication": true,
+        "permissions": [],
+        "validationSchemas": {
+          "params": "user.getUserPageState.request.uri.template.schema"
+        },
+        "responses": {
+          "200": "user.getUserPageState.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "UserController",
+    "path": "/users/page-state/:page",
+    "methods": {
+      "PUT": {
+        "action": "updateUserPageState",
+        "tags": [
+          "UserPageState"
+        ],
+        "requireAuthentication": true,
+        "permissions": [],
+        "validationSchemas": {
+          "params": "user.updateUserPageState.request.uri.template.schema",
+          "body": "user.updateUserPageState.request.body.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "UserController",
+    "path": "/users/import",
+    "methods": {
+      "POST": {
+        "action": "importUsers",
+        "tags": [
+          "Import Users"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "user_all"
+        ],
+        "validationSchemas": {},
+        "responses": {
+          "201": "user.importUser.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "UserController",
+    "path": "/users/export",
+    "methods": {
+      "GET": {
+        "action": "exportUsers",
+        "tags": [
+          "Export Users"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "user_all"
+        ],
+        "validationSchemas": {},
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "UserController",
+    "path": "/users/export-template",
+    "methods": {
+      "GET": {
+        "action": "exportTemplateForUsers",
+        "tags": [
+          "Export Template for Users"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "user_all"
+        ],
+        "validationSchemas": {},
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "UserController",
+    "path": "/users/:id/change-password",
+    "methods": {
+      "POST": {
+        "action": "changePassword",
+        "tags": [
+          "Change User Password"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "user_all",
+          "user_my"
+        ],
+        "validationSchemas": {
+          "params": "user.changePassword.request.uri.template.schema",
+          "body": "user.changePassword.request.body.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "UserController",
+    "path": "/users/count",
+    "methods": {
+      "GET": {
+        "action": "retrieveUserCount",
+        "tags": [
+          "Count Users"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "user_all"
+        ],
+        "validationSchemas": {},
+        "responses": {
+          "200": "user.retrieveUserCount.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ExplorationController",
+    "path": "/exploration/selections",
+    "methods": {
+      "POST": {
+        "action": "createExplorationSelections",
+        "tags": [
+          "ExplorationSelections"
+        ],
+        "requireAuthentication": true,
+        "permissions": [],
+        "validationSchemas": {
+          "body": "exploration.createExplorationSelections.request.body.schema"
+        },
+        "responses": {
+          "201": "exploration.createExplorationSelections.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ExplorationController",
+    "path": "/exploration/selections/:id",
+    "methods": {
+      "GET": {
+        "action": "getExplorationSelections",
+        "tags": [
+          "ExplorationSelections"
+        ],
+        "requireAuthentication": true,
+        "permissions": [],
+        "validationSchemas": {
+          "params": "exploration.getExplorationSelections.request.uri.template.schema"
+        },
+        "responses": {
+          "200": "exploration.getExplorationSelections.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ExplorationController",
+    "path": "/exploration/selections",
+    "methods": {
+      "GET": {
+        "action": "getExplorationSelectionsList",
+        "tags": [
+          "ExplorationSelections"
+        ],
+        "requireAuthentication": true,
+        "permissions": [],
+        "validationSchemas": {},
+        "responses": {
+          "200": "exploration.getExplorationSelectionsList.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "ExplorationController",
+    "path": "/exploration/selections/:id",
+    "methods": {
+      "DELETE": {
+        "action": "deleteExplorationSelections",
+        "tags": [
+          "ExplorationSelections"
+        ],
+        "requireAuthentication": true,
+        "permissions": [],
+        "validationSchemas": {
+          "params": "exploration.deleteExplorationSelections.request.uri.template.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "ExplorationController",
+    "path": "/exploration/selections/:id",
+    "methods": {
+      "PUT": {
+        "action": "updateExplorationSelections",
+        "tags": [
+          "ExplorationSelections"
+        ],
+        "requireAuthentication": true,
+        "permissions": [],
+        "validationSchemas": {
+          "params": "exploration.updateExplorationSelections.request.uri.template.schema",
+          "body": "exploration.updateExplorationSelections.request.body.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "TranslationController",
+    "path": "/translation/languages",
+    "methods": {
+      "POST": {
+        "action": "createLanguage",
+        "tags": [
+          "Translation"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "translation_all"
+        ],
+        "validationSchemas": {
+          "body": "translation.createLanguage.request.body.schema"
+        },
+        "responses": {
+          "201": "translation.createLanguage.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "TranslationController",
+    "path": "/translation/languages",
+    "methods": {
+      "GET": {
+        "action": "retrieveLanguagesList",
+        "tags": [
+          "Translation"
+        ],
+        "requireAuthentication": false,
+        "permissions": [],
+        "validationSchemas": {
+          "query": "translation.retrieveLanguagesList.request.query.schema"
+        },
+        "responses": {
+          "200": "translation.retrieveLanguagesList.response.body.schema"
+        }
+      }
+    }
+  },
+  {
+    "defaultController": "TranslationController",
+    "path": "/translation/languages/:id",
+    "methods": {
+      "DELETE": {
+        "action": "deleteLanguage",
+        "tags": [
+          "Translation"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "translation_all"
+        ],
+        "validationSchemas": {
+          "params": "translation.deleteLanguage.request.uri.template.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "TranslationController",
+    "path": "/translation/languages/set-default",
+    "methods": {
+      "POST": {
+        "action": "setDefaultLanguage",
+        "tags": [
+          "Translation"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "translation_all"
+        ],
+        "validationSchemas": {
+          "body": "translation.setDefaultLanguage.request.body.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "TranslationController",
+    "path": "/translation/languages/:id",
+    "methods": {
+      "PUT": {
+        "action": "editLanguage",
+        "tags": [
+          "Translation"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "translation_all"
+        ],
+        "validationSchemas": {
+          "body": "translation.editLanguage.request.body.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "TranslationController",
+    "path": "/translation/languages/:id/translate-token",
+    "methods": {
+      "PUT": {
+        "action": "translateText",
+        "tags": [
+          "Translation"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "translation_all"
+        ],
+        "validationSchemas": {
+          "body": "translation.translateText.request.body.schema"
+        },
+        "responses": {}
+      }
+    }
+  },
+  {
+    "defaultController": "TranslationController",
+    "path": "/translation/languages/:id/upload",
+    "methods": {
+      "POST": {
+        "action": "uploadTranslationFile",
+        "tags": [
+          "Translation"
+        ],
+        "requireAuthentication": true,
+        "permissions": [
+          "translation_all"
+        ],
+        "validationSchemas": {
+          "params": "translation.uploadTranslationFile.request.uri.template.schema"
+        },
+        "responses": {}
+      }
+    }
+  }
+]

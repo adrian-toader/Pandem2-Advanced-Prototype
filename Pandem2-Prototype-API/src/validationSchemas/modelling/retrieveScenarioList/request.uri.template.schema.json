@@ -1,0 +1,13 @@
+{
+  "$id": "modelling.retrieveScenarioList.request.uri.template.schema",
+  "description": "Retrieve scenario list URI template schema",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "$ref": "/base#/definitions/mongoID"
+    }
+  },
+  "required": [
+    "userId"
+  ]
+}

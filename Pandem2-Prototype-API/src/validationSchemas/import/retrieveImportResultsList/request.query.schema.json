@@ -1,0 +1,5 @@
+{
+  "$id": "import.retrieveImportResultsList.request.uri.query.schema",
+  "description": "Retrieve Import results List request query schema",
+  "$ref": "/query#/definitions/getListQuery"
+}

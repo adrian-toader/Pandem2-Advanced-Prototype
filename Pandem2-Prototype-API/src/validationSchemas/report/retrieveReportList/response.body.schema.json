@@ -1,0 +1,18 @@
+{
+  "$id": "report.retrieveReportListForUser.response.body.schema",
+  "description": "Retrieve report list response schema",
+  "type": "array",
+  "items": {
+    "allOf": [
+      {
+        "$ref": "/report#/definitions/reportResourceEntry"
+      },
+      {
+        "required": [
+          "userId",
+          "name"
+        ]
+      }
+    ]
+  }
+}

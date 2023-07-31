@@ -1,0 +1,84 @@
+{
+  "$id": "survey.getLocationsDaily.response.body.schema",
+  "description": "Get daily surveys grouped by locations grouped - response body schema",
+  "type":"object",
+  "properties": {
+    "data":{
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "surveyId": {
+                  "type": "string"
+                },
+                "numberOfAnswers": {
+                  "type": "number"
+                },
+                "questionsAnswers": {
+                  "type": "object",
+                  "patternProperties": {
+                    ".+": {
+                      "description": "All answers to questions, containing question id.",
+                      "type": "number"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "code"
+              ]
+            }
+          }
+        },
+        "required": [
+          "date",
+          "locations"
+        ]
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "surveys": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "surveyId": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "questions": {
+                "type": "object",
+                "patternProperties": {
+                  ".+": {
+                    "description": "All survey questions, containing question text.",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "required": [
+              "surveyId",
+              "questions"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

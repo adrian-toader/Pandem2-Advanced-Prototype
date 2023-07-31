@@ -1,0 +1,20 @@
+{
+  "$id": "labelMapping.retrieveLabelMappingList.response.body.schema",
+  "description": "Retrieve Label Mapping list response schema",
+  "type": "array",
+  "items": {
+    "allOf": [
+      {
+        "$ref": "/labelMapping#/definitions/labelMappingResourceEntry"
+      },
+      {
+        "required": [
+          "resource",
+          "type",
+          "code",
+          "label"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "$id": "survey.getDaily.response.body.schema",
+  "description": "Get daily surveys response body schema",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "numberOfAnswers": {
+            "type": "number"
+          },
+          "surveyId": {
+            "type": "string"
+          },
+          "questionsAnswers": {
+            "type": "object",
+            "patternProperties": {
+              ".+": {
+                "description": "All answers to questions, containing question id.",
+                "type": "number"
+              }
+            }
+          },
+          "perGenderAndAge": {
+            "description": "Gender and age map with number of answers per date",
+            "type": "object",
+            "patternProperties": {
+              ".+": {
+                "description": "Gender group entry containing age groups",
+                "type": "object",
+                "patternProperties": {
+                  ".+": {
+                    "description": "Age groups, containing the number of answers",
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "date",
+          "numberOfAnswers",
+          "surveyId"
+        ]
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "surveys": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "surveyId": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "questions": {
+                "type": "object",
+                "patternProperties": {
+                  ".+": {
+                    "description": "All survey questions, containing question text.",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "required": [
+              "surveyId",
+              "questions"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

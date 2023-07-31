@@ -1,0 +1,666 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<div class="logo pl-4">
+  <a
+    [routerLink]="'/'"
+  >
+    <img alt="Logo" src="assets/images/logo.png">
+  </a>
+</div>
+<div class="menu-list-container">
+  <!-- Surveillance Menu Item -->
+  <div *ngIf="shouldDisplayItem(surveillanceMenu)" class="item account-item" fxLayout="row">
+
+    <!-- Submenu -->
+    <mat-menu #surveillancemenu="matMenu" [hasBackdrop]="false" xPosition="after" yPosition="below">
+      <div (mouseenter)="mouseEnterDropdown('surveillance')"
+           (mouseleave)="mouseLeaveDropdown(menuTriggerSurveillance,'surveillance')">
+        <ng-container
+          *ngFor="let childItem of surveillanceMenu.children">
+          <a
+            class="pt-3"
+            *ngIf="shouldDisplayItem(childItem)"
+            [ngClass]="activeItem===childItem.link ? 'active' : '' "
+            [routerLink]="[childItem.link]"
+            mat-menu-item>
+            {{childItem.label}}
+          </a>
+        </ng-container>
+      </div>
+    </mat-menu>
+
+    <!-- Surveillance Item Button -->
+    <button #menuTriggerSurveillance="matMenuTrigger"
+            (mouseenter)="mouseEnterMenuButton(menuTriggerSurveillance, 'surveillance')"
+            (mouseleave)="mouseLeaveMenuButton(menuTriggerSurveillance, 'surveillance')"
+            [matMenuTriggerFor]="surveillancemenu"
+            [ngClass]="isMenuActive(getActiveItem(), surveillanceMenu) ? 'active' : ''" color="primary"
+            fxFlex mat-button>
+
+      <div class="item-content" fxLayout="row" fxLayoutAlign="space-between center">
+
+        <!-- Item icon and label -->
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+          <!-- Item label -->
+          <div class="item-name" fxLayout="column" fxLayoutAlign="center start">
+            {{'SHARED.HEADER.SURVEILLANCE' | translate }}
+          </div>
+        </div>
+      </div>
+
+    </button>
+  </div>
+  <!-- Healthcare Capacity Menu Item -->
+  <div *ngIf="shouldDisplayItem(healthcareCapacityMenu)" class="item account-item" fxLayout="row">
+
+    <!-- Submenu -->
+    <mat-menu #healthcarecapacitymenu="matMenu" [hasBackdrop]="false" xPosition="after" yPosition="below">
+      <div (mouseenter)="mouseEnterDropdown('healthcarecapacity')"
+           (mouseleave)="mouseLeaveDropdown(menuTriggerHealthcareCapacity,'healthcarecapacity')">
+        <ng-container
+          *ngFor="let childItem of healthcareCapacityMenu.children">
+          <a
+            class="pt-3"
+            *ngIf="shouldDisplayItem(childItem)"
+            [ngClass]="activeItem===childItem.link ? 'active' : '' "
+            [routerLink]="[childItem.link]"
+            mat-menu-item>
+            {{childItem.label | translate}}
+
+          </a>
+        </ng-container>
+      </div>
+    </mat-menu>
+
+    <!-- Healthcare Capacity Item Button -->
+    <button #menuTriggerHealthcareCapacity="matMenuTrigger"
+            (mouseenter)="mouseEnterMenuButton(menuTriggerHealthcareCapacity, 'healthcarecapacity')"
+            (mouseleave)="mouseLeaveMenuButton(menuTriggerHealthcareCapacity, 'healthcarecapacity')"
+            [matMenuTriggerFor]="healthcarecapacitymenu"
+            [ngClass]="isMenuActive(getActiveItem(), healthcareCapacityMenu) ? 'active' : ''" color="primary"
+            fxFlex mat-button>
+
+      <div class="item-content" fxLayout="row" fxLayoutAlign="space-between center">
+
+        <!-- Item icon and label -->
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+          <!-- Item label -->
+          <div class="item-name" fxLayout="column" fxLayoutAlign="center start">
+            {{'SHARED.HEADER.HEALTHCARE_CAPACITY' | translate }}
+          </div>
+        </div>
+      </div>
+
+    </button>
+  </div>
+
+  <!-- Testing & Contact Tracing -->
+  <div *ngIf="shouldDisplayItem(testingContactTracingMenu)" class="item account-item" fxLayout="row">
+
+    <!-- Submenu -->
+    <mat-menu #testingcontacttracingmenu="matMenu" [hasBackdrop]="false" xPosition="after" yPosition="below">
+      <div (mouseenter)="mouseEnterDropdown('testingcontacttracing')"
+           (mouseleave)="mouseLeaveDropdown(menuTriggerTestingAndContactTracing,'testingcontacttracing')">
+        <ng-container
+          *ngFor="let childItem of testingContactTracingMenu.children">
+          <a
+            class="pt-3"
+            *ngIf="shouldDisplayItem(childItem)"
+            [ngClass]="activeItem===childItem.link ? 'active' : '' "
+            [routerLink]="[childItem.link]"
+            mat-menu-item>
+            {{childItem.label | translate}}
+          </a>
+        </ng-container>
+      </div>
+    </mat-menu>
+
+    <!-- Testing & Contact Tracing Item Button -->
+    <button #menuTriggerTestingAndContactTracing="matMenuTrigger"
+            (mouseenter)="mouseEnterMenuButton(menuTriggerTestingAndContactTracing, 'testingcontacttracing')"
+            (mouseleave)="mouseLeaveMenuButton(menuTriggerTestingAndContactTracing, 'testingcontacttracing')"
+            [matMenuTriggerFor]="testingcontacttracingmenu"
+            [ngClass]="isMenuActive(getActiveItem(), testingContactTracingMenu) ? 'active' : ''"
+            color="primary" fxFlex mat-button>
+
+      <div class="item-content" fxLayout="row" fxLayoutAlign="space-between center">
+
+        <!-- Item icon and label -->
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+          <!-- Item label -->
+          <div class="item-name" fxLayout="column" fxLayoutAlign="center start">
+            {{'SHARED.HEADER.TESTING_CONTRACT_TRACING' | translate }}
+          </div>
+        </div>
+      </div>
+
+    </button>
+  </div>
+
+  <!-- Interventions -->
+  <div *ngIf="shouldDisplayItem(interventionsMenu)" class="item account-item" fxLayout="row">
+
+    <!-- Submenu -->
+    <mat-menu #interventionsmenu="matMenu" [hasBackdrop]="false" xPosition="after" yPosition="below">
+      <div (mouseenter)="mouseEnterDropdown('interventions')"
+           (mouseleave)="mouseLeaveDropdown(menuTriggerInternvetions,'interventions')">
+        <ng-container
+          *ngFor="let childItem of interventionsMenu.children">
+          <a
+            class="pt-3"
+            *ngIf="shouldDisplayItem(childItem)"
+            [ngClass]="activeItem===childItem.link ? 'active' : '' "
+            [routerLink]="[childItem.link]"
+            mat-menu-item>
+            {{childItem.label | translate}}
+          </a>
+        </ng-container>
+      </div>
+    </mat-menu>
+
+    <!-- Interventions Item Button -->
+    <button #menuTriggerInternvetions="matMenuTrigger"
+            (mouseenter)="mouseEnterMenuButton(menuTriggerInternvetions, 'interventions')"
+            (mouseleave)="mouseLeaveMenuButton(menuTriggerInternvetions, 'interventions')"
+            [matMenuTriggerFor]="interventionsmenu"
+            [ngClass]="isMenuActive(getActiveItem(), interventionsMenu) ? 'active' : ''" color="primary"
+            fxFlex mat-button>
+
+      <div class="item-content" fxLayout="row" fxLayoutAlign="space-between center">
+
+        <!-- Item icon and label -->
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+          <!-- Item label -->
+          <div class="item-name" fxLayout="column" fxLayoutAlign="center start">
+            {{'SHARED.HEADER.INTERVENTIONS' | translate }}
+          </div>
+        </div>
+      </div>
+
+    </button>
+  </div>
+
+  <!-- Genetic Variation -->
+  <div *ngIf="shouldDisplayItem(geneticVariationMenu)" class="item account-item" fxLayout="row">
+
+    <!-- Submenu -->
+    <mat-menu #geneticvariationmenu="matMenu" [hasBackdrop]="false" xPosition="after" yPosition="below">
+      <div (mouseenter)="mouseEnterDropdown('geneticvariation')"
+           (mouseleave)="mouseLeaveDropdown(menuTriggerGeneticVariation,'geneticvariation')">
+        <ng-container
+          *ngFor="let childItem of geneticVariationMenu.children">
+          <a
+            class="pt-3"
+            *ngIf="shouldDisplayItem(childItem)"
+            [ngClass]="activeItem===childItem.link ? 'active' : '' "
+            [routerLink]="[childItem.link]"
+            mat-menu-item>
+            {{childItem.label | translate}}
+          </a>
+        </ng-container>
+      </div>
+    </mat-menu>
+
+    <!-- Genetic Variation Item Button -->
+    <button #menuTriggerGeneticVariation="matMenuTrigger"
+            (mouseenter)="mouseEnterMenuButton(menuTriggerGeneticVariation, 'geneticvariation')"
+            (mouseleave)="mouseLeaveMenuButton(menuTriggerGeneticVariation, 'geneticvariation')"
+            [matMenuTriggerFor]="geneticvariationmenu"
+            [ngClass]="isMenuActive(getActiveItem(), geneticVariationMenu) ? 'active' : ''" color="primary"
+            fxFlex mat-button>
+
+      <div class="item-content" fxLayout="row" fxLayoutAlign="space-between center">
+
+        <!-- Item icon and label -->
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+          <!-- Item label -->
+          <div class="item-name" fxLayout="column" fxLayoutAlign="center start">
+            {{'SHARED.HEADER.GENETIC_VARIATION' | translate }}
+          </div>
+        </div>
+      </div>
+
+    </button>
+  </div>
+
+  <!-- Vaccines -->
+  <div *ngIf="shouldDisplayItem(vaccinesMenu)" class="item account-item" fxLayout="row">
+
+    <!-- Submenu -->
+    <mat-menu #geneticvariationmenu="matMenu" #vaccinesmenu="matMenu" [hasBackdrop]="false" xPosition="after"
+              yPosition="below">
+      <div (mouseenter)="mouseEnterDropdown('vaccines')"
+           (mouseleave)="mouseLeaveDropdown(menuTriggerVaccines,'vaccines')">
+        <ng-container
+          *ngFor="let childItem of vaccinesMenu.children">
+          <a
+            class="pt-3"
+            *ngIf="shouldDisplayItem(childItem)"
+            [ngClass]="activeItem===childItem.link ? 'active' : '' "
+            [routerLink]="[childItem.link]"
+            mat-menu-item>
+            {{childItem.label | translate}}
+          </a>
+        </ng-container>
+      </div>
+    </mat-menu>
+
+    <!-- Vaccines Item Button -->
+    <button #menuTriggerVaccines="matMenuTrigger"
+            (mouseenter)="mouseEnterMenuButton(menuTriggerVaccines, 'vaccines')"
+            (mouseleave)="mouseLeaveMenuButton(menuTriggerVaccines, 'vaccines')"
+            [matMenuTriggerFor]="vaccinesmenu" [ngClass]="isMenuActive(getActiveItem(), vaccinesMenu) ? 'active' : ''"
+            color="primary" fxFlex
+            mat-button>
+
+      <div class="item-content" fxLayout="row" fxLayoutAlign="space-between center">
+
+        <!-- Item icon and label -->
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+          <!-- Item label -->
+          <div class="item-name" fxLayout="column" fxLayoutAlign="center start">
+            {{'SHARED.HEADER.VACCINES' | translate }}
+          </div>
+        </div>
+      </div>
+
+    </button>
+  </div>
+
+  <!-- Scenarios -->
+  <div *ngIf="shouldDisplayItem(scenariosMenu)" class="item account-item" fxLayout="row">
+
+    <!-- Submenu -->
+    <mat-menu #scenariosmenu="matMenu" [hasBackdrop]="false" xPosition="after" yPosition="below">
+      <div (mouseenter)="mouseEnterDropdown('scenarios')"
+           (mouseleave)="mouseLeaveDropdown(menuTriggerScenarios,'scenarios')">
+        <ng-container
+          *ngFor="let childItem of scenariosMenu.children">
+          <a
+            class="pt-3"
+            *ngIf="shouldDisplayItem(childItem)"
+            [ngClass]="activeItem===childItem.link ? 'active' : '' "
+            [routerLink]="[childItem.link]"
+            mat-menu-item>
+            {{childItem.label | translate}}
+          </a>
+        </ng-container>
+      </div>
+    </mat-menu>
+
+    <!-- Scenarios Item Button -->
+    <button #menuTriggerScenarios="matMenuTrigger"
+            (mouseenter)="mouseEnterMenuButton(menuTriggerScenarios, 'scenarios')"
+            (mouseleave)="mouseLeaveMenuButton(menuTriggerScenarios, 'scenarios')"
+            [matMenuTriggerFor]="scenariosmenu" [ngClass]="isMenuActive(getActiveItem(), scenariosMenu) ? 'active' : ''"
+            color="primary" fxFlex
+            mat-button>
+
+      <div class="item-content" fxLayout="row" fxLayoutAlign="space-between center">
+
+        <!-- Item icon and label -->
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+          <!-- Item label -->
+          <div class="item-name" fxLayout="column" fxLayoutAlign="center start">
+            {{'SHARED.HEADER.SCENARIOS' | translate }}
+          </div>
+        </div>
+      </div>
+
+    </button>
+  </div>
+
+  <!-- Account -->
+  <div class="item account-item" fxLayout="row">
+
+       <!-- Submenu -->
+       <mat-menu #accountmenu="matMenu" [hasBackdrop]="false" xPosition="after" yPosition="below">
+        <div (mouseenter)="mouseEnterDropdown('account')"
+          (mouseleave)="!languageBtnClicked && mouseLeaveDropdown(menuTriggerAccount,'account')">
+          <ng-container *ngFor="let childItem of accountMenu.children">
+            <ng-container *ngIf="shouldDisplayItem(childItem) && childItem.link !== '/translation/translation'; else splitTemplate">
+              <a class="pt-3" *ngIf="shouldDisplayItem(childItem)"
+                [ngClass]="activeItem===childItem.link ? 'active' : '' " [routerLink]="[childItem.link]" mat-menu-item>
+                {{childItem.label | translate}}
+              </a>
+            </ng-container>
+            <ng-template #splitTemplate>
+              <div *ngIf="childItem.link === '/translation/translation'" class="translation__btn--container">
+                <a [ngClass]="activeItem===childItem.link ? 'active' : '' " [routerLink]="[childItem.link]" mat-menu-item>
+                  {{childItem.label | translate}}
+                </a>
+                <div class="translation__container" (menuClosed)="mouseLeaveDropdown(menuTriggerAccount,'account')">
+                  <button #menuTrigger="matMenuTrigger" mat-button [matMenuTriggerFor]="children" (menuClosed)="mouseLeaveDropdown(menuTriggerAccount,'account');languageBtnClicked = false" hoverDropDown
+                    (click)="$event.stopPropagation(); languageBtnClicked = true;">
+                    <span>{{translateService.currentLang}}</span>
+                    <mat-icon>arrow_drop_down</mat-icon>
+                  </button>
+                  <mat-menu   #children="matMenu">
+                    <button *ngFor="let item of languages" mat-menu-item (click)="onOptionSelected(item)">
+                      {{item}}
+                    </button>
+                  </mat-menu>
+                </div>
+              </div>
+  
+            </ng-template>
+          </ng-container>
+        </div>
+      </mat-menu>
+
+      
+    <!-- Account Item Button -->
+    <button #menuTriggerAccount="matMenuTrigger" (mouseenter)="mouseEnterMenuButton(menuTriggerAccount, 'account')"
+            (mouseleave)="mouseLeaveMenuButton(menuTriggerAccount, 'account')"
+            [matMenuTriggerFor]="accountmenu" [ngClass]="isMenuActive(getActiveItem(), accountMenu) ? 'active' : ''"
+            class="account-menu pr-4"
+            color="primary" fxFlex mat-button>
+
+      <div class="item-content" fxLayout="row" fxLayoutAlign="space-between center">
+
+        <!-- Item icon and label -->
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+          <!-- Item icon -->
+          <div class="user-icon xt-icon">
+            <span *ngIf="!profilePicture">{{accountMenu.icon}}</span>
+            <img *ngIf="profilePicture" src="{{profilePicture}}" alt="profile picture"/>
+          </div>
+        </div>
+      </div>
+
+    </button>
+  </div>
+  
+  <!-- Hamburger Menu -->
+  <div class="item hamburger-item" fxLayout="row">
+
+    <!-- Submenu -->
+    <mat-menu #hamburgermenu="matMenu" xPosition="before" yPosition="below">
+      <button *ngIf="SurveillanceModel.canView(user);"
+              [matMenuTriggerFor]="hamsurveillancemenu"
+              [ngClass]="isMenuActive(getActiveItem(), surveillanceMenu) ? 'active' : ''"
+              mat-menu-item>
+              {{'SHARED.HAMBURGER.Surveillance' | translate }}
+      </button>
+      <button *ngIf="HealthcareCapacityModel.canView(user);"
+              [matMenuTriggerFor]="hamhealthcarecapacitymenu"
+              [ngClass]="isMenuActive(getActiveItem(), healthcareCapacityMenu) ? 'active' : ''"
+              mat-menu-item>
+              {{'SHARED.HAMBURGER.Healthcare_Capacity' | translate }}
+      </button>
+      <button *ngIf="TestingAndContactTracingModel.canView(user);"
+              [matMenuTriggerFor]="hamtestingcontacttracingmenu"
+              [ngClass]="isMenuActive(getActiveItem(), testingContactTracingMenu) ? 'active' : ''"
+              mat-menu-item>
+              {{'SHARED.HAMBURGER.Contact_Tracing' | translate }}
+      </button>
+      <button *ngIf="InterventionsModel.canView(user);"
+              [matMenuTriggerFor]="haminterventionsmenu"
+              [ngClass]="isMenuActive(getActiveItem(), interventionsMenu) ? 'active' : ''"
+              mat-menu-item>
+              {{'SHARED.HAMBURGER.Interventions' | translate }}
+      </button>
+      <button *ngIf="GeneticVariationModel.canView(user);"
+              [matMenuTriggerFor]="hamgeneticvariationmenu"
+              [ngClass]="isMenuActive(getActiveItem(), geneticVariationMenu) ? 'active' : ''"
+              mat-menu-item>
+              {{'SHARED.HAMBURGER.Genetic_Variation' | translate }}
+      </button>
+      <button *ngIf="VaccinesModel.canView(user);"
+              [matMenuTriggerFor]="hamvaccinesmenu"
+              [ngClass]="isMenuActive(getActiveItem(), vaccinesMenu) ? 'active' : ''"
+              mat-menu-item>
+              {{'SHARED.HAMBURGER.Vaccines' | translate }}
+      </button>
+      <button *ngIf="ScenariosModel.canView(user);"
+              [matMenuTriggerFor]="hamscenariosmenu"
+              [ngClass]="isMenuActive(getActiveItem(), scenariosMenu) ? 'active' : ''"
+              mat-menu-item>
+              {{'SHARED.HAMBURGER.Scenarios' | translate }}
+      </button>
+      <mat-divider></mat-divider>
+      <a
+        *ngIf="ReportCardModel.canView(user);"
+        [ngClass]="activeItem==='/report-card/report-card' ? 'active' : '' "
+        [routerLink]="'/report-card/report-card'" mat-menu-item>
+        {{'SHARED.HAMBURGER.Report_Card' | translate }}
+      </a>
+      <a
+        [ngClass]="activeItem==='/exploration/exploration' ? 'active' : '' "
+        [routerLink]="'/exploration/exploration'" mat-menu-item>
+        {{'SHARED.HAMBURGER.Exploration' | translate }}
+      </a>
+      <a
+        *ngIf="UserModel.canViewOwnUser(user);"
+        [ngClass]="activeItem==='/users' ? 'active' : '' "
+        [routerLink]="'/users'" mat-menu-item>
+        {{'SHARED.HAMBURGER.Users' | translate }}
+      </a>
+      <a
+        *ngIf="UserRoleModel.canList(user);"
+        [ngClass]="activeItem==='/user-roles' ? 'active' : '' "
+        [routerLink]="'/user-roles'" mat-menu-item>
+        {{'SHARED.HAMBURGER.User_Roles' | translate }}
+      </a>
+      <a
+        *ngIf="UserRoleModel.canList(user);"
+        [ngClass]="activeItem==='/administration/admin-dashboard' ? 'active' : '' "
+        [routerLink]="'/administration/admin-dashboard'" mat-menu-item>
+        {{'SHARED.HAMBURGER.Administration' | translate }}
+      </a>
+      <a
+        *ngIf="UserRoleModel.canList(user);"
+        [ngClass]="activeItem==='/translation/translation' ? 'active' : '' "
+        [routerLink]="'/translation/translation'" mat-menu-item>
+        {{'SHARED.HAMBURGER.Translation' | translate }}
+      </a>
+      <button
+        [routerLink]="'/auth/logout'"
+        mat-menu-item>
+        {{'SHARED.HAMBURGER.Sign_Out' | translate }}
+      </button>
+    </mat-menu>
+
+    <mat-menu #hamsurveillancemenu="matMenu">
+      <a
+        [ngClass]="activeItem==='/surveillance/cases' ? 'active' : '' "
+        [routerLink]="'/surveillance/cases'" mat-menu-item>
+        {{'SHARED.HAMBURGER.Cases' | translate }}
+      </a>
+      <a
+        [ngClass]="activeItem==='/surveillance/deaths' ? 'active' : '' "
+        [routerLink]="'/surveillance/deaths'" mat-menu-item>
+        {{'SHARED.HAMBURGER.Deaths' | translate }}
+      </a>
+      <a
+        [ngClass]="activeItem==='/surveillance/participatory-surveillance' ? 'active' : '' "
+        [routerLink]="'/surveillance/participatory-surveillance'" mat-menu-item
+      >
+      {{'SHARED.HAMBURGER.Participatory_Surveillance' | translate }}
+      </a>
+      <a
+        [ngClass]="activeItem==='/surveillance/primary-care' ? 'active' : '' "
+        [routerLink]="'/surveillance/primary-care'" mat-menu-item>
+        {{'SHARED.HAMBURGER.Primary_Care' | translate }}
+      </a>
+      <a
+        [ngClass]="activeItem==='/surveillance/flights' ? 'active' : '' "
+        [routerLink]="'/surveillance/flights'" mat-menu-item>
+        {{'SHARED.HAMBURGER.Flights' | translate }}
+      </a>
+      <!--      <button-->
+      <!--        (click)="setActiveItem('/surveillance/admissions')"-->
+      <!--        [ngClass]="activeItem==='/surveillance/admissions' ? 'active' : '' "-->
+      <!--        mat-menu-item-->
+      <!--        [routerLink]="'/surveillance/admissions'">-->
+      <!--        Admissions-->
+      <!--      </button>-->
+    </mat-menu>
+    <mat-menu #hamhealthcarecapacitymenu="matMenu">
+      <!--      <button-->
+      <!--        (click)="setActiveItem('/healthcare-capacity/emergency')"-->
+      <!--        [ngClass]="activeItem==='/healthcare-capacity/emergency' ? 'active' : '' "-->
+      <!--        mat-menu-item-->
+      <!--        [routerLink]="'/healthcare-capacity/emergency'">-->
+      <!--        Emergency-->
+      <!--      </button>-->
+      <!--      <button-->
+      <!--        (click)="setActiveItem('/healthcare-capacity/patient-resources')"-->
+      <!--        [ngClass]="activeItem==='/healthcare-capacity/patient-resources' ? 'active' : '' "-->
+      <!--        mat-menu-item-->
+      <!--        [routerLink]="'/healthcare-capacity/patient-resources'">-->
+      <!--        Patient Resources-->
+      <!--      </button>-->
+
+      <a
+        [ngClass]="activeItem==='/healthcare-capacity/hospitalisations' ? 'active' : '' "
+        [routerLink]="'/healthcare-capacity/hospitalisations'"
+        mat-menu-item>
+        {{'SHARED.HAMBURGER.Hospitalisations' | translate }}
+      </a>
+      <a
+        [ngClass]="activeItem==='/healthcare-capacity/human-resources' ? 'active' : '' "
+        [routerLink]="'/healthcare-capacity/human-resources'"
+        mat-menu-item>
+        {{'SHARED.HAMBURGER.Human_Resources' | translate }}
+      </a>
+      <!--      <button-->
+      <!--        (click)="setActiveItem('/healthcare-capacity/bed-occupancy')"-->
+      <!--        [ngClass]="activeItem==='/healthcare-capacity/bed-occupancy' ? 'active' : '' "-->
+      <!--        mat-menu-item-->
+      <!--        [routerLink]="'/healthcare-capacity/bed-occupancy'">-->
+      <!--        Bed Occupancy-->
+      <!--      </button>-->
+    </mat-menu>
+    <mat-menu #hamtestingcontacttracingmenu="matMenu">
+      <a
+        [ngClass]="activeItem==='/testing-and-contact-tracing/testing' ? 'active' : '' "
+        [routerLink]="'/testing-and-contact-tracing/testing'"
+        mat-menu-item>
+        {{'SHARED.HAMBURGER.Testing' | translate }}
+      </a>
+      <a
+        [ngClass]="activeItem==='/testing-and-contact-tracing/contact-tracing' ? 'active' : '' "
+        [routerLink]="'/testing-and-contact-tracing/contact-tracing'"
+        mat-menu-item>
+        {{'SHARED.HAMBURGER.Contact_Tracing' | translate }}
+      </a>
+    </mat-menu>
+    <mat-menu #haminterventionsmenu="matMenu">
+      <a
+        [ngClass]="activeItem==='/interventions/interventions' ? 'active' : '' "
+        [routerLink]="'/interventions/interventions'"
+        mat-menu-item>
+        {{'SHARED.HAMBURGER.Interventions' | translate }}
+      </a>
+<!--      <a-->
+<!--        [ngClass]="activeItem==='/interventions/survey' ? 'active' : '' "-->
+<!--        [routerLink]="'/interventions/survey'"-->
+<!--        mat-menu-item>-->
+<!--        Population Surveys-->
+<!--      </a>-->
+      <a
+        [ngClass]="activeItem==='/interventions/social-media-analysis' ? 'active' : '' "
+        [routerLink]="'/interventions/social-media-analysis'"
+        mat-menu-item>
+        {{'SHARED.HAMBURGER.SMA' | translate }}
+      </a>
+    </mat-menu>
+
+    <mat-menu #hamgeneticvariationmenu="matMenu">
+      <a
+        [ngClass]="activeItem==='/genetic-variation/high-throughput-sequencing' ? 'active' : '' "
+        [routerLink]="'/genetic-variation/high-throughput-sequencing'"
+        mat-menu-item>
+        {{'SHARED.HAMBURGER.High_Throughput_Sequencing' | translate }}
+      </a>
+    </mat-menu>
+    <mat-menu #hamvaccinesmenu="matMenu">
+      <a
+        [ngClass]="activeItem==='/vaccines/vaccination-uptake' ? 'active' : '' "
+        [routerLink]="'/vaccines/vaccination-uptake'"
+        mat-menu-item>
+        {{'SHARED.HAMBURGER.Vaccination_Uptake' | translate }}
+      </a>
+      <!--      <button-->
+      <!--        (click)="setActiveItem('/vaccines/vaccination-resources')"-->
+      <!--        [ngClass]="activeItem==='/vaccines/vaccination-resources' ? 'active' : '' "-->
+      <!--        mat-menu-item-->
+      <!--        [routerLink]="'/vaccines/vaccination-resources'">-->
+      <!--        Vaccination Resources-->
+      <!--      </button>-->
+      <!--      <button-->
+      <!--        (click)="setActiveItem('/vaccines/public-response')"-->
+      <!--        [ngClass]="activeItem==='/vaccines/public-response' ? 'active' : '' "-->
+      <!--        mat-menu-item-->
+      <!--        [routerLink]="'/vaccines/public-response'" >-->
+      <!--        Public Response-->
+      <!--      </button>-->
+
+    </mat-menu>
+    <mat-menu #hamscenariosmenu="matMenu">
+      <a
+        [ngClass]="activeItem==='/scenarios/modelling' ? 'active' : '' "
+        [routerLink]="'/scenarios/modelling'"
+        mat-menu-item>
+        {{'SHARED.HAMBURGER.Modelling' | translate }}
+      </a>
+    </mat-menu>
+
+
+    <!-- Scenarios Item Button -->
+    <button [matMenuTriggerFor]="hamburgermenu" class="pr-4 hamburger-menu" color="primary" fxFlex mat-button>
+
+      <div class="item-content" fxLayout="row" fxLayoutAlign="space-between center">
+
+        <!-- Item icon and label -->
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <!-- Item icon -->
+          <i class="hamburger-icon fas fa-bars fa-1x"></i>
+        </div>
+      </div>
+
+    </button>
+  </div>
+
+
+</div>
+
+
+<!--<div class="user">-->
+<!--  <div class="name" (click)="toggleUserMenu()">-->
+<!--    <a (click)="logout()">-->
+<!--      <i class="fas fa-sign-out-alt"></i>-->
+<!--      Sign Out-->
+<!--    </a>-->
+<!--  </div>-->
+<!--</div>-->

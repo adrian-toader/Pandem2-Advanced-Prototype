@@ -1,0 +1,72 @@
+
+/*
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+*/
+
+/* Mat Tabs overrides */
+.mat-tab-group {
+
+    .mat-ink-bar {
+        background-color: @color-accent-main !important;
+    }
+}
+
+/* Mat Stepper overrides */
+.mat-stepper-horizontal,
+.mat-stepper-vertical {
+    background-color: transparent;
+}
+
+/* NgSelect overrides */
+.ng-select {
+    .ng-select-container {
+        min-height: 45.5px;
+
+        @media @ie11-only {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+        }
+
+        @angular-material-line-height: 1.125;
+        .ng-value-container {
+            line-height: @angular-material-line-height !important;
+            font-size: inherit !important;
+            overflow: visible !important;
+
+            .ng-value {
+                overflow: visible !important;
+            }
+
+            .ng-placeholder,
+            .ng-input,
+            .ng-input input {
+                line-height: 1 !important;
+                font-size: inherit !important;
+                padding: 0 !important;
+            }
+
+            .ng-placeholder {
+                line-height: 1.125 !important;
+                top: 1.28125em;
+            }
+        }
+    }
+}

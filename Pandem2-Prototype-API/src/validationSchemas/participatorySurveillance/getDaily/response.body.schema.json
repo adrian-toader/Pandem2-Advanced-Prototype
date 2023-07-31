@@ -1,0 +1,58 @@
+{
+  "$id": "participatorySurveillance.getDaily.response.body.schema",
+  "description": "Get daily participatory surveillance response body schema",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "total": {
+            "type": "number"
+          },
+          "min_confidence": {
+            "type": "number"
+          },
+          "max_confidence": {
+            "type": "number"
+          },
+          "split": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "number"
+                },
+                "min_confidence": {
+                  "type": "number"
+                },
+                "max_confidence": {
+                  "type": "number"
+                },
+                "split_value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "total"
+              ]
+            }
+          }
+        },
+        "required": [
+          "date",
+          "total"
+        ]
+      }
+    },
+    "metadata": {
+      "$ref": "/base#/definitions/commonMetadata"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$id": "modelling.deleteScenario.request.uri.template.schema",
+  "description": "Delete scenario URI template schema",
+  "type": "object",
+  "properties": {
+    "scenarioId": {
+      "$ref": "/base#/definitions/mongoID"
+    }
+  },
+  "required": [
+    "scenarioId"
+  ]
+}

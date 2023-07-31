@@ -1,0 +1,304 @@
+/*
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+*/
+
+.mat-primary-color {
+  color: #0272c6;
+}
+
+.modelling-parameters-main-card-manager-dialog {
+  width: 80vw;
+  max-width: 1200px;
+  height: 90vh;
+  padding: 3em;
+}
+
+.modelling-button {
+  background-color: #d5dce0 !important;
+  align-self: center;
+}
+
+.modelling-button-accent-color {
+  background-color: #0272c6 !important;
+  color: white;
+}
+
+.modelling-button-run {
+  font-size: 1.5em;
+  padding: 10px 20px;
+}
+
+.modelling-button-run mat-icon {
+  line-height: 0.65em;
+  font-size: 1.3em;
+  color: #0272c6;
+}
+
+.modelling-icon-size mat-icon {
+  font-size: 1.5em;
+}
+
+.modelling-configuration-expansion-panel .mat-expansion-panel-body {
+  padding: 0 !important;
+}
+
+.param-subcategory-simple-title {
+  background-color: #9edfff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3em;
+  line-height: 1.8em;
+}
+
+.param-subcategory-age-group-title {
+  background-color: #9edfff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.3em;
+  line-height: 1.8em;
+}
+
+.param-input-row + .param-input-row {
+  margin-top: 0;
+}
+
+.param-input-row:last-child {
+  margin-bottom: 0.75em;
+}
+
+.param-input {
+  justify-content: space-between;
+  align-items: center;
+  min-height: 48px;
+}
+
+.param-config-form-name {
+  display: flex;
+  align-items: center;
+  padding-left: 1.5em;
+}
+
+.param-config-form-field-groups {
+  display: flex;
+}
+
+.param-config-form-field-group {
+  min-width: 25%;
+}
+
+.param-config-form-field {
+  width: 100%;
+}
+
+.param-config-form-field > .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.param-config-form-field
+  > .mat-form-field-wrapper
+  > .mat-form-field-flex
+  > .mat-form-field-infix {
+  border-top: 0.4em solid transparent;
+  padding: 0.8em 0;
+}
+
+.param-config-switch {
+  margin-right: 2em;
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
+
+.param-config-switch.mat-checked .mat-ripple-element {
+  background-color: #0272c6 !important;
+}
+
+.param-config-switch .mat-slide-toggle-thumb {
+  background-color: rgb(240, 240, 240);
+}
+
+.param-config-switch .mat-slide-toggle-bar {
+  background-color: rgb(210, 210, 210);
+}
+
+.param-config-slider {
+  background-color: transparent !important;
+}
+
+.param-config-slider .mat-slider-thumb {
+  border-radius: 50% !important;
+  bottom: -22px !important;
+  background-color: #0272c6 !important;
+  border: 12px solid rgba(2, 114, 198, 0.2) !important;
+  background-clip: padding-box;
+  height: 40px !important;
+  width: 40px !important;
+}
+
+.param-config-slider.mat-slider-min-value:not(.mat-slider-thumb-label-showing)
+  .mat-slider-thumb {
+  background-color: #0272c6 !important;
+  border: 12px solid rgba(2, 114, 198, 0.2) !important;
+}
+
+.param-config-slider.mat-slider-min-value:not(
+    .mat-slider-thumb-label-showing
+  ):hover
+  .mat-slider-thumb {
+  background-color: #0272c6;
+  border: 12px solid rgba(2, 114, 198, 0.2);
+}
+
+.param-config-slider.mat-slider.cdk-focused .mat-slider-track-background {
+  background-color: #9fc9e9;
+}
+
+.param-config-slider .mat-slider-wrapper {
+  top: 20px !important;
+}
+
+.param-config-slider .mat-slider-track-wrapper {
+  height: 6px !important;
+}
+
+.param-config-slider .mat-slider-track-background {
+  background-color: #9fc9e9;
+}
+
+.param-config-slider:hover .mat-slider-track-background {
+  background-color: #9fc9e9;
+}
+
+.param-config-slider.mat-slider:not(.mat-slider-disabled).cdk-mouse-focused
+  .mat-slider-thumb {
+  border-width: 12px !important;
+  transform: scale(0.85) !important;
+}
+
+.slider-border {
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 0.75em;
+}
+
+.modelling-form-title {
+  text-align: center;
+}
+
+.modelling-form-title > mat-card-title {
+  font-size: 1.2em;
+  color: rgba(0, 0, 0, 0.54);
+  margin-top: 8px;
+  margin-bottom: 4px;
+  padding-right: 30px;
+}
+
+.modelling-input-info-button {
+  position: absolute;
+  top: 8px;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  right: 16px;
+  cursor: pointer;
+}
+
+.param-description {
+  color: rgba(0, 0, 0, 0.54);
+  padding-left: 2.5em;
+}
+
+.simulation-error-container {
+  height: 100%;
+}
+
+.simulation-error-container mat-icon {
+  color: red;
+  font-size: 12rem;
+  width: 12rem;
+  height: 12rem;
+}
+
+.modelling-param-age-lt-lg {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .main-card-manager-dialog {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .modelling-configuration-dialog-panel {
+    max-width: unset !important;
+    width: 100%;
+    height: 100%;
+
+    .mat-dialog-container {
+      max-width: 100vw;
+      max-height: 100vh;
+      height: 100%;
+      width: 100%;
+
+      .mat-dialog-content {
+        max-height: unset !important;
+      }
+    }
+  }
+
+  .modelling-parameters-main-card-manager-dialog {
+    width: initial;
+    padding: 0 24px;
+  }
+
+  .modelling-configuration-restore-button {
+    min-width: 120px;
+    align-self: center;
+  }
+
+  .param-input-values {
+    width: 50%;
+  }
+
+  .param-config-slider {
+    margin-bottom: -12px;
+  }
+
+  .modelling-configuration-expansion-panel .mat-expansion-panel-header {
+    height: initial;
+    padding: 12px 12px 12px 4px;
+  }
+
+  .modelling-param-age-lt-lg {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .lt-lg-col-8 {
+    width: 66.666667% !important;
+  }
+
+  .param-subcategory-ages {
+    display: none !important;
+  }
+}

@@ -1,0 +1,219 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<mat-card class="modelling-section">
+  <div class="row">
+    <div class="modelling-title-text">
+      <h3 class="modelling-title-weight">{{ 'MODULES.MODELLING.ANALYSIS.TITLE' | translate }}</h3>
+    </div>
+    <div class="modelling-title-icons text-right">
+      <mat-icon
+        *ngIf="scenarios.length > 1"
+        class="modelling-info-icon modelling-view-icon-size"
+        [class.modelling-info-active-button]="viewStyle===ModellingViewTypes.List"
+        matTooltip="{{ 'MODULES.MODELLING.TOOLTIPS.LIST_VIEW' | translate }}"
+        (click)="switchView(ModellingViewTypes.List)">
+        view_list
+      </mat-icon>
+      <mat-icon
+        *ngIf="scenarios.length > 1"
+        class="modelling-info-icon modelling-view-icon-size"
+        [class.modelling-info-active-button]="viewStyle===ModellingViewTypes.Grid"
+        matTooltip="{{ 'MODULES.MODELLING.TOOLTIPS.GRID_VIEW' | translate }}"
+        (click)="switchView(ModellingViewTypes.Grid)">
+        view_module
+      </mat-icon>
+      <mat-icon
+        class="modelling-info-icon"
+        matTooltip="{{ 'MODULES.MODELLING.TOOLTIPS.SCENARIO_INFORMATION' | translate }}"
+        (click)="openInfoDialog()">
+        info_outline
+      </mat-icon>
+    </div>
+  </div>
+
+  <div class="modelling-section-expand" *ngIf="isCollapsed">
+    <button class="modelling-section-expand-button" (click)="expandClicked()" aria-label="Expand">
+      <mat-icon>expand_more</mat-icon>
+    </button>
+  </div>
+
+  <div class="row flex-grow-1" *ngIf="!isCollapsed">
+    <div *ngIf="!isLoaded" class="mat-spinner-container modelling-section-spinner-container">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <div class="col-xl-12" *ngIf="isLoaded">
+      <div>
+        <div class="row justify-content-between flex-wrap">
+          <div>
+            <mat-button-toggle-group class="flex-wrap" (change)="changeChart($event)" [value]="selectedChart">
+              <mat-button-toggle [value]="chartSelection.ResourceHeatmap">
+                {{ 'MODULES.MODELLING.ANALYSIS.RESOURCE_HEATMAP' | translate }}
+              </mat-button-toggle>
+              <mat-button-toggle [value]="chartSelection.PatientSankey">
+                {{ 'MODULES.MODELLING.ANALYSIS.PATIENT_SANKEY' | translate }}
+              </mat-button-toggle>
+              <mat-button-toggle [value]="chartSelection.ICULineChart">
+                {{ 'MODULES.MODELLING.ANALYSIS.ICU_LINE_CHART' | translate }}
+              </mat-button-toggle>
+              <mat-button-toggle [value]="chartSelection.ICUNursesBarChart">
+                {{ 'MODULES.MODELLING.ANALYSIS.ICU_NURSES_BAR_CHART' | translate }}
+              </mat-button-toggle>
+              <mat-button-toggle [value]="chartSelection.PeakVSAvailableResources">
+                {{ 'MODULES.MODELLING.ANALYSIS.PEAK_VS_AVAILABLE_RESOURCES' | translate }}
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+
+          <div *ngIf="selectedChart === chartSelection.PatientSankey || selectedChart === chartSelection.PeakVSAvailableResources">
+            <mat-slider
+              [min]="0"
+              [max]="Constants.MODELLING_SIMULATION_DAYS"
+              [(ngModel)]="sliderDay"
+              (change)="loadData()"
+              (input)="sliderDayChanged($event)"
+              step="1"
+              class="modelling-analysis-slider col-9">
+            </mat-slider>
+
+            <mat-form-field appearance="outline" class="modelling-analysis-form-field col-3">
+              <input
+                type="number"
+                step="1"
+                [min]="0"
+                [max]="Constants.MODELLING_SIMULATION_DAYS"
+                [(ngModel)]="sliderDay"
+                (change)="loadData()"
+                matInput>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row px-3">
+          <div *ngIf="selectedChart === chartSelection.ResourceHeatmap">
+            <mat-card-title>{{ 'MODULES.MODELLING.ANALYSIS.HOSPITAL_RESOURCES' | translate }}</mat-card-title>
+            <mat-card-content>{{ 'MODULES.MODELLING.ANALYSIS.HOSPITAL_RESOURCES_DESCRIPTION' | translate }}</mat-card-content>
+          </div>
+          <div *ngIf="selectedChart === chartSelection.PatientSankey">
+            <mat-card-title>{{ 'MODULES.MODELLING.ANALYSIS.PATIENT_PATHWAYS' | translate }}</mat-card-title>
+            <mat-card-content>{{ 'MODULES.MODELLING.ANALYSIS.PATIENT_PATHWAYS_DESCRIPTION' | translate }} {{sliderDay}}</mat-card-content>
+          </div>
+          <div *ngIf="selectedChart === chartSelection.ICULineChart">
+            <mat-card-title>{{ 'MODULES.MODELLING.ANALYSIS.ICU_RESOURCES' | translate }}</mat-card-title>
+            <mat-card-content>{{ 'MODULES.MODELLING.ANALYSIS.ICU_RESOURCES_DESCRIPTION' | translate }}</mat-card-content>
+          </div>
+          <div *ngIf="selectedChart === chartSelection.ICUNursesBarChart">
+            <mat-card-title>{{ 'MODULES.MODELLING.ANALYSIS.ICU_NURSES' | translate }}</mat-card-title>
+            <mat-card-content>{{ 'MODULES.MODELLING.ANALYSIS.ICU_NURSES_DESCRIPTION' | translate }}</mat-card-content>
+          </div>
+          <div *ngIf="selectedChart === chartSelection.PeakVSAvailableResources">
+            <mat-card-title>{{ 'MODULES.MODELLING.ANALYSIS.PEAK_VS_AVAILABLE' | translate }}</mat-card-title>
+            <mat-card-content>
+              {{ 'MODULES.MODELLING.ANALYSIS.PEAK_VS_AVAILABLE_DESCRIPTION' | translate }}
+              {{ sliderDay }}.
+              {{ 'MODULES.MODELLING.ANALYSIS.PEAK_VS_AVAILABLE_NOTE' | translate }}
+            </mat-card-content>
+          </div>
+        </div>
+
+        <div class="row">
+          <div
+            *ngFor="let scenario of scenarios, let i = index"
+            class="modelling-section-element"
+            [class.modelling-section-element-horizontal-line]="styleProps[i] && styleProps[i].hLine && viewStyle === ModellingViewTypes.Grid"
+            [class.modelling-section-element-vertical-line]="styleProps[i] && styleProps[i].vLine && viewStyle === ModellingViewTypes.Grid"
+            [class.col-xl-12]="styleProps[i] && styleProps[i].col12 || viewStyle === ModellingViewTypes.List"
+            [class.col-lg-6]="styleProps[i] && styleProps[i].col6 && viewStyle === ModellingViewTypes.Grid"
+            [class.col-lg-4]="styleProps[i] && styleProps[i].col4 && viewStyle === ModellingViewTypes.Grid">
+            <div>
+              <div class="mb-3">
+                <div class="modelling-scenario-title-container" [class.modelling-scenario-title-margins]="viewStyle === ModellingViewTypes.List">
+                  <div>
+                    <span *ngIf="i === 0">{{ 'MODULES.MODELLING.COMMON.BASELINE' | translate }}</span>
+                    <span *ngIf="i >= 1">{{ 'MODULES.MODELLING.COMMON.ALTERNATIVE' | translate }}</span>
+                    {{ 'MODULES.MODELLING.COMMON.SCENARIO' | translate }}: {{scenario.name}}
+                  </div>
+                  <div class="modelling-scenario-location">
+                    <mat-icon>location_on</mat-icon>
+                    {{scenario.location}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" *ngIf="chartData[i] && chartData[i].size">
+                <div class="col-xl-12">
+                  <app-heatmap
+                    *ngIf="selectedChart === chartSelection.ResourceHeatmap"
+                    [chartType]="'heatmap'"
+                    [showExportMenu]="true"
+                    [series]="resourceHeatmap[i]"
+                    [xAxisData]="xAxis"
+                    [yAxisData]="resourceHeatmapYAxis"
+                    [toolTip]="heatmapTooltip"
+                    [colorAxis]="resourceHeatmapColors">
+                  </app-heatmap>
+                  <app-highcharts
+                    *ngIf="selectedChart === chartSelection.PatientSankey"
+                    [chartType]="'sankey'"
+                    [showExportMenu]="true"
+                    [series]="patientSankey[i]"
+                    [toolTip]="sankeyTooltip">
+                  </app-highcharts>
+                  <app-highcharts
+                    *ngIf="selectedChart === chartSelection.ICULineChart"
+                    [chartType]="'spline'"
+                    [series]="ICULineChart[i]"
+                    [showExportMenu]="true"
+                    [skipYAxisMinValue]="true"
+                    [xAxisData]="xAxis">
+                  </app-highcharts>
+                  <app-highcharts
+                    *ngIf="selectedChart === chartSelection.ICUNursesBarChart"
+                    [chartType]="'column'"
+                    [series]="ICUNursesChart[i]"
+                    [showExportMenu]="true"
+                    [xAxisData]="xAxis"
+                    [yAxisExtra]="ICUNursesChartPlotlines[i]"
+                    [skipYAxisMinValue]="true"
+                    [plotOptions]="ICUNursesPlotOptions">
+                  </app-highcharts>
+                  <app-highcharts
+                    *ngIf="selectedChart === chartSelection.PeakVSAvailableResources"
+                    [isPolarChart]="true"
+                    [series]="radarChartSeries[i]"
+                    [showExportMenu]="true"
+                    [xAxisData]="radarChartXAxis"
+                    [yAxisExtra]="radarChartYAxis"
+                    [chart]="radarChart"
+                    [toolTip]="radarTooltip">
+                  </app-highcharts>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>

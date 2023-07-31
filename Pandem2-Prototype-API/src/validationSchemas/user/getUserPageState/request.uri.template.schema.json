@@ -1,0 +1,13 @@
+{
+  "$id": "user.getUserPageState.request.uri.template.schema",
+  "description": "Retrieve the userState object from the database.",
+  "type": "object",
+  "properties": {
+    "page": {
+      "$ref": "/base#/definitions/userPageState"
+    }
+  },
+  "required": [
+    "page"
+  ]
+}

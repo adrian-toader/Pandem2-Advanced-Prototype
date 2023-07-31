@@ -1,0 +1,26 @@
+{
+  "$id": "patient.generateDummy.request.body.schema",
+  "description": "Generate Patients dummy data request body schema",
+  "type": "object",
+  "properties": {
+    "location": {
+      "$ref": "/patient#/definitions/location"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "generate_for_sublocations": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "location",
+    "start_date",
+    "end_date"
+  ]
+}

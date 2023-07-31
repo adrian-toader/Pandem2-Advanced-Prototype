@@ -1,0 +1,13 @@
+{
+  "$id": "user.deleteUser.request.uri.template.schema",
+  "description": "Delete user instance URI template schema",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "$ref": "/user#/definitions/userId"
+    }
+  },
+  "required": [
+    "userId"
+  ]
+}

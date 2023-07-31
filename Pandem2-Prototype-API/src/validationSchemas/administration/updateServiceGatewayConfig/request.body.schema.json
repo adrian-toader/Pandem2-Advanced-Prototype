@@ -1,0 +1,18 @@
+{
+  "$id": "administration.updateServiceGatewayConfig.request.body.schema",
+  "description": "Update the serviceGateway object in the database",
+  "type": "object",
+  "properties": {
+    "url": {
+      "$ref": "/base#/definitions/url"
+    },
+    "timeout": {
+      "type": "number",
+      "default": 10000
+    }
+  },
+  "required": [
+    "url",
+    "timeout"
+  ]
+}

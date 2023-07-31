@@ -1,0 +1,35 @@
+{
+  "$id": "population.getDaily.request.query.schema",
+  "description": "Get population count group by day - request query schema definition",
+  "type": "object",
+  "properties": {
+    "subcategory": {
+      "$ref": "/population#/definitions/subcategory"
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "age_group"
+      ]
+    },
+    "period_type": {
+      "$ref": "/base#/definitions/period_type"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "subcategory",
+    "location"
+  ]
+}

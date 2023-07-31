@@ -1,0 +1,67 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<div *ngIf="indicatorList.length<=2">
+  <div class="row" *ngFor="let indicator of indicatorList">
+    <div class="col-xl-12" *ngIf="locations.length>0">
+      <div *ngIf="indicator.isLoading" class="mat-spinner-container loading-chart-placeholder">
+        <mat-spinner></mat-spinner>
+      </div>
+      <highcharts-chart *ngIf="!indicator.isLoading" [Highcharts]="Highcharts" [options]="indicator.options" style = "width: 100%; display: block; z-index: 1;"></highcharts-chart>
+=      <div *ngIf="indicator.name === 'Tests Performed' && regionList.length > 0 && !indicator.isLoading">
+        <mat-card-subtitle style="color:#0272c6">{{'MODULES.EXPLORATION.TESTING_POLICY' | translate}}</mat-card-subtitle>
+        <div *ngFor="let location of regionList">
+          {{location.name}}
+          <app-testing-policy-timeline
+            [explorationSelectedRegionCode]="location.code"
+            [intervalStartDate] = "startDate"
+          ></app-testing-policy-timeline>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="indicatorList.length>2" class="grid">
+  <ng-container *ngFor="let indicator of indicatorList">
+    <div *ngIf="locations.length>0">
+      <div *ngIf="indicator.isLoading" class="mat-spinner-container loading-chart-placeholder">
+        <mat-spinner></mat-spinner>
+      </div>
+      <highcharts-chart *ngIf="!indicator.isLoading" [Highcharts]="Highcharts" [options]="indicator.options" style = "width: 100%; display: block; z-index: 1;"></highcharts-chart>
+      <div *ngIf="indicator.name === 'Tests Performed' && regionList.length > 0 && !indicator.isLoading">
+        <mat-card-subtitle style="color:#0272c6">{{'MODULES.EXPLORATION.TESTING_POLICY' | translate}}</mat-card-subtitle>
+        <div *ngFor="let location of regionList">
+          {{location.name}}
+          <app-testing-policy-timeline
+            [explorationSelectedRegionCode]="location.code"
+            [intervalStartDate] = "startDate"
+          ></app-testing-policy-timeline>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+
+
+
+

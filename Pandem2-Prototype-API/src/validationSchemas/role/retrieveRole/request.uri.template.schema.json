@@ -1,0 +1,13 @@
+{
+  "$id": "role.retrieveRole.request.uri.template.schema",
+  "description": "Retrieve role instance URI template schema",
+  "type": "object",
+  "properties": {
+    "roleId": {
+      "$ref": "/role#/definitions/roleId"
+    }
+  },
+  "required": [
+    "roleId"
+  ]
+}

@@ -1,0 +1,155 @@
+/*
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+*/
+
+@import "~src/styles/common";
+
+.mat-dialog-main-panel {
+  .mat-dialog-container {
+    padding: 24px 9px 9px 24px;
+    // add max-height in vh so the modal will not exceed the viewport making impossible to click on the buttons or see all content
+    max-height: 95vh !important;
+    // handle scroll on children
+    overflow: hidden;
+  }
+}
+
+app-dialog {
+  .dialog-main {
+    font-family: @font-be-vietnam;
+    font-size: 14px;
+    color: #8e8e8e;
+
+    .dialog-main-msg {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      font-family: @font-be-vietnam;
+      color: #000;
+    }
+
+    // Form data section
+    .dialog-data-content {
+      overflow: auto;
+
+      .dialog-additional-info {
+        font-size: 15px;
+        margin-bottom: 20px;
+        max-width: 100%;
+      }
+
+      .dialog-form-data {
+        .field-list-item:last-child {
+          margin-right: 20px;
+        }
+
+        .dialog-section-title {
+          font-size: 16px;
+          font-weight: 700;
+          margin-top: 10px;
+          font-family: @font-be-vietnam;
+          color: #000;
+        }
+
+        .dialog-checkbox-list {
+          min-height: 40px;
+
+          .dialog-checkbox-list-item {
+            .dialog-checkbox-list-item-checkbox {
+              .form-checkbox-container {
+                height: auto;
+                justify-content: center;
+                padding-bottom: 2px;
+              }
+            }
+
+            .dialog-checkbox-list-item-action {
+              padding-bottom: 2px;
+            }
+          }
+        }
+
+        .link-item-action {
+          padding-bottom: 2px;
+        }
+
+        a {
+          color: #0071e1;
+          margin: 3px;
+          font-weight: bold;
+          text-decoration: none;
+
+          &:active {
+            color: #0071e1;
+            text-decoration: none;
+          }
+
+          &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+          }
+        }
+
+        .dialog-action {
+          color: #0071e1;
+          margin: 3px;
+          font-weight: bold;
+          overflow-wrap: break-word;
+
+          &.dialog-action-has-action:hover {
+            cursor: pointer;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    // Buttons section
+    .dialog-button {
+      font-family: @font-be-vietnam;
+      text-transform: uppercase;
+      color: #000;
+      font-weight: 700;
+      margin-top: 20px;
+
+      &.danger {
+        background-color: #ff3547;
+      }
+
+      &.primary {
+        background-color: #33b5e5;
+      }
+
+      &.success {
+        background-color: #00c851;
+      }
+    }
+
+    .ng-star-inserted .mat-button,
+    .ng-star-inserted .mat-flat-button,
+    .ng-star-inserted .mat-icon-button,
+    .ng-star-inserted .mat-stroked-button {
+      line-height: normal;
+      padding: 9px 16px;
+    }
+  }
+}

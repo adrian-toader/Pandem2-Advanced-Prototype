@@ -1,0 +1,26 @@
+{
+  "$id": "primaryCare.getLocationsDateInterval.request.query.schema",
+  "description": "Get time interval in which primary care was tracked for requested locations - request query schema",
+  "type": "object",
+  "properties": {
+    "subcategory": {
+      "$ref": "/primaryCare#/definitions/subcategory"
+    },
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "disease_type": {
+      "$ref": "/primaryCare#/definitions/disease_type"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "disease_type"
+      ]
+    }
+  },
+  "required": [
+    "subcategory",
+    "location"
+  ]
+}

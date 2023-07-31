@@ -1,0 +1,13 @@
+{
+  "$id": "role.deleteRole.request.uri.template.schema",
+  "description": "Delete role instance URI template schema",
+  "type": "object",
+  "properties": {
+    "roleId": {
+      "$ref": "/role#/definitions/roleId"
+    }
+  },
+  "required": [
+    "roleId"
+  ]
+}

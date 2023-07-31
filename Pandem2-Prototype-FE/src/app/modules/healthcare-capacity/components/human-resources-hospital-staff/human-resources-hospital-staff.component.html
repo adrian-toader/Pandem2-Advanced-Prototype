@@ -1,0 +1,137 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<mat-card>
+  <div class="d-flex align-items-top">
+    <mat-card-title class="flex-grow-1" (mousedown)="$event.stopPropagation()">
+      <div class="row">
+        <div class="col-md-6 text-center text-sm-left">
+          {{'MODULES.HEALTHCARE_CAPACITY.HUMAN_RESOURCES_HOSPITAL_STAFF.TITLE' | translate}}
+        </div>
+        <div class="col-md-6 text-center text-sm-left text-md-right" *ngIf="!proportionIncreaseChart && !isCollapsed">
+          <mat-slide-toggle (change)="setHospitalType($event)" [(ngModel)]="wardChecked" [labelPosition]="'before'"
+                            class="mr-5 ward_container" id="ward">
+            {{'MODULES.HEALTHCARE_CAPACITY.HUMAN_RESOURCES_HOSPITAL_STAFF.WARD' | translate}}
+          </mat-slide-toggle>
+          <mat-slide-toggle (change)="setHospitalType($event)" [(ngModel)]="icuChecked" [labelPosition]="'before'"
+                            class="icu_container">
+          {{'MODULES.HEALTHCARE_CAPACITY.HUMAN_RESOURCES_HOSPITAL_STAFF.ICU' | translate}}
+          </mat-slide-toggle>
+        </div>
+      </div>
+    </mat-card-title>
+    <mat-icon style="cursor: grab">drag_indicator</mat-icon>
+  </div>
+  <div (mousedown)="$event.stopPropagation()">
+    <br />
+    <mat-card-subtitle>
+      <div class="row">
+        <div class="col-md-7 mb-4 text-center text-sm-left">
+          <p>
+            {{'MODULES.HEALTHCARE_CAPACITY.HUMAN_RESOURCES_HOSPITAL_STAFF.DESCRIPTION' | translate}}
+          </p>
+        </div>
+        <div class="col-md-5 mb-4 text-center text-sm-left text-md-right">
+          <app-sources [sourceType]="SourceType.GRAPH" [sources]="sources" [lastUpdate]="lastUpdate"></app-sources>
+        </div>
+      </div>
+    </mat-card-subtitle>
+    <mat-card-content *ngIf="!isCollapsed">
+      <div class="form-inline">
+        <div class="form-group mr-4 mb-4">
+          <app-chart-time-interval [intervalOptions]="chartsIntervalOptions"
+            (intervalChanged)="changeTimeInterval($event)"
+            [selectedIntervalOption]="selectedIntervalOption"></app-chart-time-interval>
+        </div>
+        <div class="form-group mr-4 mb-4">
+          <ng-container *ngIf="proportionIncreaseChart">
+            <mat-button-toggle-group (change)="changeTotalType($event)" value="Proportion"
+              class="d-none d-md-inline-flex">
+              <mat-button-toggle value="Absolute">{{graphFilterButtons.ABSOLUTE | translate}}</mat-button-toggle>
+              <mat-button-toggle value="100K">{{graphFilterButtons.PER100K | translate}}</mat-button-toggle>
+              <mat-button-toggle value="Proportion">{{graphFilterButtons.PROPORTION | translate}}</mat-button-toggle>
+            </mat-button-toggle-group>
+          </ng-container>
+          <ng-container *ngIf="!proportionIncreaseChart">
+            <mat-button-toggle-group (change)="changeTotalType($event)" [value]="totalType"
+              class="d-none d-md-inline-flex">
+              <mat-button-toggle value="Absolute">{{graphFilterButtons.ABSOLUTE | translate}}</mat-button-toggle>
+              <mat-button-toggle value="100K">{{graphFilterButtons.PER100K | translate}}</mat-button-toggle>
+              <mat-button-toggle value="Proportion">{{graphFilterButtons.PROPORTION | translate}}</mat-button-toggle>
+            </mat-button-toggle-group>
+          </ng-container>
+        </div>
+        <div class="form-group mr-4 mb-4">
+          <mat-button-toggle-group [value]="LinearLog" aria-label="Type" class="type-container" name="fontStyle">
+            <mat-button-toggle (change)="changeHumanResourcesPlotType($event)"
+              value="linear">{{graphFilterButtons.LINEAR | translate}}</mat-button-toggle>
+            <mat-button-toggle (change)="changeHumanResourcesPlotType($event)"
+              value="logarithmic">{{graphFilterButtons.LOGARITHMIC | translate}}</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+      <mat-card>
+        <mat-card-title> {{'MODULES.HEALTHCARE_CAPACITY.HUMAN_RESOURCES_HOSPITAL_STAFF.HOSPITAL_STAFF' | translate}}</mat-card-title>
+        <div *ngIf="isLoading()" class="mat-spinner-container loading-chart-placeholder">
+          <mat-spinner></mat-spinner>
+        </div>
+        <div *ngIf="isLoaded()">
+          <app-highcharts #firstChart
+            (mouseenter)="tooltipSynchronisationService.setSyncRules(firstChartView, secondChartView)"
+            (mousemove)="tooltipSynchronisationService.syncPointers(syncCharts.FirstChart, firstChartView, secondChartView)"
+            (mouseleave)="tooltipSynchronisationService.hideSyncedPointers(firstChartView, secondChartView)"
+            [xAxisData]="dailyHospitalStaff.total.xAxis" [series]="dailyHospitalStaffSeries" [showExportMenu]="true"
+            [stacking]="true" [yAxisExtra]="hospitalStaffYAxisSettings" [yAxisType]="LinearLog"></app-highcharts>
+        </div>
+      </mat-card>
+      <br />
+      <mat-card>
+        <mat-card-title>
+          <div class="row">
+            <div class="col-md-6 text-center text-sm-left">{{'MODULES.HEALTHCARE_CAPACITY.HUMAN_RESOURCES_HOSPITAL_STAFF.ADMISSIONS' | translate}}</div>
+            <div class="col-md-6 text-center text-sm-left text-md-right">
+              <mat-slide-toggle (change)="setAdmissionType($event)" [(ngModel)]="admissionChecked"
+                [labelPosition]="'before'" class="mr-5" id="admissions">
+                {{'MODULES.HEALTHCARE_CAPACITY.HUMAN_RESOURCES_HOSPITAL_STAFF.ADMISSIONS_UPP' | translate}}
+              </mat-slide-toggle>
+              <mat-slide-toggle (change)="setAdmissionType($event)" [(ngModel)]="icuAdmissionChecked"
+                [labelPosition]="'before'" class="icu_container">
+                {{'MODULES.HEALTHCARE_CAPACITY.HUMAN_RESOURCES_HOSPITAL_STAFF.ICU' | translate}}
+              </mat-slide-toggle>
+            </div>
+          </div>
+        </mat-card-title>
+        <div *ngIf="isLoading()" class="mat-spinner-container loading-chart-placeholder">
+          <mat-spinner></mat-spinner>
+        </div>
+        <div *ngIf="isLoaded()">
+          <app-highcharts #secondChart
+            (mouseenter)="tooltipSynchronisationService.setSyncRules(firstChartView, secondChartView)"
+            (mousemove)="tooltipSynchronisationService.syncPointers(syncCharts.SecondChart, firstChartView, secondChartView)"
+            (mouseleave)="tooltipSynchronisationService.hideSyncedPointers(firstChartView, secondChartView)"
+            [xAxisData]="dailyAdmissions.total.xAxis" [series]="dailyAdmissionsSeries" [showExportMenu]="true"
+            [stacking]="true" [yAxisType]="LinearLog"></app-highcharts>
+        </div>
+      </mat-card>
+    </mat-card-content>
+  </div>
+</mat-card>

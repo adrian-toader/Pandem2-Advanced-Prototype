@@ -1,0 +1,23 @@
+{
+  "$id": "import.retrieveDataSourceTagsList.request.query.schema",
+  "description": "Retrieve list of Data Sources grouped by Tags - request URI query schema",
+  "type": "object",
+  "properties": {
+    "filter": {
+      "$ref": "/query#/definitions/filter"
+    },
+    "projection": {
+      "$ref": "/query#/definitions/projection"
+    },
+    "sort": {
+      "$ref": "/query#/definitions/sort"
+    },
+    "skip": {
+      "$ref": "/query#/definitions/skip"
+    },
+    "limit": {
+      "$ref": "/query#/definitions/limit"
+    }
+  }
+}
+

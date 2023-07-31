@@ -1,0 +1,127 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<mat-card class="summary-section">
+  <div *ngIf="isLoading()" class="mat-spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="isLoaded()">
+    <div class="summary-section__name-icon-container">
+      <div>
+        {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONTACT_SUMMARY.TITLE' | translate }}
+      </div>
+      <div>
+        <mat-icon (click)="showInfo = !showInfo">info</mat-icon>
+      </div>
+    </div>
+    <mat-card-title class="text-center text-sm-left ">
+      {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONTACT_SUMMARY.CONTACTS_FOR_CT' | translate }}
+    </mat-card-title>
+    <mat-card-subtitle class="text-center text-sm-left ">
+      <app-sources
+        [sourceType]="SourceType.SUMMARY"
+        [sources]="sources"></app-sources>
+    </mat-card-subtitle>
+    <mat-card-content>
+      <p *ngIf="showInfo" class="text-center text-sm-left info-text">
+        {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONTACT_SUMMARY.WIP' | translate }}
+      </p>
+      <mat-list>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONTACT_SUMMARY.CONTACTS_LAST_SEVEN_DAYS' | translate }}
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{ numberOfContactIdentifiedCurrentWeek}}
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            <br/>
+            {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONTACT_SUMMARY.CONTACTS_BETWEEN_SEVEN' | translate }}
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{ numberOfContactIdentifiedLastWeek}}
+            <br/>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            <br/>
+            {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONTACT_SUMMARY.CONTACTS_IDENTIFIED_AND_REACHED' | translate }}
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{ numberOfContactIdentifiedAndReached}} ({{numberOfContactIdentifiedAndReachedPercentage| number : defaultNumberFormat}} %)
+            <br/>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="col-xl-8 label">
+            <br/>
+            {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONTACT_SUMMARY.CONTACTS_IDENTIFIED_AND_REACHED_IN_A_DAY' | translate }}
+          </div>
+          <div class="col-xl-4 value text-right">
+            {{ numberOfContactIdentifiedAndReachedWithinADay}} ({{numberOfContactIdentifiedAndReachedWithinADayPercentage| number : defaultNumberFormat}} %)
+            <br/>
+          </div>
+        </mat-list-item>
+        <mat-divider class="mat-divider-shadow"></mat-divider>
+        <mat-list-item>
+          <mat-card-title class="summary-section__name-icon-container text-right">
+            <br/>
+            <mat-icon (click)="showInfoPolicy = !showInfoPolicy">info</mat-icon>
+            <div class="text-center">
+              {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONTACT_SUMMARY.CURRENT_CONTACT_POLICY' | translate }}
+            </div>
+            <p *ngIf="showInfoPolicy" class="text-center text-sm-left info-text">
+              {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONTACT_SUMMARY.WIP' | translate }}
+            </p>
+          </mat-card-title>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="col-xl-6 label">
+            <p>
+              {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONTACT_SUMMARY.CURRENT_POLICY' | translate }} <br>
+              {{policyDate}}
+            </p>
+          </div>
+          <div class="col-xl-6 label">
+                <p style="text-align:center; color:#308dc1"> {{policy}} </p>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-subtitle>
+      <p>  {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONTACT_SUMMARY.GOVERNMENT_RESPONSE' | translate }}</p>
+      <p> {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONTACT_SUMMARY.POLICIES' | translate }} <br>
+        {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONTACT_SUMMARY.ZERO' | translate }}<br>
+        {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONTACT_SUMMARY.ONE' | translate }} <br>
+        {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONTACT_SUMMARY.TWO' | translate }} <br>
+        {{'MODULES.TESTING_CONTACT_TRACING.CONTACT_TRACING_CONTACT_SUMMARY.NO_DATA' | translate }}
+      </p>
+    </mat-card-subtitle>
+  </div>
+</mat-card>

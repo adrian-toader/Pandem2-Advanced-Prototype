@@ -1,0 +1,31 @@
+{
+  "$id": "case.getLocationsDailyContactTracing.request.query.schema",
+  "description": "Get total number of cases for a time interval for requested locations request params schema",
+  "type": "object",
+  "properties": {
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "total_type": {
+      "$ref": "/case#/definitions/total_type"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "none"
+      ]
+    }
+  },
+  "required": [
+    "location",
+    "total_type"
+  ]
+}

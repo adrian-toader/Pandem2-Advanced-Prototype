@@ -1,0 +1,65 @@
+{
+  "$id": "modelling.simulateModel.response.body.schema",
+  "description": "Simulate model response body schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "indicator": {
+        "type": "string",
+        "minLength": 1
+      },
+      "min": {
+        "type": "number"
+      },
+      "max": {
+        "type": "number"
+      },
+      "locations": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "minLength": 1
+            },
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "day": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "split": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "number"
+                        },
+                        "split_value": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

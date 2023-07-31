@@ -1,0 +1,69 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<button mat-icon-button class="dialog-close-button" [mat-dialog-close]="true">
+  <mat-icon aria-hidden="false" aria-label="close button">close</mat-icon>
+</button>
+<mat-dialog-content class="main-card-manager-dialog">
+  <div>
+    <div *ngIf="!dataLoaded" class="mat-spinner-container">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="dataLoaded">
+      <mat-card-content>
+        <!-- Key field -->
+        <div class="dialog__key--value">
+          <div>{{'MODULES.TRANSLATION.MAT_DIALOG.KEY' | translate}}</div>
+          <span>
+           {{currentItem.key}}
+          </span>
+        </div>
+        <!-- Base Value field -->
+        <div class="dialog__base--value">
+          <span>{{'MODULES.TRANSLATION.MAT_DIALOG.BASE_VALUE' | translate}}</span>
+          <textarea disabled [value]="currentItem.baseValue"></textarea>
+        </div>
+        <!-- Target Value Div -->
+        <div class="dialog__target--value">
+          <span>{{'MODULES.TRANSLATION.MAT_DIALOG.TARGET_VALUE' | translate}}</span>
+          <textarea [(ngModel)]="currentItem.value"></textarea>
+        </div>
+
+      </mat-card-content>
+    </div>
+  </div>
+</mat-dialog-content>
+<button  matTooltip="Press for Auto-Translation with G-Translate" [matTooltipPosition]="'right'" (click)="onGTranslateClick()" class="google_translate--btn">
+  <mat-icon>g_translate</mat-icon>
+</button>
+<mat-dialog-actions align="end">
+  <button class="dialog__btn btn__cancel" mat-button mat-dialog-close>Cancel</button>
+  <button (click)="onSave()" class="dialog__btn btn__save" mat-button>
+    <mat-icon>done</mat-icon>
+    {{'MODULES.TRANSLATION.MAT_DIALOG.SAVE_BTN' | translate}}
+  </button>
+  <button (click)="onSaveAndNext()" class="dialog__btn btn__save_and_next" mat-button>
+    <mat-icon>done</mat-icon>
+    {{'MODULES.TRANSLATION.MAT_DIALOG.SAVE_AND_NEXT' | translate}}
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</mat-dialog-actions>

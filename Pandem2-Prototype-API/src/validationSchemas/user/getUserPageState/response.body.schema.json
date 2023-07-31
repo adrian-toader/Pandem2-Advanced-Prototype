@@ -1,0 +1,12 @@
+{
+  "$id": "user.getUserPageState.response.body.schema",
+  "description": "Retrieve the userState object from the database",
+  "type": "object",
+  "properties": {
+      "state": {
+         "type" : "object",
+         "additionalProperties": true
+      }
+  },
+  "required": []
+}

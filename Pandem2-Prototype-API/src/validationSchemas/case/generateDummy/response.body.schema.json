@@ -1,0 +1,100 @@
+{
+  "$id": "case.generateDummy.response.body.schema",
+  "description": "Generate dummy data for cases - response body schema",
+  "type": "object",
+  "patternProperties": {
+    ".+": {
+      "description": "Date entry for created resources numbers per total type",
+      "type": "object",
+      "patternProperties": {
+        ".+": {
+          "description": "Date entry for created resources numbers per subcategory",
+          "type": "object",
+          "patternProperties": {
+            ".+": {
+              "description": "Date entry for created resources numbers per date",
+              "type": "object",
+              "properties": {
+                "comorbidities": {
+                  "type": "object",
+                  "patternProperties": {
+                    ".+": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  }
+                },
+                "genders": {
+                  "type": "object",
+                  "patternProperties": {
+                    ".+": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  }
+                },
+                "variants": {
+                  "type": "object",
+                  "patternProperties": {
+                    ".+": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  }
+                },
+                "ageGroups": {
+                  "type": "object",
+                  "patternProperties": {
+                    ".+": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "genders": {
+                          "type":"object",
+                          "patternProperties": {
+                            ".+": {
+                              "type": "integer",
+                              "minimum": 0
+                            }
+                          }
+                        },
+                        "variants": {
+                          "type":"object",
+                          "patternProperties": {
+                            ".+": {
+                              "type": "integer",
+                              "minimum": 0
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "reached": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "reached_within_a_day": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "were_previous_contacts": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "total": {
+                  "type": "number",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

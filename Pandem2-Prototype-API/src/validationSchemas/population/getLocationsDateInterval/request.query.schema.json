@@ -1,0 +1,34 @@
+{
+  "$id": "population.getLocationsDateInterval.request.query.schema",
+  "description": "Get time interval for populations for requested locations - request query schema",
+  "type": "object",
+  "properties": {
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "subcategory": {
+      "$ref": "/population#/definitions/subcategory"
+    },
+    "gender": {
+      "$ref": "/population#/definitions/gender"
+    },
+    "age_group": {
+      "$ref": "/population#/definitions/age_group"
+    },
+    "risk_group": {
+      "$ref": "/population#/definitions/risk_group"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "gender",
+        "age_group",
+        "risk_group"
+      ]
+    }
+  },
+  "required": [
+    "subcategory",
+    "location"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "$id": "/contact#",
+  "definitions": {
+    "pathogen": {
+      "type": "string",
+      "minLength": 1
+    },
+    "total_type": {
+      "type": "string",
+      "enum": [
+        "Absolute",
+        "100K"
+      ]
+    },
+    "total": {
+      "type": "number",
+      "minimum": 0
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "reference",
+        "value"
+      ]
+    },
+    "contactId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "contactResourceEntry": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "/contact#/definitions/contactId"
+        },
+        "pathogen": {
+          "$ref": "/contact#/definitions/pathogen"
+        },
+        "total": {
+          "$ref": "/contact#/definitions/total"
+        },
+        "date": {
+          "$ref": "/contact#/definitions/date"
+        },
+        "location": {
+          "$ref": "/contact#/definitions/location"
+        }
+      }
+    }
+  }
+}

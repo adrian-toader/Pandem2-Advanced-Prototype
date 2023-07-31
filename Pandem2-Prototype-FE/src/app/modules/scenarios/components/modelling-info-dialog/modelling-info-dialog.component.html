@@ -1,0 +1,149 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<button mat-icon-button class="dialog-close-button" [mat-dialog-close]="true">
+  <mat-icon aria-hidden="false" aria-label="close button">close</mat-icon>
+</button>
+<mat-dialog-content class="modelling-info-dialog">
+  <div class="row">
+    <div class="col-12">
+      <div *ngIf="!paramsReady" class="mat-spinner-container">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div *ngIf="paramsReady">
+        <div class="row">
+          <div class="col-12">
+            <div class="modelling-info-dialog-title-group">
+              <h3 class="modelling-title-weight">
+                {{ 'MODULES.MODELLING.INFO.PARAMETER_VALUES' | translate }}:
+                <span *ngIf="scenarios[0].alternatives && scenarios[0].alternatives.length">
+                  {{ 'MODULES.MODELLING.COMMON.BASELINE' | translate }}:
+                </span>
+                {{scenarios[0].name}}
+                <ng-container *ngIf="scenarios[0].alternatives && scenarios[0].alternatives.length">
+                  <span *ngFor="let alternative of scenarios[0].alternatives" class="modelling-alternative-name">
+                    | {{ 'MODULES.MODELLING.COMMON.ALTERNATIVE' | translate }}: {{alternative.name}}
+                  </span>
+                </ng-container>
+              </h3>
+              <p class="modelling-title-info">
+                {{ 'MODULES.MODELLING.COMMON.CLICK' | translate }}
+                <mat-icon style="vertical-align: text-bottom">info</mat-icon>
+                {{ 'MODULES.MODELLING.INFO.PARAMETER_INFO' | translate }}
+              </p>
+            </div>
+            <div class="summary-section__name-icon-container modelling-inputs-info-button">
+              <mat-icon
+                (click)="showInfo = !showInfo"
+                matTooltip="{{(showInfo ? 'MODULES.MODELLING.COMMON.HIDE' : 'MODULES.MODELLING.COMMON.SHOW') | translate }} {{'MODULES.MODELLING.INFO.PARAMETER_DEFINITIONS' | translate}}">
+                info
+              </mat-icon>
+            </div>
+          </div>
+        </div>
+
+        <mat-tab-group class="modelling-info-tab mt-3">
+          <mat-tab *ngFor="let category of paramsDisplay">
+            <ng-template mat-tab-label>
+              <h5 class="modelling-title-weight">{{category.categoryLabel}}</h5>
+              <p class="modelling-info-tab-description" *ngIf="category.description">
+                {{category.description}}
+              </p>
+            </ng-template>
+
+            <div class="modelling-info-runs d-flex justify-content-end">
+              <div class="modelling-info-runs-title-section">
+                <div class="modelling-info-runs-title" *ngFor="let scenario of scenarios">
+                  {{scenario.name}}
+                  <div class="modelling-info-runs-location">
+                    <mat-icon>location_on</mat-icon>
+                    {{scenario.location}}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <mat-card class="modelling-info-category-card">
+              <div class="modelling-info-subcategory-group" *ngFor="let subcategory of category.subcategories">
+                <p class="modelling-info-subcategory-title" *ngIf="subcategory.subcategoryLabel">
+                  {{subcategory.subcategoryLabel}}
+                </p>
+                <ng-container *ngFor="let input of subcategory.inputs">
+                  <div class="modelling-info-input-group d-flex">
+                    <div class="modelling-info-input-name-section">
+                      <div>
+                        <p class="modelling-info-input-name">
+                          {{input.name}}
+                        </p>
+                        <p *ngIf="showInfo && input.description" class="modelling-info-input-descriptions">
+                          {{input.description}}
+                        </p>
+                      </div>
+                      <div class="modelling-info-ages-group">
+                        <div class="modelling-info-ages" *ngFor="let ageGroup of input.values[0]">
+                          <p>{{ageGroup.ageLabel}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modelling-info-input-value-section">
+                      <ng-container *ngIf="input.type.toLowerCase() !== 'boolean'">
+                        <div
+                          class="modelling-info-input-value-group modelling-info-input-value-group-number"
+                          *ngFor="let run of input.values, let i = index">
+                          <div
+                            *ngFor="let ageGroup of run, let j = index"
+                            class="modelling-info-input-value"
+                            [class.modelling-info-highlight]="input.values.length > 1 && input.values[0][j].value !== input.values[i][j].value">
+                            <p>{{ageGroup.value}}</p>
+                          </div>
+                        </div>
+                      </ng-container>
+                      <ng-container class="d-flex" *ngIf="input.type.toLowerCase() === 'boolean'">
+                        <div
+                          class="modelling-info-input-value-group"
+                          *ngFor="let run of input.values">
+                          <mat-slide-toggle
+                            *ngFor="let ageGroup of run"
+                            class="modelling-info-slide-input align-self-center"
+                            color="primary-color"
+                            [(ngModel)]="ageGroup.value"
+                            disabled>
+                          </mat-slide-toggle>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+                  <p
+                    *ngIf="input.informations"
+                    class="modelling-info-input-informations">
+                    {{input.informations}}
+                  </p>
+                </ng-container>
+              </div>
+            </mat-card>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>

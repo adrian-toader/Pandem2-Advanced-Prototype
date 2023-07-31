@@ -1,0 +1,11 @@
+{
+  "$id": "report.updateReport.request.uri.template.schema",
+  "description": "Modify report instance URI template schema",
+  "type": "object",
+  "properties": {
+    "reportId": {
+      "$ref": "/report#/definitions/reportId"
+    }
+  },
+  "required": ["reportId"]
+}

@@ -1,0 +1,208 @@
+{
+  "cases": {
+    "confirmed_cases": [
+      "ECDC COVID-19",
+      "ECDC COVID-19 Simulated"
+    ],
+    "confirmed_cases_per_100k": [
+      "ECDC COVID-19"
+    ],
+    "active_cases": [
+      "ECDC COVID-19"
+    ],
+    "active_cases_per_100k": [
+      "ECDC COVID-19"
+    ],
+    "recovered_cases": [
+      "ECDC COVID-19"
+    ],
+    "recovered_cases_per_100k": [
+      "ECDC COVID-19"
+    ],
+    "rt_number": [
+      "ECDC COVID-19"
+    ],
+    "number_of_notifications": [
+      "ECDC COVID-19"
+    ],
+    "number_of_notifications_per_100k": [
+      "ECDC COVID-19"
+    ]
+  },
+  "deaths": {
+    "deaths": [
+      "ECDC COVID-19"
+    ],
+    "mortality_rate": [
+      "ECDC COVID-19"
+    ],
+    "mortality_rate_hospital": [
+      "ECDC COVID-19"
+    ],
+    "mortality_rate_icu": [
+      "ECDC COVID-19"
+    ],
+    "excess_mortality": [
+      "Our-World-In-Data"
+    ]
+  },
+  "participatory_surveillance": {
+    "active_weekly_users": [
+      "Influenza net"
+    ],
+    "incidence": [
+      "Influenza net"
+    ],
+    "incidence_confidence_low": [
+      "Influenza net"
+    ],
+    "incidence_confidence_high": [
+      "Influenza net"
+    ],
+    "visits": [
+      "Influenza net"
+    ]
+  },
+  "hospitalisations": {
+    "hospital_admissions": [
+      "ECDC COVID-19"
+    ],
+    "hospital_admissions_comorbidities": [
+      "ECDC COVID-19"
+    ],
+    "hospital_admissions_per_100k": [
+      "ECDC COVID-19"
+    ],
+    "icu_admissions": [
+      "ECDC COVID-19"
+    ],
+    "icu_admissions_per_100k": [
+      "ECDC COVID-19"
+    ],
+    "hospital_bed_occupancy": [
+      "ECDC COVID-19"
+    ],
+    "hospital_bed_occupancy_per_100k": [
+      "ECDC COVID-19"
+    ],
+    "hospital_bed_occupancy_with_comorbidities_per_100k": [
+      "ECDC COVID-19"
+    ],
+    "icu_bed_occupancy": [
+      "ECDC COVID-19"
+    ],
+    "icu_bed_occupancy_per_100k": [
+      "ECDC COVID-19"
+    ],
+    "icu_bed_occupancy_with_comorbidities_per_100k": [
+      "ECDC COVID-19"
+    ],
+    "number_of_operable_beds": [
+      "Eurostats NUTS"
+    ],
+    "number_of_ward_operable_beds": [
+      "Eurostats NUTS"
+    ],
+    "number_of_icu_operable_beds": [
+      "Eurostats NUTS"
+    ],
+    "hospital_length_of_stay": [
+      "ECDC COVID-19"
+    ]
+  },
+  "vaccines": {
+    "coverage_one_dose": [
+      "ECDC COVID-19"
+    ],
+    "coverage_two_doses": [
+      "ECDC COVID-19"
+    ],
+    "coverage_additional_1_dose": [
+      "ECDC COVID-19"
+    ],
+    "cumulative_one_dose": [
+      "ECDC COVID-19"
+    ],
+    "cumulative_two_doses": [
+      "ECDC COVID-19"
+    ],
+    "cumulative_additional_1_doses": [
+      "ECDC COVID-19"
+    ],
+    "new_one_dose": [
+      "ECDC COVID-19"
+    ],
+    "new_two_doses": [
+      "ECDC COVID-19"
+    ],
+    "new_additional_1_dose": [
+      "ECDC COVID-19"
+    ]
+  },
+  "testing": {
+    "new_performed_tests": [
+      "COVID-19 Datahub"
+    ],
+    "new_performed_tests_per_100k": [
+      "COVID-19 Datahub"
+    ],
+    "positivity_rate": [
+      "COVID-19 Datahub"
+    ]
+  },
+  "social_media_analysis": {
+    "article_count": [
+      "Twitter datasets"
+    ],
+    "cum_article_count": [
+      "Twitter datasets"
+    ]
+  },
+  "population": {
+    "population": [
+      "ECDC COVID-19"
+    ]
+  },
+  "interventions": {
+    "implemented_measures": [
+      "ECDC COVID-19"
+    ],
+    "implemented_policy": [
+      "COVID-19 Datahub"
+    ]
+  },
+  "contact_tracing": {
+    "contact_tracing_cases_identified": [
+      "COVID-19 Datahub"
+    ],
+    "contact_tracing_cases_reached": [
+      "COVID-19 Datahub"
+    ],
+    "contact_tracing_cases_reached_within_day": [
+      "COVID-19 Datahub"
+    ],
+    "contact_tracing_cases_previously_contacts": [
+      "COVID-19 Datahub"
+    ],
+    "contact_tracing_contacts_identified": [
+      "COVID-19 Datahub"
+    ],
+    "contact_tracing_contacts_reached": [
+      "COVID-19 Datahub"
+    ],
+    "contact_tracing_contacts_reached_within_day": [
+      "COVID-19 Datahub"
+    ]
+  },
+  "human_resources": {
+    "available_staff": [
+      "ECDC COVID-19"
+    ],
+    "available_staff_per_100k": [
+      "ECDC COVID-19"
+    ],
+    "available_staff_variation": [
+      "ECDC COVID-19"
+    ]
+  }
+}

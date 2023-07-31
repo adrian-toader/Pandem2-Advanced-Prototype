@@ -1,0 +1,37 @@
+{
+  "$id": "death.getLocationsDaily.request.query.schema",
+  "description": "Get total number of deaths for a time interval for requested locations request params schema",
+  "type": "object",
+  "properties": {
+    "subcategory": {
+      "$ref": "/death#/definitions/subcategory"
+    },
+    "admission_type": {
+      "$ref": "/death#/definitions/admission_type"
+    },
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "gender",
+        "age_group",
+        "subcategory",
+        "admission_type"
+      ]
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "subcategory",
+    "location"
+  ]
+}

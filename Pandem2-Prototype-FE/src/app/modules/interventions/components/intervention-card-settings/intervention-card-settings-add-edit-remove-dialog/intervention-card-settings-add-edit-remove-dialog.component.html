@@ -1,0 +1,168 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<button mat-icon-button class="dialog-close-button" [mat-dialog-close]="true">
+  <mat-icon aria-hidden="false" aria-label="close button">close</mat-icon>
+</button>
+<mat-dialog-content class="main-card-manager-dialog">
+  <div class="row">
+    <div class="col-12">
+      <div *ngIf="!uploadReady" class="mat-spinner-container">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div *ngIf="uploadReady">
+        <mat-card-title>
+          {{'MODULES.INTERVENTIONS.INTERVENTION_CARD_SETTINGS.TITLE' | translate}}
+        </mat-card-title>
+
+        <form *ngIf="isAdd || isEdit" [formGroup]="addEditForm" (ngSubmit)="onSubmit()" class="pt-4">
+          <div class="form-group add-dialog-form-group">
+            <div *ngIf="isEdit" class="intervention-form-row">
+              <label for="intervention">{{'MODULES.INTERVENTIONS.INTERVENTION_CARD_SETTINGS.LABEL' | translate}}</label>
+              <mat-card-content class="intervention-selector">
+                <mat-form-field appearance="fill" style="width:100%;">
+                  <mat-label>{{'MODULES.INTERVENTIONS.INTERVENTION_CARD_SETTINGS.INTERVENTION' | translate}}</mat-label>
+                  <mat-select
+                  [formControl]="interventionControl"
+                  (selectionChange)="interventionChanged()"
+                >
+                  <mat-label>{{'MODULES.INTERVENTIONS.INTERVENTION_CARD_SETTINGS.SELECTED_INTERVENTION' | translate}}</mat-label>
+                  <mat-option *ngFor="let intervention of interventions" [value]="intervention" >{{intervention.name}}</mat-option>
+                </mat-select>
+                </mat-form-field>
+              </mat-card-content>
+            </div>
+            <div [hidden]="!(isAdd || (isEdit && interventionControl.value))" class="intervention-fields">
+              <div class="intervention-form-row">
+                <label for="region">{{'MODULES.INTERVENTIONS.INTERVENTION_CARD_SETTINGS.REGION' | translate}}</label>
+                <div class="col-lg-12 col-xl-12 position-relative" style="padding:0px;"
+                     [ngClass]="{'is-invalid': formErrors.location}">
+                  <mat-card-content class="region-selector">
+                    <mat-form-field appearance="fill" style="width:100%;">
+                      <mat-label>{{'MODULES.INTERVENTIONS.INTERVENTION_CARD_SETTINGS.SELECTED_REGION' | translate}}</mat-label>
+                      <mat-select
+                        [formControl]="countryControl"
+                        [(value)]="selectedCountry"
+                        [errorStateMatcher]="errorMatcher"
+                        (selectionChange)="changedRegion()">
+                        <mat-option *ngFor="let country of allRegions" [value]="country">{{country.english_name || country.name}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </mat-card-content>
+                </div>
+                <span class="invalid-feedback" *ngIf="formErrors.location">
+                  {{ formErrors.location }}
+                </span>
+              </div>
+              <div class="intervention-form-row">
+                <label for="sources">Sources</label>
+                <input formControlName="sources" name="sources" class="form-control" readonly>
+              </div>
+              <div class="intervention-form-row">
+                <label for="interventionName">{{'MODULES.INTERVENTIONS.INTERVENTION_CARD_SETTINGS.INTERVENTION_NAME' | translate}}</label>
+                <input
+                  formControlName="interventionName"
+                  name="interventionName"
+                  class="form-control"
+                  placeholder="New Intervention"
+                  [ngClass]="{'is-invalid': formErrors.interventionName}"
+                  [readonly]="isEdit"
+                >
+                <span class="invalid-feedback" *ngIf="formErrors.interventionName">
+                  {{ formErrors.interventionName }}
+                </span>
+              </div>
+              <div class="intervention-form-row">
+                <label for="interventionDescription">{{'MODULES.INTERVENTIONS.INTERVENTION_CARD_SETTINGS.INTERVENTION_DESCRIPTION' | translate}}</label>
+                <input
+                  formControlName="interventionDescription"
+                  name="interventionDescription"
+                  class="form-control"
+                  placeholder="New Intervention"
+                  [ngClass]="{'is-invalid': formErrors.interventionDescription}"
+                >
+                <span class="invalid-feedback" *ngIf="formErrors.interventionDescription">
+                  {{ formErrors.interventionDescription }}
+                </span>
+              </div>
+              <div class="intervention-form-row">
+                <label>
+                  {{'MODULES.INTERVENTIONS.INTERVENTION_CARD_SETTINGS.INTERVALS' | translate}}
+                </label>
+                <div class="d-flex position-relative" *ngFor="let interval of intervals; let i = index" >
+                  <mat-date-range-input  class="date-select-input form-control date__interval">
+                      <input [value]="interval[0]" matStartDate  readonly >
+                      <input [value]="interval[1]" matEndDate readonly>
+                  </mat-date-range-input>
+                  <mat-icon (click)="removeInterval(i)" class="remove__interval">close</mat-icon>
+                </div>
+                <div class="d-flex">
+                  <div class="d-flex interventions__datepicker">
+                    <mat-datepicker-toggle class="interventions-datepicker-toggle" matIconSuffix [for]="pickerInputIntervals"></mat-datepicker-toggle>
+                    <mat-date-range-input  [dateFilter]="dateFilter" [rangePicker]="pickerInputIntervals" class="date-select-input form-control"
+                                          [ngClass]="{'is-invalid':intervals.length < 1 || intervals.length < 1}">
+                      <input matStartDate formControlName="start_date_interval" placeholder="Start date" (click)="pickerInputIntervals.open()"
+                             readonly>
+                      <input matEndDate formControlName="end_date_interval" placeholder="End date" (click)="pickerInputIntervals.open()" readonly>
+                    </mat-date-range-input>
+                    <mat-date-range-picker  #pickerInputIntervals></mat-date-range-picker>
+                  </div>
+                  <button  class="add_interval_btn" (click)="addInterval($event)">
+                    <span>{{'MODULES.INTERVENTIONS.INTERVENTION_CARD_SETTINGS.ADD' | translate}}</span>
+                    <mat-icon>add_circle</mat-icon>
+                </button>
+                </div>
+                <span class="invalid-feedback" *ngIf="intervals.length < 1">
+                  {{'MODULES.INTERVENTIONS.INTERVENTION_CARD_SETTINGS.SELECT_AN_INTERVAL' | translate}}
+                </span>
+              </div>
+            </div>
+          </div>
+          <button mat-raised-button class="my-2 col-3 px-5" color="secondary-button" [mat-dialog-close]="true">
+            <div class="row justify-content-between align-items-center">
+              <div> {{'MODULES.INTERVENTIONS.INTERVENTION_CARD_SETTINGS.CANCEL' | translate}}</div>
+            </div>
+          </button>
+          <button
+            [disabled]="isEdit && !interventionControl.value"
+            mat-raised-button class="my-2 col-3 px-5" color="primary-button" type="button" (click)='onSubmit()'
+                  data-dismiss="createLabel">
+            <div class="row justify-content-between align-items-center">
+              <div>{{'MODULES.INTERVENTIONS.INTERVENTION_CARD_SETTINGS.SAVE' | translate}}</div>
+              <mat-icon>save_alt</mat-icon>
+            </div>
+          </button>
+        </form>
+        <mat-list *ngIf="isRemove">
+          <div *ngFor="let intervention of interventions">
+            <div class="intervention-list-wrapper">
+              <mat-list-item>{{ intervention.name }}</mat-list-item>
+              <button mat-icon-button color="accent" (click)="removeIntervention(intervention)">
+                <mat-icon>clear</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-list>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>

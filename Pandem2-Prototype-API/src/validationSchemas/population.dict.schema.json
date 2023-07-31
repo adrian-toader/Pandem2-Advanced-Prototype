@@ -1,0 +1,88 @@
+{
+  "$id": "/population#",
+  "definitions": {
+    "subcategory": {
+      "type": "string",
+      "enum": [
+        "General",
+        "UHC"
+      ]
+    },
+    "date": {
+      "description": "Population statistics reporting date",
+      "type": "string",
+      "format": "date"
+    },
+    "total": {
+      "description": "Population count",
+      "type": "number",
+      "minimum": 0
+    },
+    "is_date_total": {
+      "type": "boolean"
+    },
+    "location": {
+      "description": "Population location",
+      "type": "object",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "reference",
+        "value"
+      ]
+    },
+    "age_group": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string",
+      "enum": [
+        "F",
+        "M"
+      ]
+    },
+    "risk_group": {
+      "type": "string"
+    },
+    "populationResourceEntry": {
+      "type": "object",
+      "properties": {
+        "subcategory": {
+          "$ref": "/population#/definitions/subcategory"
+        },
+        "date": {
+          "$ref": "/population#/definitions/date"
+        },
+        "period_type": {
+          "$ref": "/base#/definitions/period_type"
+        },
+        "total": {
+          "$ref": "/population#/definitions/total"
+        },
+        "is_date_total": {
+          "$ref": "/population#/definitions/is_date_total"
+        },
+        "location": {
+          "$ref": "/population#/definitions/location"
+        },
+        "age_group": {
+          "$ref": "/population#/definitions/age_group"
+        },
+        "gender": {
+          "$ref": "/population#/definitions/gender"
+        },
+        "risk_group": {
+          "$ref": "/population#/definitions/risk_group"
+        }
+      }
+    }
+  }
+}

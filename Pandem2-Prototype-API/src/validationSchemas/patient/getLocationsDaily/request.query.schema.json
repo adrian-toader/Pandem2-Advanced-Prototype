@@ -1,0 +1,48 @@
+{
+  "$id": "patient.getLocationsDaily.request.query.schema",
+  "description": "Get total number of patients for a time interval, grouped by locations - request query schema",
+  "type": "object",
+  "properties": {
+    "total_type": {
+      "$ref": "/patient#/definitions/total_type"
+    },
+    "admission_type": {
+      "anyOf": [
+        {
+          "$ref": "/patient#/definitions/admission_type"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/patient#/definitions/admission_type"
+          }
+        }
+      ]
+    },
+    "location": {
+      "$ref": "/base#/definitions/stringOrStringArray"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "admission_type",
+        "has_comorbidities",
+        "age_group",
+        "variantId"
+      ]
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "total_type",
+    "admission_type",
+    "location"
+  ]
+}

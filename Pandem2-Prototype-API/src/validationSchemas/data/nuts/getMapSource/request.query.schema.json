@@ -1,0 +1,17 @@
+{
+  "$id": "data.getMapSource.request.query.schema",
+  "description": "Get Map source request query schema",
+  "type": "object",
+  "properties": {
+    "level": {
+      "type": "integer"
+    },
+    "focus": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "level"
+  ]
+}

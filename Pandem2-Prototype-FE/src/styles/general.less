@@ -1,0 +1,1186 @@
+/*
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+*/
+
+//Imports:
+@import '_fonts';
+@import 'overrides';
+@import 'common';
+@import '_variables';
+
+body {
+    // fix for virtual scrolling
+    position: relative;
+    height: 100vh;
+}
+
+html, body, ul, li, div, span {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* Generic styles */
+.a-no-style {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+}
+
+.transparent {
+    opacity: 0;
+}
+
+.stepper-navigation-buttons {
+    display: flex;
+    justify-content: flex-end;
+
+    >*:not(:first-child) {
+        margin-left: 5px;
+    }
+}
+
+/* Commonly used styles */
+.form-element-height {
+    height: 65.5px;
+}
+
+// back to login button
+.back-to-login-button {
+    margin-top: 15px !important;
+}
+
+// no data
+.empty-table-text {
+    text-align: center;
+    padding: 7px;
+    font-weight: bold;
+}
+
+.page-section {
+    margin-bottom: 15px;
+
+    &.form-content {
+        margin-left: 0;
+    }
+
+    .top-section-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    // Filters applied
+    .filters-applied {
+        white-space: nowrap;
+        font-weight: bold;
+        color: blue;
+        padding-right: 20px;
+    }
+
+    // Reset filters
+    .reset-filters {
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+        padding-bottom: 10px;
+        flex-direction: row;
+
+        button {
+            margin-right: 10px;
+
+            &:last-child {
+                margin-right: 0px;
+            }
+        }
+    }
+
+    // Bulk Actions on List pages
+    .bulk-actions-button {
+        width: 24px;
+    }
+
+    // Column Actions on List pages
+    .column-actions-button {
+        height: 24px;
+        margin-left: 7px;
+
+        .mat-button-wrapper {
+            display: flex;
+        }
+    }
+
+    /* Mat Table overrides */
+    .mat-table {
+
+        // variables
+        @cell-padding-left: 20px;
+
+        .mat-row {
+            display: flex;
+            align-items: center !important;
+            padding: 2px 0 !important;
+            min-height: 40px !important;
+
+            .mat-cell {
+                font-size: 16px !important;
+                padding-left: @cell-padding-left;
+                color:rgb(95, 114, 127);
+
+              &.cell-break-all {
+                    word-break: break-all;
+                }
+
+                app-form-slide-toggle {
+                    .form-slide-toggle-container {
+                        height: auto;
+                        padding-bottom: 0;
+                    }
+                }
+
+                app-form-input,
+                app-form-select {
+                    .form-input-container,
+                    .form-select-container {
+                        height: 20px;
+
+                        .mat-form-field-wrapper {
+                            padding-bottom: 0;
+
+                            .mat-form-field-infix {
+                                padding: 5px 0 0 0;
+                                height: 17px;
+
+                                .mat-input-element,
+                                .mat-select {
+                                    position: absolute;
+                                    margin-top: -19px;
+                                }
+
+                                .mat-form-field-label-wrapper {
+                                    top: -36px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .mat-header-row {
+            padding: 0 !important;
+
+            .mat-header-cell {
+                font-size: 14px !important;
+                font-weight: bold !important;
+                padding-left: @cell-padding-left;
+
+                .mat-sort-header-button {
+                    text-align: left;
+                }
+
+                .mat-sort-header-arrow {
+                    color: @color-accent-main
+                }
+
+                .table-header-cell {
+                    flex: 1 1;
+                    display: flex;
+                    flex-direction: column;
+
+                    .mat-sort-header-container {
+                        justify-content: space-between;
+                    }
+
+                    .column-filter {
+                        padding-top: 10px;
+                        // keep the height as a placeholder for columns without filters
+                        height: 56px;
+                    }
+                }
+            }
+        }
+
+        .mat-header-cell,
+        .mat-cell {
+            &.has-date-range-filter {
+                // need some space to display the From - To Dates properly
+                min-width: 220px;
+            }
+        }
+
+        .mat-chip-list {
+            .mat-chip-list-wrapper {
+                .mat-chip {
+                    margin-top: 5px !important;
+                    margin-bottom: 5px !important;
+                    height: auto;
+                }
+            }
+        }
+
+        .location-drop-down-column-header {
+            overflow: visible;
+        }
+
+        .location-drop-down-column-header-container {
+            margin-top: 5px;
+            padding-top: 0 !important;
+            align-items: center;
+            height: 65px !important;
+
+            app-form-location-dropdown {
+                .ng-value-container {
+                    white-space: nowrap;
+                    flex-wrap: nowrap;
+                    width: 45px;
+                    display: flex;
+                }
+                .ng-value {
+                    padding-right: 5px;
+                    overflow: hidden !important;
+                }
+            }
+
+            .ng-placeholder {
+                font-weight: normal !important;
+                overflow: hidden;
+            }
+        }
+    }
+
+    .mat-table-loading-data {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        text-align: center;
+
+        @mat-spinner-width: 24px;
+        @mat-spinner-height: 24px;
+        mat-spinner {
+            display: inline-block;
+            width: @mat-spinner-width !important;
+            height: @mat-spinner-height !important;
+
+            svg {
+                width: @mat-spinner-width !important;
+                height: @mat-spinner-height !important;
+            }
+        }
+    }
+
+    app-form-slide-toggle {
+        display: inline-block;
+    }
+
+    .mat-table-number-column {
+        color: #0071e1;
+        font-weight: 700;
+
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+}
+
+form.form-view-only {
+    mat-slide-toggle.mat-disabled {
+        opacity: 1;
+        color: rgba(0, 0, 0, 0.38);
+    }
+
+    input.mat-input-element:disabled,
+    textarea.mat-input-element:disabled,
+    mat-select.mat-select-disabled .mat-select-value,
+    ng-select.ng-select-disabled .ng-select-container .ng-value-container .ng-value,
+    mat-slide-toggle.mat-disabled {
+        color: black;
+    }
+
+    mat-form-field.mat-form-field-disabled .mat-form-field-label,
+    ng-select.ng-select-disabled .ng-placeholder {
+        color: #333 !important;
+    }
+}
+
+// form elements having dynamic width
+.form-element-host {
+    flex: 1 1;
+}
+
+.mat-tooltip {
+    font-size: 14px !important;
+}
+
+// handle the tooltips on input fields
+.form-input-tooltip,
+.form-datepicker-tooltip,
+.form-select-tooltip,
+.form-select-groups-tooltip,
+.form-textarea-tooltip,
+.form-slide-tooltip,
+.form-locations-select-tooltip {
+    .mat-input-element,
+    .mat-select {
+        width: ~'calc(100% - 24px)';
+    }
+
+    .form-icon {
+        display: inline !important;
+        cursor: pointer;
+        line-height: 0;
+        float: right;
+        margin-top: 7px;
+    }
+
+    .form-icon-fancy {
+        display: inline !important;
+        line-height: 0;
+        height: 0;
+        float: right;
+        margin-top: -4px;
+    }
+
+    ng-select {
+        .ng-select-container {
+            padding-right: 24px;
+        }
+    }
+}
+
+.form-locations-select-tooltip {
+    .form-icon {
+        position: absolute;
+        right: 24px;
+        margin-top: -37px;
+    }
+}
+
+.form-slide-tooltip {
+    .form-icon {
+        margin-bottom: 12px;
+        margin-left: 5px;
+    }
+}
+
+.page-content {
+
+    .mat-expansion-panel {
+        margin: 5px 15px;
+    }
+}
+
+.page-tabs-navbar {
+    flex: 1 1;
+}
+
+@media (min-width: 768px) {
+    .page-tabs-navbar-placeholder {
+        height: 49px;
+    }
+}
+
+.form-section {
+    display: flex;
+
+    // column on the right of forms
+    .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        column-gap: 5px;
+        button {
+            width: @page-right-margin;
+            margin: 0 0 7px 0;
+        }
+
+        .form-actions-no-scroll {
+            position: fixed;
+        }
+    }
+
+}
+
+.form-placeholder {
+    display: none;
+}
+
+.button-with-spinner {
+    display: flex !important;
+    justify-content: space-around;
+    align-items: center;
+
+    .loading-chips {
+        @mat-spinner-width: 16px;
+        @mat-spinner-height: 16px;
+
+        float: left;
+        margin-right: 10px;
+        margin-top: 3px;
+
+        mat-spinner {
+            display: inline-block;
+            width: @mat-spinner-width !important;
+            height: @mat-spinner-height !important;
+
+            svg {
+                width: @mat-spinner-width !important;
+                height: @mat-spinner-height !important;
+            }
+        }
+    }
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.switch-buttons {
+    button {
+        border-radius: 5px;
+    }
+}
+
+.mat-menu-item {
+    &.mat-menu-item-delete,
+    &.mat-menu-item-restore {
+        color: darkred;
+    }
+}
+
+.mat-icon-button {
+    &.icon-item-delete {
+        color: darkred !important;
+    }
+}
+
+// necessary to replicate old angular-material v12 behavior
+.mat-icon {
+  overflow: inherit !important;
+}
+
+.mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {
+  background-color: #0272c6;
+}
+
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color:#0272c6;
+}
+
+.column-header {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: @font-be-vietnam;
+    color: rgb(95, 114, 127);
+}
+
+/* Ng Select Invalid Styles */
+@material-invalid-color: #f44336;
+ng-select {
+    &.ng-invalid {
+        &.ng-touched {
+            .ng-select-container {
+                .ng-value-container {
+                    .ng-placeholder {
+                        color: @material-invalid-color;
+                    }
+                }
+
+                input {
+                    color: @material-invalid-color;
+                    caret-color: @material-invalid-color;
+                }
+            }
+        }
+    }
+}
+
+.ng-dropdown-panel {
+    min-width: 250px !important;
+}
+
+.cdk-overlay-container {
+    .cdk-overlay-pane {
+        .table-max-sized-menu {
+            max-height: ~"calc(50vh - 48px)";
+        }
+
+        .mat-option {
+            touch-action: auto !important;
+        }
+    }
+}
+
+.warning-message {
+    padding: 7px 0px;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+a.xlink-button {
+    color: #0071e1;
+    margin: 3px;
+    font-weight: bold;
+    text-decoration: none;
+
+    &.margin-right-x {
+        margin-right: 20px;
+    }
+
+    &:active {
+        color: #0071e1;
+        text-decoration: none;
+    }
+
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+
+.mdePopover {
+    max-width: 450px;
+    color: white;
+    background-color: #707070;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: normal;
+    text-align: justify;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+h2.page-header {
+  text-transform: uppercase;
+  color: @page-header-color;
+  font-family: @page-header-font-family;
+  font-size: @page-header-font-size;
+  line-height: @page-header-line-height;
+  font-family: @page-header-font-family;
+  font-weight: normal;
+}
+
+h3.lesser-page-header {
+  text-transform: uppercase;
+  color: @page-header-color;
+  font-family: @page-header-font-family;
+  line-height: @lesser-page-header-line-height;
+  font-size: @lesser-page-header-font-size;
+  font-weight: normal;
+}
+
+@media only screen and (max-width: 992px){
+    h2.page-header,
+    h3.lesser-page-header {
+        font-size: calc(1.425rem + 2.1vw);
+        line-height: normal !important;
+    }
+
+    body .mat-card-subtitle, .mat-card-content,
+
+    body .mat-list-base .mat-list-item,
+    .world-map .display-date
+     {
+        font-size: calc(1.275rem + .3vw);
+        line-height: normal !important;
+    }
+
+    .variant-color-circle {
+        height: calc(1.275rem + .3vw) !important;
+        width: calc(1.275rem + .3vw) !important;
+    }
+    .country-color-square{
+        height: calc(1.275rem + .3vw) !important;
+        width: calc(1.275rem + .3vw) !important;
+    }
+
+    .summary-section__name-icon-container
+    {
+        font-size: calc(1.425rem + 2.1vw);
+    }
+
+    body .mat-card-title,
+    .dashboard-page .variants-of-concern .mat-tab-labels .mat-tab-label{
+        font-size: calc(1.325rem + 2.1vw);
+    }
+    .dashboard-page .variants-of-concern .mat-tab-labels .mat-tab-label {
+        min-width: 20rem !important;
+    }
+
+
+    .mat-form-field,
+    .mat-button-toggle-label-content,
+    .mat-tab-label,
+    .map-control .mat-button-toggle-label-content,
+    .map-control .mat-select-value-text{
+        font-size: calc(1.275rem + .3vw);
+    }
+
+    .geographical-area-container text {
+        font-size: calc(1.275rem + .3vw) !important;
+    }
+
+    .geographical-area-container .highcharts-axis-labels {
+        font-size: calc(1.275rem + .3vw) !important;
+    }
+
+
+    .mat-slide-toggle {
+        line-height: normal !important;
+    }
+
+    .mat-card-subtitle {
+        color: rgba(0,0,0,.87) !important;
+    }
+}
+
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb
+{
+  background-color: #0272c6;
+}
+
+.mat-slide-toggle-content {
+  color: #0272c6;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar{
+  background-color: #9AC7E8;
+}
+
+.mat-slide-toggle-bar{
+  background-color: #EEEEEE;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #0272c6;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+  background-color: #0272c6;
+}
+.mat-radio-outer-circle{
+  border-color: #0272c6;
+}
+
+.mat-radio-label-content,
+.mat-button-toggle-appearance-standard,
+.mat-tab-label
+{
+  color: #0272c6;
+
+}
+
+.mat-tab-label {
+  opacity: 1 !important;
+}
+
+.mat-button-toggle-checked.mat-button-toggle-appearance-standard {
+  color: white;
+}
+
+.mat-button-toggle-checked {
+  background-color: #0272c6;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar,.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background:#0272c6;
+}
+
+//.mat-form-field-appearance-fill .mat-form-field-flex {
+//  border: 1px solid rgb(204, 204, 204);
+//  background-color: white;
+//}
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+.summary-container mat-card,
+.world-map{
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.mat-slider.mat-slider-horizontal .mat-slider-wrapper {
+  top: 18px;
+}
+.mat-slider.mat-slider-horizontal .mat-slider-track-wrapper {
+  height: 12px;
+  border-radius: 10px
+}
+.mat-slider.mat-slider-horizontal .mat-slider-track-background,
+.mat-slider.mat-slider-horizontal .mat-slider-track-fill {
+  height: 100%;
+}
+.mat-slider.mat-slider-horizontal .mat-slider-track-fill {
+  background-color: #0272c6;
+}
+.mat-slider.mat-accent .mat-slider-thumb {
+  height: 30px;
+  width: 30px;
+  background-color: white;
+  border: solid 2px gray;
+  bottom: -20px;
+  right: -20px;
+}
+.mat-slider-min-value:not(.mat-slider-thumb-label-showing) .mat-slider-thumb {
+  background-color: white;
+}
+.mat-slider-track-background {
+  background-color:#828282;
+}
+
+mat-slider.mat-slider{
+  background-color: #EFEFEF;
+  background-clip: content-box;
+}
+.mat-slider-thumb{
+  border-radius: 0 !important;
+}
+
+/**
+  Prevent showing horizontal scrollbar when the export menu is clicked
+ */
+.highcharts-container  {
+  overflow-x: hidden;
+}
+
+.evolution-container{
+    margin: 0;
+    text-align: right;
+    padding: 0.2rem;
+    display:inline-block;
+    flex-wrap: wrap;
+}
+
+.evolution-container__icon {
+    vertical-align: bottom;
+    width: 2rem !important;
+    height: 2rem !important;
+}
+
+
+mat-card {
+    box-shadow: 0px 2px 2px 0px rgb(0 0 0 / 30%) !important;
+
+  // necessary to replicate old angular-material v12 behavior
+  .mat-divider-horizontal {
+    position: absolute;
+    left: 0;
+    width: 100%;
+  }
+
+  // necessary to replicate old angular-material v12 behavior
+  .mat-divider.mat-divider-inset {
+    margin-left: inherit;
+  }
+}
+
+.summary-section .value{
+    white-space: nowrap;
+}
+
+.summary-container .mat-list-item-content {
+    padding: 0 !important;
+}
+
+.summary-container .label,
+.summary-container .value {
+    padding: 0 !important;
+}
+
+.main-content .dashboard-page button
+.main-content .dashboard-page .mat-slide-toggle,
+.main-content .dashboard-page .mat-radio-label,
+.main-content .dashboard-page .mat-button-toggle-label-content{
+    text-transform: uppercase;
+}
+
+.summary-section__name-icon-container,
+.opposite-placed-items{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media(max-width:575px){
+    .summary-section__name-icon-container,
+    .opposite-placed-items{
+        justify-content: center;
+        column-gap: 5px;
+        align-items:flex-start;
+    }
+
+    .summary-section__name-icon-container mat-icon,
+    .opposite-placed-items mat-icon{
+        transform: scale(1) !important;
+    }
+
+    .dashboard-page .form-inline{
+        justify-content: center;
+    }
+
+    .dashboard-page .mat-tab-labels {
+        justify-content: center !important;
+    }
+}
+
+.summary-section__name-icon-container mat-icon {
+    transform: scale(1.2);
+    &:not(.disable):hover {
+        box-shadow: 0 0px 10px black;
+        border-radius: 70%;
+        transition: transform 4s;
+    }
+}
+
+.info-text {
+    color: rgba(0,0,0,.54);
+    font-size: 14px;
+}
+
+.summary-section__name-icon-container > div {
+    padding: 0;
+}
+
+.summary-section .mat-list-base mat-list-item {
+    height: auto;
+    min-height: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.variants-page .summary-section .mat-list-base mat-list-item {
+    min-height: 3.5rem;
+
+    .label, .value {
+        font-size: 14px;
+    }
+
+    .variant-name {
+        padding: 0;
+    }
+
+    .mat-list-item-content {
+        margin: 0.5rem 0;
+    }
+
+
+}
+
+.dashboard-page {
+    mat-divider {
+        padding: 0.5rem 0.5rem;
+    }
+
+    .world-map,
+    .summary-section {
+        min-height: 51rem;
+        .map {
+            width: 100%;
+            height: 100%;
+            min-width: 45rem;
+        }
+
+    }
+
+    :host {
+        width: 100%;
+    }
+
+    .summary-section .value {
+        text-align: right;
+    }
+
+    .example-button-row button {
+        margin-right: 8px;
+    }
+
+    .input-container {
+        display: flex;
+    }
+}
+
+@media (min-width: 992px){
+    .summary-sections-container .summary-section {
+        min-height: 70rem;
+    }
+}
+
+.mat-spinner-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.mat-spinner-container mat-spinner {
+    margin: 0 auto;
+}
+
+.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #0272c6;
+}
+
+.mat-spinner-container.loading-chart-placeholder,
+.charts-container{
+    min-height: 45rem;
+}
+
+
+.mat-list-base .mat-list-item .variant-name {
+    font-weight: bold;
+}
+
+.gray-background {
+    background-color: #f2f5f6;
+}
+
+.mat-list-base .mat-list-item .spike-mutation-of-interest {
+    padding: 0 !important;
+    font-size: 14px;
+}
+
+.variants-of-concern mat-tab-group .mat-tab-body-wrapper {
+    border-top: 4px solid #0272c6;
+    border-bottom: 4px solid #0272c6;
+    thead {
+        border: none;
+        color: #0272c6;
+    }
+}
+
+.dashboard-page .variants-of-concern .mat-tab-labels {
+    justify-content: center !important;
+    column-gap: 1.5rem;
+
+    .mat-tab-label {
+        font-size: 20px;
+        min-width: 20rem;
+        border: 1px solid #0272c6;
+        border-bottom: none;
+        border-radius: 3px;
+    }
+}
+
+.variants-of-concern-tree-graph-container .highcharts-label.highcharts-data-label h4 {
+    font-size: 14px !important;
+    font-weight: normal;
+    a {
+        text-decoration: underline;
+        font-weight: bold;
+    }
+}
+
+
+.variant-color-circle {
+    height: 1.6rem;
+    width: 1.6rem;
+    border-radius: 50%;
+    display: inline-block;
+}
+.country-color-square {
+  height: 1.6rem;
+  width: 1.6rem;
+  display: inline-block;
+}
+
+.variants-of-concern-tree-graph-container .highcharts-container {
+    min-width: 300px;
+    overflow-x: scroll;
+}
+
+.variants-of-concern__data-table {
+    td {
+        height: 20rem;
+        text-align: center;
+        vertical-align: middle !important;
+    }
+}
+
+.mat-card-content-toggle{
+  top: 10px;
+  right: 30px;
+  position: absolute;
+  cursor: pointer;
+  transform: scale(2);
+}
+
+//Print for Report Page
+@media print {
+    //Page
+    body,
+    html,
+    app-main-wrapper,
+    app-main-wrapper > div,
+    app-root,
+    .main-content,
+    .dashboard-page {
+        width: 100%;
+        overflow: visible !important;
+        overflow-y: visible !important;
+        background-color: white;
+        top: 0 !important;
+    }
+
+    //Summary cards text gap
+    .report-summary > div > .row {
+        row-gap: 0;
+    }
+
+    //No border on cards and smaller padding
+    mat-card{
+        box-shadow: 0px 0px 0px 0px !important;
+        padding: 6px !important;
+        break-inside: avoid;
+    }
+
+    //Remove textarea resize
+    textarea{
+        resize: none !important;
+    }
+
+    //Remove title/description close buttons
+    .report-text-elem > button{
+        display: none;
+    }
+
+    //No summary if empty
+    .report-page-summary-empty{
+        display: none;
+    }
+
+    //Remove add buttons
+    .report-page-add-button-container{
+        display: none;
+    }
+
+    //Remove country selection
+    #report-country-selection {
+        display: none;
+    }
+
+    //Remove card manager
+    app-card-manager {
+        display: none;
+    }
+
+    //Chart unselected button
+    .mat-button-toggle-appearance-standard{
+        color: lightgray;
+    }
+
+    //Chart selected button
+    .mat-button-toggle-checked{
+        color: #0272c6 !important;
+        background-color: transparent;
+        border: 1px solid #0272c6;
+    }
+
+    //Remove header
+    app-header{
+        display: none !important;
+    }
+
+    //Remove footer
+    app-footer{
+        display: none !important;
+    }
+
+    //Fix highcharts width
+    .mat-tab-body-wrapper,
+    .mat-tab-body,
+    .mat-tab-body-content,
+    app-highcharts,
+    highcharts-chart,
+    highcharts-chart > div,
+    highcharts-chart > div > svg{
+        max-width: 100% !important;
+    }
+
+    //Fix bootstrap columns in print for modelling
+    .modelling-section :is(.col-1, .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xl-1, .col-xxl-1) {
+        width: 8.333333%;
+    }
+
+    .modelling-section :is(.col-2, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xl-2, .col-xxl-2) {
+        width: 16.666667%;
+    }
+
+    .modelling-section :is(.col-3, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xl-3, .col-xxl-3) {
+        width: 25%;
+    }
+
+    .modelling-section :is(.col-4, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xl-4, .col-xxl-4) {
+        width: 33.333333%;
+    }
+
+    .modelling-section :is(.col-5, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xl-5, .col-xxl-5) {
+        width: 41.666667%;
+    }
+
+    .modelling-section :is(.col-6, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xl-6, .col-xxl-6) {
+        width: 50%;
+    }
+
+    .modelling-section :is(.col-7, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xl-7, .col-xxl-7) {
+        width: 58.333333%;
+    }
+
+    .modelling-section :is(.col-8, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xl-8, .col-xxl-8) {
+        width: 66.666667%;
+    }
+
+    .modelling-section :is(.col-9, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xl-9, .col-xxl-9) {
+        width: 75%;
+    }
+
+    .modelling-section :is(.col-10, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xl-10, .col-xxl-10) {
+        width: 83.333333%;
+    }
+
+    .modelling-section :is(.col-11, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xl-11, .col-xxl-11) {
+        width: 91.666667%;
+    }
+
+    .modelling-section :is(.col-12, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12, .col-xl-12, .col-xxl-12) {
+        width: 100%;
+    }
+}
+
+.mat-divider-shadow {
+  box-shadow: 0px 2px 2px 0px rgb(0 0 0 / 30%) !important;
+  border: 0 !important;
+}
+
+.comparedTo {
+  font-size: 14px;
+  margin-top: 12px !important;
+}

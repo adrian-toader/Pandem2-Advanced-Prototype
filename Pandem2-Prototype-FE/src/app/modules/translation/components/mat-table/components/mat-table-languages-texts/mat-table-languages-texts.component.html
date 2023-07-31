@@ -1,0 +1,103 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+<div class="add_language--btn">
+
+  <span class="language__title">{{'MODULES.TRANSLATION.MAT_TABLE_LANGUAGES_TEXTS.LANGUAGE_TEXTS' | translate}}</span>
+</div>
+
+<div class="searchbar__dropdown--container">
+  <div class="matlabel__container">
+    <div>
+      <div class="span__title">{{'MODULES.TRANSLATION.MAT_TABLE_LANGUAGES_TEXTS.BASE_LANGUAGE_NAME' | translate}}:</div>
+      <mat-form-field class="searchbar__dropdown--formfield">
+        <mat-label class="span__title__label" *ngIf="!selectedBaseCulture">{{'MODULES.TRANSLATION.MAT_TABLE_LANGUAGES_TEXTS.SELECT_VALUE' | translate}}</mat-label>
+        <mat-select [(value)]="selectedBaseCulture" (selectionChange)="onBaseCultureChange($event)">
+          <mat-option class="span__title__label" *ngFor="let country_code of countriesList"
+            [value]="country_code.country_code">
+            {{country_code.display_name}}-{{country_code.country_code}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="matlabel__div">
+      <div class="span__title">{{'MODULES.TRANSLATION.MAT_TABLE_LANGUAGES_TEXTS.TARGET_LANGUAGE_NAME' | translate}}:</div>
+      <mat-form-field class="searchbar__dropdown--formfield">
+        <mat-label class="span__title__label" *ngIf="!selectedTargetCulture">Select a value</mat-label>
+        <mat-select [(value)]="selectedTargetCulture" (selectionChange)="onTargetCultureChange($event)">
+          <mat-option class="span__title__label" *ngFor="let country_code of countriesList"
+            [value]="country_code.country_code">
+            {{country_code.display_name}}-{{country_code.country_code}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="table-actionbar">
+    <div class="search-box">
+      <mat-form-field class="translation-page-form-field" appearance="outline">
+        <mat-icon matPrefix>search</mat-icon>
+        <mat-label>{{'MODULES.TRANSLATION.MAT_TABLE_LANGUAGES_TEXTS.SEARCH' | translate}}</mat-label>
+        <input matInput type="text" [(ngModel)]="value" (keyup)="applyFilter($event)">
+        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+  </div>
+
+</div>
+
+<div class="table-responsive">
+  <app-hover-row-actions #hoverRow [active]="true"></app-hover-row-actions>
+  <mat-table mat-table #table [dataSource]="dataSource" matSort>
+    <!-- Display Name Column -->
+    <ng-container matColumnDef="key">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="column-header"> {{'MODULES.TRANSLATION.MAT_TABLE_LANGUAGES_TEXTS.KEY' | translate}} </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.key.length > 43 ? element.key.substring(0,43) + '...' :
+        element.key}} </mat-cell>
+    </ng-container>
+
+    <!-- Prefix Column -->
+    <ng-container matColumnDef="base_value">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="column-header"> {{'MODULES.TRANSLATION.MAT_TABLE_LANGUAGES_TEXTS.BASE_VALUE' | translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.baseValue.length > 43 ? element.baseValue.substring(0,43) + '...' :
+        element.baseValue}} </mat-cell>
+    </ng-container>
+
+    <!-- Enabled Column -->
+    <ng-container matColumnDef="value">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="column-header"> {{'MODULES.TRANSLATION.MAT_TABLE_LANGUAGES_TEXTS.VALUE' | translate}} </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{element.value.length > 43 ? element.value.substring(0,43) + '...' : element.value}}
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns" app-hover-row-actions [hoverRowActionsComponent]="hoverRow"
+      [hoverRowActions]="recordActions" [hoverRowActionData]="row">
+    </mat-row>
+  </mat-table>
+</div>
+<!-- table pagination -->
+<mat-paginator [pageIndex]="currentPageIndex" [pageSizeOptions]="[10, 20, 50, 100]" [pageSize]="pageSize"
+  (page)="onPageSizeChange($event)" showFirstLastButtons></mat-paginator>

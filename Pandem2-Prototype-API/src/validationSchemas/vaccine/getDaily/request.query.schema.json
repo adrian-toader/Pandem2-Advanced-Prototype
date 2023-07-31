@@ -1,0 +1,75 @@
+{
+  "$id": "vaccine.getDaily.request.query.schema",
+  "description": "Get vaccines count group by day - request query schema definition",
+  "type": "object",
+  "properties": {
+    "pathogenId": {
+      "type": "string"
+    },
+    "dose_type": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/vaccine#/definitions/dose_type"
+          },
+          "minItems": 1
+        },
+        {
+          "$ref": "/vaccine#/definitions/dose_type"
+        }
+      ]
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "total_type": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "/vaccine#/definitions/total_type"
+          },
+          "minItems": 1
+        },
+        {
+          "$ref": "/vaccine#/definitions/total_type"
+        }
+      ]
+    },
+    "gender": {
+      "$ref": "/vaccine#/definitions/gender"
+    },
+    "age_group": {
+      "$ref": "/vaccine#/definitions/age_group"
+    },
+    "healthcare_worker": {
+      "$ref": "/vaccine#/definitions/healthcare_worker"
+    },
+    "population_type": {
+      "$ref": "/vaccine#/definitions/population_type"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "dose_type",
+        "gender",
+        "age_group",
+        "healthcare_worker",
+        "population_type"
+      ]
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "location"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "$id": "variant.retrieveVariantList.response.body.schema",
+  "description": "Retrieve variant list response body schema",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "/variant#/definitions/variantResourceEntry"
+          },
+          {
+            "required": [
+              "_id",
+              "pathogenId",
+              "code",
+              "type"
+            ]
+          }
+        ]
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "/source#/definitions/sourceResourceEntry"
+          }
+        }
+      }
+    }
+  }
+}

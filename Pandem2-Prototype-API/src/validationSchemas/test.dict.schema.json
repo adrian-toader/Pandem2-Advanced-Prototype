@@ -1,0 +1,100 @@
+{
+  "$id": "/test#",
+  "definitions": {
+    "pathogen": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subcategory": {
+      "enum": [
+        "Tests Performed",
+        "Positivity Rate",
+        "Testing Policy"
+      ]
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "total": {
+      "type": "number",
+      "minimum": 0
+    },
+    "total_type": {
+      "type": "string",
+      "enum": [
+        "Absolute",
+        "100K"
+      ]
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "reference",
+        "value"
+      ]
+    },
+    "is_date_total": {
+      "type": "boolean"
+    },
+    "test_type": {
+      "type": "string",
+      "enum": [
+        "NAATs",
+        "Antigen",
+        "Unknown"
+      ]
+    },
+    "test_result": {
+      "type": "string",
+      "enum": [
+        "Positive"
+      ]
+    },
+    "testId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "testResourceEntry": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "/test#/definitions/testId"
+        },
+        "pathogen": {
+          "$ref": "/test#/definitions/pathogen"
+        },
+        "subcategory": {
+          "$ref": "/test#/definitions/subcategory"
+        },
+        "total": {
+          "$ref": "/test#/definitions/total"
+        },
+        "date": {
+          "$ref": "/test#/definitions/date"
+        },
+        "location": {
+          "$ref": "/test#/definitions/location"
+        },
+        "is_date_total": {
+          "$ref": "/test#/definitions/is_date_total"
+        },
+        "test_type": {
+          "$ref": "/test#/definitions/test_type"
+        },
+        "test_result": {
+          "$ref": "/test#/definitions/test_result"
+        }
+      }
+    }
+  }
+}

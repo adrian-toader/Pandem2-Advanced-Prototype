@@ -1,0 +1,62 @@
+/*
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+*/
+
+@use "@angular/material" as mat;
+@import "@angular/material/theming";
+
+@include mat.core();
+
+// define accent and primary colors
+$color-accent: #4db0a0;
+$color-primary: #5373af;
+$color-primary-darker: #33538f;
+
+// define primary palette
+$app-primary-palette-config: (
+  100: $color-primary,
+  500: $color-primary,
+  700: $color-primary-darker,
+  contrast: (
+    500: white,
+  ),
+);
+
+// define accent palette
+$app-accent-palette-config: (
+  100: $color-accent,
+  500: $color-accent,
+  700: $color-primary-darker,
+  contrast: (
+    500: white,
+  ),
+);
+
+// define theme
+$app-primary: mat.define-palette($app-primary-palette-config);
+$app-accent: mat.define-palette($app-accent-palette-config);
+$app-warn: mat.define-palette(mat.$red-palette);
+$app-theme: mat.define-light-theme($app-primary, $app-accent, $app-warn);
+
+.app-theme {
+  @include mat.all-component-themes($app-theme);
+}

@@ -1,0 +1,44 @@
+{
+  "$id": "test.generateDummy.response.body.schema",
+  "description": "Generate dummy data for tests - response body schema",
+  "type": "object",
+  "patternProperties": {
+    ".+": {
+      "description": "Date entry for created resources numbers per total type",
+      "type": "object",
+      "patternProperties": {
+        ".+": {
+          "description": "Date entry for created resources numbers per date",
+          "type": "object",
+          "properties": {
+            "testTypes": {
+              "type": "object",
+              "patternProperties": {
+                ".+": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "testResults": {
+              "type": "object",
+              "patternProperties": {
+                ".+": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "testingPolicy": {
+              "type": "string"
+            },
+            "total": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    }
+  }
+}

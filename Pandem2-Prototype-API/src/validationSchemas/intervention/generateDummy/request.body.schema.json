@@ -1,0 +1,27 @@
+{
+  "$id": "intervention.generateDummy.request.body.schema",
+  "description": "Generate dummy data for Intervention",
+  "type": "object",
+  "properties": {
+    "pathogenId": {
+      "$ref": "/intervention#/definitions/pathogenId"
+    },
+    "location": {
+      "$ref": "/intervention#/definitions/location"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "pathogenId",
+    "location",
+    "start_date",
+    "end_date"
+  ]
+}

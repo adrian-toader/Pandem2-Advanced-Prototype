@@ -1,0 +1,34 @@
+
+{
+  "$id": "user.retrieveUserList.response.body.schema",
+  "description": "Retrieve user instances list response schema",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "/user#/definitions/userResourceEntry"
+          },
+          {
+            "required": [
+              "email"
+            ]
+          }
+        ]
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "/role#/definitions/roleResourceEntry"
+          }
+        }
+      }
+    }
+  }
+}

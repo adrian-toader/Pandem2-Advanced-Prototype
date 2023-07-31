@@ -1,0 +1,125 @@
+{
+  "$id": "/socialMediaAnalysisData#",
+  "definitions": {
+    "pathogenId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "language": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "code"
+      ]
+    },
+    "topicId": {
+      "$ref": "/base#/definitions/mongoID"
+    },
+    "subcategory": {
+      "enum": [
+        "Volume",
+        "Volume Cumulative",
+        "Emotion",
+        "Sentiment",
+        "Suggestion"
+      ]
+    },
+    "location": {
+      "description": "Social Media Analysis Data location",
+      "type": "object",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "reference",
+        "value"
+      ]
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "total": {
+      "type": "number",
+      "minimum": 0
+    },
+    "is_date_total": {
+      "type": "boolean"
+    },
+    "sentiment": {
+      "type": "string",
+      "enum": [
+        "Positive",
+        "Negative",
+        "Neutral"
+      ]
+    },
+    "emotion": {
+      "type": "string",
+      "enum": [
+        "Anger",
+        "Anticipation",
+        "Disgust",
+        "Fear",
+        "Joy",
+        "Sadness",
+        "Surprise",
+        "Trust"
+      ]
+    },
+    "socialMediaAnalysisDataResourceEntry": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "/base#/definitions/mongoID"
+        },
+        "pathogenId": {
+          "$ref": "/socialMediaAnalysisData#/definitions/pathogenId"
+        },
+        "language": {
+          "$ref": "/socialMediaAnalysisData#/definitions/language"
+        },
+        "topicId": {
+          "$ref": "/socialMediaAnalysisData#/definitions/topicId"
+        },
+        "subcategory": {
+          "$ref": "/socialMediaAnalysisData#/definitions/subcategory"
+        },
+        "location": {
+          "$ref": "/socialMediaAnalysisData#/definitions/location"
+        },
+        "date": {
+          "$ref": "/socialMediaAnalysisData#/definitions/date"
+        },
+        "total": {
+          "$ref": "/socialMediaAnalysisData#/definitions/total"
+        },
+        "is_date_total": {
+          "$ref": "/socialMediaAnalysisData#/definitions/is_date_total"
+        },
+        "sentiment": {
+          "$ref": "/socialMediaAnalysisData#/definitions/sentiment"
+        },
+        "emotion": {
+          "$ref": "/socialMediaAnalysisData#/definitions/emotion"
+        }
+      }
+    }
+  }
+}

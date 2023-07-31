@@ -1,0 +1,30 @@
+{
+  "$id": "test.generateDummy.request.body.schema",
+  "description": "Generate dummy data for tests",
+  "type": "object",
+  "properties": {
+    "pathogen": {
+      "$ref": "/test#/definitions/pathogen"
+    },
+    "location": {
+      "$ref": "/test#/definitions/location"
+    },
+    "generate_for_sublocations": {
+      "type": "boolean"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "pathogen",
+    "location",
+    "start_date",
+    "end_date"
+  ]
+}

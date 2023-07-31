@@ -1,0 +1,190 @@
+<!--
+  Copyright Clarisoft, a Modus Create Company, 20/07/2023, licensed under the
+  EUPL-1.2 or later. This open-source code is licensed following the Attribution
+  4.0 International (CC BY 4.0) - Creative Commons — Attribution 4.0 International
+  — CC BY 4.0.
+
+  Following this, you are accessible to:
+
+  Share - copy and redistribute the material in any medium or format.
+  Adapt - remix, transform, and build upon the material commercially.
+
+  Remark: The licensor cannot revoke these freedoms if you follow the license
+  terms.
+
+  Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so reasonably but not in any way
+  that suggests the licensor endorses you or your use.
+  No additional restrictions - You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+-->
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-12">
+      <app-topnav>
+        <ng-container dynamic-section>
+          <app-breadcrumbs [items]="breadcrumbs"></app-breadcrumbs>
+        </ng-container>
+      </app-topnav>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-xl-12">
+
+      <form #form="ngForm" [class.form-view-only]="viewOnly" class="row page-content form-section"
+        (submit)="activeTab === 1 ? changePassword(form) : modifyUser(form)">
+        <div class="col-md-12 form-content">
+          <mat-tab-group class="page-tabs-navbar" (selectedTabChange)="onTabChange($event)">
+            <mat-tab [label]="'MODULES.USER.MODIFY_USER.DETAILS' | translate">
+              <mat-card class="page-section">
+                <div fxLayout="column">
+                  <div class="form-inline">
+                    <app-form-input class="mr-4" name="first_name" [(ngModel)]="user.firstName"
+                    [placeholder]="'MODULES.USER.MODIFY_USER.FIRST_NAME' | translate" tooltip="LNG_USER_FIELD_LABEL_FIRST_NAME_DESCRIPTION" required="true"
+                      [disabled]="viewOnly">
+                    </app-form-input>
+
+                    <app-form-input class="mr-4" name="last_name" [(ngModel)]="user.lastName"
+                    [placeholder]="'MODULES.USER.MODIFY_USER.LAST_NAME' | translate" tooltip="LNG_USER_FIELD_LABEL_LAST_NAME_DESCRIPTION" required="true"
+                      [disabled]="viewOnly">
+                    </app-form-input>
+
+                    <app-form-input class="mr-4" name="email" [(ngModel)]="user.email" [placeholder]="'MODULES.USER.MODIFY_USER.EMAIL' | translate"
+                      tooltip="LNG_USER_FIELD_LABEL_EMAIL_DESCRIPTION" required="true" app-email-validator
+                      [disabled]="viewOnly">
+                    </app-form-input>
+
+                    <app-form-select #countriesList class="mr-4" name="location" [(ngModel)]="user.location"
+                    [placeholder]="'MODULES.USER.MODIFY_USER.LOCATION' | translate"
+                    [tooltip]="'MODULES.USER.MODIFY_USER.LOCATION' | translate" required="true" [options]=" countriesList$ | async"
+                      [optionLabelKey]="(countriesList$ | async)?.[0]?.english_name ? 'english_name': 'name'"
+                      optionValueKey="code" optionTooltipKey="description" [disabled]="viewOnly" multiple="false">
+                    </app-form-select>
+
+                    <app-form-select class="mr-4" name="roleId" [(ngModel)]="user.roleId" [placeholder]="'MODULES.USER.MODIFY_USER.USER_ROLE' | translate"
+                    [tooltip]="'MODULES.USER.MODIFY_USER.USER_ROLE' | translate" required="true"
+                      [options]="(rolesList$ | async)?.length ? (rolesList$ | async) : !user.role ? [] : [user.role]"
+                      optionLabelKey="name" optionValueKey="id" optionTooltipKey="description"
+                      [disabled]="!permissionRole || viewOnly" multiple="false">
+                    </app-form-select>
+
+                  </div>
+                  <div class="d-inline-flex">
+                    <mat-form-field class="mr-4">
+                      <mat-datepicker-toggle matPrefix [for]="dataStartDate"></mat-datepicker-toggle>
+                      <mat-datepicker #dataStartDate></mat-datepicker>
+                      <input [readonly]="true" matInput [matDatepicker]="dataStartDate" name="data_start_date"
+                        [(ngModel)]="user.settings.data_interval.start_date" [placeholder]="'MODULES.USER.MODIFY_USER.DATA_START_DATE' | translate"
+                        required="false" [disabled]="viewOnly || isFollowingCurrentDate" #startDateInput="ngModel">
+                      <mat-error *ngIf="startDateInput.errors?.endDateBeforeStartDate" class="error-message">
+                        {{"DATE_PICKER.START_DATE" | translate}}
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="mr-4">
+                      <mat-datepicker-toggle matPrefix [for]="dataEndDate"></mat-datepicker-toggle>
+                      <mat-datepicker #dataEndDate></mat-datepicker>
+                      <input [readonly]="true" matInput [matDatepicker]="dataEndDate" name="data_end_date"
+                        [(ngModel)]="user.settings.data_interval.end_date" [placeholder]="'MODULES.USER.MODIFY_USER.DATA_START_DATE' | translate"
+                        required="false" [disabled]="viewOnly || isFollowingCurrentDate" #endDateInput="ngModel">
+                      <mat-error *ngIf="endDateInput.errors?.endDateBeforeStartDate" class="error-message">
+                        {{"DATE_PICKER.END_DATE" | translate}}
+                      </mat-error>
+                    </mat-form-field>
+
+                    <mat-checkbox [(ngModel)]="isFollowingCurrentDate" [color]="'primary'" [labelPosition]="'after'"
+                      class="mr-4 follow-current-date-checkbox" [disabled]="viewOnly" name="isFollowingCurrentDate"
+                      (change)="updateDates($event.checked)"
+                      matTooltip="{{'DATE_PICKER.CHECKBOX_TOOLTIP' | translate}}">
+                      {{"DATE_PICKER.CHECKBOX_TEXT" | translate}}
+                    </mat-checkbox>
+
+                  </div>
+                  <div class="form-inline">
+                    <app-form-input class="mr-4" name="color_palette1" type="color"
+                      [(ngModel)]="user.settings.color_palette[0]"  [placeholder]="'MODULES.USER.MODIFY_USER.FIRST_COLOR_PALETTE' | translate" required="false"
+                      [disabled]="viewOnly">
+                    </app-form-input>
+                    <app-form-input class="mr-4" name="color_palette2" type="color"
+                      [(ngModel)]="user.settings.color_palette[1]" [placeholder]="'MODULES.USER.MODIFY_USER.SECOND_COLOR_PALETTE' | translate" required="false"
+                      [disabled]="viewOnly">
+                    </app-form-input>
+                  </div>
+                  <app-form-select class="mr-4 language__selector"
+                  name="language_selector"
+                  [placeholder]="languageSelected ? '' : activeLang"
+                  tooltip="User Language"
+                  [options]="languagesList"
+                  optionLabelKey="name"
+                  optionValueKey="name"
+                  optionTooltipKey="description"
+                  [disabled]="viewOnly"
+                  (optionChanged)="onLanguageChange($event)"
+                  multiple="false">
+                 </app-form-select>
+                </div>
+                <div class="d-inline-flex">
+                  <label class="centered" for="uploader-input">
+                    <div [ngClass]="{'profile-picture': true, 'editable': !viewOnly}">
+                      <img *ngIf="profilePicture?.uri" [src]="profilePicture.uri" alt="Profile picture" />
+                      <span *ngIf="!profilePicture?.uri" class="user-icon xt-icon">{{'account'}}</span>
+                    </div>
+                    <input *ngIf="!viewOnly" (change)="onPictureSelected($event, form)" required="false"
+                      accept="image/jpeg,image/png" type="file" id="uploader-input" name="profile_picture" />
+
+                  </label>
+                  <div *ngIf="!viewOnly" class="profile-picture-text centered">
+                    {{'MODULES.USER.MODIFY_USER.UPLOAD_CLICK' | translate}}
+                  </div>
+                </div>
+                
+              </mat-card>
+            </mat-tab>
+            <mat-tab [label]="'Change Password'" [disabled]="viewOnly">
+              <mat-card class="page-section">
+                <div fxLayout="column">
+                  <div class="form-inline">
+                    <app-form-input *ngIf="!isAdmin" class="mr-4" name="currentPassword" type="password"
+                      [(ngModel)]="change_password.current_password" [placeholder]="'Current Password'"
+                      tooltip="LNG_PAGE_RESET_PASSWORD_FIELD_LABEL_CURRENT_PASSWORD_DESCRIPTION"
+                      autocomplete="new-password" required="{{(activeTab === 1 ? true : false) && !isAdmin}}">
+                    </app-form-input>
+                    <app-form-input class="mr-4" name="password" type="password"
+                      [(ngModel)]="change_password.new_password" [placeholder]="'New Password'"
+                      tooltip="LNG_PAGE_RESET_PASSWORD_FIELD_LABEL_NEW_PASSWORD_DESCRIPTION" required="{{activeTab === 1 ? true : false}}"
+                      minlength="12" app-trigger-validation-for="passwordConfirm" autocomplete="new-password">
+                    </app-form-input>
+
+                    <app-form-input class="mr-4" type="password" name="passwordConfirm"
+                      [(ngModel)]="change_password.confirm_new_password" [placeholder]="'Confirm new password'"
+                      tooltip="LNG_PAGE_RESET_PASSWORD_FIELD_LABEL_CONFIRM_NEW_PASSWORD_DESCRIPTION" required="{{activeTab === 1 ? true : false}}"
+                      app-equal-validator="password">
+                    </app-form-input>
+                  </div>
+                </div>
+              </mat-card>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+        <div class="col-md-12 form-actions">
+          <button data-ngIf="viewOnly && UserModel.canModify(authUser) && user.id && user.id !== authUser.id"
+            *ngIf="viewOnly && user.id && user.id !== authUser.id" mat-raised-button type="button" color="accent"
+            [routerLink]="['/users', userId, 'modify']">
+            {{'MODULES.USER.MODIFY_USER.EDIT' | translate}}
+          </button>
+
+          <ng-container *ngIf="!viewOnly">
+            <button mat-raised-button color="accent" type="submit" [disabled]="!form.dirty">
+              {{'MODULES.USER.MODIFY_USER.SAVE' | translate}}
+            </button>
+            <button data-ngIf="UserModel.canList(authUser)" type="button" [routerLink]="'/users'" mat-raised-button>
+              {{'MODULES.USER.MODIFY_USER.CANCEL' | translate}}
+            </button>
+          </ng-container>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
